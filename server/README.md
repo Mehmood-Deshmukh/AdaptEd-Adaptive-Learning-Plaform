@@ -1,4 +1,6 @@
 ### Structure of ENV file
 ```bash
-PORT
+PORT=
+MONGO_URI=
+JWT_SECRET=
 ```
