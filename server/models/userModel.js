@@ -43,4 +43,19 @@ userSchema.statics.getUserByEmail = async function (email) {
     }
 }
 
+userSchema.statics.updateResetPasswordToken = async function (email, token) {
+    try {
+        const user = await this.findOne({ email });
+        if (!user) {
+            throw new Error('No user with that email');
+        }
+
+        user.resetPasswordToken = token;
+        user.resetPasswordExpire = Date.now() + 600000; 
+        return user.save();
+    } catch (error) {
+        throw error;
+    }
+}
+
 module.exports = mongoose.model('User', userSchema);
