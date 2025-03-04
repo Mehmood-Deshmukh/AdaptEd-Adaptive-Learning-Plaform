@@ -14,6 +14,15 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    roadmaps: {
+        type: [
+          {
+            type: Schema.Types.ObjectId,
+            ref: "Roadmap",
+          },
+        ],
+        default: [],
+    },
     resetPasswordToken: {
         type: String
     },
@@ -57,5 +66,34 @@ userSchema.statics.updateResetPasswordToken = async function (email, token) {
         throw error;
     }
 }
+
+userSchema.statics.addRoadmap = async function (userId, roadmapId) {
+    try {
+      const user = await this.findById(userId);
+      user.roadmaps.push(roadmapId);
+      await user.save();
+    } catch (error) {
+      throw error;
+    }
+}
+
+userSchema.statics.getUsersRoadmaps = async function (userId) {
+    try {
+      const user = await this.findById(userId).populate({
+        path: "roadmaps",
+        populate: {
+          path: "checkpoints",
+          populate: {
+            path: "resources",
+            model: "Resource",
+          },
+        },
+      });
+  
+      return user.roadmaps;
+    } catch (error) {
+      throw error;
+    }
+};
 
 module.exports = mongoose.model('User', userSchema);

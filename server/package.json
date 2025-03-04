@@ -10,11 +10,15 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@google/generative-ai": "^0.22.0",
+    "@pinecone-database/pinecone": "^5.1.0",
     "bcryptjs": "^3.0.2",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
+    "langchain": "^0.3.19",
     "mongoose": "^8.11.0",
-    "nodemailer": "^6.10.0"
+    "nodemailer": "^6.10.0",
+    "sanitize-html": "^2.14.0"
   }
 }

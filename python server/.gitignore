@@ -1,0 +1,8 @@
+./myenv
+myenv
+./.env
+.env
+
+./faiss_index.pkl
+faiss_index.pkl
+
