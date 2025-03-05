@@ -7,6 +7,8 @@ JWT_SECRET=
 # these are for sending emails for resetting password
 EMAIL_USER=
 EMAIL_PASSWORD=
+
+FLASK_BASE_URL=
 ```
 
 ### Endpoints
@@ -51,5 +53,27 @@ This endpoint is used to send an email to the user with a token to reset the pas
 This endpoint is used to reset the password of the user.
 
 
+#### /api/roadmap
 
+- GET /get
+
+This endpoint is used to get all the roadmaps of the user.
+
+- POST /generate-roamap
+```
+{
+    "topic": "topic",
+}
+```
+
+This endpoint is used to generate a new roadmap.
+
+- POST /update-checkpoint-status
+```
+{
+    "roadmapId": "roadmapId",
+    "checkpointId": "checkpointId",
+    "status": "status"
+}
+```
 

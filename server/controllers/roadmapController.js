@@ -5,6 +5,8 @@ const resourceSchema = require('../models/resourceModel');
 const generateRoadmap = require('../utils/roadmapGeneration');
 const userModel = require('../models/userModel');
 const axios = require('axios');
+const dotenv = require('dotenv');
+dotenv.config();
 
 const roadmapController = {
     generateRoadmap: async (req, res) => {
@@ -15,7 +17,7 @@ const roadmapController = {
                 res.status(404).json({ message: "User not found" });
             }
 
-            const _res = await axios.post('http://localhost:8000/api/generate-roadmap', { topic });
+            const _res = await axios.post(`${process.env.FLASK_BASE_URL}/api/generate-roadmap`, { topic });
 
             const roadmap = _res.data;
             
