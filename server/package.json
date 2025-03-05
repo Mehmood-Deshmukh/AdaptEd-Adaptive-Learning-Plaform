@@ -12,6 +12,7 @@
   "dependencies": {
     "@google/generative-ai": "^0.22.0",
     "@pinecone-database/pinecone": "^5.1.0",
+    "axios": "^1.8.1",
     "bcryptjs": "^3.0.2",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",

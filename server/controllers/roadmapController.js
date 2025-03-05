@@ -4,6 +4,7 @@ const checkpointSchema = require('../models/checkpointModel');
 const resourceSchema = require('../models/resourceModel');
 const generateRoadmap = require('../utils/roadmapGeneration');
 const userModel = require('../models/userModel');
+const axios = require('axios');
 
 const roadmapController = {
     generateRoadmap: async (req, res) => {
@@ -14,7 +15,9 @@ const roadmapController = {
                 res.status(404).json({ message: "User not found" });
             }
 
-            const roadmap = await generateRoadmap(topic);
+            const _res = await axios.post('http://localhost:8000/api/generate-roadmap', { topic });
+
+            const roadmap = _res.data;
             
             const checkpoints = await Promise.all(roadmap.checkpoints.map(async (checkpoint, index) => {
                 checkpoint.order = index + 1;

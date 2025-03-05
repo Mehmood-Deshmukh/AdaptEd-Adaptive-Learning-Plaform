@@ -36,7 +36,6 @@ class Checkpoint(BaseModel):
     description: str = Field(description="Detailed description of at least 2 lines")
     resources: List[Resource] = Field(description="3-4 high-quality learning resources")
     totalHoursNeeded: float = Field(description="Total hours needed for this checkpoint")
-    deadlineDate: str = Field(description="Target deadline date for this checkpoint")
 
 class Roadmap(BaseModel):
     mainTopic: str = Field(description="Main learning topic")
@@ -128,18 +127,7 @@ def validate_topic(topic: str, llm: ChatGroq) -> str:
     
     return validated_topic
 
-def calculate_deadlines(checkpoints: List[Dict], hours_per_day: float) -> List[Dict]:
-    
-    current_date = datetime.now()
-    running_date = current_date
-    
-    for checkpoint in checkpoints:
-        hours_needed = checkpoint["totalHoursNeeded"]
-        days_needed = max(1, round(hours_needed / hours_per_day))
-        running_date = running_date + timedelta(days=days_needed)
-        checkpoint["deadlineDate"] = running_date.strftime("%Y-%m-%d")
-    
-    return checkpoints
+
 
 def retrieve_relevant_resources(topic: str, vector_store: FAISS, resources_data: Dict[str, List[Dict[str, str]]]) -> List[Dict[str, str]]:
     retriever = vector_store.as_retriever(search_kwargs={"k": 40})
@@ -195,9 +183,6 @@ def retrieve_relevant_resources(topic: str, vector_store: FAISS, resources_data:
 
 def generate_roadmap(
     topic: str,
-    difficulty: str = "beginner",
-    learning_style: str = "reading",
-    hours_per_day: float = 2.0
 ) -> Dict[str, Any]:
 
     try:
@@ -219,10 +204,6 @@ def generate_roadmap(
         roadmap_prompt = PromptTemplate(
             template="""
             Generate a learning roadmap with exactly 5 checkpoints for {topic}. 
-            Adjust according to:
-            - Difficulty Level: {difficulty}
-            - Learning Style: {learning_style}
-            - Deadline: {hours_per_day} hours per day available for study
             
             Each checkpoint should:
             - Have a clear, specific title.
@@ -238,7 +219,7 @@ def generate_roadmap(
             {resources}
             also make sure that you change the type of the resource depending on the link URL
             """,
-            input_variables=["topic", "difficulty", "learning_style", "hours_per_day", "resources"],
+            input_variables=["topic", "resources"],
             partial_variables={"format_instructions": parser.get_format_instructions()}
         )
         
@@ -246,9 +227,6 @@ def generate_roadmap(
         roadmap_chain = LLMChain(llm=llm, prompt=roadmap_prompt)
         result = roadmap_chain.invoke({
             "topic": validated_topic,
-            "difficulty": difficulty,
-            "learning_style": learning_style,
-            "hours_per_day": hours_per_day,
             "resources": json.dumps(retrieved_resources)
         })
         
@@ -273,11 +251,6 @@ def generate_roadmap(
                 if len(checkpoint.get("resources", [])) < 3:
                     raise ValueError(f"Checkpoint {i+1} has fewer than 3 resources.")
             
-            # Calculate realistic deadlines
-            roadmap_data["checkpoints"] = calculate_deadlines(
-                roadmap_data["checkpoints"], 
-                hours_per_day
-            )
             
             return roadmap_data
             
@@ -298,26 +271,10 @@ def roadmap_endpoint():
             return jsonify({"error": "Missing topic parameter"}), 400
             
         topic = data.get('topic')
-        difficulty = data.get('difficulty', 'beginner')
-        learning_style = data.get('learning_style', 'reading')
-        hours_per_day = float(data.get('hours_per_day', 2.0))
-        
 
-        if difficulty not in ['beginner', 'intermediate', 'advanced']:
-            difficulty = 'beginner'
-            
-    
-        if learning_style not in ['reading', 'visual', 'hands-on', 'audio']:
-            learning_style = 'reading'
-           
-        if hours_per_day <= 0 or hours_per_day > 12:
-            hours_per_day = 2.0
             
         roadmap = generate_roadmap(
-            topic=topic,
-            difficulty=difficulty,
-            learning_style=learning_style,
-            hours_per_day=hours_per_day
+            topic=topic
         )
         
         if "error" in roadmap:

@@ -13,7 +13,9 @@ from langchain_groq import ChatGroq
 from langchain.chains import LLMChain
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
+from dotenv import load_dotenv
 
+load_dotenv()
 FAISS_INDEX_PATH = "faiss_index"
 EMBEDDINGS_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 
@@ -273,7 +275,6 @@ def generate_roadmap(
         return {"error": f"Failed to generate roadmap: {str(e)}"}
 
 if __name__ == "__main__":
-    os.environ["GROQ_API_KEY"] = "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"
 
     roadmap = generate_roadmap(
         topic="Computer Architecture", 
