@@ -49,7 +49,41 @@ const roadmapController = {
             console.log(error);
             res.status(500).json({ message: error.message });
         }
-    }
+    },
+    updateCheckpointStatus : async (req, res) => {
+        try {
+            const { roadmapId, checkpointId, status } = req.body;
+            const roadmap = await roadmapSchema.findById(roadmapId).populate('checkpoints');
+            if(!roadmap){
+                res.status(404).json({ message: "Roadmap not found" });
+            }
+
+            const checkpoint = await checkpointSchema.findById(checkpointId);
+            if(!checkpoint){
+                res.status(404).json({ message: "Checkpoint not found" });
+            }
+
+            if(status === 'completed'){
+                checkpoint.completedAt = new Date();
+            }
+
+            checkpoint.status = status;
+            await checkpoint.save();
+
+            roadmap.checkpoints = [...roadmap.checkpoints.filter(checkpoint => checkpoint._id.toString() !== checkpointId), checkpoint];
+
+            const totalCheckpoints = roadmap.checkpoints.length;
+            const completedCheckpoints = roadmap.checkpoints.filter(checkpoint => checkpoint.status === 'completed').length;
+            roadmap.totalProgress = Math.floor((completedCheckpoints / totalCheckpoints) * 100);
+
+
+            await roadmap.save();
+            res.status(200).json(roadmap);
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({ message: error.message });
+        }
+    },
 }
 
 module.exports = roadmapController;
