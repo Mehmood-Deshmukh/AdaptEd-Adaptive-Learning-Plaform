@@ -29,6 +29,7 @@ const Register = () => {
 
     try {
       setIsLoading(true);
+      
       const response = await fetch(
         `${import.meta.env.VITE_BACKEND_URL}/api/user/register`,
         {
