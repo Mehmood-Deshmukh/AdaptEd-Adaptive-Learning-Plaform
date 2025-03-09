@@ -2,8 +2,10 @@ import React, { useState, useRef } from 'react';
 import { Eye, EyeOff, Mail, Lock, ArrowRight, X } from 'lucide-react';
 import { Toast } from 'primereact/toast';
 import homeVector from '../assets/home.jpg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import useAuthContext from '../hooks/useAuthContext';
+
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -23,6 +25,9 @@ const Login = () => {
   const [newPassword, setNewPassword] = useState('');
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [resetPasswordLoading, setResetPasswordLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const { state, dispatch } = useAuthContext();
   
   const toast = useRef(null);
   
@@ -43,6 +48,9 @@ const Login = () => {
       const data = await response.json();
       if (data.status === 'success') {
         toast.current.show({severity: 'success', summary: 'Success', detail: data.message});
+        dispatch({ type: 'LOGIN_SUCCESS', payload: { user : data.data, token : data.token}});
+        navigate('/');
+        
       } else {
         toast.current.show({severity: 'error', summary: 'Error', detail: data.message});
       }

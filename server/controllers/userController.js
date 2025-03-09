@@ -137,6 +137,39 @@ const userController = {
                 message: error.message
             });
         }
+    },
+    checkAuth: async (req, res) => {
+        try{
+            const Authorization = req.headers.authorization;
+            const token = Authorization && Authorization.split(' ')[1];
+            if (!token) {
+                return res.status(401).json({
+                    status: 'error',
+                    message: 'Unauthorized'
+                });
+            }
+
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+            const user = await userModel.findById(decoded.userId);
+            if (!user) {
+                return res.status(404).json({
+                    status: 'error',
+                    message: 'User not found'
+                });
+            }
+
+            res.status(200).json({
+                status: 'success',
+                data: user
+            });
+
+        } catch (error) {
+            res.status(500).json({
+                status: 'error',
+                message: error.message
+            });
+        }
     }
 }
 
