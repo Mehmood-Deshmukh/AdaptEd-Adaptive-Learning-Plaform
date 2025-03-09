@@ -2,7 +2,8 @@ import React, { useState, useRef } from "react";
 import { Eye, EyeOff, Mail, Lock, User, ArrowRight } from "lucide-react";
 import { Toast } from "primereact/toast";
 import homeVector from "../assets/home.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuthContext from "../hooks/useAuthContext";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -13,6 +14,8 @@ const Register = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const toast = useRef(null);
+  const {dispatch} = useAuthContext();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,7 +32,7 @@ const Register = () => {
 
     try {
       setIsLoading(true);
-      
+
       const response = await fetch(
         `${import.meta.env.VITE_BACKEND_URL}/api/user/register`,
         {
@@ -54,6 +57,15 @@ const Register = () => {
           detail: data.message,
         });
 
+        dispatch({
+          type: "REGISTER_SUCCESS",
+          payload: {
+            user: data.data,
+            token: data.token,
+          },
+        });
+
+        navigate("/");
       } else {
         toast.current.show({
           severity: "error",
