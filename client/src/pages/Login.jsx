@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Eye, EyeOff, Mail, Lock, ArrowRight } from 'lucide-react';
 import { Toast } from 'primereact/toast';
 import homeVector from '../assets/home.jpg';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -15,16 +15,24 @@ const Login = () => {
     e.preventDefault();
     try{
         setIsLoading(true);
-        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/user/login`, {
-            email: email,
-            password: password,
-        })
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })
+        });
 
-        if(response.data.status === 'success'){
-            toast.current.show({severity: 'success', summary: 'Success', detail: response.data.message});
+        const data = await response.json();
+        
+        if(data.status === 'success'){
+            toast.current.show({severity: 'success', summary: 'Success', detail: data.message});
         }
         else{
-            toast.current.show({severity: 'error', summary: 'Error', detail: response.data.message});
+            toast.current.show({severity: 'error', summary: 'Error', detail: data.message});
         }
 
         setIsLoading(false);
@@ -146,9 +154,9 @@ const Login = () => {
             <div className="text-center mt-6">
               <p className="text-gray-800">
                 Don't have an account?{" "}
-                <a href="#" className="text-black hover:text-gray-600 font-medium">
+                <Link to="/register" className="text-black hover:text-gray-600 font-medium">
                   Sign up
-                </a>
+                </Link>
               </p>
             </div>
           </form>
