@@ -1,8 +1,10 @@
 ### Structure of ENV file
+
 ```bash
 PORT=
 MONGO_URI=
 JWT_SECRET=
+GEMINI_API_KEY=
 
 # these are for sending emails for resetting password
 EMAIL_USER=
@@ -16,6 +18,7 @@ FLASK_BASE_URL=
 #### /api/users
 
 - POST /register
+
 ```
 {
     "username": "username",
@@ -23,26 +26,32 @@ FLASK_BASE_URL=
     "password": "password"
 }
 ```
+
 This endpoint is used to register a new user.
 
 - POST /login
+
 ```
 {
     "email": "email",
     "password": "password"
 }
 ```
+
 This endpoint is used to login a user.
 
 - POST /forgot-password
+
 ```
 {
     "email": "email"
 }
 ```
+
 This endpoint is used to send an email to the user with a token to reset the password.
 
 - POST /reset-password
+
 ```
 {
     "email": "email",
@@ -50,8 +59,8 @@ This endpoint is used to send an email to the user with a token to reset the pas
     "password": "password",
 }
 ```
-This endpoint is used to reset the password of the user.
 
+This endpoint is used to reset the password of the user.
 
 #### /api/roadmap
 
@@ -60,6 +69,7 @@ This endpoint is used to reset the password of the user.
 This endpoint is used to get all the roadmaps of the user.
 
 - POST /generate-roamap
+
 ```
 {
     "topic": "topic",
@@ -69,6 +79,7 @@ This endpoint is used to get all the roadmaps of the user.
 This endpoint is used to generate a new roadmap.
 
 - POST /update-checkpoint-status
+
 ```
 {
     "roadmapId": "roadmapId",
@@ -76,4 +87,3 @@ This endpoint is used to generate a new roadmap.
     "status": "status"
 }
 ```
-
