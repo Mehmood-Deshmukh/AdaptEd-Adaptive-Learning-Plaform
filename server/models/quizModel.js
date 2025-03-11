@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const dotenv = require("dotenv");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
-const Question = require("./questionSchema");
+const Question = require("./questionModel");
 
 dotenv.config();
 const genAi = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
@@ -70,6 +70,8 @@ quizSchema.statics.generateQuiz = async function (
   difficulty,
   tags
 ) {
+  // i am not proud of this
+  // difficulty is not used in the prompt, we may use it if we want
   const prompt = `purpose:
     Generate a set of 15 comprehensive multiple-choice questions on the specified topic - ${topic}. The questions should assess both subject knowledge and learning preferences to enable personalized learning experiences.
     Question Distribution:
@@ -98,8 +100,9 @@ quizSchema.statics.generateQuiz = async function (
         },
         // Additional questions follow the same structure
     ]
-    Additional Guidelines:
+    "answer" should be a single letter corresponding to the correct option (A, B, C, or D).
 
+    Additional Guidelines:
     Ensure all knowledge questions are factually accurate
     Make learning style questions generalized enough to apply across various topics
     Include questions that help determine prior knowledge levels for better collaborative filtering

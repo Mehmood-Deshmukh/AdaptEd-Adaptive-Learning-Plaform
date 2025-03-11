@@ -4,6 +4,8 @@ const cors = require('cors');
 const connectDB = require('./config/connectDB');
 const userRoutes = require('./routes/userRoutes');
 const roadmapRoutes = require('./routes/roadmapRoutes');
+const quizRoutes = require('./routes/quizRoutes');
+
 dotenv.config();
 const app = express();
 app.use(express.json());
@@ -16,6 +18,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/user', userRoutes);
 app.use('/api/roadmap', roadmapRoutes);
+app.use('/api/quiz', quizRoutes);
 
 connectDB();
 app.listen(port, () => {
