@@ -24,7 +24,8 @@ const checkpointSchema = new Schema({
             type: mongoose.Schema.Types.ObjectId,
         }],
     startedAt: {
-        type: Date
+        type: Date,
+        default: null
     },
     completedAt: {
         type: Date
@@ -32,6 +33,9 @@ const checkpointSchema = new Schema({
     totalHoursNeeded: {
         type: Number
     },
+    totalTimeTaken: {
+        type: Number
+    }
 });
 
 checkpointSchema.statics.createCheckpoint = async function(checkpoint){

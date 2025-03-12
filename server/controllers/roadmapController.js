@@ -55,7 +55,13 @@ const roadmapController = {
     updateCheckpointStatus : async (req, res) => {
         try {
             const { roadmapId, checkpointId, status } = req.body;
-            const roadmap = await roadmapSchema.findById(roadmapId).populate('checkpoints');
+            const roadmap = await roadmapSchema.findById(roadmapId).populate({
+                path: "checkpoints",
+                populate: {
+                    path: "resources",
+                    model: "Resource",
+                },
+            })
             if(!roadmap){
                 res.status(404).json({ message: "Roadmap not found" });
             }
@@ -65,8 +71,25 @@ const roadmapController = {
                 res.status(404).json({ message: "Checkpoint not found" });
             }
 
+            if (checkpoint.status === 'in_progress' && status === 'not_started') {
+                return res.status(400).json({ 
+                  message: "Cannot change status from 'In Progress' back to 'Not Started'" 
+                });
+              }
+              
+            if (checkpoint.status === 'completed' && (status === 'in_progress' || status === 'not_started')) {
+                return res.status(400).json({ 
+                  message: "Cannot change status from 'Completed' to a previous status" 
+                });
+            }
+
             if(status === 'completed'){
                 checkpoint.completedAt = new Date();
+                checkpoint.totalTimeTaken = (checkpoint.completedAt - checkpoint.startedAt);
+            }
+
+            if(status === 'in_progress'){
+                checkpoint.startedAt = new Date();
             }
 
             checkpoint.status = status;
