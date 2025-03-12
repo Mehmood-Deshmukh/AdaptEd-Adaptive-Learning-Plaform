@@ -7,9 +7,9 @@ import Roadmap from './pages/RoadmapGenerator'
 
 function App() {
   const { state } = useAuthContext()
-  const { isAuthenticated, loading } = state;
+  const { isAuthenticated, Loading } = state;
 
-  if (loading) {
+  if (Loading) {
     console.log('loading');
     return (
       <div className="loading-container">
