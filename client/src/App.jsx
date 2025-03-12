@@ -4,6 +4,7 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import useAuthContext from './hooks/useAuthContext'
 import Roadmap from './pages/RoadmapGenerator'
+import Quiz from './pages/Quiz'
 
 function App() {
   const { state } = useAuthContext()
@@ -26,6 +27,7 @@ function App() {
         <Route path="/login" element={!isAuthenticated ? <Login /> : <Navigate to="/" />} />
         <Route path="/register" element={!isAuthenticated ? <Register /> : <Navigate to="/" />} />
         <Route path="/roadmap-generator" element={isAuthenticated ? <Roadmap /> : <Navigate to="/login" />} />
+        <Route path="/quiz-generator" element={isAuthenticated ? <Quiz /> : <Navigate to="/login" />} />
         <Route path="*" element={<h1>Not Found</h1>} />
       </Routes>
     </BrowserRouter>
