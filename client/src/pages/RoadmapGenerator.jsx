@@ -324,7 +324,7 @@ const RoadmapGenerator = () => {
         {isLoading && (
           <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50">
             <div className="bg-white p-6 rounded-lg shadow-xl flex items-center space-x-4 animate-pulse">
-              <Loader className="w-6 h-6 text-blue-600 animate-spin" />
+              <Loader className="w-6 h-6 text-black animate-spin" />
               <p className="text-gray-700 font-medium">Processing...</p>
             </div>
           </div>
