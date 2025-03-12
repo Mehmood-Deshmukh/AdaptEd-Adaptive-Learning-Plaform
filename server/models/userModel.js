@@ -43,6 +43,18 @@ const userSchema = new Schema({
   resetPasswordExpire: {
     type: Date,
   },
+  lastLoginDate: {
+    type: Date,
+    default: null
+  },
+  currentStreak: {
+    type: Number,
+    default: 0
+  },
+  maxStreak: {
+    type: Number,
+    default: 0
+  },
   createdAt: {
     type: Date,
     default: Date.now,
@@ -105,6 +117,52 @@ userSchema.statics.getUsersRoadmaps = async function (userId) {
     });
 
     return user.roadmaps;
+  } catch (error) {
+    throw error;
+  }
+};
+
+userSchema.statics.updateLoginStreak = async function (userId) {
+  try {
+    const user = await this.findById(userId);
+    if (!user) {
+      throw new Error("User not found");
+    }
+
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    
+    
+    if (!user.lastLoginDate) {
+      user.lastLoginDate = today;
+      user.currentStreak = 1;
+      user.maxStreak = 1;
+      return user.save();
+    }
+
+    const lastLogin = new Date(user.lastLoginDate);
+    const lastLoginDay = new Date(lastLogin.getFullYear(), lastLogin.getMonth(), lastLogin.getDate());
+    
+    if (today.getTime() === lastLoginDay.getTime()) {
+      return user;
+    }
+
+    const timeDiff = today.getTime() - lastLoginDay.getTime();
+    const dayDiff = Math.floor(timeDiff / (1000 * 3600 * 24));
+
+    if (dayDiff === 1) {
+      user.currentStreak += 1;
+      if (user.currentStreak > user.maxStreak) {
+        user.maxStreak = user.currentStreak;
+      }
+    }
+
+    else if (dayDiff > 1) {
+      user.currentStreak = 1;
+    }
+    
+    user.lastLoginDate = today;
+    return user.save();
   } catch (error) {
     throw error;
   }

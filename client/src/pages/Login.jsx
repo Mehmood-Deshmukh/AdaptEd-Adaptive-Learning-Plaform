@@ -5,6 +5,8 @@ import homeVector from '../assets/home.jpg';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import useAuthContext from '../hooks/useAuthContext';
+import StreakPopup from '../components/StreakPopup';
+
 
 
 const Login = () => {
@@ -27,6 +29,9 @@ const Login = () => {
   const [resetPasswordLoading, setResetPasswordLoading] = useState(false);
   const navigate = useNavigate();
 
+  const [showStreakPopup, setShowStreakPopup] = useState(false);
+  const [streakData, setStreakData] = useState({ currentStreak: 0, maxStreak: 0 });
+
   const { state, dispatch } = useAuthContext();
   
   const toast = useRef(null);
@@ -48,8 +53,21 @@ const Login = () => {
       const data = await response.json();
       if (data.status === 'success') {
         toast.current.show({severity: 'success', summary: 'Success', detail: data.message});
-        dispatch({ type: 'LOGIN_SUCCESS', payload: { user : data.data, token : data.token}});
-        navigate('/');
+
+        if(data.data.currentStreak >= 1){
+          setStreakData({
+            currentStreak: data.data.currentStreak,
+            maxStreak: data.data.maxStreak
+          });
+
+          setShowStreakPopup(true);
+        }
+
+        setTimeout(() => {
+          dispatch({ type: 'LOGIN_SUCCESS', payload: { user : data.data, token : data.token}});
+          navigate('/');
+        }, 4000);
+
         
       } else {
         toast.current.show({severity: 'error', summary: 'Error', detail: data.message});
@@ -500,6 +518,12 @@ const Login = () => {
         )}
       </AnimatePresence>
       
+      <StreakPopup 
+        streak={streakData.currentStreak}
+        isVisible={showStreakPopup}
+        onClose={() => setShowStreakPopup(false)}
+      />
+
     </div>
   );
 };

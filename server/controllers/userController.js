@@ -55,12 +55,17 @@ const userController = {
                 });
             }
 
-            const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+            await userModel.updateLoginStreak(user._id);
+
+            const updatedUser = await userModel.findById(user._id);
+            console.log(updatedUser);
+
+            const token = jwt.sign({ userId: updatedUser._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
             res.status(200).json({
                 status: 'success',
                 message: 'User logged in successfully',
-                data: user,
+                data: updatedUser,
                 token
             });
         } catch (error) {
