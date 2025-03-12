@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, ChevronRight, Book, CheckCircle, Circle, Clock, FileText, Youtube, Globe, Award, Plus, ExternalLink, Loader, Search } from 'lucide-react';
+import { ChevronDown, ChevronRight, Book, CheckCircle, Circle, Clock, FileText, Youtube, Globe, Award, Plus, ExternalLink, Loader, Search, Lock } from 'lucide-react';
 
 // Main App Component
 const RoadmapGenerator = () => {
@@ -87,9 +87,34 @@ const RoadmapGenerator = () => {
     }
   };
 
+  // Check if a checkpoint is locked (can't be started yet)
+  const isCheckpointLocked = (checkpoints, currentCheckpoint) => {
+    // If it's the first checkpoint, it's never locked
+    if (currentCheckpoint.order === 1) return false;
+    
+    // Find the previous checkpoint
+    const previousCheckpoint = checkpoints.find(cp => cp.order === currentCheckpoint.order - 1);
+    
+    // If previous checkpoint isn't completed, this one is locked
+    return previousCheckpoint && previousCheckpoint.status !== 'completed';
+  };
+
   // Update checkpoint status
   const updateCheckpointStatus = async (roadmapId, checkpointId, newStatus) => {
     try {
+      // Find the checkpoint and check if it's locked
+      const roadmap = roadmaps.find(r => r._id === roadmapId);
+      const checkpoint = roadmap.checkpoints.find(cp => cp._id === checkpointId);
+      
+      if (isCheckpointLocked(roadmap.checkpoints, checkpoint) && newStatus !== 'not_started') {
+        setNotification({
+          show: true,
+          message: 'You must complete the previous checkpoint first!',
+          type: 'error'
+        });
+        return;
+      }
+      
       setIsLoading(true);
       
       const response = await fetch(`${BASE_URL}/api/roadmap/update-checkpoint-status`, {
@@ -176,7 +201,11 @@ const RoadmapGenerator = () => {
   };
 
   // Get status icon
-  const getStatusIcon = (status) => {
+  const getStatusIcon = (status, isLocked) => {
+    if (isLocked) {
+      return <Lock className="w-5 h-5 text-gray-500" />;
+    }
+    
     switch (status) {
       case 'completed':
         return <CheckCircle className="w-5 h-5 text-green-500" />;
@@ -201,7 +230,11 @@ const RoadmapGenerator = () => {
   };
 
   // Get status color class
-  const getStatusColor = (status) => {
+  const getStatusColor = (status, isLocked) => {
+    if (isLocked) {
+      return 'bg-gray-200 text-gray-500 border-gray-300 opacity-70';
+    }
+    
     switch (status) {
       case 'completed':
         return 'bg-green-100 text-green-800 border-green-300';
@@ -230,14 +263,22 @@ const RoadmapGenerator = () => {
   }, []);
 
   // Checkpoint component with accordion
-  const CheckpointItem = ({ checkpoint, roadmapId }) => {
+  const CheckpointItem = ({ checkpoint, roadmapId, checkpoints }) => {
     const [isExpanded, setIsExpanded] = useState(false);
+    const locked = isCheckpointLocked(checkpoints, checkpoint);
     
     return (
-        <div className="mb-6 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg border border-gray-100">
+        <div className={`mb-6 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg border border-gray-100 ${locked ? 'relative' : ''}`}>
+          {locked && (
+            <div className="absolute top-0 right-0 bg-gray-700 text-white py-1 px-3 rounded-bl-lg text-xs font-medium flex items-center">
+              <Lock className="w-3 h-3 mr-1" /> Complete previous first
+            </div>
+          )}
+          
           <div 
-            className={`p-5 flex items-start justify-between cursor-pointer transition-colors duration-200 ${isExpanded ? 'bg-gray-50' : 'hover:bg-gray-50'}`} 
-            onClick={() => setIsExpanded(!isExpanded)}
+            className={`p-5 flex items-start justify-between cursor-pointer transition-colors duration-200  ${locked ? 'opacity-50' : ''}`} 
+            onClick={() => {if(!locked) setIsExpanded(!isExpanded)}
+          }
           >
             <div className="flex items-start flex-1">
               <div className={`mt-1 mr-4 p-1 rounded-full transition-colors duration-200 ${isExpanded ? 'bg-gray-100' : 'hover:bg-gray-50'}`}>
@@ -248,10 +289,12 @@ const RoadmapGenerator = () => {
               </div>
               
               <div className="flex-1">
-                <div className="flex items-center">
-                  <h3 className="text-lg font-semibold text-gray-800">{checkpoint.title}</h3>
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg font-semibold text-gray-800">
+                    {checkpoint.title}
+                  </h3>
                   <div className="ml-3">
-                    {getStatusIcon(checkpoint.status)}
+                    {getStatusIcon(checkpoint.status, locked)}
                   </div>
                 </div>
                 
@@ -265,10 +308,11 @@ const RoadmapGenerator = () => {
                   
                   <div className="relative inline-block">
                     <select
-                      className={`text-sm px-3 py-1 rounded-full border-2 font-medium ${getStatusColor(checkpoint.status)} appearance-none pr-8 cursor-pointer transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300`}
+                      className={`text-sm px-3 py-1 rounded-full border-2 font-medium ${getStatusColor(checkpoint.status, locked)} appearance-none pr-8 cursor-pointer transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300 ${locked ? 'cursor-not-allowed' : ''}`}
                       value={checkpoint.status}
                       onClick={(e) => e.stopPropagation()}
                       onChange={(e) => updateCheckpointStatus(roadmapId, checkpoint._id, e.target.value)}
+                      disabled={locked}
                     >
                       {statusOptions.map(option => (
                         <option key={option.value} value={option.value}>
@@ -276,7 +320,7 @@ const RoadmapGenerator = () => {
                         </option>
                       ))}
                     </select>
-                    <ChevronDown className="absolute right-2 text-current top-1/2 transform -translate-y-1/2 w-4 h-4 pointer-events-none" />
+                    <ChevronDown className="absolute right-2 text-black top-1/2 transform -translate-y-1/2 w-4 h-4 pointer-events-none" />
                   </div>
                 </div>
               </div>
@@ -318,7 +362,6 @@ const RoadmapGenerator = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {isLoading && (
@@ -485,6 +528,9 @@ const RoadmapGenerator = () => {
                         <span className="flex items-center text-sm text-gray-600">
                           <CheckCircle className="w-4 h-4 text-green-500 mr-1" /> Completed
                         </span>
+                        <span className="flex items-center text-sm text-gray-600">
+                          <Lock className="w-4 h-4 text-gray-500 mr-1" /> Locked
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -496,7 +542,8 @@ const RoadmapGenerator = () => {
                       <CheckpointItem 
                         key={checkpoint._id} 
                         checkpoint={checkpoint} 
-                        roadmapId={selectedRoadmap._id} 
+                        roadmapId={selectedRoadmap._id}
+                        checkpoints={selectedRoadmap.checkpoints} 
                       />
                     ))
                   }
