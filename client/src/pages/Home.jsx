@@ -5,11 +5,6 @@ const Home = () => {
     const { state } = useAuthContext()
     const {user} = state;
 
-    useEffect(() => {
-        console.log(user)
-    }
-    , [user])
-
     return (
         <div>
         <h1>Welcome {user?.name}</h1>
