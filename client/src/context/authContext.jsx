@@ -49,12 +49,15 @@ const AuthProvider = ({ children }) => {
 
     const checkAuth = async (token) => {
         try {
+
             const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/check-auth`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
             });
+            
+
             if (res.ok) {
                 const data = await res.json();
                 dispatch({
@@ -65,6 +68,7 @@ const AuthProvider = ({ children }) => {
                 dispatch({ type: "LOGOUT" });
             }
         } catch (error) {
+
             dispatch({ type: "LOGOUT" });
         }
     }
