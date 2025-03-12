@@ -162,16 +162,16 @@ const RoadmapGenerator = () => {
     switch (type.toLowerCase()) {
       case 'documentation':
       case 'official documentation':
-        return <FileText className="w-4 h-4 mr-2 text-blue-500" />;
+        return <FileText className="w-4 h-4 mr-2 text-black" />;
       case 'video tutorial':
-        return <Youtube className="w-4 h-4 mr-2 text-blue-500" />;
+        return <Youtube className="w-4 h-4 mr-2 text-black" />;
       case 'interactive tutorial':
       case 'course':
-        return <Book className="w-4 h-4 mr-2 text-blue-500" />;
+        return <Book className="w-4 h-4 mr-2 text-black" />;
       case 'community forum':
-        return <Globe className="w-4 h-4 mr-2 text-blue-500" />;
+        return <Globe className="w-4 h-4 mr-2 text-black" />;
       default:
-        return <Globe className="w-4 h-4 mr-2 text-blue-500" />;
+        return <Globe className="w-4 h-4 mr-2 text-black" />;
     }
   };
 
@@ -234,90 +234,90 @@ const RoadmapGenerator = () => {
     const [isExpanded, setIsExpanded] = useState(false);
     
     return (
-      <div className="mb-6 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
-        <div className="p-4 flex items-start justify-between cursor-pointer" onClick={() => setIsExpanded(!isExpanded)}>
-          <div className="flex items-start flex-1">
-            <button className="mt-1 mr-3 focus:outline-none">
-              {isExpanded ? <ChevronDown className="w-5 h-5" /> : <ChevronRight className="w-5 h-5" />}
-            </button>
-            <div>
-              <h3 className="text-lg font-semibold">{checkpoint.title}</h3>
-              <p className="text-gray-600 mt-1">{checkpoint.description}</p>
-              <div className="flex mt-2 items-center">
-                <span className="mr-4 flex items-center">
-                  <Clock className="w-4 h-4 text-blue-500" /> 
-                  <span className="text-sm mx-1 text-blue-500">{checkpoint.totalHoursNeeded} hours</span>
-                </span>
-                <div className="relative inline-block">
-                  <select
-                    className={`text-sm px-3 py-1 rounded-full border ${getStatusColor(checkpoint.status)} appearance-none pr-8 cursor-pointer transition-colors duration-200`}
-                    value={checkpoint.status}
-                    onChange={(e) => updateCheckpointStatus(roadmapId, checkpoint._id, e.target.value)}
-                  >
-                    {statusOptions.map(option => (
-                      <option key={option.value} value={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </select>
-                  <ChevronDown className="absolute right-2 text-black top-1/2 transform -translate-y-1/2 w-4 h-4 pointer-events-none" />
+        <div className="mb-6 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg border border-gray-100">
+          <div 
+            className={`p-5 flex items-start justify-between cursor-pointer transition-colors duration-200 ${isExpanded ? 'bg-gray-50' : 'hover:bg-gray-50'}`} 
+            onClick={() => setIsExpanded(!isExpanded)}
+          >
+            <div className="flex items-start flex-1">
+              <div className={`mt-1 mr-4 p-1 rounded-full transition-colors duration-200 ${isExpanded ? 'bg-gray-100' : 'hover:bg-gray-50'}`}>
+                {isExpanded ? 
+                  <ChevronDown className="w-5 h-5 text-gray-600" /> : 
+                  <ChevronRight className="w-5 h-5 text-gray-600" />
+                }
+              </div>
+              
+              <div className="flex-1">
+                <div className="flex items-center">
+                  <h3 className="text-lg font-semibold text-gray-800">{checkpoint.title}</h3>
+                  <div className="ml-3">
+                    {getStatusIcon(checkpoint.status)}
+                  </div>
+                </div>
+                
+                <p className="text-gray-600 mt-1 text-sm">{checkpoint.description}</p>
+                
+                <div className="flex mt-3 items-center flex-wrap gap-2">
+                  <span className="flex items-center bg-gray-100 px-3 py-1 rounded-full">
+                    <Clock className="w-4 h-4 text-gray-600 mr-1" />
+                    <span className="text-sm text-gray-700">{checkpoint.totalHoursNeeded} hours</span>
+                  </span>
+                  
+                  <div className="relative inline-block">
+                    <select
+                      className={`text-sm px-3 py-1 rounded-full border-2 font-medium ${getStatusColor(checkpoint.status)} appearance-none pr-8 cursor-pointer transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300`}
+                      value={checkpoint.status}
+                      onClick={(e) => e.stopPropagation()}
+                      onChange={(e) => updateCheckpointStatus(roadmapId, checkpoint._id, e.target.value)}
+                    >
+                      {statusOptions.map(option => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown className="absolute right-2 text-current top-1/2 transform -translate-y-1/2 w-4 h-4 pointer-events-none" />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="ml-2">
-            {getStatusIcon(checkpoint.status)}
-          </div>
+          
+          {isExpanded && (
+            <div className="px-12 pb-5 pt-2 animate-fadeIn border-t border-gray-100 bg-white">
+              <h4 className="text-md font-medium mb-3 text-gray-800">Resources:</h4>
+              {checkpoint.resources.length > 0 ? (
+                <ul className="space-y-3">
+                  {checkpoint.resources.map(resource => (
+                    <li key={resource._id} className="flex items-center p-2 hover:bg-gray-50 rounded-lg transition-colors duration-200">
+                      {getResourceIcon(resource.type)}
+                      <a
+                        href={resource.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-black hover:text-gray-800 hover:underline flex items-center flex-1"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <span className="font-medium">{resource.name}</span> 
+                        <ExternalLink className="w-3 h-3 ml-1" />
+                      </a>
+                      <span className="ml-2 text-xs px-2 py-1 bg-gray-100 rounded-full text-gray-600 font-medium">
+                        {resource.type}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-gray-500 italic">No resources available for this checkpoint.</p>
+              )}
+            </div>
+          )}
         </div>
-        
-        {isExpanded && (
-          <div className="px-12 pb-4 animate-fadeIn">
-            <h4 className="text-md font-medium mb-2 text-blue-600">Resources:</h4>
-            <ul className="space-y-2">
-              {checkpoint.resources.map(resource => (
-                <li key={resource._id} className="flex items-center">
-                  {getResourceIcon(resource.type)}
-                  <a 
-                    href={resource.url} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-blue-500 hover:text-blue-700 hover:underline flex items-center"
-                  >
-                    {resource.name} <ExternalLink className="w-3 h-3 ml-1" />
-                  </a>
-                  <span className="ml-2 text-xs px-2 py-0.5 bg-gray-100 rounded-full text-gray-600">
-                    {resource.type}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
-    );
-  };
+      );
+    };
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Navbar */}
-      <nav className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white shadow-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-          <div className="flex items-center">
-            <svg className="w-8 h-8 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            <h1 className="text-xl font-bold">RoadmapBuilder</h1>
-          </div>
-          <button 
-            onClick={() => setShowModal(true)}
-            className="bg-white text-blue-600 hover:bg-blue-50 px-4 py-2 rounded-lg font-medium shadow-sm flex items-center transition-all duration-200 transform hover:scale-105"
-          >
-            <Plus className="w-5 h-5 mr-1" /> New Roadmap
-          </button>
-        </div>
-      </nav>
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -365,7 +365,7 @@ const RoadmapGenerator = () => {
                 </button>
                 <button
                   onClick={generateRoadmap}
-                  className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center"
+                  className="px-4 py-2 bg-black text-white rounded-lg hover:bg-slate-500 transition-colors flex items-center"
                 >
                   <Plus className="w-5 h-5 mr-1" /> Generate Roadmap
                 </button>
@@ -385,7 +385,7 @@ const RoadmapGenerator = () => {
             </p>
             <button
               onClick={() => setShowModal(true)}
-              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-200 transform hover:scale-105 shadow-md"
+              className="px-6 py-3 bg-black text-white rounded-lg hover:bg-slate-500 transition-all duration-200 transform hover:scale-105 shadow-md"
             >
               Create Your First Roadmap
             </button>
@@ -401,9 +401,9 @@ const RoadmapGenerator = () => {
                     <div
                       key={roadmap._id}
                       onClick={() => setSelectedRoadmap(roadmap)}
-                      className={`p-3 rounded-lg cursor-pointer transition-all duration-200 hover:bg-blue-50 ${
+                      className={`p-3 rounded-lg cursor-pointer transition-all duration-200 hover:bg-gray-200 ${
                         selectedRoadmap && selectedRoadmap._id === roadmap._id
-                          ? 'bg-blue-100 border-l-4 border-blue-600'
+                          ? 'bg-gray-200 border-l-4 border-black'
                           : 'bg-gray-50'
                       }`}
                     >
@@ -411,7 +411,7 @@ const RoadmapGenerator = () => {
                       <div className="flex items-center mt-2">
                         <div className="w-full bg-gray-200 rounded-full h-2">
                           <div
-                            className="bg-blue-600 h-2 rounded-full transition-all duration-500 ease-out"
+                            className="bg-black h-2 rounded-full transition-all duration-500 ease-out"
                             style={{ width: `${roadmap.totalProgress}%` }}
                           ></div>
                         </div>
@@ -424,7 +424,7 @@ const RoadmapGenerator = () => {
               
               <button
                 onClick={() => setShowModal(true)}
-                className="w-full bg-blue-600 text-white hover:bg-blue-700 py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center"
+                className="w-full bg-black text-white hover:bg-slate-500 py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center"
               >
                 <Plus className="w-5 h-5 mr-1" /> New Roadmap
               </button>
@@ -456,7 +456,7 @@ const RoadmapGenerator = () => {
                               cy="50"
                               r="45"
                               fill="none"
-                              stroke="#3B82F6"
+                              stroke="#000"
                               strokeWidth="10"
                               strokeDasharray="283"
                               strokeDashoffset={283 - (283 * selectedRoadmap.totalProgress) / 100}
@@ -464,7 +464,7 @@ const RoadmapGenerator = () => {
                             />
                           </svg>
                           <div className="absolute inset-0 flex items-center justify-center">
-                            <span className="text-2xl font-bold text-blue-600">{selectedRoadmap.totalProgress}%</span>
+                            <span className="text-2xl font-bold text-black">{selectedRoadmap.totalProgress}%</span>
                           </div>
                         </div>
                         <p className="text-sm text-gray-600 mt-2">Overall Progress</p>
@@ -503,7 +503,7 @@ const RoadmapGenerator = () => {
                 </div>
               ) : (
                 <div className="bg-white rounded-lg shadow-md p-8 text-center">
-                  <Award className="w-16 h-16 text-blue-500 mx-auto mb-4" />
+                  <Award className="w-16 h-16 text-black mx-auto mb-4" />
                   <h2 className="text-xl font-bold text-gray-800 mb-2">Select a roadmap</h2>
                   <p className="text-gray-600 max-w-md mx-auto">
                     Choose a roadmap from the sidebar or create a new one to view detailed learning checkpoints.
