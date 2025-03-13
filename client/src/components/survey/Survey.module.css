@@ -1,0 +1,171 @@
+.surveyContainer {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    text-align: center;
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.progressContainer {
+    margin-bottom: 25px;
+}
+
+.progressBar {
+    width: 100%;
+    height: 8px;
+    background: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progressFill {
+    height: 100%;
+    background: #007bff;
+    transition: width 0.3s ease;
+}
+
+.questionCount {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.question {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 25px;
+    line-height: 1.4;
+}
+
+.optionsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.option {
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 16px;
+    color: #333;
+    text-align: left;
+}
+
+.option:hover {
+    background: #e9ecef;
+    border-color: #dee2e6;
+}
+
+.optionSelected {
+    background: #cce5ff !important;
+    border-color: #007bff !important;
+    color: #004085;
+}
+
+.navigationButtons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.button {
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border: none;
+}
+
+.buttonPrimary {
+    background: #007bff;
+    color: white;
+}
+
+.buttonPrimary:hover {
+    background: #0056b3;
+}
+
+.buttonSecondary {
+    background: #6c757d;
+    color: white;
+}
+
+.buttonSecondary:hover {
+    background: #545b62;
+}
+
+.buttonDisabled {
+    background: #e9ecef;
+    color: #adb5bd;
+    cursor: not-allowed;
+}
+
+.resultsContainer {
+    margin-top: 30px;
+}
+
+.resultItem {
+    margin-bottom: 20px;
+}
+
+.resultHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.resultCategory {
+    font-weight: 500;
+    color: #333;
+}
+
+.resultScore {
+    color: #666;
+}
+
+.resultBar {
+    width: 100%;
+    height: 8px;
+    background: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.resultBarFill {
+    height: 100%;
+    background: #007bff;
+    transition: width 0.3s ease;
+}
+
+.resetButton {
+    width: 100%;
+    padding: 15px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 30px;
+}
+
+.resetButton:hover {
+    background: #0056b3;
+}
