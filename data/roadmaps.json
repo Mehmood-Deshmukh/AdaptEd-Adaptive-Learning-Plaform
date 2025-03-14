@@ -1,0 +1,3990 @@
+[{
+  "_id": {
+    "$oid": "67a78b17349440c658bb534c"
+  },
+  "userId": {
+    "$oid": "67a78aa3ce2f32171a3c8f7c"
+  },
+  "mainTopic": "Algorithms for Beginners",
+  "description": "A structured learning roadmap for beginners who want to develop a solid foundation in algorithms.",
+  "checkpoints": [
+    {
+      "$oid": "67a78b17349440c658bb5342"
+    },
+    {
+      "$oid": "67a78b17349440c658bb5344"
+    },
+    {
+      "$oid": "67a78b17349440c658bb534a"
+    },
+    {
+      "$oid": "67a78b17349440c658bb5346"
+    },
+    {
+      "$oid": "67a78b17349440c658bb5348"
+    }
+  ],
+  "totalProgress": 3,
+  "createdAt": {
+    "$date": "2025-02-08T16:49:27.243Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T16:49:27.243Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78b29349440c658bb536e"
+  },
+  "userId": {
+    "$oid": "67a78aa3ce2f32171a3c8f7c"
+  },
+  "mainTopic": "Machine Learning",
+  "description": "A comprehensive learning roadmap for Machine Learning, adjusted to your difficulty level, learning style, and deadline.",
+  "checkpoints": [
+    {
+      "$oid": "67a78b29349440c658bb5366"
+    },
+    {
+      "$oid": "67a78b29349440c658bb5368"
+    },
+    {
+      "$oid": "67a78b29349440c658bb5364"
+    },
+    {
+      "$oid": "67a78b29349440c658bb536c"
+    },
+    {
+      "$oid": "67a78b29349440c658bb536a"
+    }
+  ],
+  "totalProgress": 1,
+  "createdAt": {
+    "$date": "2025-02-08T16:49:45.335Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T16:49:45.335Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78b39349440c658bb5391"
+  },
+  "userId": {
+    "$oid": "67a78aa3ce2f32171a3c8f7f"
+  },
+  "mainTopic": "Machine Learning",
+  "description": "A structured learning roadmap for beginners who prefer reading, with a 2-hour daily study limit",
+  "checkpoints": [
+    {
+      "$oid": "67a78b39349440c658bb5387"
+    },
+    {
+      "$oid": "67a78b39349440c658bb5389"
+    },
+    {
+      "$oid": "67a78b39349440c658bb538d"
+    },
+    {
+      "$oid": "67a78b39349440c658bb538b"
+    },
+    {
+      "$oid": "67a78b39349440c658bb538f"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T16:50:01.835Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T16:50:01.835Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78b49349440c658bb53b3"
+  },
+  "userId": {
+    "$oid": "67a78aa3ce2f32171a3c8f7f"
+  },
+  "mainTopic": "Data Structures",
+  "description": "A step-by-step roadmap for mastering data structures, tailored to your difficulty level, learning style, and deadline.",
+  "checkpoints": [
+    {
+      "$oid": "67a78b49349440c658bb53ab"
+    },
+    {
+      "$oid": "67a78b49349440c658bb53a9"
+    },
+    {
+      "$oid": "67a78b49349440c658bb53ad"
+    },
+    {
+      "$oid": "67a78b49349440c658bb53af"
+    },
+    {
+      "$oid": "67a78b49349440c658bb53b1"
+    }
+  ],
+  "totalProgress": 5,
+  "createdAt": {
+    "$date": "2025-02-08T16:50:17.694Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T16:50:17.694Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78b56349440c658bb53cc"
+  },
+  "userId": {
+    "$oid": "67a78aa3ce2f32171a3c8f82"
+  },
+  "mainTopic": "Database Management",
+  "description": "A structured learning roadmap for Database Management, tailored to different learning styles and time constraints.",
+  "checkpoints": [
+    {
+      "$oid": "67a78b56349440c658bb53c6"
+    },
+    {
+      "$oid": "67a78b56349440c658bb53c4"
+    },
+    {
+      "$oid": "67a78b56349440c658bb53c8"
+    },
+    {
+      "$oid": "67a78b56349440c658bb53ca"
+    },
+    {
+      "$oid": "67a78b56349440c658bb53bd"
+    }
+  ],
+  "totalProgress": 1,
+  "createdAt": {
+    "$date": "2025-02-08T16:50:30.134Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T16:50:30.134Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78b66349440c658bb53ee"
+  },
+  "userId": {
+    "$oid": "67a78aa3ce2f32171a3c8f82"
+  },
+  "mainTopic": "Web Design Learning Roadmap",
+  "description": "A structured and achievable roadmap for individuals seeking to master the fundamentals of web design.",
+  "checkpoints": [
+    {
+      "$oid": "67a78b66349440c658bb53e4"
+    },
+    {
+      "$oid": "67a78b66349440c658bb53e6"
+    },
+    {
+      "$oid": "67a78b66349440c658bb53ea"
+    },
+    {
+      "$oid": "67a78b66349440c658bb53ec"
+    },
+    {
+      "$oid": "67a78b66349440c658bb53e8"
+    }
+  ],
+  "totalProgress": 4,
+  "createdAt": {
+    "$date": "2025-02-08T16:50:46.984Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T16:50:46.984Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78b79349440c658bb5411"
+  },
+  "userId": {
+    "$oid": "67a78aa3ce2f32171a3c8f84"
+  },
+  "mainTopic": "Networking",
+  "description": "This roadmap provides a structured approach to learning networking concepts, tailored to your difficulty level, learning style, and time constraints.",
+  "checkpoints": [
+    {
+      "$oid": "67a78b79349440c658bb5407"
+    },
+    {
+      "$oid": "67a78b79349440c658bb5409"
+    },
+    {
+      "$oid": "67a78b79349440c658bb540b"
+    },
+    {
+      "$oid": "67a78b79349440c658bb540d"
+    },
+    {
+      "$oid": "67a78b79349440c658bb540f"
+    }
+  ],
+  "totalProgress": 3,
+  "createdAt": {
+    "$date": "2025-02-08T16:51:05.080Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T16:51:05.080Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78b89349440c658bb5433"
+  },
+  "userId": {
+    "$oid": "67a78aa3ce2f32171a3c8f84"
+  },
+  "mainTopic": "Cybersecurity",
+  "description": "A comprehensive learning roadmap for individuals seeking to establish a strong foundation in cybersecurity.",
+  "checkpoints": [
+    {
+      "$oid": "67a78b89349440c658bb5429"
+    },
+    {
+      "$oid": "67a78b89349440c658bb542b"
+    },
+    {
+      "$oid": "67a78b89349440c658bb542d"
+    },
+    {
+      "$oid": "67a78b89349440c658bb542f"
+    },
+    {
+      "$oid": "67a78b89349440c658bb5431"
+    }
+  ],
+  "totalProgress": 3,
+  "createdAt": {
+    "$date": "2025-02-08T16:51:21.927Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T16:51:21.927Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78b99349440c658bb5456"
+  },
+  "userId": {
+    "$oid": "67a78aa3ce2f32171a3c8f86"
+  },
+  "mainTopic": "Deep Learning",
+  "description": "A structured roadmap to learn Deep Learning tailored to individual preferences and time constraints, consisting of 5 progressive checkpoints.",
+  "checkpoints": [
+    {
+      "$oid": "67a78b99349440c658bb544c"
+    },
+    {
+      "$oid": "67a78b99349440c658bb544e"
+    },
+    {
+      "$oid": "67a78b99349440c658bb5452"
+    },
+    {
+      "$oid": "67a78b99349440c658bb5450"
+    },
+    {
+      "$oid": "67a78b99349440c658bb5454"
+    }
+  ],
+  "totalProgress": 3,
+  "createdAt": {
+    "$date": "2025-02-08T16:51:37.019Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T16:51:37.019Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78ba8349440c658bb5476"
+  },
+  "userId": {
+    "$oid": "67a78aa3ce2f32171a3c8f86"
+  },
+  "mainTopic": "Robotics",
+  "description": "A comprehensive learning roadmap for Robotics.",
+  "checkpoints": [
+    {
+      "$oid": "67a78ba8349440c658bb546c"
+    },
+    {
+      "$oid": "67a78ba8349440c658bb546e"
+    },
+    {
+      "$oid": "67a78ba8349440c658bb5470"
+    },
+    {
+      "$oid": "67a78ba8349440c658bb5472"
+    },
+    {
+      "$oid": "67a78ba8349440c658bb5474"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T16:51:52.738Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T16:51:52.738Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78bb8349440c658bb5493"
+  },
+  "userId": {
+    "$oid": "67a78aa4ce2f32171a3c8f88"
+  },
+  "mainTopic": "Project Management",
+  "description": "A comprehensive roadmap for learning project management fundamentals, tailored to your difficulty level, learning style, and deadline.",
+  "checkpoints": [
+    {
+      "$oid": "67a78bb7349440c658bb5489"
+    },
+    {
+      "$oid": "67a78bb7349440c658bb548b"
+    },
+    {
+      "$oid": "67a78bb8349440c658bb548d"
+    },
+    {
+      "$oid": "67a78bb8349440c658bb548f"
+    },
+    {
+      "$oid": "67a78bb8349440c658bb5491"
+    }
+  ],
+  "totalProgress": 3,
+  "createdAt": {
+    "$date": "2025-02-08T16:52:08.050Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T16:52:08.050Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78bc5349440c658bb54ab"
+  },
+  "userId": {
+    "$oid": "67a78aa4ce2f32171a3c8f88"
+  },
+  "mainTopic": "Project Management for Beginners with a Focus on Reading",
+  "description": "This roadmap provides a comprehensive learning path for beginners in project management, tailored to individuals who prefer reading as their primary learning style. It consists of five checkpoints, each building upon the previous one to gradually enhance knowledge and skills.",
+  "checkpoints": [
+    {
+      "$oid": "67a78bc5349440c658bb54a1"
+    },
+    {
+      "$oid": "67a78bc5349440c658bb54a7"
+    },
+    {
+      "$oid": "67a78bc5349440c658bb54a9"
+    },
+    {
+      "$oid": "67a78bc5349440c658bb54a3"
+    },
+    {
+      "$oid": "67a78bc5349440c658bb54a5"
+    }
+  ],
+  "totalProgress": 3,
+  "createdAt": {
+    "$date": "2025-02-08T16:52:21.527Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T16:52:21.527Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78bd6349440c658bb54ce"
+  },
+  "userId": {
+    "$oid": "67a78aa4ce2f32171a3c8f8a"
+  },
+  "mainTopic": "Game Design",
+  "description": "A structured learning roadmap with 5 checkpoints to master the fundamentals of game design.",
+  "checkpoints": [
+    {
+      "$oid": "67a78bd6349440c658bb54c6"
+    },
+    {
+      "$oid": "67a78bd6349440c658bb54c8"
+    },
+    {
+      "$oid": "67a78bd6349440c658bb54cc"
+    },
+    {
+      "$oid": "67a78bd6349440c658bb54ca"
+    },
+    {
+      "$oid": "67a78bd6349440c658bb54c4"
+    }
+  ],
+  "totalProgress": 3,
+  "createdAt": {
+    "$date": "2025-02-08T16:52:38.714Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T16:52:38.714Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78cdbdaec41147396afb5"
+  },
+  "userId": {
+    "$oid": "67a78aa4ce2f32171a3c8f8c"
+  },
+  "mainTopic": "Embedded Systems",
+  "description": "A structured roadmap with 5 checkpoints for learning Embedded Systems, tailored to a beginner with a reading learning style and a deadline of 2 hours per day.",
+  "checkpoints": [
+    {
+      "$oid": "67a78cdbdaec41147396afab"
+    },
+    {
+      "$oid": "67a78cdbdaec41147396afad"
+    },
+    {
+      "$oid": "67a78cdbdaec41147396afb1"
+    },
+    {
+      "$oid": "67a78cdbdaec41147396afb3"
+    },
+    {
+      "$oid": "67a78cdbdaec41147396afaf"
+    }
+  ],
+  "totalProgress": 4,
+  "createdAt": {
+    "$date": "2025-02-08T16:56:59.130Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T16:56:59.130Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78ce9daec41147396afcd"
+  },
+  "userId": {
+    "$oid": "67a78aa4ce2f32171a3c8f8c"
+  },
+  "mainTopic": "Embedded Systems",
+  "description": "Learn the fundamentals of embedded systems, including hardware, software, and design principles.",
+  "checkpoints": [
+    {
+      "$oid": "67a78ce9daec41147396afc3"
+    },
+    {
+      "$oid": "67a78ce9daec41147396afc5"
+    },
+    {
+      "$oid": "67a78ce9daec41147396afcb"
+    },
+    {
+      "$oid": "67a78ce9daec41147396afc9"
+    },
+    {
+      "$oid": "67a78ce9daec41147396afc7"
+    }
+  ],
+  "totalProgress": 4,
+  "createdAt": {
+    "$date": "2025-02-08T16:57:13.221Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T16:57:13.221Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78cf6daec41147396afe6"
+  },
+  "userId": {
+    "$oid": "67a78aa4ce2f32171a3c8f8e"
+  },
+  "mainTopic": "Blockchain Learning Roadmap",
+  "description": "Structured learning roadmap for Blockchain, tailored to difficulty level, learning style, and available time.",
+  "checkpoints": [
+    {
+      "$oid": "67a78cf6daec41147396afdc"
+    },
+    {
+      "$oid": "67a78cf6daec41147396afde"
+    },
+    {
+      "$oid": "67a78cf6daec41147396afe0"
+    },
+    {
+      "$oid": "67a78cf6daec41147396afe4"
+    },
+    {
+      "$oid": "67a78cf6daec41147396afe2"
+    }
+  ],
+  "totalProgress": 3,
+  "createdAt": {
+    "$date": "2025-02-08T16:57:26.847Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T16:57:26.847Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78d08daec41147396b008"
+  },
+  "userId": {
+    "$oid": "67a78aa4ce2f32171a3c8f8e"
+  },
+  "mainTopic": "Cryptography",
+  "description": "Cryptography involves techniques for secure communication in the presence of adversarial behavior. It provides confidentiality, integrity, and authenticity of information.",
+  "checkpoints": [
+    {
+      "$oid": "67a78d08daec41147396affe"
+    },
+    {
+      "$oid": "67a78d08daec41147396b002"
+    },
+    {
+      "$oid": "67a78d08daec41147396b004"
+    },
+    {
+      "$oid": "67a78d08daec41147396b006"
+    },
+    {
+      "$oid": "67a78d08daec41147396b000"
+    }
+  ],
+  "totalProgress": 3,
+  "createdAt": {
+    "$date": "2025-02-08T16:57:44.901Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T16:57:44.901Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78d1adaec41147396b02b"
+  },
+  "userId": {
+    "$oid": "67a78aa4ce2f32171a3c8f90"
+  },
+  "mainTopic": "DevOps Learning Roadmap",
+  "description": "This roadmap provides a structured path to understanding the core concepts and tools of DevOps.",
+  "checkpoints": [
+    {
+      "$oid": "67a78d1adaec41147396b021"
+    },
+    {
+      "$oid": "67a78d1adaec41147396b025"
+    },
+    {
+      "$oid": "67a78d1adaec41147396b023"
+    },
+    {
+      "$oid": "67a78d1adaec41147396b027"
+    },
+    {
+      "$oid": "67a78d1adaec41147396b029"
+    }
+  ],
+  "totalProgress": 1,
+  "createdAt": {
+    "$date": "2025-02-08T16:58:02.604Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T16:58:02.604Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78d2adaec41147396b04d"
+  },
+  "userId": {
+    "$oid": "67a78aa4ce2f32171a3c8f90"
+  },
+  "mainTopic": "Infrastructure as Code",
+  "description": "This roadmap provides a structured learning path for individuals of all skill levels and learning preferences. Each checkpoint includes high-quality learning resources tailored to your specific requirements.",
+  "checkpoints": [
+    {
+      "$oid": "67a78d2adaec41147396b043"
+    },
+    {
+      "$oid": "67a78d2adaec41147396b047"
+    },
+    {
+      "$oid": "67a78d2adaec41147396b045"
+    },
+    {
+      "$oid": "67a78d2adaec41147396b04b"
+    },
+    {
+      "$oid": "67a78d2adaec41147396b049"
+    }
+  ],
+  "totalProgress": 4,
+  "createdAt": {
+    "$date": "2025-02-08T16:58:18.784Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T16:58:18.784Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78d3cdaec41147396b070"
+  },
+  "userId": {
+    "$oid": "67a78aa4ce2f32171a3c8f92"
+  },
+  "mainTopic": "UI/UX Design Learning Roadmap",
+  "description": "A structured guide to help you master UI/UX design in a beginner-friendly manner. This roadmap is designed for those who prefer reading materials and have approximately 2 hours of learning time each day.",
+  "checkpoints": [
+    {
+      "$oid": "67a78d3cdaec41147396b066"
+    },
+    {
+      "$oid": "67a78d3cdaec41147396b068"
+    },
+    {
+      "$oid": "67a78d3cdaec41147396b06a"
+    },
+    {
+      "$oid": "67a78d3cdaec41147396b06c"
+    },
+    {
+      "$oid": "67a78d3cdaec41147396b06e"
+    }
+  ],
+  "totalProgress": 3,
+  "createdAt": {
+    "$date": "2025-02-08T16:58:36.490Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T16:58:36.490Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78d4bdaec41147396b092"
+  },
+  "userId": {
+    "$oid": "67a78aa4ce2f32171a3c8f92"
+  },
+  "mainTopic": "Mobile Development",
+  "description": "A structured learning roadmap for mobile development, tailored to your difficulty level, learning style, and deadline.",
+  "checkpoints": [
+    {
+      "$oid": "67a78d4bdaec41147396b088"
+    },
+    {
+      "$oid": "67a78d4bdaec41147396b08a"
+    },
+    {
+      "$oid": "67a78d4bdaec41147396b08c"
+    },
+    {
+      "$oid": "67a78d4bdaec41147396b08e"
+    },
+    {
+      "$oid": "67a78d4bdaec41147396b090"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T16:58:51.865Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T16:58:51.865Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78d5bdaec41147396b0b5"
+  },
+  "userId": {
+    "$oid": "67a78aa4ce2f32171a3c8f94"
+  },
+  "mainTopic": "Big Data",
+  "description": "A comprehensive learning roadmap for Big Data, tailored to your difficulty level, learning style, and deadline.",
+  "checkpoints": [
+    {
+      "$oid": "67a78d5bdaec41147396b0ab"
+    },
+    {
+      "$oid": "67a78d5bdaec41147396b0b3"
+    },
+    {
+      "$oid": "67a78d5bdaec41147396b0b1"
+    },
+    {
+      "$oid": "67a78d5bdaec41147396b0af"
+    },
+    {
+      "$oid": "67a78d5bdaec41147396b0ad"
+    }
+  ],
+  "totalProgress": 5,
+  "createdAt": {
+    "$date": "2025-02-08T16:59:07.807Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T16:59:07.807Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78d6bdaec41147396b0d5"
+  },
+  "userId": {
+    "$oid": "67a78aa4ce2f32171a3c8f94"
+  },
+  "mainTopic": "Data Lakes",
+  "description": "Learn the fundamentals of data lakes, including how to build, manage, and use them to power your data-driven initiatives.",
+  "checkpoints": [
+    {
+      "$oid": "67a78d6bdaec41147396b0cb"
+    },
+    {
+      "$oid": "67a78d6bdaec41147396b0cd"
+    },
+    {
+      "$oid": "67a78d6bdaec41147396b0cf"
+    },
+    {
+      "$oid": "67a78d6bdaec41147396b0d3"
+    },
+    {
+      "$oid": "67a78d6bdaec41147396b0d1"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T16:59:23.889Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T16:59:23.889Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78d7fdaec41147396b0fa"
+  },
+  "userId": {
+    "$oid": "67a78aa4ce2f32171a3c8f96"
+  },
+  "mainTopic": "Theoretical Computer Science",
+  "description": "Theoretical computer science (TCS) is a branch of computer science that studies the foundations of computing and the fundamental principles of information processing.",
+  "checkpoints": [
+    {
+      "$oid": "67a78d7fdaec41147396b0f0"
+    },
+    {
+      "$oid": "67a78d7fdaec41147396b0f6"
+    },
+    {
+      "$oid": "67a78d7fdaec41147396b0f4"
+    },
+    {
+      "$oid": "67a78d7fdaec41147396b0f2"
+    },
+    {
+      "$oid": "67a78d7fdaec41147396b0f8"
+    }
+  ],
+  "totalProgress": 5,
+  "createdAt": {
+    "$date": "2025-02-08T16:59:43.237Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T16:59:43.237Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78d8fdaec41147396b11c"
+  },
+  "userId": {
+    "$oid": "67a78aa4ce2f32171a3c8f96"
+  },
+  "mainTopic": "Complexity Theory",
+  "description": "A branch of computer science that studies the computational complexity of problems and the efficiency of algorithms.",
+  "checkpoints": [
+    {
+      "$oid": "67a78d8fdaec41147396b112"
+    },
+    {
+      "$oid": "67a78d8fdaec41147396b114"
+    },
+    {
+      "$oid": "67a78d8fdaec41147396b116"
+    },
+    {
+      "$oid": "67a78d8fdaec41147396b11a"
+    },
+    {
+      "$oid": "67a78d8fdaec41147396b118"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T16:59:59.228Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T16:59:59.228Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78da0daec41147396b13f"
+  },
+  "userId": {
+    "$oid": "67a78aa5ce2f32171a3c8f98"
+  },
+  "mainTopic": "Concurrency",
+  "description": "This roadmap provides a structured learning path for concurrency concepts, tailored to your learning style, difficulty level, and time constraints.",
+  "checkpoints": [
+    {
+      "$oid": "67a78da0daec41147396b135"
+    },
+    {
+      "$oid": "67a78da0daec41147396b137"
+    },
+    {
+      "$oid": "67a78da0daec41147396b139"
+    },
+    {
+      "$oid": "67a78da0daec41147396b13b"
+    },
+    {
+      "$oid": "67a78da0daec41147396b13d"
+    }
+  ],
+  "totalProgress": 5,
+  "createdAt": {
+    "$date": "2025-02-08T17:00:16.689Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:00:16.689Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78db0daec41147396b161"
+  },
+  "userId": {
+    "$oid": "67a78aa5ce2f32171a3c8f98"
+  },
+  "mainTopic": "Concurrency Control",
+  "description": "This roadmap provides a structured approach to learning concurrency control, tailored to your difficulty level, learning style, and deadline.",
+  "checkpoints": [
+    {
+      "$oid": "67a78db0daec41147396b157"
+    },
+    {
+      "$oid": "67a78db0daec41147396b159"
+    },
+    {
+      "$oid": "67a78db0daec41147396b15b"
+    },
+    {
+      "$oid": "67a78db0daec41147396b15d"
+    },
+    {
+      "$oid": "67a78db0daec41147396b15f"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T17:00:32.082Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:00:32.082Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78dbcdaec41147396b17c"
+  },
+  "userId": {
+    "$oid": "67a78aa5ce2f32171a3c8f9a"
+  },
+  "mainTopic": "Software Testing",
+  "description": "Learn the essential concepts and techniques of software testing to ensure the quality, reliability, and user satisfaction of software products.",
+  "checkpoints": [
+    {
+      "$oid": "67a78dbcdaec41147396b176"
+    },
+    {
+      "$oid": "67a78dbcdaec41147396b172"
+    },
+    {
+      "$oid": "67a78dbcdaec41147396b174"
+    },
+    {
+      "$oid": "67a78dbcdaec41147396b17a"
+    },
+    {
+      "$oid": "67a78dbcdaec41147396b178"
+    }
+  ],
+  "totalProgress": 5,
+  "createdAt": {
+    "$date": "2025-02-08T17:00:44.285Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:00:44.285Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78dc9daec41147396b196"
+  },
+  "userId": {
+    "$oid": "67a78aa5ce2f32171a3c8f9a"
+  },
+  "mainTopic": "Automated Testing",
+  "description": "A comprehensive roadmap for learning Automated Testing concepts, tools, and best practices in a structured manner.",
+  "checkpoints": [
+    {
+      "$oid": "67a78dc9daec41147396b18c"
+    },
+    {
+      "$oid": "67a78dc9daec41147396b18e"
+    },
+    {
+      "$oid": "67a78dc9daec41147396b190"
+    },
+    {
+      "$oid": "67a78dc9daec41147396b192"
+    },
+    {
+      "$oid": "67a78dc9daec41147396b194"
+    }
+  ],
+  "totalProgress": 5,
+  "createdAt": {
+    "$date": "2025-02-08T17:00:57.883Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:00:57.883Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78dd9daec41147396b1b9"
+  },
+  "userId": {
+    "$oid": "67a78aa5ce2f32171a3c8f9c"
+  },
+  "mainTopic": "Human-Computer Interaction",
+  "description": "A roadmap for learning Human-Computer Interaction (HCI), tailored to your difficulty level, learning style, and deadline.",
+  "checkpoints": [
+    {
+      "$oid": "67a78dd9daec41147396b1af"
+    },
+    {
+      "$oid": "67a78dd9daec41147396b1b1"
+    },
+    {
+      "$oid": "67a78dd9daec41147396b1b3"
+    },
+    {
+      "$oid": "67a78dd9daec41147396b1b5"
+    },
+    {
+      "$oid": "67a78dd9daec41147396b1b7"
+    }
+  ],
+  "totalProgress": 5,
+  "createdAt": {
+    "$date": "2025-02-08T17:01:13.973Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:01:13.973Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78decdaec41147396b1db"
+  },
+  "userId": {
+    "$oid": "67a78aa5ce2f32171a3c8f9c"
+  },
+  "mainTopic": "User Experience Enhancement Roadmap",
+  "description": "A structured learning path to enhance user experience skills, tailored to your difficulty level, learning style, and available time.",
+  "checkpoints": [
+    {
+      "$oid": "67a78decdaec41147396b1d1"
+    },
+    {
+      "$oid": "67a78decdaec41147396b1d3"
+    },
+    {
+      "$oid": "67a78decdaec41147396b1d5"
+    },
+    {
+      "$oid": "67a78decdaec41147396b1d7"
+    },
+    {
+      "$oid": "67a78decdaec41147396b1d9"
+    }
+  ],
+  "totalProgress": 5,
+  "createdAt": {
+    "$date": "2025-02-08T17:01:32.114Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:01:32.114Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78dfddaec41147396b1fe"
+  },
+  "userId": {
+    "$oid": "67a78aa5ce2f32171a3c8f9e"
+  },
+  "mainTopic": "Natural Language Processing",
+  "description": "A comprehensive learning roadmap for beginners in Natural Language Processing, designed for a flexible deadline and diverse learning styles focused on reading.",
+  "checkpoints": [
+    {
+      "$oid": "67a78dfddaec41147396b1f4"
+    },
+    {
+      "$oid": "67a78dfddaec41147396b1f6"
+    },
+    {
+      "$oid": "67a78dfddaec41147396b1f8"
+    },
+    {
+      "$oid": "67a78dfddaec41147396b1fa"
+    },
+    {
+      "$oid": "67a78dfddaec41147396b1fc"
+    }
+  ],
+  "totalProgress": 5,
+  "createdAt": {
+    "$date": "2025-02-08T17:01:49.836Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:01:49.836Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78e11daec41147396b220"
+  },
+  "userId": {
+    "$oid": "67a78aa5ce2f32171a3c8f9e"
+  },
+  "mainTopic": "Speech Recognition Technology",
+  "description": "This roadmap provides a structured learning path for understanding the fundamentals and applications of Speech Recognition Technology. The checkpoints are designed to accommodate different difficulty levels, learning styles, and time constraints.",
+  "checkpoints": [
+    {
+      "$oid": "67a78e11daec41147396b216"
+    },
+    {
+      "$oid": "67a78e11daec41147396b218"
+    },
+    {
+      "$oid": "67a78e11daec41147396b21a"
+    },
+    {
+      "$oid": "67a78e11daec41147396b21c"
+    },
+    {
+      "$oid": "67a78e11daec41147396b21e"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T17:02:09.086Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:02:09.086Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78e20daec41147396b241"
+  },
+  "userId": {
+    "$oid": "67a78aa5ce2f32171a3c8fa0"
+  },
+  "mainTopic": "Object Detection and Recognition",
+  "description": "A learning roadmap to develop a strong foundation in object detection and recognition, tailored to the difficulty level, learning style and available time.",
+  "checkpoints": [
+    {
+      "$oid": "67a78e20daec41147396b237"
+    },
+    {
+      "$oid": "67a78e20daec41147396b23b"
+    },
+    {
+      "$oid": "67a78e20daec41147396b23d"
+    },
+    {
+      "$oid": "67a78e20daec41147396b23f"
+    },
+    {
+      "$oid": "67a78e20daec41147396b239"
+    }
+  ],
+  "totalProgress": 1,
+  "createdAt": {
+    "$date": "2025-02-08T17:02:24.664Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:02:24.664Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78e2edaec41147396b259"
+  },
+  "userId": {
+    "$oid": "67a78aa5ce2f32171a3c8fa0"
+  },
+  "mainTopic": "Image Analysis",
+  "description": "This roadmap will guide you through the fundamentals of Image Analysis, gradually building up to more complex concepts. It is designed for beginners, and can be adjusted to suit your learning style and time constraints.",
+  "checkpoints": [
+    {
+      "$oid": "67a78e2edaec41147396b253"
+    },
+    {
+      "$oid": "67a78e2edaec41147396b24f"
+    },
+    {
+      "$oid": "67a78e2edaec41147396b251"
+    },
+    {
+      "$oid": "67a78e2edaec41147396b255"
+    },
+    {
+      "$oid": "67a78e2edaec41147396b257"
+    }
+  ],
+  "totalProgress": 1,
+  "createdAt": {
+    "$date": "2025-02-08T17:02:38.503Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:02:38.503Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78e41daec41147396b27c"
+  },
+  "userId": {
+    "$oid": "67a78aa5ce2f32171a3c8fa2"
+  },
+  "mainTopic": "Virtual and Augmented Reality",
+  "description": "A comprehensive learning roadmap for Virtual (VR) and Augmented Reality (AR) technology, tailored to your difficulty level, learning style, and available time.",
+  "checkpoints": [
+    {
+      "$oid": "67a78e41daec41147396b272"
+    },
+    {
+      "$oid": "67a78e41daec41147396b274"
+    },
+    {
+      "$oid": "67a78e41daec41147396b276"
+    },
+    {
+      "$oid": "67a78e41daec41147396b278"
+    },
+    {
+      "$oid": "67a78e41daec41147396b27a"
+    }
+  ],
+  "totalProgress": 5,
+  "createdAt": {
+    "$date": "2025-02-08T17:02:57.518Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:02:57.518Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78e53daec41147396b29e"
+  },
+  "userId": {
+    "$oid": "67a78aa5ce2f32171a3c8fa2"
+  },
+  "mainTopic": "Applications of Virtual Reality",
+  "description": "A comprehensive roadmap for beginners to explore the diverse applications of Virtual Reality (VR), designed to accommodate different learning styles and time constraints. Each checkpoint provides a specific focus, building upon the previous one to enhance understanding and practical knowledge.",
+  "checkpoints": [
+    {
+      "$oid": "67a78e53daec41147396b294"
+    },
+    {
+      "$oid": "67a78e53daec41147396b296"
+    },
+    {
+      "$oid": "67a78e53daec41147396b298"
+    },
+    {
+      "$oid": "67a78e53daec41147396b29a"
+    },
+    {
+      "$oid": "67a78e53daec41147396b29c"
+    }
+  ],
+  "totalProgress": 4,
+  "createdAt": {
+    "$date": "2025-02-08T17:03:15.017Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:03:15.017Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78e62daec41147396b2c1"
+  },
+  "userId": {
+    "$oid": "67a78aa5ce2f32171a3c8fa4"
+  },
+  "mainTopic": "Comparative Genomics and Machine Learning in Bioinformatics",
+  "description": "This roadmap provides a structured approach to learning comparative genomics and machine learning in bioinformatics, tailored to your specific learning style and time constraints.",
+  "checkpoints": [
+    {
+      "$oid": "67a78e62daec41147396b2b7"
+    },
+    {
+      "$oid": "67a78e62daec41147396b2b9"
+    },
+    {
+      "$oid": "67a78e62daec41147396b2bb"
+    },
+    {
+      "$oid": "67a78e62daec41147396b2bd"
+    },
+    {
+      "$oid": "67a78e62daec41147396b2bf"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T17:03:30.898Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:03:30.898Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78e73daec41147396b2e1"
+  },
+  "userId": {
+    "$oid": "67a78aa5ce2f32171a3c8fa4"
+  },
+  "mainTopic": "Comparative Genomics",
+  "description": "Learn the art and science of comparing genomes to gather insights into their evolution, function, and relationship.",
+  "checkpoints": [
+    {
+      "$oid": "67a78e73daec41147396b2d7"
+    },
+    {
+      "$oid": "67a78e73daec41147396b2d9"
+    },
+    {
+      "$oid": "67a78e73daec41147396b2db"
+    },
+    {
+      "$oid": "67a78e73daec41147396b2dd"
+    },
+    {
+      "$oid": "67a78e73daec41147396b2df"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T17:03:47.802Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:03:47.802Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78e7fdaec41147396b2fa"
+  },
+  "userId": {
+    "$oid": "67a78aa5ce2f32171a3c8fa6"
+  },
+  "mainTopic": "E-commerce",
+  "description": "A comprehensive roadmap for learning E-commerce, tailored to different learning styles and deadlines.",
+  "checkpoints": [
+    {
+      "$oid": "67a78e7fdaec41147396b2f0"
+    },
+    {
+      "$oid": "67a78e7fdaec41147396b2f2"
+    },
+    {
+      "$oid": "67a78e7fdaec41147396b2f4"
+    },
+    {
+      "$oid": "67a78e7fdaec41147396b2f6"
+    },
+    {
+      "$oid": "67a78e7fdaec41147396b2f8"
+    }
+  ],
+  "totalProgress": 3,
+  "createdAt": {
+    "$date": "2025-02-08T17:03:59.176Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:03:59.176Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78e91daec41147396b31c"
+  },
+  "userId": {
+    "$oid": "67a78aa5ce2f32171a3c8fa6"
+  },
+  "mainTopic": "Digital Lending and Credit Scoring",
+  "description": "This roadmap provides a structured approach to learning about digital lending and credit scoring. It includes 5 checkpoints that gradually increase in complexity, catering to different learning styles and time constraints.",
+  "checkpoints": [
+    {
+      "$oid": "67a78e91daec41147396b312"
+    },
+    {
+      "$oid": "67a78e91daec41147396b314"
+    },
+    {
+      "$oid": "67a78e91daec41147396b316"
+    },
+    {
+      "$oid": "67a78e91daec41147396b318"
+    },
+    {
+      "$oid": "67a78e91daec41147396b31a"
+    }
+  ],
+  "totalProgress": 4,
+  "createdAt": {
+    "$date": "2025-02-08T17:04:17.610Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:04:17.610Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78e9fdaec41147396b335"
+  },
+  "userId": {
+    "$oid": "67a78aa6ce2f32171a3c8fa8"
+  },
+  "mainTopic": "Cryptocurrency",
+  "description": "A learning roadmap for beginners who prefer a reading learning style and have 2 hours per day to learn about Cryptocurrency.",
+  "checkpoints": [
+    {
+      "$oid": "67a78e9fdaec41147396b32d"
+    },
+    {
+      "$oid": "67a78e9fdaec41147396b32b"
+    },
+    {
+      "$oid": "67a78e9fdaec41147396b32f"
+    },
+    {
+      "$oid": "67a78e9fdaec41147396b331"
+    },
+    {
+      "$oid": "67a78e9fdaec41147396b333"
+    }
+  ],
+  "totalProgress": 5,
+  "createdAt": {
+    "$date": "2025-02-08T17:04:31.215Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:04:31.215Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78eb0daec41147396b357"
+  },
+  "userId": {
+    "$oid": "67a78aa6ce2f32171a3c8fa8"
+  },
+  "mainTopic": "Blockchain",
+  "description": "A comprehensive roadmap for learning blockchain technology.",
+  "checkpoints": [
+    {
+      "$oid": "67a78eb0daec41147396b34d"
+    },
+    {
+      "$oid": "67a78eb0daec41147396b34f"
+    },
+    {
+      "$oid": "67a78eb0daec41147396b351"
+    },
+    {
+      "$oid": "67a78eb0daec41147396b353"
+    },
+    {
+      "$oid": "67a78eb0daec41147396b355"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T17:04:48.432Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:04:48.432Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78ebedaec41147396b37a"
+  },
+  "userId": {
+    "$oid": "67a78aa6ce2f32171a3c8faa"
+  },
+  "mainTopic": "Online Learning",
+  "description": "A structured learning roadmap tailored to your difficulty level, learning style, and available time.",
+  "checkpoints": [
+    {
+      "$oid": "67a78ebedaec41147396b372"
+    },
+    {
+      "$oid": "67a78ebedaec41147396b374"
+    },
+    {
+      "$oid": "67a78ebedaec41147396b370"
+    },
+    {
+      "$oid": "67a78ebedaec41147396b376"
+    },
+    {
+      "$oid": "67a78ebedaec41147396b378"
+    }
+  ],
+  "totalProgress": 3,
+  "createdAt": {
+    "$date": "2025-02-08T17:05:02.828Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:05:02.828Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78ecfdaec41147396b39c"
+  },
+  "userId": {
+    "$oid": "67a78aa6ce2f32171a3c8faa"
+  },
+  "mainTopic": "E-Learning Fundamentals",
+  "description": "Learn the basics of e-learning, instructional design principles, and course development tools.",
+  "checkpoints": [
+    {
+      "$oid": "67a78ecfdaec41147396b394"
+    },
+    {
+      "$oid": "67a78ecfdaec41147396b392"
+    },
+    {
+      "$oid": "67a78ecfdaec41147396b398"
+    },
+    {
+      "$oid": "67a78ecfdaec41147396b396"
+    },
+    {
+      "$oid": "67a78ecfdaec41147396b39a"
+    }
+  ],
+  "totalProgress": 5,
+  "createdAt": {
+    "$date": "2025-02-08T17:05:19.956Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:05:19.956Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78ededaec41147396b3bf"
+  },
+  "userId": {
+    "$oid": "67a78aa6ce2f32171a3c8fac"
+  },
+  "mainTopic": "Medical Informatics",
+  "description": "Learn the core principles and technologies used in the field of medical informatics, including health data management, data analysis, and visualization.",
+  "checkpoints": [
+    {
+      "$oid": "67a78ededaec41147396b3b7"
+    },
+    {
+      "$oid": "67a78ededaec41147396b3bb"
+    },
+    {
+      "$oid": "67a78ededaec41147396b3b5"
+    },
+    {
+      "$oid": "67a78ededaec41147396b3b9"
+    },
+    {
+      "$oid": "67a78ededaec41147396b3bd"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T17:05:34.703Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:05:34.703Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78effdaec41147396b3e2"
+  },
+  "userId": {
+    "$oid": "67a78aa6ce2f32171a3c8fae"
+  },
+  "mainTopic": "Environmental Management",
+  "description": "A comprehensive roadmap to gain a solid foundation in environmental management, tailored to your specific learning style, difficulty level, and time constraints.",
+  "checkpoints": [
+    {
+      "$oid": "67a78effdaec41147396b3d8"
+    },
+    {
+      "$oid": "67a78effdaec41147396b3da"
+    },
+    {
+      "$oid": "67a78effdaec41147396b3dc"
+    },
+    {
+      "$oid": "67a78effdaec41147396b3de"
+    },
+    {
+      "$oid": "67a78effdaec41147396b3e0"
+    }
+  ],
+  "totalProgress": 1,
+  "createdAt": {
+    "$date": "2025-02-08T17:06:07.374Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:06:07.374Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78f10daec41147396b404"
+  },
+  "userId": {
+    "$oid": "67a78aa6ce2f32171a3c8fae"
+  },
+  "mainTopic": "Precision Agriculture and Blockchain in AgriFood",
+  "description": "A structured learning roadmap for Precision Agriculture and Blockchain in AgriFood, tailored to different difficulty levels, learning styles, and deadlines.",
+  "checkpoints": [
+    {
+      "$oid": "67a78f10daec41147396b3fa"
+    },
+    {
+      "$oid": "67a78f10daec41147396b3fc"
+    },
+    {
+      "$oid": "67a78f10daec41147396b400"
+    },
+    {
+      "$oid": "67a78f10daec41147396b3fe"
+    },
+    {
+      "$oid": "67a78f10daec41147396b402"
+    }
+  ],
+  "totalProgress": 4,
+  "createdAt": {
+    "$date": "2025-02-08T17:06:24.992Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:06:24.992Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78f20daec41147396b427"
+  },
+  "userId": {
+    "$oid": "67a78aa6ce2f32171a3c8fb0"
+  },
+  "mainTopic": "Supply Chain Management",
+  "description": "A structured learning path for understanding Supply Chain Management concepts, from beginner to advanced level.",
+  "checkpoints": [
+    {
+      "$oid": "67a78f20daec41147396b41d"
+    },
+    {
+      "$oid": "67a78f20daec41147396b41f"
+    },
+    {
+      "$oid": "67a78f20daec41147396b421"
+    },
+    {
+      "$oid": "67a78f20daec41147396b423"
+    },
+    {
+      "$oid": "67a78f20daec41147396b425"
+    }
+  ],
+  "totalProgress": 5,
+  "createdAt": {
+    "$date": "2025-02-08T17:06:40.487Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:06:40.487Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78f2edaec41147396b43f"
+  },
+  "userId": {
+    "$oid": "67a78aa6ce2f32171a3c8fb0"
+  },
+  "mainTopic": "Supply Chain Management",
+  "description": "A structured approach to learning Supply Chain Management, tailored to beginner learners with a reading learning style and a limited time availability of 2 hours per day.",
+  "checkpoints": [
+    {
+      "$oid": "67a78f2edaec41147396b437"
+    },
+    {
+      "$oid": "67a78f2edaec41147396b435"
+    },
+    {
+      "$oid": "67a78f2edaec41147396b439"
+    },
+    {
+      "$oid": "67a78f2edaec41147396b43d"
+    },
+    {
+      "$oid": "67a78f2edaec41147396b43b"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T17:06:54.409Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:06:54.409Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78f40daec41147396b462"
+  },
+  "userId": {
+    "$oid": "67a78aa6ce2f32171a3c8fb2"
+  },
+  "mainTopic": "Automotive Technology",
+  "description": "A comprehensive roadmap for learning Automotive Technology, tailored to your difficulty level, learning style, and available time.",
+  "checkpoints": [
+    {
+      "$oid": "67a78f40daec41147396b458"
+    },
+    {
+      "$oid": "67a78f40daec41147396b45a"
+    },
+    {
+      "$oid": "67a78f40daec41147396b45e"
+    },
+    {
+      "$oid": "67a78f40daec41147396b45c"
+    },
+    {
+      "$oid": "67a78f40daec41147396b460"
+    }
+  ],
+  "totalProgress": 5,
+  "createdAt": {
+    "$date": "2025-02-08T17:07:12.369Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:07:12.369Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78f50daec41147396b484"
+  },
+  "userId": {
+    "$oid": "67a78aa6ce2f32171a3c8fb2"
+  },
+  "mainTopic": "Autonomous Vehicles",
+  "description": "A comprehensive roadmap for understanding and developing autonomous vehicles, tailored to your learning style, difficulty level, and time constraints.",
+  "checkpoints": [
+    {
+      "$oid": "67a78f50daec41147396b47a"
+    },
+    {
+      "$oid": "67a78f50daec41147396b47c"
+    },
+    {
+      "$oid": "67a78f50daec41147396b47e"
+    },
+    {
+      "$oid": "67a78f50daec41147396b480"
+    },
+    {
+      "$oid": "67a78f50daec41147396b482"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T17:07:28.088Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:07:28.088Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78f63daec41147396b4a7"
+  },
+  "userId": {
+    "$oid": "67a78aa6ce2f32171a3c8fb4"
+  },
+  "mainTopic": "Aerospace Engineering",
+  "description": "A comprehensive learning roadmap to equip aspiring aerospace engineers with a solid foundation in the field, tailored to their learning style and the time available.",
+  "checkpoints": [
+    {
+      "$oid": "67a78f63daec41147396b49f"
+    },
+    {
+      "$oid": "67a78f63daec41147396b49d"
+    },
+    {
+      "$oid": "67a78f63daec41147396b4a1"
+    },
+    {
+      "$oid": "67a78f63daec41147396b4a3"
+    },
+    {
+      "$oid": "67a78f63daec41147396b4a5"
+    }
+  ],
+  "totalProgress": 3,
+  "createdAt": {
+    "$date": "2025-02-08T17:07:47.457Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:07:47.457Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78f73daec41147396b4c5"
+  },
+  "userId": {
+    "$oid": "67a78aa6ce2f32171a3c8fb4"
+  },
+  "mainTopic": "Aviation Technology",
+  "description": "This roadmap provides a structured approach to learning aviation technology, from beginner to advanced levels, tailored to your learning style and time constraints.",
+  "checkpoints": [
+    {
+      "$oid": "67a78f73daec41147396b4bb"
+    },
+    {
+      "$oid": "67a78f73daec41147396b4bf"
+    },
+    {
+      "$oid": "67a78f73daec41147396b4c3"
+    },
+    {
+      "$oid": "67a78f73daec41147396b4c1"
+    },
+    {
+      "$oid": "67a78f73daec41147396b4bd"
+    }
+  ],
+  "totalProgress": 5,
+  "createdAt": {
+    "$date": "2025-02-08T17:08:03.679Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:08:03.679Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78f84daec41147396b4e8"
+  },
+  "userId": {
+    "$oid": "67a78aa6ce2f32171a3c8fb6"
+  },
+  "mainTopic": "Startup Success",
+  "description": "A structured learning roadmap for aspiring entrepreneurs to achieve startup success, tailored to different learning styles and time constraints.",
+  "checkpoints": [
+    {
+      "$oid": "67a78f84daec41147396b4de"
+    },
+    {
+      "$oid": "67a78f84daec41147396b4e0"
+    },
+    {
+      "$oid": "67a78f84daec41147396b4e2"
+    },
+    {
+      "$oid": "67a78f84daec41147396b4e4"
+    },
+    {
+      "$oid": "67a78f84daec41147396b4e6"
+    }
+  ],
+  "totalProgress": 4,
+  "createdAt": {
+    "$date": "2025-02-08T17:08:20.288Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:08:20.288Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78f95daec41147396b50a"
+  },
+  "userId": {
+    "$oid": "67a78aa6ce2f32171a3c8fb6"
+  },
+  "mainTopic": "Startup Growth and Development",
+  "description": "A comprehensive learning roadmap for individuals seeking to optimize the growth and development of their startup ventures.",
+  "checkpoints": [
+    {
+      "$oid": "67a78f94daec41147396b500"
+    },
+    {
+      "$oid": "67a78f95daec41147396b504"
+    },
+    {
+      "$oid": "67a78f95daec41147396b502"
+    },
+    {
+      "$oid": "67a78f95daec41147396b506"
+    },
+    {
+      "$oid": "67a78f95daec41147396b508"
+    }
+  ],
+  "totalProgress": 4,
+  "createdAt": {
+    "$date": "2025-02-08T17:08:37.036Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:08:37.036Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78fa9daec41147396b52b"
+  },
+  "userId": {
+    "$oid": "67a78aa7ce2f32171a3c8fb8"
+  },
+  "mainTopic": "Career Advancement Learning Roadmap",
+  "description": "This learning roadmap provides a structured approach to career advancement, tailored to individual difficulty levels, learning styles, and time availability.",
+  "checkpoints": [
+    {
+      "$oid": "67a78fa9daec41147396b521"
+    },
+    {
+      "$oid": "67a78fa9daec41147396b525"
+    },
+    {
+      "$oid": "67a78fa9daec41147396b523"
+    },
+    {
+      "$oid": "67a78fa9daec41147396b527"
+    },
+    {
+      "$oid": "67a78fa9daec41147396b529"
+    }
+  ],
+  "totalProgress": 1,
+  "createdAt": {
+    "$date": "2025-02-08T17:08:57.348Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:08:57.348Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78fb6daec41147396b545"
+  },
+  "userId": {
+    "$oid": "67a78aa7ce2f32171a3c8fb8"
+  },
+  "mainTopic": "Career Development Learning Roadmap",
+  "description": "A structured learning plan designed to guide your professional growth and career advancement.",
+  "checkpoints": [
+    {
+      "$oid": "67a78fb6daec41147396b53b"
+    },
+    {
+      "$oid": "67a78fb6daec41147396b53d"
+    },
+    {
+      "$oid": "67a78fb6daec41147396b53f"
+    },
+    {
+      "$oid": "67a78fb6daec41147396b541"
+    },
+    {
+      "$oid": "67a78fb6daec41147396b543"
+    }
+  ],
+  "totalProgress": 5,
+  "createdAt": {
+    "$date": "2025-02-08T17:09:10.556Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:09:10.556Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78fc6daec41147396b568"
+  },
+  "userId": {
+    "$oid": "67a78aa7ce2f32171a3c8fba"
+  },
+  "mainTopic": "Digital Marketing",
+  "description": "Learn the fundamentals of digital marketing and establish a strong foundation in the field.",
+  "checkpoints": [
+    {
+      "$oid": "67a78fc6daec41147396b55e"
+    },
+    {
+      "$oid": "67a78fc6daec41147396b560"
+    },
+    {
+      "$oid": "67a78fc6daec41147396b564"
+    },
+    {
+      "$oid": "67a78fc6daec41147396b562"
+    },
+    {
+      "$oid": "67a78fc6daec41147396b566"
+    }
+  ],
+  "totalProgress": 5,
+  "createdAt": {
+    "$date": "2025-02-08T17:09:26.746Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:09:26.746Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78fd6daec41147396b58a"
+  },
+  "userId": {
+    "$oid": "67a78aa7ce2f32171a3c8fba"
+  },
+  "mainTopic": "Digital Marketing",
+  "description": "A comprehensive roadmap for learning the fundamentals of digital marketing, tailored to your difficulty level, learning style, and available time.",
+  "checkpoints": [
+    {
+      "$oid": "67a78fd6daec41147396b580"
+    },
+    {
+      "$oid": "67a78fd6daec41147396b582"
+    },
+    {
+      "$oid": "67a78fd6daec41147396b584"
+    },
+    {
+      "$oid": "67a78fd6daec41147396b586"
+    },
+    {
+      "$oid": "67a78fd6daec41147396b588"
+    }
+  ],
+  "totalProgress": 4,
+  "createdAt": {
+    "$date": "2025-02-08T17:09:42.699Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:09:42.699Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78fe8daec41147396b5ad"
+  },
+  "userId": {
+    "$oid": "67a78aa7ce2f32171a3c8fbc"
+  },
+  "mainTopic": "Fiction Writing Roadmap",
+  "description": "A structured learning plan for aspiring fiction writers, tailored to their difficulty level, learning style, and time constraints.",
+  "checkpoints": [
+    {
+      "$oid": "67a78fe8daec41147396b5a3"
+    },
+    {
+      "$oid": "67a78fe8daec41147396b5a5"
+    },
+    {
+      "$oid": "67a78fe8daec41147396b5a7"
+    },
+    {
+      "$oid": "67a78fe8daec41147396b5a9"
+    },
+    {
+      "$oid": "67a78fe8daec41147396b5ab"
+    }
+  ],
+  "totalProgress": 5,
+  "createdAt": {
+    "$date": "2025-02-08T17:10:00.725Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:10:00.725Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a78ff8daec41147396b5cf"
+  },
+  "userId": {
+    "$oid": "67a78aa7ce2f32171a3c8fbc"
+  },
+  "mainTopic": "Content Creation",
+  "description": "A comprehensive roadmap for developing your skills in content creation, tailored to your difficulty level, learning style, and time constraints.",
+  "checkpoints": [
+    {
+      "$oid": "67a78ff8daec41147396b5c7"
+    },
+    {
+      "$oid": "67a78ff8daec41147396b5c5"
+    },
+    {
+      "$oid": "67a78ff8daec41147396b5c9"
+    },
+    {
+      "$oid": "67a78ff8daec41147396b5cb"
+    },
+    {
+      "$oid": "67a78ff8daec41147396b5cd"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T17:10:16.969Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:10:16.969Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7900adaec41147396b5f2"
+  },
+  "userId": {
+    "$oid": "67a78aa7ce2f32171a3c8fbe"
+  },
+  "mainTopic": "Machine Learning",
+  "description": "This roadmap is designed for beginners who prefer reading as their learning style. It assumes you have limited time available for learning (2 hours per day) and provides a structured plan with 5 checkpoints.",
+  "checkpoints": [
+    {
+      "$oid": "67a7900adaec41147396b5e8"
+    },
+    {
+      "$oid": "67a7900adaec41147396b5ec"
+    },
+    {
+      "$oid": "67a7900adaec41147396b5ea"
+    },
+    {
+      "$oid": "67a7900adaec41147396b5ee"
+    },
+    {
+      "$oid": "67a7900adaec41147396b5f0"
+    }
+  ],
+  "totalProgress": 4,
+  "createdAt": {
+    "$date": "2025-02-08T17:10:34.546Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:10:34.546Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7901cdaec41147396b614"
+  },
+  "userId": {
+    "$oid": "67a78aa7ce2f32171a3c8fbe"
+  },
+  "mainTopic": "Applications of AI",
+  "description": "This roadmap provides a structured approach to learning the applications of Artificial Intelligence (AI) in various domains. It includes a balanced mix of theoretical understanding, practical implementation, and real-world case studies.",
+  "checkpoints": [
+    {
+      "$oid": "67a7901cdaec41147396b610"
+    },
+    {
+      "$oid": "67a7901cdaec41147396b60a"
+    },
+    {
+      "$oid": "67a7901cdaec41147396b60c"
+    },
+    {
+      "$oid": "67a7901cdaec41147396b60e"
+    },
+    {
+      "$oid": "67a7901cdaec41147396b612"
+    }
+  ],
+  "totalProgress": 5,
+  "createdAt": {
+    "$date": "2025-02-08T17:10:52.842Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:10:52.842Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7902fdaec41147396b637"
+  },
+  "userId": {
+    "$oid": "67a78aa7ce2f32171a3c8fc0"
+  },
+  "mainTopic": "Cybersecurity",
+  "description": "This learning roadmap provides a structured approach to gaining knowledge and skills in cybersecurity, tailored to different difficulty levels, learning styles, and available time.",
+  "checkpoints": [
+    {
+      "$oid": "67a7902fdaec41147396b631"
+    },
+    {
+      "$oid": "67a7902fdaec41147396b62f"
+    },
+    {
+      "$oid": "67a7902fdaec41147396b62d"
+    },
+    {
+      "$oid": "67a7902fdaec41147396b633"
+    },
+    {
+      "$oid": "67a7902fdaec41147396b635"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T17:11:11.194Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:11:11.194Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a79067f29da794a6e6c6cc"
+  },
+  "userId": {
+    "$oid": "67a78aa4ce2f32171a3c8f8a"
+  },
+  "mainTopic": "Game Development",
+  "description": "A structured roadmap for learning game development tailored to your preferences and schedule.",
+  "checkpoints": [
+    {
+      "$oid": "67a79067f29da794a6e6c6c2"
+    },
+    {
+      "$oid": "67a79067f29da794a6e6c6c4"
+    },
+    {
+      "$oid": "67a79067f29da794a6e6c6ca"
+    },
+    {
+      "$oid": "67a79067f29da794a6e6c6c6"
+    },
+    {
+      "$oid": "67a79067f29da794a6e6c6c8"
+    }
+  ],
+  "totalProgress": 4,
+  "createdAt": {
+    "$date": "2025-02-08T17:12:07.326Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:12:07.326Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a79079f29da794a6e6c6ee"
+  },
+  "userId": {
+    "$oid": "67a78aa4ce2f32171a3c8f8a"
+  },
+  "mainTopic": "Image Processing for Beginners",
+  "description": "An introduction to image processing concepts, techniques, and applications for those with limited prior knowledge.",
+  "checkpoints": [
+    {
+      "$oid": "67a79079f29da794a6e6c6e6"
+    },
+    {
+      "$oid": "67a79079f29da794a6e6c6e4"
+    },
+    {
+      "$oid": "67a79079f29da794a6e6c6ea"
+    },
+    {
+      "$oid": "67a79079f29da794a6e6c6ec"
+    },
+    {
+      "$oid": "67a79079f29da794a6e6c6e8"
+    }
+  ],
+  "totalProgress": 3,
+  "createdAt": {
+    "$date": "2025-02-08T17:12:25.474Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:12:25.474Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7908df29da794a6e6c721"
+  },
+  "userId": {
+    "$oid": "67a78aa6ce2f32171a3c8fac"
+  },
+  "mainTopic": "Precision Health and AI in Healthcare",
+  "description": "A structured learning roadmap for beginners who prefer reading and have 2 hours per day to learn about Precision Health and AI in Healthcare.",
+  "checkpoints": [
+    {
+      "$oid": "67a7908df29da794a6e6c71b"
+    },
+    {
+      "$oid": "67a7908df29da794a6e6c717"
+    },
+    {
+      "$oid": "67a7908df29da794a6e6c719"
+    },
+    {
+      "$oid": "67a7908df29da794a6e6c71d"
+    },
+    {
+      "$oid": "67a7908df29da794a6e6c71f"
+    }
+  ],
+  "totalProgress": 4,
+  "createdAt": {
+    "$date": "2025-02-08T17:12:45.420Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:12:45.420Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7909ef29da794a6e6c743"
+  },
+  "userId": {
+    "$oid": "67a78aa6ce2f32171a3c8fac"
+  },
+  "mainTopic": "Artificial Intelligence in Healthcare",
+  "description": "An overview of concepts and applications of AI in healthcare, appropriate for beginners with a preference for reading and a daily time commitment of 2 hours.",
+  "checkpoints": [
+    {
+      "$oid": "67a7909ef29da794a6e6c739"
+    },
+    {
+      "$oid": "67a7909ef29da794a6e6c73f"
+    },
+    {
+      "$oid": "67a7909ef29da794a6e6c73b"
+    },
+    {
+      "$oid": "67a7909ef29da794a6e6c73d"
+    },
+    {
+      "$oid": "67a7909ef29da794a6e6c741"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T17:13:02.384Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:13:02.384Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a793a3f2369ee8c5b3a86a"
+  },
+  "userId": {
+    "$oid": "67a78aa7ce2f32171a3c8fc0"
+  },
+  "mainTopic": "Cybersecurity Learning Roadmap",
+  "description": "This roadmap provides a structured and progressive approach to learning cybersecurity, tailored to your difficulty level, learning style, and time constraints.",
+  "checkpoints": [
+    {
+      "$oid": "67a793a3f2369ee8c5b3a860"
+    },
+    {
+      "$oid": "67a793a3f2369ee8c5b3a864"
+    },
+    {
+      "$oid": "67a793a3f2369ee8c5b3a868"
+    },
+    {
+      "$oid": "67a793a3f2369ee8c5b3a862"
+    },
+    {
+      "$oid": "67a793a3f2369ee8c5b3a866"
+    }
+  ],
+  "totalProgress": 5,
+  "createdAt": {
+    "$date": "2025-02-08T17:25:55.604Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:25:55.604Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a794821b28029aee0fa012"
+  },
+  "userId": {
+    "$oid": "67a78aa7ce2f32171a3c8fc2"
+  },
+  "mainTopic": "Homomorphic Encryption",
+  "description": "Explore the fundamentals and advanced concepts of Homomorphic Encryption, a revolutionary technique that enables computations on encrypted data without decryption.",
+  "checkpoints": [
+    {
+      "$oid": "67a794821b28029aee0fa008"
+    },
+    {
+      "$oid": "67a794821b28029aee0fa00a"
+    },
+    {
+      "$oid": "67a794821b28029aee0fa00e"
+    },
+    {
+      "$oid": "67a794821b28029aee0fa010"
+    },
+    {
+      "$oid": "67a794821b28029aee0fa00c"
+    }
+  ],
+  "totalProgress": 3,
+  "createdAt": {
+    "$date": "2025-02-08T17:29:38.412Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:29:38.412Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a794931b28029aee0fa034"
+  },
+  "userId": {
+    "$oid": "67a78aa7ce2f32171a3c8fc2"
+  },
+  "mainTopic": "Blockchain Technology",
+  "description": "A comprehensive learning roadmap for Blockchain technology, encompassing fundamental concepts, development skills, and industry applications.",
+  "checkpoints": [
+    {
+      "$oid": "67a794931b28029aee0fa02e"
+    },
+    {
+      "$oid": "67a794931b28029aee0fa02a"
+    },
+    {
+      "$oid": "67a794931b28029aee0fa030"
+    },
+    {
+      "$oid": "67a794931b28029aee0fa032"
+    },
+    {
+      "$oid": "67a794931b28029aee0fa02c"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T17:29:55.202Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:29:55.202Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a794a41b28029aee0fa057"
+  },
+  "userId": {
+    "$oid": "67a78aa7ce2f32171a3c8fc4"
+  },
+  "mainTopic": "User Experience Design",
+  "description": "A structured learning roadmap with 5 checkpoints tailored to your difficulty level, learning style, and deadline.",
+  "checkpoints": [
+    {
+      "$oid": "67a794a41b28029aee0fa04d"
+    },
+    {
+      "$oid": "67a794a41b28029aee0fa051"
+    },
+    {
+      "$oid": "67a794a41b28029aee0fa04f"
+    },
+    {
+      "$oid": "67a794a41b28029aee0fa053"
+    },
+    {
+      "$oid": "67a794a41b28029aee0fa055"
+    }
+  ],
+  "totalProgress": 4,
+  "createdAt": {
+    "$date": "2025-02-08T17:30:12.209Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:30:12.209Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a794b61b28029aee0fa079"
+  },
+  "userId": {
+    "$oid": "67a78aa7ce2f32171a3c8fc4"
+  },
+  "mainTopic": "State Management in React Applications",
+  "description": "A comprehensive learning roadmap designed to guide you through the fundamental concepts and best practices of state management in React applications.",
+  "checkpoints": [
+    {
+      "$oid": "67a794b61b28029aee0fa071"
+    },
+    {
+      "$oid": "67a794b61b28029aee0fa06f"
+    },
+    {
+      "$oid": "67a794b61b28029aee0fa073"
+    },
+    {
+      "$oid": "67a794b61b28029aee0fa077"
+    },
+    {
+      "$oid": "67a794b61b28029aee0fa075"
+    }
+  ],
+  "totalProgress": 4,
+  "createdAt": {
+    "$date": "2025-02-08T17:30:30.726Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:30:30.726Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a794c61b28029aee0fa09c"
+  },
+  "userId": {
+    "$oid": "67a78aa7ce2f32171a3c8fc6"
+  },
+  "mainTopic": "Software Architecture",
+  "description": "Structured roadmap for understanding the principles, patterns, and best practices of software architecture.",
+  "checkpoints": [
+    {
+      "$oid": "67a794c61b28029aee0fa092"
+    },
+    {
+      "$oid": "67a794c61b28029aee0fa096"
+    },
+    {
+      "$oid": "67a794c61b28029aee0fa094"
+    },
+    {
+      "$oid": "67a794c61b28029aee0fa098"
+    },
+    {
+      "$oid": "67a794c61b28029aee0fa09a"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T17:30:46.954Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:30:46.954Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a794db1b28029aee0fa0be"
+  },
+  "userId": {
+    "$oid": "67a78aa7ce2f32171a3c8fc6"
+  },
+  "mainTopic": "Database Optimization and Scalability",
+  "description": "A comprehensive learning roadmap for understanding and implementing database optimization and scalability techniques to enhance database performance and efficiency.",
+  "checkpoints": [
+    {
+      "$oid": "67a794db1b28029aee0fa0b4"
+    },
+    {
+      "$oid": "67a794db1b28029aee0fa0b6"
+    },
+    {
+      "$oid": "67a794db1b28029aee0fa0b8"
+    },
+    {
+      "$oid": "67a794db1b28029aee0fa0ba"
+    },
+    {
+      "$oid": "67a794db1b28029aee0fa0bc"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T17:31:07.709Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:31:07.709Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a794e71b28029aee0fa0d7"
+  },
+  "userId": {
+    "$oid": "67a78aa7ce2f32171a3c8fc8"
+  },
+  "mainTopic": "Automation",
+  "description": "This roadmap provides a structured approach to learning Automation, with checkpoints designed to track your progress.",
+  "checkpoints": [
+    {
+      "$oid": "67a794e71b28029aee0fa0cd"
+    },
+    {
+      "$oid": "67a794e71b28029aee0fa0cf"
+    },
+    {
+      "$oid": "67a794e71b28029aee0fa0d1"
+    },
+    {
+      "$oid": "67a794e71b28029aee0fa0d5"
+    },
+    {
+      "$oid": "67a794e71b28029aee0fa0d3"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T17:31:19.912Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:31:19.913Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a794f71b28029aee0fa0f9"
+  },
+  "userId": {
+    "$oid": "67a78aa7ce2f32171a3c8fc8"
+  },
+  "mainTopic": "Test Automation Frameworks",
+  "description": "A structured approach to create and execute tests on software to automate and increase test coverage.",
+  "checkpoints": [
+    {
+      "$oid": "67a794f71b28029aee0fa0ef"
+    },
+    {
+      "$oid": "67a794f71b28029aee0fa0f1"
+    },
+    {
+      "$oid": "67a794f71b28029aee0fa0f3"
+    },
+    {
+      "$oid": "67a794f71b28029aee0fa0f5"
+    },
+    {
+      "$oid": "67a794f71b28029aee0fa0f7"
+    }
+  ],
+  "totalProgress": 5,
+  "createdAt": {
+    "$date": "2025-02-08T17:31:35.491Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:31:35.491Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a795051b28029aee0fa112"
+  },
+  "userId": {
+    "$oid": "67a78aa8ce2f32171a3c8fca"
+  },
+  "mainTopic": "Graph Algorithms and Dynamic Programming",
+  "description": "Learn the fundamentals of graph algorithms and dynamic programming, as well as advanced techniques and applications.",
+  "checkpoints": [
+    {
+      "$oid": "67a795051b28029aee0fa10a"
+    },
+    {
+      "$oid": "67a795051b28029aee0fa108"
+    },
+    {
+      "$oid": "67a795051b28029aee0fa10c"
+    },
+    {
+      "$oid": "67a795051b28029aee0fa110"
+    },
+    {
+      "$oid": "67a795051b28029aee0fa10e"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T17:31:49.146Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:31:49.146Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a795151b28029aee0fa134"
+  },
+  "userId": {
+    "$oid": "67a78aa8ce2f32171a3c8fca"
+  },
+  "mainTopic": "Introduction to Graph Algorithms",
+  "description": "This roadmap will guide you through the fundamentals and applications of Graph Algorithms, catering to your beginner level, reading-based learning style, and 2 hours per day time availability.",
+  "checkpoints": [
+    {
+      "$oid": "67a795151b28029aee0fa12a"
+    },
+    {
+      "$oid": "67a795151b28029aee0fa12e"
+    },
+    {
+      "$oid": "67a795151b28029aee0fa12c"
+    },
+    {
+      "$oid": "67a795151b28029aee0fa132"
+    },
+    {
+      "$oid": "67a795151b28029aee0fa130"
+    }
+  ],
+  "totalProgress": 5,
+  "createdAt": {
+    "$date": "2025-02-08T17:32:05.770Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:32:05.770Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a795241b28029aee0fa157"
+  },
+  "userId": {
+    "$oid": "67a78aa8ce2f32171a3c8fcc"
+  },
+  "mainTopic": "Big Data Analytics Learning Roadmap for Beginners",
+  "description": "This roadmap provides a structured approach for beginners to learn Big Data Analytics. It includes five checkpoints, with each checkpoint building upon the previous one.",
+  "checkpoints": [
+    {
+      "$oid": "67a795241b28029aee0fa14d"
+    },
+    {
+      "$oid": "67a795241b28029aee0fa14f"
+    },
+    {
+      "$oid": "67a795241b28029aee0fa151"
+    },
+    {
+      "$oid": "67a795241b28029aee0fa153"
+    },
+    {
+      "$oid": "67a795241b28029aee0fa155"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T17:32:20.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:32:20.825Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a795341b28029aee0fa179"
+  },
+  "userId": {
+    "$oid": "67a78aa8ce2f32171a3c8fcc"
+  },
+  "mainTopic": "Big Data Analytics",
+  "description": "This roadmap provides a structured and time-bound approach to learning Big Data Analytics, tailored to your difficulty level, learning style, and available time.",
+  "checkpoints": [
+    {
+      "$oid": "67a795341b28029aee0fa16f"
+    },
+    {
+      "$oid": "67a795341b28029aee0fa171"
+    },
+    {
+      "$oid": "67a795341b28029aee0fa173"
+    },
+    {
+      "$oid": "67a795341b28029aee0fa177"
+    },
+    {
+      "$oid": "67a795341b28029aee0fa175"
+    }
+  ],
+  "totalProgress": 5,
+  "createdAt": {
+    "$date": "2025-02-08T17:32:36.925Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:32:36.925Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a795471b28029aee0fa19c"
+  },
+  "userId": {
+    "$oid": "67a78aa8ce2f32171a3c8fce"
+  },
+  "mainTopic": "Procedural Content Generation in Games",
+  "description": "Learn the art of automatically generating game content, enhancing replayability and reducing development time.",
+  "checkpoints": [
+    {
+      "$oid": "67a795471b28029aee0fa192"
+    },
+    {
+      "$oid": "67a795471b28029aee0fa194"
+    },
+    {
+      "$oid": "67a795471b28029aee0fa196"
+    },
+    {
+      "$oid": "67a795471b28029aee0fa198"
+    },
+    {
+      "$oid": "67a795471b28029aee0fa19a"
+    }
+  ],
+  "totalProgress": 5,
+  "createdAt": {
+    "$date": "2025-02-08T17:32:55.527Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:32:55.527Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a795581b28029aee0fa1be"
+  },
+  "userId": {
+    "$oid": "67a78aa8ce2f32171a3c8fce"
+  },
+  "mainTopic": "Real-Time Rendering",
+  "description": "A structured learning roadmap for mastering real-time rendering techniques, adjusted based on difficulty level, learning style, and time availability.",
+  "checkpoints": [
+    {
+      "$oid": "67a795581b28029aee0fa1b4"
+    },
+    {
+      "$oid": "67a795581b28029aee0fa1b6"
+    },
+    {
+      "$oid": "67a795581b28029aee0fa1b8"
+    },
+    {
+      "$oid": "67a795581b28029aee0fa1ba"
+    },
+    {
+      "$oid": "67a795581b28029aee0fa1bc"
+    }
+  ],
+  "totalProgress": 3,
+  "createdAt": {
+    "$date": "2025-02-08T17:33:12.936Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:33:12.936Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a795661b28029aee0fa1d7"
+  },
+  "userId": {
+    "$oid": "67a78aa8ce2f32171a3c8fd0"
+  },
+  "mainTopic": "Database Performance Optimization",
+  "description": "A structured learning roadmap for optimizing database performance, tailored to your learning preferences and time constraints.",
+  "checkpoints": [
+    {
+      "$oid": "67a795661b28029aee0fa1cd"
+    },
+    {
+      "$oid": "67a795661b28029aee0fa1cf"
+    },
+    {
+      "$oid": "67a795661b28029aee0fa1d1"
+    },
+    {
+      "$oid": "67a795661b28029aee0fa1d5"
+    },
+    {
+      "$oid": "67a795661b28029aee0fa1d3"
+    }
+  ],
+  "totalProgress": 3,
+  "createdAt": {
+    "$date": "2025-02-08T17:33:26.764Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:33:26.764Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a795791b28029aee0fa1f9"
+  },
+  "userId": {
+    "$oid": "67a78aa8ce2f32171a3c8fd0"
+  },
+  "mainTopic": "Database Query Optimization",
+  "description": "A learning roadmap with 5 checkpoints tailored to your difficulty level, learning style, and deadline.",
+  "checkpoints": [
+    {
+      "$oid": "67a795791b28029aee0fa1ef"
+    },
+    {
+      "$oid": "67a795791b28029aee0fa1f1"
+    },
+    {
+      "$oid": "67a795791b28029aee0fa1f3"
+    },
+    {
+      "$oid": "67a795791b28029aee0fa1f5"
+    },
+    {
+      "$oid": "67a795791b28029aee0fa1f7"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T17:33:45.519Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:33:45.519Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a795871b28029aee0fa212"
+  },
+  "userId": {
+    "$oid": "67a78aa8ce2f32171a3c8fd2"
+  },
+  "mainTopic": "System Design",
+  "description": "A step-by-step learning roadmap for individuals at the beginner level, who prefer reading and have approximately 2 hours to dedicate to learning system design each day.",
+  "checkpoints": [
+    {
+      "$oid": "67a795871b28029aee0fa208"
+    },
+    {
+      "$oid": "67a795871b28029aee0fa20c"
+    },
+    {
+      "$oid": "67a795871b28029aee0fa20a"
+    },
+    {
+      "$oid": "67a795871b28029aee0fa20e"
+    },
+    {
+      "$oid": "67a795871b28029aee0fa210"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T17:33:59.226Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:33:59.226Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a795941b28029aee0fa22a"
+  },
+  "userId": {
+    "$oid": "67a78aa8ce2f32171a3c8fd2"
+  },
+  "mainTopic": "Rate Limiting and URL Shortening",
+  "description": "A comprehensive roadmap to master the concepts of rate limiting and URL shortening, tailored to your learning preferences and available time.",
+  "checkpoints": [
+    {
+      "$oid": "67a795941b28029aee0fa224"
+    },
+    {
+      "$oid": "67a795941b28029aee0fa220"
+    },
+    {
+      "$oid": "67a795941b28029aee0fa222"
+    },
+    {
+      "$oid": "67a795941b28029aee0fa226"
+    },
+    {
+      "$oid": "67a795941b28029aee0fa228"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T17:34:12.250Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:34:12.250Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a795a31b28029aee0fa24d"
+  },
+  "userId": {
+    "$oid": "67a78aa8ce2f32171a3c8fd4"
+  },
+  "mainTopic": "Data Structures",
+  "description": "This is a learning roadmap for data structures with 5 checkpoints, adjusted for beginner difficulty, a reading learning style, and a deadline of 2 hours per day.",
+  "checkpoints": [
+    {
+      "$oid": "67a795a31b28029aee0fa243"
+    },
+    {
+      "$oid": "67a795a31b28029aee0fa245"
+    },
+    {
+      "$oid": "67a795a31b28029aee0fa247"
+    },
+    {
+      "$oid": "67a795a31b28029aee0fa249"
+    },
+    {
+      "$oid": "67a795a31b28029aee0fa24b"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T17:34:27.732Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:34:27.732Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a795b21b28029aee0fa26f"
+  },
+  "userId": {
+    "$oid": "67a78aa8ce2f32171a3c8fd4"
+  },
+  "mainTopic": "Data Structures and Algorithms",
+  "description": "A roadmap consisting of 5 checkpoints custom-tailored to your learning style and deadline.",
+  "checkpoints": [
+    {
+      "$oid": "67a795b21b28029aee0fa265"
+    },
+    {
+      "$oid": "67a795b21b28029aee0fa267"
+    },
+    {
+      "$oid": "67a795b21b28029aee0fa269"
+    },
+    {
+      "$oid": "67a795b21b28029aee0fa26b"
+    },
+    {
+      "$oid": "67a795b21b28029aee0fa26d"
+    }
+  ],
+  "totalProgress": 3,
+  "createdAt": {
+    "$date": "2025-02-08T17:34:42.770Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:34:42.770Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a795c31b28029aee0fa292"
+  },
+  "userId": {
+    "$oid": "67a78aa8ce2f32171a3c8fd6"
+  },
+  "mainTopic": "Machine Learning",
+  "description": "A structured roadmap for beginners to learn about Machine Learning, taking into account their learning style, available time, and the desired difficulty level.",
+  "checkpoints": [
+    {
+      "$oid": "67a795c31b28029aee0fa288"
+    },
+    {
+      "$oid": "67a795c31b28029aee0fa28a"
+    },
+    {
+      "$oid": "67a795c31b28029aee0fa28c"
+    },
+    {
+      "$oid": "67a795c31b28029aee0fa28e"
+    },
+    {
+      "$oid": "67a795c31b28029aee0fa290"
+    }
+  ],
+  "totalProgress": 5,
+  "createdAt": {
+    "$date": "2025-02-08T17:34:59.522Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:34:59.522Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a795d31b28029aee0fa2b4"
+  },
+  "userId": {
+    "$oid": "67a78aa8ce2f32171a3c8fd6"
+  },
+  "mainTopic": "Machine Learning",
+  "description": "A structured roadmap for learning Machine Learning, tailored to your parameters.",
+  "checkpoints": [
+    {
+      "$oid": "67a795d31b28029aee0fa2aa"
+    },
+    {
+      "$oid": "67a795d31b28029aee0fa2ae"
+    },
+    {
+      "$oid": "67a795d31b28029aee0fa2b0"
+    },
+    {
+      "$oid": "67a795d31b28029aee0fa2b2"
+    },
+    {
+      "$oid": "67a795d31b28029aee0fa2ac"
+    }
+  ],
+  "totalProgress": 5,
+  "createdAt": {
+    "$date": "2025-02-08T17:35:15.697Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:35:15.697Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a795df1b28029aee0fa2cd"
+  },
+  "userId": {
+    "$oid": "67a78aa8ce2f32171a3c8fd8"
+  },
+  "mainTopic": "Cybersecurity Learning Roadmap for Beginners",
+  "description": "This roadmap provides a structured approach to learning cybersecurity concepts, focusing on a reading-based learning style and a 2-hour daily study commitment.",
+  "checkpoints": [
+    {
+      "$oid": "67a795df1b28029aee0fa2c3"
+    },
+    {
+      "$oid": "67a795df1b28029aee0fa2c5"
+    },
+    {
+      "$oid": "67a795df1b28029aee0fa2c7"
+    },
+    {
+      "$oid": "67a795df1b28029aee0fa2c9"
+    },
+    {
+      "$oid": "67a795df1b28029aee0fa2cb"
+    }
+  ],
+  "totalProgress": 3,
+  "createdAt": {
+    "$date": "2025-02-08T17:35:27.792Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:35:27.792Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a795ef1b28029aee0fa2ef"
+  },
+  "userId": {
+    "$oid": "67a78aa8ce2f32171a3c8fd8"
+  },
+  "mainTopic": "Cybersecurity for Beginners",
+  "description": "A structured learning plan designed for individuals who are new to the field of cybersecurity.",
+  "checkpoints": [
+    {
+      "$oid": "67a795ef1b28029aee0fa2e5"
+    },
+    {
+      "$oid": "67a795ef1b28029aee0fa2e7"
+    },
+    {
+      "$oid": "67a795ef1b28029aee0fa2e9"
+    },
+    {
+      "$oid": "67a795ef1b28029aee0fa2eb"
+    },
+    {
+      "$oid": "67a795ef1b28029aee0fa2ed"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T17:35:43.721Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:35:43.721Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a795ff1b28029aee0fa312"
+  },
+  "userId": {
+    "$oid": "67a78aa9ce2f32171a3c8fda"
+  },
+  "mainTopic": "Full-Stack App Development",
+  "description": "This roadmap provides a structured learning path for full-stack application development, tailored to your difficulty level, learning style, and deadline.",
+  "checkpoints": [
+    {
+      "$oid": "67a795ff1b28029aee0fa308"
+    },
+    {
+      "$oid": "67a795ff1b28029aee0fa30a"
+    },
+    {
+      "$oid": "67a795ff1b28029aee0fa30e"
+    },
+    {
+      "$oid": "67a795ff1b28029aee0fa30c"
+    },
+    {
+      "$oid": "67a795ff1b28029aee0fa310"
+    }
+  ],
+  "totalProgress": 3,
+  "createdAt": {
+    "$date": "2025-02-08T17:35:59.926Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:35:59.926Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a796111b28029aee0fa334"
+  },
+  "userId": {
+    "$oid": "67a78aa9ce2f32171a3c8fda"
+  },
+  "mainTopic": "Full-Stack Development Learning Roadmap",
+  "description": "This roadmap provides a structured approach to learning full-stack development, catering to different difficulty levels, learning styles, and time constraints. Each checkpoint includes specific targets, learning resources, estimated time commitments, and deadlines.",
+  "checkpoints": [
+    {
+      "$oid": "67a796111b28029aee0fa32a"
+    },
+    {
+      "$oid": "67a796111b28029aee0fa32c"
+    },
+    {
+      "$oid": "67a796111b28029aee0fa32e"
+    },
+    {
+      "$oid": "67a796111b28029aee0fa330"
+    },
+    {
+      "$oid": "67a796111b28029aee0fa332"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T17:36:17.778Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:36:17.778Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a796231b28029aee0fa357"
+  },
+  "userId": {
+    "$oid": "67a78aa9ce2f32171a3c8fdc"
+  },
+  "mainTopic": "DevSecOps Best Practices Learning Roadmap",
+  "description": "This learning roadmap provides a structured approach to understanding and implementing DevSecOps best practices. It is tailored to accommodate various difficulty levels, learning styles, and time constraints.",
+  "checkpoints": [
+    {
+      "$oid": "67a796231b28029aee0fa34d"
+    },
+    {
+      "$oid": "67a796231b28029aee0fa34f"
+    },
+    {
+      "$oid": "67a796231b28029aee0fa353"
+    },
+    {
+      "$oid": "67a796231b28029aee0fa351"
+    },
+    {
+      "$oid": "67a796231b28029aee0fa355"
+    }
+  ],
+  "totalProgress": 4,
+  "createdAt": {
+    "$date": "2025-02-08T17:36:35.967Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:36:35.967Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a796341b28029aee0fa379"
+  },
+  "userId": {
+    "$oid": "67a78aa9ce2f32171a3c8fdc"
+  },
+  "mainTopic": "Cloud Security",
+  "description": "A structured learning roadmap for cloud security, providing a clear progression from beginner to advanced concepts. The roadmap is tailored to different learning styles and deadlines, ensuring an effective and personalized learning experience.",
+  "checkpoints": [
+    {
+      "$oid": "67a796341b28029aee0fa371"
+    },
+    {
+      "$oid": "67a796341b28029aee0fa373"
+    },
+    {
+      "$oid": "67a796341b28029aee0fa36f"
+    },
+    {
+      "$oid": "67a796341b28029aee0fa375"
+    },
+    {
+      "$oid": "67a796341b28029aee0fa377"
+    }
+  ],
+  "totalProgress": 5,
+  "createdAt": {
+    "$date": "2025-02-08T17:36:52.208Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:36:52.208Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a796441b28029aee0fa396"
+  },
+  "userId": {
+    "$oid": "67a78aa9ce2f32171a3c8fde"
+  },
+  "mainTopic": "Procedural Content Generation in Games",
+  "description": "A comprehensive learning roadmap designed to equip you with the skills and knowledge in Procedural Content Generation (PCG) techniques used in game development.",
+  "checkpoints": [
+    {
+      "$oid": "67a796441b28029aee0fa38c"
+    },
+    {
+      "$oid": "67a796441b28029aee0fa38e"
+    },
+    {
+      "$oid": "67a796441b28029aee0fa390"
+    },
+    {
+      "$oid": "67a796441b28029aee0fa392"
+    },
+    {
+      "$oid": "67a796441b28029aee0fa394"
+    }
+  ],
+  "totalProgress": 5,
+  "createdAt": {
+    "$date": "2025-02-08T17:37:08.072Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:37:08.072Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a796551b28029aee0fa3b8"
+  },
+  "userId": {
+    "$oid": "67a78aa9ce2f32171a3c8fde"
+  },
+  "mainTopic": "AI in Games",
+  "description": "This roadmap provides a structured approach to learning AI for game development. It covers key concepts, techniques, and resources tailored to your difficulty level, learning style, and available time.",
+  "checkpoints": [
+    {
+      "$oid": "67a796551b28029aee0fa3ae"
+    },
+    {
+      "$oid": "67a796551b28029aee0fa3b2"
+    },
+    {
+      "$oid": "67a796551b28029aee0fa3b4"
+    },
+    {
+      "$oid": "67a796551b28029aee0fa3b6"
+    },
+    {
+      "$oid": "67a796551b28029aee0fa3b0"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T17:37:25.812Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:37:25.812Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a796631b28029aee0fa3d1"
+  },
+  "userId": {
+    "$oid": "67a78aa9ce2f32171a3c8fe0"
+  },
+  "mainTopic": "Mobile App Development",
+  "description": "A comprehensive roadmap for beginners, focusing on reading materials and a daily time investment of 2 hours.",
+  "checkpoints": [
+    {
+      "$oid": "67a796631b28029aee0fa3c9"
+    },
+    {
+      "$oid": "67a796631b28029aee0fa3cb"
+    },
+    {
+      "$oid": "67a796631b28029aee0fa3c7"
+    },
+    {
+      "$oid": "67a796631b28029aee0fa3cd"
+    },
+    {
+      "$oid": "67a796631b28029aee0fa3cf"
+    }
+  ],
+  "totalProgress": 2,
+  "createdAt": {
+    "$date": "2025-02-08T17:37:39.727Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:37:39.727Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a796741b28029aee0fa3f3"
+  },
+  "userId": {
+    "$oid": "67a78aa9ce2f32171a3c8fe0"
+  },
+  "mainTopic": "Mobile Application Development",
+  "description": "A structured learning roadmap for mobile application development, tailored to your difficulty level, learning style, and available time.",
+  "checkpoints": [
+    {
+      "$oid": "67a796741b28029aee0fa3e9"
+    },
+    {
+      "$oid": "67a796741b28029aee0fa3ed"
+    },
+    {
+      "$oid": "67a796741b28029aee0fa3f1"
+    },
+    {
+      "$oid": "67a796741b28029aee0fa3ef"
+    },
+    {
+      "$oid": "67a796741b28029aee0fa3eb"
+    }
+  ],
+  "totalProgress": 3,
+  "createdAt": {
+    "$date": "2025-02-08T17:37:56.884Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T17:37:56.884Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7c5004bf4b8f7c3d45a6d"
+  },
+  "userId": {
+    "$oid": "67a7c4d64bf4b8f7c3d45a47"
+  },
+  "mainTopic": "Natural Language Processing",
+  "description": "A comprehensive learning roadmap for Natural Language Processing, tailored to your difficulty level, learning style, and time constraints.",
+  "checkpoints": [
+    {
+      "$oid": "67a7c5004bf4b8f7c3d45a63"
+    },
+    {
+      "$oid": "67a7c5004bf4b8f7c3d45a65"
+    },
+    {
+      "$oid": "67a7c5004bf4b8f7c3d45a67"
+    },
+    {
+      "$oid": "67a7c5004bf4b8f7c3d45a69"
+    },
+    {
+      "$oid": "67a7c5004bf4b8f7c3d45a6b"
+    }
+  ],
+  "totalProgress": 20,
+  "createdAt": {
+    "$date": "2025-02-08T20:56:32.034Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T20:56:32.034Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "67a7c65a115c177a8531ed1c"
+  },
+  "userId": {
+    "$oid": "67a7c4d64bf4b8f7c3d45a47"
+  },
+  "mainTopic": "Data Analysis Learning Roadmap",
+  "description": "This roadmap provides a structured approach to learning data analysis, tailored to your difficulty level, learning style, and available time.",
+  "checkpoints": [
+    {
+      "$oid": "67a7c65a115c177a8531ed12"
+    },
+    {
+      "$oid": "67a7c65a115c177a8531ed14"
+    },
+    {
+      "$oid": "67a7c65a115c177a8531ed16"
+    },
+    {
+      "$oid": "67a7c65a115c177a8531ed18"
+    },
+    {
+      "$oid": "67a7c65a115c177a8531ed1a"
+    }
+  ],
+  "totalProgress": 20,
+  "createdAt": {
+    "$date": "2025-02-08T21:02:18.092Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-08T21:02:18.093Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "67a7f33d70429a0280d9ceb2"
+  },
+  "userId": {
+    "$oid": "67a7c4d64bf4b8f7c3d45a47"
+  },
+  "mainTopic": "System Programming",
+  "description": "This roadmap covers the fundamentals of system programming, including operating systems, computer architecture, and memory management. The learning path is designed for beginners who have a basic understanding of programming concepts. The learning style is reading-oriented, and the deadline is set assuming 2 hours of study per day.",
+  "checkpoints": [
+    {
+      "$oid": "67a7f33d70429a0280d9cea8"
+    },
+    {
+      "$oid": "67a7f33d70429a0280d9ceaa"
+    },
+    {
+      "$oid": "67a7f33d70429a0280d9ceac"
+    },
+    {
+      "$oid": "67a7f33d70429a0280d9ceae"
+    },
+    {
+      "$oid": "67a7f33d70429a0280d9ceb0"
+    }
+  ],
+  "totalProgress": 20,
+  "createdAt": {
+    "$date": "2025-02-09T00:13:49.567Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-09T00:13:49.567Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "67a7f39581a17c6cce35530f"
+  },
+  "userId": {
+    "$oid": "67a7c4d64bf4b8f7c3d45a47"
+  },
+  "mainTopic": "Beginner Data Visualization Learning Roadmap",
+  "description": "This roadmap will help you get started with data visualization in 2 hours per day for beginners who prefer to learn through reading.",
+  "checkpoints": [
+    {
+      "$oid": "67a7f39581a17c6cce355305"
+    },
+    {
+      "$oid": "67a7f39581a17c6cce355307"
+    },
+    {
+      "$oid": "67a7f39581a17c6cce355309"
+    },
+    {
+      "$oid": "67a7f39581a17c6cce35530b"
+    },
+    {
+      "$oid": "67a7f39581a17c6cce35530d"
+    }
+  ],
+  "totalProgress": 20,
+  "createdAt": {
+    "$date": "2025-02-09T00:15:17.397Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-09T00:15:17.397Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "67a7f40581a17c6cce35534e"
+  },
+  "userId": {
+    "$oid": "67a7c4d64bf4b8f7c3d45a47"
+  },
+  "mainTopic": "Data Structures and Algorithms",
+  "description": "Here's a structured learning roadmap tailored to your preferences and schedule:",
+  "checkpoints": [
+    {
+      "$oid": "67a7f40581a17c6cce35534a"
+    },
+    {
+      "$oid": "67a7f40581a17c6cce355344"
+    },
+    {
+      "$oid": "67a7f40581a17c6cce355346"
+    },
+    {
+      "$oid": "67a7f40581a17c6cce355348"
+    },
+    {
+      "$oid": "67a7f40581a17c6cce35534c"
+    }
+  ],
+  "totalProgress": 0,
+  "createdAt": {
+    "$date": "2025-02-09T00:17:09.892Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-09T00:17:09.892Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7f53cbc71ea3db9610c4a"
+  },
+  "userId": {
+    "$oid": "67a7c4d64bf4b8f7c3d45a47"
+  },
+  "mainTopic": "Object-Oriented Programming",
+  "description": "Object-Oriented Programming is a popular programming paradigm that is useful for structuring and organizing code",
+  "checkpoints": [
+    {
+      "$oid": "67a7f53cbc71ea3db9610c40"
+    },
+    {
+      "$oid": "67a7f53cbc71ea3db9610c42"
+    },
+    {
+      "$oid": "67a7f53cbc71ea3db9610c44"
+    },
+    {
+      "$oid": "67a7f53cbc71ea3db9610c46"
+    },
+    {
+      "$oid": "67a7f53cbc71ea3db9610c48"
+    }
+  ],
+  "totalProgress": 0,
+  "createdAt": {
+    "$date": "2025-02-09T00:22:20.526Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-09T00:22:20.526Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7f6dce2a187afcb8a5305"
+  },
+  "userId": {
+    "$oid": "67a7c4d64bf4b8f7c3d45a47"
+  },
+  "mainTopic": "Linear Data Structures in C",
+  "description": "Understand the fundamental concepts, implementation, and operations of linear data structures in the C programming language.",
+  "checkpoints": [
+    {
+      "$oid": "67a7f6dce2a187afcb8a52fb"
+    },
+    {
+      "$oid": "67a7f6dce2a187afcb8a52fd"
+    },
+    {
+      "$oid": "67a7f6dce2a187afcb8a52ff"
+    },
+    {
+      "$oid": "67a7f6dce2a187afcb8a5301"
+    },
+    {
+      "$oid": "67a7f6dce2a187afcb8a5303"
+    }
+  ],
+  "totalProgress": 0,
+  "createdAt": {
+    "$date": "2025-02-09T00:29:16.872Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-09T00:29:16.872Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7f7643bafee1940d6af23"
+  },
+  "userId": {
+    "$oid": "67a7c4d64bf4b8f7c3d45a47"
+  },
+  "mainTopic": "Machine Learning",
+  "description": "A comprehensive learning roadmap for Machine Learning, tailored to your beginner-intermediate difficulty level, read/write learning style, and a 2 hour per day deadline.",
+  "checkpoints": [
+    {
+      "$oid": "67a7f7643bafee1940d6af1f"
+    },
+    {
+      "$oid": "67a7f7643bafee1940d6af19"
+    },
+    {
+      "$oid": "67a7f7643bafee1940d6af21"
+    },
+    {
+      "$oid": "67a7f7643bafee1940d6af1b"
+    },
+    {
+      "$oid": "67a7f7643bafee1940d6af1d"
+    }
+  ],
+  "totalProgress": 0,
+  "createdAt": {
+    "$date": "2025-02-09T00:31:32.757Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-09T00:31:32.757Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a80d1f271f2a57c9c10711"
+  },
+  "userId": {
+    "$oid": "67a8036e271f2a57c9c0ffd7"
+  },
+  "mainTopic": "Data Structures",
+  "description": "A comprehensive learning roadmap for data structures, tailored to your difficulty level, learning style, and deadline.",
+  "checkpoints": [
+    {
+      "$oid": "67a80d1f271f2a57c9c10707"
+    },
+    {
+      "$oid": "67a80d1f271f2a57c9c1070d"
+    },
+    {
+      "$oid": "67a80d1f271f2a57c9c1070b"
+    },
+    {
+      "$oid": "67a80d1f271f2a57c9c1070f"
+    },
+    {
+      "$oid": "67a80d1f271f2a57c9c10709"
+    }
+  ],
+  "totalProgress": 0,
+  "createdAt": {
+    "$date": "2025-02-09T02:04:15.092Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-09T02:04:15.092Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a80d82271f2a57c9c1072c"
+  },
+  "userId": {
+    "$oid": "67a8036e271f2a57c9c0ffd7"
+  },
+  "mainTopic": "System Design",
+  "description": "A structured roadmap for learning system design, tailored to visual learners with an intermediate difficulty preference and a moderate time commitment.",
+  "checkpoints": [
+    {
+      "$oid": "67a80d82271f2a57c9c10726"
+    },
+    {
+      "$oid": "67a80d82271f2a57c9c10722"
+    },
+    {
+      "$oid": "67a80d82271f2a57c9c1072a"
+    },
+    {
+      "$oid": "67a80d82271f2a57c9c10728"
+    },
+    {
+      "$oid": "67a80d82271f2a57c9c10724"
+    }
+  ],
+  "totalProgress": 0,
+  "createdAt": {
+    "$date": "2025-02-09T02:05:54.683Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-09T02:05:54.683Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a8433840b6aba91bcfec09"
+  },
+  "userId": {
+    "$oid": "67a8036e271f2a57c9c0ffd7"
+  },
+  "mainTopic": "UI/UX Design Learning Roadmap",
+  "description": "A structured learning roadmap for UI/UX design, tailored to visual learners with an intermediate challenge tolerance and limited time availability (2 hours per day).",
+  "checkpoints": [
+    {
+      "$oid": "67a8433840b6aba91bcfec03"
+    },
+    {
+      "$oid": "67a8433840b6aba91bcfebff"
+    },
+    {
+      "$oid": "67a8433840b6aba91bcfec05"
+    },
+    {
+      "$oid": "67a8433840b6aba91bcfec07"
+    },
+    {
+      "$oid": "67a8433840b6aba91bcfec01"
+    }
+  ],
+  "totalProgress": 0,
+  "createdAt": {
+    "$date": "2025-02-09T05:55:04.034Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-09T05:55:04.034Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a84dd440b6aba91bcfec5a"
+  },
+  "userId": {
+    "$oid": "67a8036e271f2a57c9c0ffd7"
+  },
+  "mainTopic": "Data Structures",
+  "description": "A structured approach to organize and manage data efficiently, enabling efficient access and retrieval.",
+  "checkpoints": [
+    {
+      "$oid": "67a84dd440b6aba91bcfec50"
+    },
+    {
+      "$oid": "67a84dd440b6aba91bcfec52"
+    },
+    {
+      "$oid": "67a84dd440b6aba91bcfec54"
+    },
+    {
+      "$oid": "67a84dd440b6aba91bcfec56"
+    },
+    {
+      "$oid": "67a84dd440b6aba91bcfec58"
+    }
+  ],
+  "totalProgress": 0,
+  "createdAt": {
+    "$date": "2025-02-09T06:40:20.067Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-09T06:40:20.067Z"
+  },
+  "__v": 0
+}]

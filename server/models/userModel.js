@@ -36,7 +36,39 @@ const userSchema = new Schema({
     ],
     default: [],
   },
-
+  learningParameters: {
+    visualLearning: {
+      type: Number,
+    },
+    auditoryLearning: {
+      type: Number,
+    },
+    readingWritingLearning: {
+      type: Number,
+    },
+    kinestheticLearning: {
+      type: Number,
+    },
+    challengeTolerance: {
+      type: Number,
+    },
+    timeCommitment: {
+      type: Number,
+    },
+    learningPace: {
+      type: Number,
+    },
+    socialPreference: {
+      type: Number,
+    },
+    feedbackPreference: {
+      type: Number,
+    },
+  },
+  isAssessmentComplete: {
+    type: Boolean,
+    default: false
+  },
   resetPasswordToken: {
     type: String,
   },
