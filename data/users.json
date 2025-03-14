@@ -1,0 +1,2362 @@
+[{
+  "_id": {
+    "$oid": "67a78aa3ce2f32171a3c8f7c"
+  },
+  "name": "John Doe",
+  "email": "john.doe@example.com",
+  "password": "$2a$10$NSIQBslFKoFjj2DmHwsDzO2XA6HfUqyQdj2rD9J.6UoNBTRjRnovW",
+  "learningParameters": {
+    "learningStyle": "visual",
+    "timeCommitment": 10,
+    "domainInterest": [
+      "Computer Science",
+      "Algorithms"
+    ],
+    "preferredDifficulty": "intermediate"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78b17349440c658bb534c"
+    },
+    {
+      "$oid": "67a78b29349440c658bb536e"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-01T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 9,
+    "auditoryLearning": 10,
+    "readingWritingLearning": 8,
+    "kinestheticLearning": 5,
+    "challengeTolerance": 4,
+    "timeCommitment": 1,
+    "learningPace": 6,
+    "socialPreference": 5,
+    "feedbackPreference": 4
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa3ce2f32171a3c8f7f"
+  },
+  "name": "Jane Smith",
+  "email": "jane.smith@example.com",
+  "password": "$2a$10$MM/sb.GXnA06HpjgiKsMXOTvZIrszN1ZmkM0YC08uhyPdyEqGNNgS",
+  "learningParameters": {
+    "learningStyle": "auditory",
+    "timeCommitment": 15,
+    "domainInterest": [
+      "Data Structures",
+      "Machine Learning"
+    ],
+    "preferredDifficulty": "advanced"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78b39349440c658bb5391"
+    },
+    {
+      "$oid": "67a78b49349440c658bb53b3"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-02T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 2,
+    "auditoryLearning": 7,
+    "readingWritingLearning": 10,
+    "kinestheticLearning": 2,
+    "challengeTolerance": 10,
+    "timeCommitment": 1,
+    "learningPace": 2,
+    "socialPreference": 2,
+    "feedbackPreference": 3
+  },
+  "clusterId": 1
+},
+{
+  "_id": {
+    "$oid": "67a78aa3ce2f32171a3c8f82"
+  },
+  "name": "Alice Johnson",
+  "email": "alice.johnson@example.com",
+  "password": "$2a$10$s4fzU.jOR99g0k18g0gak.84.A9GVqPSCfdCl8x7RuFVD5xh6liWy",
+  "learningParameters": {
+    "learningStyle": "read/write",
+    "timeCommitment": 5,
+    "domainInterest": [
+      "Web Development",
+      "Databases"
+    ],
+    "preferredDifficulty": "easy"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78b56349440c658bb53cc"
+    },
+    {
+      "$oid": "67a78b66349440c658bb53ee"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-03T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 5,
+    "auditoryLearning": 8,
+    "readingWritingLearning": 3,
+    "kinestheticLearning": 3,
+    "challengeTolerance": 2,
+    "timeCommitment": 1,
+    "learningPace": 9,
+    "socialPreference": 6,
+    "feedbackPreference": 7
+  },
+  "clusterId": 4
+},
+{
+  "_id": {
+    "$oid": "67a78aa3ce2f32171a3c8f84"
+  },
+  "name": "Bob Brown",
+  "email": "bob.brown@example.com",
+  "password": "$2a$10$ix1yQI4W773htCxpX6/2IOyyH3G6PKAE6zcwG.fuAdN5.HbnamWdm",
+  "learningParameters": {
+    "learningStyle": "kinesthetic",
+    "timeCommitment": 20,
+    "domainInterest": [
+      "Networking",
+      "Security"
+    ],
+    "preferredDifficulty": "intermediate"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78b79349440c658bb5411"
+    },
+    {
+      "$oid": "67a78b89349440c658bb5433"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-04T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 1,
+    "auditoryLearning": 5,
+    "readingWritingLearning": 4,
+    "kinestheticLearning": 1,
+    "challengeTolerance": 6,
+    "timeCommitment": 6,
+    "learningPace": 3,
+    "socialPreference": 7,
+    "feedbackPreference": 5
+  },
+  "clusterId": 2
+},
+{
+  "_id": {
+    "$oid": "67a78aa3ce2f32171a3c8f86"
+  },
+  "name": "Charlie Davis",
+  "email": "charlie.davis@example.com",
+  "password": "$2a$10$jo55nM/Qe4jbcBUdKr3xp.DzZjf2RshXjjo60eV8ZxypVKEA7x0OK",
+  "learningParameters": {
+    "learningStyle": "visual",
+    "timeCommitment": 8,
+    "domainInterest": [
+      "Artificial Intelligence",
+      "Robotics"
+    ],
+    "preferredDifficulty": "advanced"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78b99349440c658bb5456"
+    },
+    {
+      "$oid": "67a78ba8349440c658bb5476"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-05T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 9,
+    "auditoryLearning": 2,
+    "readingWritingLearning": 4,
+    "kinestheticLearning": 8,
+    "challengeTolerance": 1,
+    "timeCommitment": 8,
+    "learningPace": 4,
+    "socialPreference": 1,
+    "feedbackPreference": 6
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa4ce2f32171a3c8f88"
+  },
+  "name": "David Evans",
+  "email": "david.evans@example.com",
+  "password": "$2a$10$Mpzm7Qk8ZExnBqdqHye0XOZCdqWtC/5e09Hqjb.MZCIQqcVOx5bdi",
+  "learningParameters": {
+    "learningStyle": "auditory",
+    "timeCommitment": 12,
+    "domainInterest": [
+      "Software Engineering",
+      "Project Management"
+    ],
+    "preferredDifficulty": "easy"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78bb8349440c658bb5493"
+    },
+    {
+      "$oid": "67a78bc5349440c658bb54ab"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-06T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 3,
+    "auditoryLearning": 1,
+    "readingWritingLearning": 3,
+    "kinestheticLearning": 5,
+    "challengeTolerance": 6,
+    "timeCommitment": 10,
+    "learningPace": 8,
+    "socialPreference": 10,
+    "feedbackPreference": 8
+  },
+  "clusterId": 1
+},
+{
+  "_id": {
+    "$oid": "67a78aa4ce2f32171a3c8f8a"
+  },
+  "name": "Eve Foster",
+  "email": "eve.foster@example.com",
+  "password": "$2a$10$15qG8s0Aw0HYw2j4Om1G1unJS7mSkXKGGN6ieXrW.RnSfc/iMy69q",
+  "learningParameters": {
+    "learningStyle": "kinesthetic",
+    "timeCommitment": 6,
+    "domainInterest": [
+      "Game Development",
+      "Graphics"
+    ],
+    "preferredDifficulty": "intermediate"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78bd6349440c658bb54ce"
+    },
+    {
+      "$oid": "67a79067f29da794a6e6c6cc"
+    },
+    {
+      "$oid": "67a79079f29da794a6e6c6ee"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-07T10:00:00.000Z"
+  },
+  "__v": 3,
+  "surveyParameters": {
+    "visualLearning": 2,
+    "auditoryLearning": 9,
+    "readingWritingLearning": 1,
+    "kinestheticLearning": 7,
+    "challengeTolerance": 10,
+    "timeCommitment": 4,
+    "learningPace": 3,
+    "socialPreference": 10,
+    "feedbackPreference": 7
+  },
+  "clusterId": 1
+},
+{
+  "_id": {
+    "$oid": "67a78aa4ce2f32171a3c8f8c"
+  },
+  "name": "Frank Green",
+  "email": "frank.green@example.com",
+  "password": "$2a$10$za6SmCzGrLqMZvrbEFI6Que7klh84B6a7cSzEqe.WTga.JoODLfvS",
+  "learningParameters": {
+    "learningStyle": "read/write",
+    "timeCommitment": 14,
+    "domainInterest": [
+      "Operating Systems",
+      "Embedded Systems"
+    ],
+    "preferredDifficulty": "advanced"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78cdbdaec41147396afb5"
+    },
+    {
+      "$oid": "67a78ce9daec41147396afcd"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-08T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 8,
+    "auditoryLearning": 10,
+    "readingWritingLearning": 4,
+    "kinestheticLearning": 10,
+    "challengeTolerance": 2,
+    "timeCommitment": 2,
+    "learningPace": 5,
+    "socialPreference": 7,
+    "feedbackPreference": 2
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa4ce2f32171a3c8f8e"
+  },
+  "name": "Grace Hill",
+  "email": "grace.hill@example.com",
+  "password": "$2a$10$7y7N.4Hkqp1NRVA0T24RquBRih3zatPitF1mPL4IXAoIc4r8JheoC",
+  "learningParameters": {
+    "learningStyle": "visual",
+    "timeCommitment": 18,
+    "domainInterest": [
+      "Cryptography",
+      "Blockchain"
+    ],
+    "preferredDifficulty": "easy"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78cf6daec41147396afe6"
+    },
+    {
+      "$oid": "67a78d08daec41147396b008"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-09T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 3,
+    "auditoryLearning": 9,
+    "readingWritingLearning": 5,
+    "kinestheticLearning": 4,
+    "challengeTolerance": 9,
+    "timeCommitment": 8,
+    "learningPace": 5,
+    "socialPreference": 9,
+    "feedbackPreference": 5
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa4ce2f32171a3c8f90"
+  },
+  "name": "Henry Jackson",
+  "email": "henry.jackson@example.com",
+  "password": "$2a$10$NGMIEmKGLGKzvImncx9X0OW.KgSezM2WBIRssu9J/MKL7/4useuMu",
+  "learningParameters": {
+    "learningStyle": "auditory",
+    "timeCommitment": 9,
+    "domainInterest": [
+      "Cloud Computing",
+      "DevOps"
+    ],
+    "preferredDifficulty": "intermediate"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78d1adaec41147396b02b"
+    },
+    {
+      "$oid": "67a78d2adaec41147396b04d"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-10T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 4,
+    "auditoryLearning": 6,
+    "readingWritingLearning": 1,
+    "kinestheticLearning": 2,
+    "challengeTolerance": 3,
+    "timeCommitment": 7,
+    "learningPace": 4,
+    "socialPreference": 5,
+    "feedbackPreference": 6
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa4ce2f32171a3c8f92"
+  },
+  "name": "Ivy King",
+  "email": "ivy.king@example.com",
+  "password": "$2a$10$LsAbZiTQq9j/y4iSPw.9deFipe.4TmFTCTmeBv.vGzoDGSAJyunSO",
+  "learningParameters": {
+    "learningStyle": "kinesthetic",
+    "timeCommitment": 7,
+    "domainInterest": [
+      "Mobile Development",
+      "UI/UX"
+    ],
+    "preferredDifficulty": "advanced"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78d3cdaec41147396b070"
+    },
+    {
+      "$oid": "67a78d4bdaec41147396b092"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-11T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 10,
+    "auditoryLearning": 9,
+    "readingWritingLearning": 4,
+    "kinestheticLearning": 9,
+    "challengeTolerance": 2,
+    "timeCommitment": 7,
+    "learningPace": 3,
+    "socialPreference": 7,
+    "feedbackPreference": 10
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa4ce2f32171a3c8f94"
+  },
+  "name": "Jack Lee",
+  "email": "jack.lee@example.com",
+  "password": "$2a$10$GawNViOS/UkS02p4YUdCFeMwG9/Rpy1988JyieaytGfWwmVewrJXW",
+  "learningParameters": {
+    "learningStyle": "read/write",
+    "timeCommitment": 11,
+    "domainInterest": [
+      "Big Data",
+      "Data Science"
+    ],
+    "preferredDifficulty": "easy"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78d5bdaec41147396b0b5"
+    },
+    {
+      "$oid": "67a78d6bdaec41147396b0d5"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-12T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 7,
+    "auditoryLearning": 9,
+    "readingWritingLearning": 5,
+    "kinestheticLearning": 2,
+    "challengeTolerance": 8,
+    "timeCommitment": 3,
+    "learningPace": 2,
+    "socialPreference": 3,
+    "feedbackPreference": 9
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa4ce2f32171a3c8f96"
+  },
+  "name": "Kate Martin",
+  "email": "kate.martin@example.com",
+  "password": "$2a$10$EbPVQIuza7IXz7ViGoJdCOTfNs00Ck2MxkhVWBZu9VwOk9QSrxu5i",
+  "learningParameters": {
+    "learningStyle": "visual",
+    "timeCommitment": 13,
+    "domainInterest": [
+      "Quantum Computing",
+      "Theoretical CS"
+    ],
+    "preferredDifficulty": "intermediate"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78d7fdaec41147396b0fa"
+    },
+    {
+      "$oid": "67a78d8fdaec41147396b11c"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-13T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 3,
+    "auditoryLearning": 2,
+    "readingWritingLearning": 2,
+    "kinestheticLearning": 3,
+    "challengeTolerance": 5,
+    "timeCommitment": 10,
+    "learningPace": 6,
+    "socialPreference": 3,
+    "feedbackPreference": 4
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa5ce2f32171a3c8f98"
+  },
+  "name": "Leo Nelson",
+  "email": "leo.nelson@example.com",
+  "password": "$2a$10$kXj.2hf5AJbr3vn6yb.OX.kqkpV6rTLWI6xuy3aoL9ZmUBzXk2dc2",
+  "learningParameters": {
+    "learningStyle": "auditory",
+    "timeCommitment": 16,
+    "domainInterest": [
+      "Distributed Systems",
+      "Concurrency"
+    ],
+    "preferredDifficulty": "advanced"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78da0daec41147396b13f"
+    },
+    {
+      "$oid": "67a78db0daec41147396b161"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-14T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 7,
+    "auditoryLearning": 2,
+    "readingWritingLearning": 10,
+    "kinestheticLearning": 6,
+    "challengeTolerance": 8,
+    "timeCommitment": 5,
+    "learningPace": 9,
+    "socialPreference": 3,
+    "feedbackPreference": 10
+  },
+  "clusterId": 1
+},
+{
+  "_id": {
+    "$oid": "67a78aa5ce2f32171a3c8f9a"
+  },
+  "name": "Mia Owens",
+  "email": "mia.owens@example.com",
+  "password": "$2a$10$DcQgnbe2mIjnxWROZo2ateSLYMrJmub4cvDkluVWGq2vWGtaDp9cy",
+  "learningParameters": {
+    "learningStyle": "kinesthetic",
+    "timeCommitment": 4,
+    "domainInterest": [
+      "Software Testing",
+      "QA"
+    ],
+    "preferredDifficulty": "easy"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78dbcdaec41147396b17c"
+    },
+    {
+      "$oid": "67a78dc9daec41147396b196"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-15T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 10,
+    "auditoryLearning": 7,
+    "readingWritingLearning": 1,
+    "kinestheticLearning": 9,
+    "challengeTolerance": 7,
+    "timeCommitment": 10,
+    "learningPace": 6,
+    "socialPreference": 10,
+    "feedbackPreference": 9
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa5ce2f32171a3c8f9c"
+  },
+  "name": "Nina Parker",
+  "email": "nina.parker@example.com",
+  "password": "$2a$10$/CDiYUXQcAMdZrVA5Gir7.OzD4I.lpjoT3KEO6RPTuriF.nBVmYaa",
+  "learningParameters": {
+    "learningStyle": "read/write",
+    "timeCommitment": 17,
+    "domainInterest": [
+      "Human-Computer Interaction",
+      "Accessibility"
+    ],
+    "preferredDifficulty": "intermediate"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78dd9daec41147396b1b9"
+    },
+    {
+      "$oid": "67a78decdaec41147396b1db"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-16T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 8,
+    "auditoryLearning": 8,
+    "readingWritingLearning": 9,
+    "kinestheticLearning": 4,
+    "challengeTolerance": 9,
+    "timeCommitment": 6,
+    "learningPace": 10,
+    "socialPreference": 5,
+    "feedbackPreference": 9
+  },
+  "clusterId": 1
+},
+{
+  "_id": {
+    "$oid": "67a78aa5ce2f32171a3c8f9e"
+  },
+  "name": "Oscar Quinn",
+  "email": "oscar.quinn@example.com",
+  "password": "$2a$10$v58dnMFHBKPMN5SSMO/rmOFZjQlC3Gj4PB0IrjXc/avL.WFQvyWme",
+  "learningParameters": {
+    "learningStyle": "visual",
+    "timeCommitment": 19,
+    "domainInterest": [
+      "Natural Language Processing",
+      "Speech Recognition"
+    ],
+    "preferredDifficulty": "advanced"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78dfddaec41147396b1fe"
+    },
+    {
+      "$oid": "67a78e11daec41147396b220"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-17T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 1,
+    "auditoryLearning": 8,
+    "readingWritingLearning": 3,
+    "kinestheticLearning": 9,
+    "challengeTolerance": 7,
+    "timeCommitment": 4,
+    "learningPace": 3,
+    "socialPreference": 10,
+    "feedbackPreference": 3
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa5ce2f32171a3c8fa0"
+  },
+  "name": "Paula Roberts",
+  "email": "paula.roberts@example.com",
+  "password": "$2a$10$L6GRgxN8G2hFWr3xG0THY.7wPylmlQQDZJe470rGrP0WCu6XxubvS",
+  "learningParameters": {
+    "learningStyle": "auditory",
+    "timeCommitment": 10,
+    "domainInterest": [
+      "Computer Vision",
+      "Image Processing"
+    ],
+    "preferredDifficulty": "easy"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78e20daec41147396b241"
+    },
+    {
+      "$oid": "67a78e2edaec41147396b259"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-18T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 4,
+    "auditoryLearning": 8,
+    "readingWritingLearning": 9,
+    "kinestheticLearning": 7,
+    "challengeTolerance": 2,
+    "timeCommitment": 3,
+    "learningPace": 8,
+    "socialPreference": 8,
+    "feedbackPreference": 4
+  },
+  "clusterId": 1
+},
+{
+  "_id": {
+    "$oid": "67a78aa5ce2f32171a3c8fa2"
+  },
+  "name": "Quinn Scott",
+  "email": "quinn.scott@example.com",
+  "password": "$2a$10$rR9QgqgzHi1IpY.vecQ/M.AXP5pKzJ71W/FPFMixvUGsHaT4CY3Pu",
+  "learningParameters": {
+    "learningStyle": "kinesthetic",
+    "timeCommitment": 12,
+    "domainInterest": [
+      "Augmented Reality",
+      "Virtual Reality"
+    ],
+    "preferredDifficulty": "intermediate"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78e41daec41147396b27c"
+    },
+    {
+      "$oid": "67a78e53daec41147396b29e"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-19T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 10,
+    "auditoryLearning": 4,
+    "readingWritingLearning": 3,
+    "kinestheticLearning": 7,
+    "challengeTolerance": 8,
+    "timeCommitment": 3,
+    "learningPace": 6,
+    "socialPreference": 8,
+    "feedbackPreference": 3
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa5ce2f32171a3c8fa4"
+  },
+  "name": "Rachel Taylor",
+  "email": "rachel.taylor@example.com",
+  "password": "$2a$10$6eRe926KXzjieSIAoHy/X.EE3Xgs/M4WfIuNO4duPDQ62SuBOd.u.",
+  "learningParameters": {
+    "learningStyle": "read/write",
+    "timeCommitment": 15,
+    "domainInterest": [
+      "Bioinformatics",
+      "Computational Biology"
+    ],
+    "preferredDifficulty": "advanced"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78e62daec41147396b2c1"
+    },
+    {
+      "$oid": "67a78e73daec41147396b2e1"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-20T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 10,
+    "auditoryLearning": 7,
+    "readingWritingLearning": 2,
+    "kinestheticLearning": 3,
+    "challengeTolerance": 10,
+    "timeCommitment": 5,
+    "learningPace": 10,
+    "socialPreference": 8,
+    "feedbackPreference": 8
+  },
+  "clusterId": 0
+},
+{
+  "_id": {
+    "$oid": "67a78aa5ce2f32171a3c8fa6"
+  },
+  "name": "Sam White",
+  "email": "sam.white@example.com",
+  "password": "$2a$10$RZcODNev9avUyGFkbX6G4euTVC.vsTJgTsCkS/xmNb5eZ9BqGVBGq",
+  "learningParameters": {
+    "learningStyle": "visual",
+    "timeCommitment": 20,
+    "domainInterest": [
+      "E-commerce",
+      "Fintech"
+    ],
+    "preferredDifficulty": "easy"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78e7fdaec41147396b2fa"
+    },
+    {
+      "$oid": "67a78e91daec41147396b31c"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-21T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 7,
+    "auditoryLearning": 3,
+    "readingWritingLearning": 2,
+    "kinestheticLearning": 8,
+    "challengeTolerance": 4,
+    "timeCommitment": 6,
+    "learningPace": 4,
+    "socialPreference": 9,
+    "feedbackPreference": 4
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa6ce2f32171a3c8fa8"
+  },
+  "name": "Tina Young",
+  "email": "tina.young@example.com",
+  "password": "$2a$10$/0csho4O/XzvPOY9SKDQw.kczRDqqEgvj9XM8Jt0V3xi1JpaJ910m",
+  "learningParameters": {
+    "learningStyle": "auditory",
+    "timeCommitment": 8,
+    "domainInterest": [
+      "Blockchain",
+      "Cryptocurrency"
+    ],
+    "preferredDifficulty": "intermediate"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78e9fdaec41147396b335"
+    },
+    {
+      "$oid": "67a78eb0daec41147396b357"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-22T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 1,
+    "auditoryLearning": 7,
+    "readingWritingLearning": 6,
+    "kinestheticLearning": 10,
+    "challengeTolerance": 9,
+    "timeCommitment": 1,
+    "learningPace": 9,
+    "socialPreference": 3,
+    "feedbackPreference": 3
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa6ce2f32171a3c8faa"
+  },
+  "name": "Uma Harris",
+  "email": "uma.harris@example.com",
+  "password": "$2a$10$8pZXAZfKmyue9UUPe2d4MuVSJrzw7NXaK9kUbMQbv.PZ6wvj7JKn.",
+  "learningParameters": {
+    "learningStyle": "kinesthetic",
+    "timeCommitment": 11,
+    "domainInterest": [
+      "EdTech",
+      "E-learning"
+    ],
+    "preferredDifficulty": "advanced"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78ebedaec41147396b37a"
+    },
+    {
+      "$oid": "67a78ecfdaec41147396b39c"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-23T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 4,
+    "auditoryLearning": 4,
+    "readingWritingLearning": 9,
+    "kinestheticLearning": 8,
+    "challengeTolerance": 8,
+    "timeCommitment": 9,
+    "learningPace": 1,
+    "socialPreference": 10,
+    "feedbackPreference": 10
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa6ce2f32171a3c8fac"
+  },
+  "name": "Victor Adams",
+  "email": "victor.adams@example.com",
+  "password": "$2a$10$83sCzcaNk1H/kVawpFZ.DeF7dXQvqCVfNN8fN1mB.h0GTJTbL/JRW",
+  "learningParameters": {
+    "learningStyle": "read/write",
+    "timeCommitment": 13,
+    "domainInterest": [
+      "HealthTech",
+      "Medical Informatics"
+    ],
+    "preferredDifficulty": "easy"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78ededaec41147396b3bf"
+    },
+    {
+      "$oid": "67a7908df29da794a6e6c721"
+    },
+    {
+      "$oid": "67a7909ef29da794a6e6c743"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-24T10:00:00.000Z"
+  },
+  "__v": 3,
+  "surveyParameters": {
+    "visualLearning": 1,
+    "auditoryLearning": 7,
+    "readingWritingLearning": 6,
+    "kinestheticLearning": 3,
+    "challengeTolerance": 10,
+    "timeCommitment": 3,
+    "learningPace": 4,
+    "socialPreference": 5,
+    "feedbackPreference": 4
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa6ce2f32171a3c8fae"
+  },
+  "name": "Wendy Brown",
+  "email": "wendy.brown@example.com",
+  "password": "$2a$10$Y72SQNpwjAVDlveGyBZaBulQp/Kqm8qC.Gqy2PKV1oqBAw2QU9yXm",
+  "learningParameters": {
+    "learningStyle": "visual",
+    "timeCommitment": 16,
+    "domainInterest": [
+      "AgriTech",
+      "Environmental Informatics"
+    ],
+    "preferredDifficulty": "intermediate"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78effdaec41147396b3e2"
+    },
+    {
+      "$oid": "67a78f10daec41147396b404"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-25T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 2,
+    "auditoryLearning": 8,
+    "readingWritingLearning": 5,
+    "kinestheticLearning": 1,
+    "challengeTolerance": 2,
+    "timeCommitment": 8,
+    "learningPace": 8,
+    "socialPreference": 2,
+    "feedbackPreference": 4
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa6ce2f32171a3c8fb0"
+  },
+  "name": "Xander Clark",
+  "email": "xander.clark@example.com",
+  "password": "$2a$10$XSzZTU7IgiUQNKnqULTFi.nfC2E7eYGDrsHYP6YfYUMFVfLOCK1YS",
+  "learningParameters": {
+    "learningStyle": "auditory",
+    "timeCommitment": 18,
+    "domainInterest": [
+      "Logistics",
+      "Supply Chain Management"
+    ],
+    "preferredDifficulty": "advanced"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78f20daec41147396b427"
+    },
+    {
+      "$oid": "67a78f2edaec41147396b43f"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-26T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 3,
+    "auditoryLearning": 10,
+    "readingWritingLearning": 6,
+    "kinestheticLearning": 6,
+    "challengeTolerance": 6,
+    "timeCommitment": 5,
+    "learningPace": 5,
+    "socialPreference": 5,
+    "feedbackPreference": 1
+  },
+  "clusterId": 1
+},
+{
+  "_id": {
+    "$oid": "67a78aa6ce2f32171a3c8fb2"
+  },
+  "name": "Yara Davis",
+  "email": "yara.davis@example.com",
+  "password": "$2a$10$7Uvy.U0Id22xfxSmQU/Cp./47mQlxJIT0LDRGSCC4b6sKivljMUs.",
+  "learningParameters": {
+    "learningStyle": "kinesthetic",
+    "timeCommitment": 7,
+    "domainInterest": [
+      "Automotive Tech",
+      "Autonomous Vehicles"
+    ],
+    "preferredDifficulty": "easy"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78f40daec41147396b462"
+    },
+    {
+      "$oid": "67a78f50daec41147396b484"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-27T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 4,
+    "auditoryLearning": 3,
+    "readingWritingLearning": 5,
+    "kinestheticLearning": 9,
+    "challengeTolerance": 9,
+    "timeCommitment": 8,
+    "learningPace": 10,
+    "socialPreference": 6,
+    "feedbackPreference": 6
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa6ce2f32171a3c8fb4"
+  },
+  "name": "Zane Edwards",
+  "email": "zane.edwards@example.com",
+  "password": "$2a$10$YtgToBEK5O3LVyrOto21ZutMxIKz37AG.WTmlAl2EMfPyVJfl3yWC",
+  "learningParameters": {
+    "learningStyle": "read/write",
+    "timeCommitment": 9,
+    "domainInterest": [
+      "Aerospace Tech",
+      "Aviation"
+    ],
+    "preferredDifficulty": "intermediate"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78f63daec41147396b4a7"
+    },
+    {
+      "$oid": "67a78f73daec41147396b4c5"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-28T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 9,
+    "auditoryLearning": 1,
+    "readingWritingLearning": 2,
+    "kinestheticLearning": 7,
+    "challengeTolerance": 4,
+    "timeCommitment": 5,
+    "learningPace": 5,
+    "socialPreference": 7,
+    "feedbackPreference": 1
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa6ce2f32171a3c8fb6"
+  },
+  "name": "Amelia Foster",
+  "email": "amelia.foster@example.com",
+  "password": "$2a$10$QQnwE77dmuK1FG8YwyocGOZQ49Su4PG2jG1zUg7gLJPcDl7Hv3ZKi",
+  "learningParameters": {
+    "learningStyle": "visual",
+    "timeCommitment": 14,
+    "domainInterest": [
+      "Startups",
+      "Entrepreneurship"
+    ],
+    "preferredDifficulty": "advanced"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78f84daec41147396b4e8"
+    },
+    {
+      "$oid": "67a78f95daec41147396b50a"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-03-01T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 4,
+    "auditoryLearning": 6,
+    "readingWritingLearning": 5,
+    "kinestheticLearning": 1,
+    "challengeTolerance": 4,
+    "timeCommitment": 2,
+    "learningPace": 4,
+    "socialPreference": 3,
+    "feedbackPreference": 2
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa7ce2f32171a3c8fb8"
+  },
+  "name": "Brian Green",
+  "email": "brian.green@example.com",
+  "password": "$2a$10$66klne.fBfgdSepe6XVEDeHZxCQ1BeZdJx8KRCMRfpJ2C5YsvhieW",
+  "learningParameters": {
+    "learningStyle": "auditory",
+    "timeCommitment": 10,
+    "domainInterest": [
+      "Job Interviews",
+      "Career Development"
+    ],
+    "preferredDifficulty": "easy"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78fa9daec41147396b52b"
+    },
+    {
+      "$oid": "67a78fb6daec41147396b545"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-03-02T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 6,
+    "auditoryLearning": 5,
+    "readingWritingLearning": 2,
+    "kinestheticLearning": 10,
+    "challengeTolerance": 2,
+    "timeCommitment": 5,
+    "learningPace": 1,
+    "socialPreference": 1,
+    "feedbackPreference": 8
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa7ce2f32171a3c8fba"
+  },
+  "name": "Chloe Harris",
+  "email": "chloe.harris@example.com",
+  "password": "$2a$10$LwZyjjbSjUBqkv0Bhxlnt.OSQdak4u/lzp3calZZ2PhjHRM5CdqyK",
+  "learningParameters": {
+    "learningStyle": "kinesthetic",
+    "timeCommitment": 12,
+    "domainInterest": [
+      "Digital Marketing",
+      "SEO"
+    ],
+    "preferredDifficulty": "intermediate"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78fc6daec41147396b568"
+    },
+    {
+      "$oid": "67a78fd6daec41147396b58a"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-03-03T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 7,
+    "auditoryLearning": 9,
+    "readingWritingLearning": 3,
+    "kinestheticLearning": 4,
+    "challengeTolerance": 9,
+    "timeCommitment": 8,
+    "learningPace": 6,
+    "socialPreference": 7,
+    "feedbackPreference": 5
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa7ce2f32171a3c8fbc"
+  },
+  "name": "Daniel Johnson",
+  "email": "daniel.johnson@example.com",
+  "password": "$2a$10$2lkeO1wHWXaLychZD1w65.v71VlobkofWw1b8nXDb/DbY1FCjGtnK",
+  "learningParameters": {
+    "learningStyle": "read/write",
+    "timeCommitment": 5,
+    "domainInterest": [
+      "Content Creation",
+      "Writing"
+    ],
+    "preferredDifficulty": "easy"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a78fe8daec41147396b5ad"
+    },
+    {
+      "$oid": "67a78ff8daec41147396b5cf"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-03-04T10:00:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 7,
+    "auditoryLearning": 1,
+    "readingWritingLearning": 2,
+    "kinestheticLearning": 6,
+    "challengeTolerance": 2,
+    "timeCommitment": 1,
+    "learningPace": 4,
+    "socialPreference": 9,
+    "feedbackPreference": 10
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa7ce2f32171a3c8fbe"
+  },
+  "name": "Aarav Sharma",
+  "email": "aarav.sharma@example.com",
+  "password": "$2a$10$4rxfDSx0ZkdL6.btr2M2vurhpxRf9d71XHnGNTkU8Kk75UUpEBjae",
+  "learningParameters": {
+    "learningStyle": "visual",
+    "timeCommitment": 12,
+    "domainInterest": [
+      "Machine Learning",
+      "Artificial Intelligence"
+    ],
+    "preferredDifficulty": "advanced"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a7900adaec41147396b5f2"
+    },
+    {
+      "$oid": "67a7901cdaec41147396b614"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-02T08:45:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 1,
+    "auditoryLearning": 9,
+    "readingWritingLearning": 9,
+    "kinestheticLearning": 8,
+    "challengeTolerance": 5,
+    "timeCommitment": 8,
+    "learningPace": 5,
+    "socialPreference": 1,
+    "feedbackPreference": 9
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa7ce2f32171a3c8fc0"
+  },
+  "name": "Ishita Patel",
+  "email": "ishita.patel@example.com",
+  "password": "$2a$10$l5c0gjobjF3l4I/Q9ol5..24LPyHg9pnZYkiLm8hFyZ8oDgfQ3or6",
+  "learningParameters": {
+    "learningStyle": "read/write",
+    "timeCommitment": 8,
+    "domainInterest": [
+      "Cybersecurity",
+      "Ethical Hacking"
+    ],
+    "preferredDifficulty": "intermediate"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a7902fdaec41147396b637"
+    },
+    {
+      "$oid": "67a793a3f2369ee8c5b3a86a"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-03T10:15:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 7,
+    "auditoryLearning": 3,
+    "readingWritingLearning": 9,
+    "kinestheticLearning": 5,
+    "challengeTolerance": 3,
+    "timeCommitment": 6,
+    "learningPace": 7,
+    "socialPreference": 9,
+    "feedbackPreference": 2
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa7ce2f32171a3c8fc2"
+  },
+  "name": "Rajesh Verma",
+  "email": "rajesh.verma@example.com",
+  "password": "$2a$10$AEQKWkStybe.SJtlo1Q5gOgfLpu87iq4YhLrfY66TMEhjV9lWtd0C",
+  "learningParameters": {
+    "learningStyle": "kinesthetic",
+    "timeCommitment": 15,
+    "domainInterest": [
+      "Blockchain",
+      "Cryptography"
+    ],
+    "preferredDifficulty": "advanced"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a794821b28029aee0fa012"
+    },
+    {
+      "$oid": "67a794931b28029aee0fa034"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-04T12:30:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 9,
+    "auditoryLearning": 6,
+    "readingWritingLearning": 4,
+    "kinestheticLearning": 7,
+    "challengeTolerance": 3,
+    "timeCommitment": 7,
+    "learningPace": 3,
+    "socialPreference": 4,
+    "feedbackPreference": 4
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa7ce2f32171a3c8fc4"
+  },
+  "name": "Ananya Iyer",
+  "email": "ananya.iyer@example.com",
+  "password": "$2a$10$YSb6bWGcZs3ZaDmJBX1XjOB2oLTYJcoivUpmlQTrSAOoh3dujpCAW",
+  "learningParameters": {
+    "learningStyle": "auditory",
+    "timeCommitment": 5,
+    "domainInterest": [
+      "Frontend Development",
+      "UI/UX"
+    ],
+    "preferredDifficulty": "easy"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a794a41b28029aee0fa057"
+    },
+    {
+      "$oid": "67a794b61b28029aee0fa079"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-05T14:20:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 8,
+    "auditoryLearning": 8,
+    "readingWritingLearning": 1,
+    "kinestheticLearning": 8,
+    "challengeTolerance": 3,
+    "timeCommitment": 6,
+    "learningPace": 6,
+    "socialPreference": 5,
+    "feedbackPreference": 7
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa7ce2f32171a3c8fc6"
+  },
+  "name": "Kabir Choudhary",
+  "email": "kabir.choudhary@example.com",
+  "password": "$2a$10$mc1wXLm3kQEiCHx7zdZ/t.q4DlN87ue9mUiXQ0NnpWxpsokhRXmN.",
+  "learningParameters": {
+    "learningStyle": "visual",
+    "timeCommitment": 10,
+    "domainInterest": [
+      "Backend Development",
+      "Cloud Computing"
+    ],
+    "preferredDifficulty": "intermediate"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a794c61b28029aee0fa09c"
+    },
+    {
+      "$oid": "67a794db1b28029aee0fa0be"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-06T09:10:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 6,
+    "auditoryLearning": 4,
+    "readingWritingLearning": 10,
+    "kinestheticLearning": 5,
+    "challengeTolerance": 9,
+    "timeCommitment": 7,
+    "learningPace": 3,
+    "socialPreference": 6,
+    "feedbackPreference": 6
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa7ce2f32171a3c8fc8"
+  },
+  "name": "Sneha Reddy",
+  "email": "sneha.reddy@example.com",
+  "password": "$2a$10$XMC.6G0v.HyRrYsez5K43eoLr2woUa10X9X/I/DpZ2mr/srto9Nse",
+  "learningParameters": {
+    "learningStyle": "read/write",
+    "timeCommitment": 6,
+    "domainInterest": [
+      "Software Testing",
+      "Automation"
+    ],
+    "preferredDifficulty": "easy"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a794e71b28029aee0fa0d7"
+    },
+    {
+      "$oid": "67a794f71b28029aee0fa0f9"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-07T11:50:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 3,
+    "auditoryLearning": 10,
+    "readingWritingLearning": 8,
+    "kinestheticLearning": 10,
+    "challengeTolerance": 4,
+    "timeCommitment": 8,
+    "learningPace": 4,
+    "socialPreference": 3,
+    "feedbackPreference": 2
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa8ce2f32171a3c8fca"
+  },
+  "name": "Aditya Joshi",
+  "email": "aditya.joshi@example.com",
+  "password": "$2a$10$qr2TLuiAm9spaN0CcuuCJOWCrEMvZluSj0m3fjpikDmWVs7trFBGu",
+  "learningParameters": {
+    "learningStyle": "auditory",
+    "timeCommitment": 12,
+    "domainInterest": [
+      "Competitive Programming",
+      "Algorithms"
+    ],
+    "preferredDifficulty": "advanced"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a795051b28029aee0fa112"
+    },
+    {
+      "$oid": "67a795151b28029aee0fa134"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-08T15:30:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 2,
+    "auditoryLearning": 2,
+    "readingWritingLearning": 9,
+    "kinestheticLearning": 3,
+    "challengeTolerance": 10,
+    "timeCommitment": 4,
+    "learningPace": 2,
+    "socialPreference": 7,
+    "feedbackPreference": 3
+  },
+  "clusterId": 1
+},
+{
+  "_id": {
+    "$oid": "67a78aa8ce2f32171a3c8fcc"
+  },
+  "name": "Meera Das",
+  "email": "meera.das@example.com",
+  "password": "$2a$10$N9Ghionl0fkJoyi9.ZndF.ADYbpRcPuglbHoMWylf/1rFTRCkVs2e",
+  "learningParameters": {
+    "learningStyle": "visual",
+    "timeCommitment": 7,
+    "domainInterest": [
+      "Data Science",
+      "Big Data"
+    ],
+    "preferredDifficulty": "intermediate"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a795241b28029aee0fa157"
+    },
+    {
+      "$oid": "67a795341b28029aee0fa179"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-09T13:10:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 7,
+    "auditoryLearning": 5,
+    "readingWritingLearning": 6,
+    "kinestheticLearning": 1,
+    "challengeTolerance": 8,
+    "timeCommitment": 10,
+    "learningPace": 7,
+    "socialPreference": 7,
+    "feedbackPreference": 9
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa8ce2f32171a3c8fce"
+  },
+  "name": "Vikram Gupta",
+  "email": "vikram.gupta@example.com",
+  "password": "$2a$10$xP2yPEVEW5LVJoZAHY4EM.tqVxi/IyplFePuGkT3CHja8f.iPLTZ2",
+  "learningParameters": {
+    "learningStyle": "kinesthetic",
+    "timeCommitment": 20,
+    "domainInterest": [
+      "Game Development",
+      "Graphics Programming"
+    ],
+    "preferredDifficulty": "advanced"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a795471b28029aee0fa19c"
+    },
+    {
+      "$oid": "67a795581b28029aee0fa1be"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-10T16:40:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 5,
+    "auditoryLearning": 2,
+    "readingWritingLearning": 4,
+    "kinestheticLearning": 10,
+    "challengeTolerance": 2,
+    "timeCommitment": 2,
+    "learningPace": 3,
+    "socialPreference": 2,
+    "feedbackPreference": 5
+  },
+  "clusterId": 1
+},
+{
+  "_id": {
+    "$oid": "67a78aa8ce2f32171a3c8fd0"
+  },
+  "name": "Pooja Nair",
+  "email": "pooja.nair@example.com",
+  "password": "$2a$10$/G3ae4hjJEBzE8SOcP4Sde5dKz2QsEiGDS9sog77ayBGG3/2iuMAm",
+  "learningParameters": {
+    "learningStyle": "read/write",
+    "timeCommitment": 10,
+    "domainInterest": [
+      "Databases",
+      "SQL Optimization"
+    ],
+    "preferredDifficulty": "intermediate"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a795661b28029aee0fa1d7"
+    },
+    {
+      "$oid": "67a795791b28029aee0fa1f9"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-11T14:15:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 6,
+    "auditoryLearning": 2,
+    "readingWritingLearning": 1,
+    "kinestheticLearning": 7,
+    "challengeTolerance": 9,
+    "timeCommitment": 10,
+    "learningPace": 8,
+    "socialPreference": 3,
+    "feedbackPreference": 9
+  },
+  "clusterId": 4
+},
+{
+  "_id": {
+    "$oid": "67a78aa8ce2f32171a3c8fd2"
+  },
+  "name": "Ahmed Khan",
+  "email": "ahmed.khan@example.com",
+  "password": "$2a$10$oLRkz6DxefGx1ltvBAkcQu9eeqHIr8IdhWVFUMbI8RR4rhbE.lacO",
+  "learningParameters": {
+    "learningStyle": "visual",
+    "timeCommitment": 10,
+    "domainInterest": [
+      "Software Engineering",
+      "System Design"
+    ],
+    "preferredDifficulty": "intermediate"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a795871b28029aee0fa212"
+    },
+    {
+      "$oid": "67a795941b28029aee0fa22a"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-12T08:30:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 5,
+    "auditoryLearning": 7,
+    "readingWritingLearning": 3,
+    "kinestheticLearning": 5,
+    "challengeTolerance": 4,
+    "timeCommitment": 7,
+    "learningPace": 2,
+    "socialPreference": 8,
+    "feedbackPreference": 3
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa8ce2f32171a3c8fd4"
+  },
+  "name": "Ayesha Siddiqui",
+  "email": "ayesha.siddiqui@example.com",
+  "password": "$2a$10$uzhfQhCQrvPMkQKhGF.ilOTKzb.mew.lm6Ux24Qe3gverl9lYlb86",
+  "learningParameters": {
+    "learningStyle": "read/write",
+    "timeCommitment": 6,
+    "domainInterest": [
+      "Data Structures",
+      "Algorithms"
+    ],
+    "preferredDifficulty": "intermediate"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a795a31b28029aee0fa24d"
+    },
+    {
+      "$oid": "67a795b21b28029aee0fa26f"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-13T09:45:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 7,
+    "auditoryLearning": 6,
+    "readingWritingLearning": 9,
+    "kinestheticLearning": 9,
+    "challengeTolerance": 10,
+    "timeCommitment": 7,
+    "learningPace": 4,
+    "socialPreference": 8,
+    "feedbackPreference": 9
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa8ce2f32171a3c8fd6"
+  },
+  "name": "Bilal Hussain",
+  "email": "bilal.hussain@example.com",
+  "password": "$2a$10$NKpyLv0Ey2XMJ08UWtG1xetFiEJm79VB/LtFtY4v5LttPmQdPBo4C",
+  "learningParameters": {
+    "learningStyle": "auditory",
+    "timeCommitment": 15,
+    "domainInterest": [
+      "Artificial Intelligence",
+      "Machine Learning"
+    ],
+    "preferredDifficulty": "advanced"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a795c31b28029aee0fa292"
+    },
+    {
+      "$oid": "67a795d31b28029aee0fa2b4"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-14T12:20:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 1,
+    "auditoryLearning": 4,
+    "readingWritingLearning": 4,
+    "kinestheticLearning": 5,
+    "challengeTolerance": 2,
+    "timeCommitment": 3,
+    "learningPace": 1,
+    "socialPreference": 9,
+    "feedbackPreference": 7
+  },
+  "clusterId": 1
+},
+{
+  "_id": {
+    "$oid": "67a78aa8ce2f32171a3c8fd8"
+  },
+  "name": "Fatima Malik",
+  "email": "fatima.malik@example.com",
+  "password": "$2a$10$B.im1duvlUzrwGLC470vKuJ.8ckVkZABd6PFaC.ES2AJUHIbnV4iO",
+  "learningParameters": {
+    "learningStyle": "kinesthetic",
+    "timeCommitment": 8,
+    "domainInterest": [
+      "Cybersecurity",
+      "Ethical Hacking"
+    ],
+    "preferredDifficulty": "intermediate"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a795df1b28029aee0fa2cd"
+    },
+    {
+      "$oid": "67a795ef1b28029aee0fa2ef"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-15T14:10:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 10,
+    "auditoryLearning": 7,
+    "readingWritingLearning": 9,
+    "kinestheticLearning": 7,
+    "challengeTolerance": 2,
+    "timeCommitment": 4,
+    "learningPace": 2,
+    "socialPreference": 1,
+    "feedbackPreference": 2
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa9ce2f32171a3c8fda"
+  },
+  "name": "Usman Qureshi",
+  "email": "usman.qureshi@example.com",
+  "password": "$2a$10$g4.Cwa4ZdCGySUTq3WAvouyyLfH9GIFxjBc7gUmFJpaSiE/WHBWXK",
+  "learningParameters": {
+    "learningStyle": "visual",
+    "timeCommitment": 12,
+    "domainInterest": [
+      "Web Development",
+      "Full Stack"
+    ],
+    "preferredDifficulty": "easy"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a795ff1b28029aee0fa312"
+    },
+    {
+      "$oid": "67a796111b28029aee0fa334"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-16T10:55:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 3,
+    "auditoryLearning": 8,
+    "readingWritingLearning": 9,
+    "kinestheticLearning": 10,
+    "challengeTolerance": 7,
+    "timeCommitment": 5,
+    "learningPace": 6,
+    "socialPreference": 2,
+    "feedbackPreference": 4
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa9ce2f32171a3c8fdc"
+  },
+  "name": "Zara Tariq",
+  "email": "zara.tariq@example.com",
+  "password": "$2a$10$rh.xItvNoltoQpuZsnz8GukA15VgcUy.gkVMHYn5MJ3rXiiYRTOoe",
+  "learningParameters": {
+    "learningStyle": "read/write",
+    "timeCommitment": 7,
+    "domainInterest": [
+      "Cloud Computing",
+      "DevOps"
+    ],
+    "preferredDifficulty": "advanced"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a796231b28029aee0fa357"
+    },
+    {
+      "$oid": "67a796341b28029aee0fa379"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-17T16:20:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 2,
+    "auditoryLearning": 2,
+    "readingWritingLearning": 7,
+    "kinestheticLearning": 9,
+    "challengeTolerance": 10,
+    "timeCommitment": 6,
+    "learningPace": 7,
+    "socialPreference": 1,
+    "feedbackPreference": 1
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a78aa9ce2f32171a3c8fde"
+  },
+  "name": "Hamza Raza",
+  "email": "hamza.raza@example.com",
+  "password": "$2a$10$DBoabrg3jEKCrPlWIPQ2buNptrKiX1yr3OykbfCobHW.FJv7aMGem",
+  "learningParameters": {
+    "learningStyle": "auditory",
+    "timeCommitment": 20,
+    "domainInterest": [
+      "Game Development",
+      "Graphics Programming"
+    ],
+    "preferredDifficulty": "advanced"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a796441b28029aee0fa396"
+    },
+    {
+      "$oid": "67a796551b28029aee0fa3b8"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-18T14:40:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 10,
+    "auditoryLearning": 3,
+    "readingWritingLearning": 8,
+    "kinestheticLearning": 8,
+    "challengeTolerance": 1,
+    "timeCommitment": 3,
+    "learningPace": 8,
+    "socialPreference": 6,
+    "feedbackPreference": 4
+  },
+  "clusterId": 1
+},
+{
+  "_id": {
+    "$oid": "67a78aa9ce2f32171a3c8fe0"
+  },
+  "name": "Sana Javed",
+  "email": "sana.javed@example.com",
+  "password": "$2a$10$WpeHpGKFj9PUb02Spt50Z.xYdBdOaez/Od0pyZ9o035qDo8N/eAHG",
+  "learningParameters": {
+    "learningStyle": "kinesthetic",
+    "timeCommitment": 10,
+    "domainInterest": [
+      "Mobile App Development",
+      "UI/UX"
+    ],
+    "preferredDifficulty": "intermediate"
+  },
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [
+    {
+      "$oid": "67a796631b28029aee0fa3d1"
+    },
+    {
+      "$oid": "67a796741b28029aee0fa3f3"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "dateJoined": {
+    "$date": "2025-02-19T11:15:00.000Z"
+  },
+  "__v": 2,
+  "surveyParameters": {
+    "visualLearning": 1,
+    "auditoryLearning": 7,
+    "readingWritingLearning": 1,
+    "kinestheticLearning": 10,
+    "challengeTolerance": 3,
+    "timeCommitment": 2,
+    "learningPace": 9,
+    "socialPreference": 10,
+    "feedbackPreference": 5
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a8036e271f2a57c9c0ffd7"
+  },
+  "name": "Yashwant",
+  "email": "yashwantbhosale07@gmail.com",
+  "password": "$2b$10$K2rRyRR8hDOmWZi7UYuph.mKsbI/QP4hHftUoXLAqUKyfCOHjaobS",
+  "learningParameters": {
+    "domainInterest": []
+  },
+  "isAssessmentComplete": true,
+  "avg_quiz_score": 0,
+  "quizzes": [
+    {
+      "$oid": "67a809c4271f2a57c9c10008"
+    }
+  ],
+  "roadmaps": [
+    {
+      "$oid": "67a80d1f271f2a57c9c10711"
+    },
+    {
+      "$oid": "67a80d82271f2a57c9c1072c"
+    },
+    {
+      "$oid": "67a8433840b6aba91bcfec09"
+    },
+    {
+      "$oid": "67a84dd440b6aba91bcfec5a"
+    }
+  ],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "__v": 5,
+  "surveyParameters": {
+    "visualLearning": 3,
+    "auditoryLearning": 5,
+    "readingWritingLearning": 3,
+    "kinestheticLearning": 5,
+    "challengeTolerance": 7,
+    "timeCommitment": 3,
+    "learningPace": 5,
+    "socialPreference": 7,
+    "feedbackPreference": 3
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a80a23271f2a57c9c10023"
+  },
+  "name": "Mohammad",
+  "email": "deshmukhmehmood1@gmail.com",
+  "password": "$2b$10$/jo.0V3TC95Z5aV3rezx3.ZP1Zdkuh/kuyFT0p812QCSdtJsfiJGC",
+  "learningParameters": {
+    "domainInterest": []
+  },
+  "isAssessmentComplete": true,
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "__v": 0,
+  "surveyParameters": {
+    "visualLearning": 3,
+    "auditoryLearning": 7,
+    "readingWritingLearning": 5,
+    "kinestheticLearning": 3,
+    "challengeTolerance": 7,
+    "timeCommitment": 5,
+    "learningPace": 3,
+    "socialPreference": 5,
+    "feedbackPreference": 7
+  },
+  "clusterId": 3
+},
+{
+  "_id": {
+    "$oid": "67a84c6540b6aba91bcfec22"
+  },
+  "name": "yashwant",
+  "email": "yashwant@gmail.com",
+  "password": "$2b$10$eIRpRJzK7PAvux5yYjFDaOfMEEIr7rtR0d7/nlJBp7RpikTum5/rC",
+  "learningParameters": {
+    "domainInterest": []
+  },
+  "isAssessmentComplete": true,
+  "avg_quiz_score": 0,
+  "quizzes": [],
+  "roadmaps": [],
+  "resetPasswordToken": null,
+  "resetPasswordExpires": null,
+  "__v": 0,
+  "surveyParameters": {
+    "visualLearning": 5,
+    "auditoryLearning": 5,
+    "readingWritingLearning": 10,
+    "kinestheticLearning": 7,
+    "challengeTolerance": 5,
+    "timeCommitment": 7,
+    "learningPace": 10,
+    "socialPreference": 5,
+    "feedbackPreference": 7
+  }
+}]

@@ -73,17 +73,12 @@ quizSchema.statics.generateQuiz = async function (
   // i am not proud of this
   // difficulty is not used in the prompt, we may use it if we want
   const prompt = `purpose:
-    Generate a set of 15 comprehensive multiple-choice questions on the specified topic - ${topic}. The questions should assess both subject knowledge and learning preferences to enable personalized learning experiences.
+    Generate a set of 10 comprehensive multiple-choice questions on the specified topic - ${topic}. The questions should assess both subject knowledge and learning preferences to enable personalized learning experiences.
     Question Distribution:
-
-    4 Beginner-level knowledge questions
-    3 Intermediate-level knowledge questions
-    2 Advanced-level knowledge questions
-    6 Learning style/preference assessment questions (to facilitate collaborative filtering)
-
+    questions should be of ${difficulty} difficulty level and stick to the topic and test all the concepts of the topic.
     Format Requirements:
+   
     Each question must include:
-
     1. The question text
     2. 4 answer options (labeled A through D)
     3. The correct answer (letter only)
@@ -94,7 +89,7 @@ quizSchema.statics.generateQuiz = async function (
     [
         {
             "question": "What is the capital of France?",
-            "options": ["A) Berlin", "B) Madrid", "C) Paris", "D) Rome"],
+            "options": ["Berlin", "Madrid", "Paris", "Rome"],
             "answer": "C",
             "explanation": "Paris is the capital and most populous city of France."
         },
@@ -104,9 +99,10 @@ quizSchema.statics.generateQuiz = async function (
 
     Additional Guidelines:
     Ensure all knowledge questions are factually accurate
-    Make learning style questions generalized enough to apply across various topics
-    Include questions that help determine prior knowledge levels for better collaborative filtering
-    Match question difficulty to the specified level (beginner, intermediate, or advanced)`;
+    Avoid ambiguous or misleading questions, questions should be clear.
+    start with easy questions and gradually increase the difficulty level.
+    obviously stick to the provided difficulty level. - ${difficulty}
+    `;
 
   const result = await model.generateContent(prompt);
   console.log(result);
