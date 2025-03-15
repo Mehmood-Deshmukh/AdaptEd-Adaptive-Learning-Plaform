@@ -2,6 +2,7 @@
 myenv
 ./.env
 .env
+/.venv
 
 ./faiss_index.pkl
 faiss_index.pkl

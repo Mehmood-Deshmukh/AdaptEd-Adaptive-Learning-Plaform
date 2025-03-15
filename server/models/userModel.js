@@ -36,7 +36,54 @@ const userSchema = new Schema({
     ],
     default: [],
   },
-
+  // this might be redundant but keeping it for now
+  learningParameters: {
+    learningStyle: {
+      type: String,
+    },
+    timeCommitment: {
+      type: Number,
+    },
+    domainInterest: {
+      type: [String],
+    },
+    preferredDifficulty: {
+      type: String,
+    },
+  },
+  surveyParameters: {
+    visualLearning: {
+      type: Number,
+    },
+    auditoryLearning: {
+      type: Number,
+    },
+    readingWritingLearning: {
+      type: Number,
+    },
+    kinestheticLearning: {
+      type: Number,
+    },
+    challengeTolerance: {
+      type: Number,
+    },
+    timeCommitment: {
+      type: Number,
+    },
+    learningPace: {
+      type: Number,
+    },
+    socialPreference: {
+      type: Number,
+    },
+    feedbackPreference: {
+      type: Number,
+    },
+  },
+  isAssessmentComplete: {
+    type: Boolean,
+    default: false,
+  },
   resetPasswordToken: {
     type: String,
   },

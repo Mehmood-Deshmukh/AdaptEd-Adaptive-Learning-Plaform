@@ -1,0 +1,2295 @@
+[{
+  "_id": {
+    "$oid": "67a7a73ea5730a125ae5ce15"
+  },
+  "question": "Which of the following is NOT a fundamental data structure?",
+  "options": [
+    "A) Array",
+    "B) Queue",
+    "C) Binary Tree",
+    "D) Object"
+  ],
+  "correctOption": "D",
+  "explanation": "An object is not a fundamental data structure but a composite data type",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Beginner"
+  ],
+  "domain": "Fundamental Algorithms and Data Structures",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a73ea5730a125ae5ce16"
+  },
+  "question": "What is the time complexity of a linear search algorithm?",
+  "options": [
+    "A) O(1)",
+    "B) O(log n)",
+    "C) O(n)",
+    "D) O(n^2)"
+  ],
+  "correctOption": "C",
+  "explanation": "A linear search algorithm takes O(n) time, as it needs to iterate through the entire list",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Beginner"
+  ],
+  "domain": "Fundamental Algorithms and Data Structures",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a73ea5730a125ae5ce17"
+  },
+  "question": "Which sorting algorithm is known for its stability?",
+  "options": [
+    "A) Quick Sort",
+    "B) Merge Sort",
+    "C) Bubble Sort",
+    "D) Insertion Sort"
+  ],
+  "correctOption": "B",
+  "explanation": "Merge Sort is a stable sorting algorithm, meaning it preserves the relative order of equal elements in the input",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Beginner"
+  ],
+  "domain": "Fundamental Algorithms and Data Structures",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a73ea5730a125ae5ce18"
+  },
+  "question": "What is the difference between an array and a linked list?",
+  "options": [
+    "A) Arrays are static while linked lists are dynamic",
+    "B) Linked lists are static while arrays are dynamic",
+    "C) Arrays store data contiguously while linked lists do not",
+    "D) Linked lists store data contiguously while arrays do not"
+  ],
+  "correctOption": "C",
+  "explanation": "Arrays store data contiguously in memory, while linked lists store data in nodes connected by pointers",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Beginner"
+  ],
+  "domain": "Fundamental Algorithms and Data Structures",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a73ea5730a125ae5ce1b"
+  },
+  "question": "Which of the following is a disadvantage of recursion?",
+  "options": [
+    "A) It can lead to stack overflows",
+    "B) It is difficult to understand",
+    "C) It is inefficient",
+    "D) It is not suitable for large datasets"
+  ],
+  "correctOption": "A",
+  "explanation": "Recursion can lead to stack overflows if the recursive function is called too many times without terminating",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Beginner"
+  ],
+  "domain": "Fundamental Algorithms and Data Structures",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a73ea5730a125ae5ce1c"
+  },
+  "question": "What is the role of a priority queue?",
+  "options": [
+    "A) To store elements in order of their priority",
+    "B) To store elements in order of their insertion",
+    "C) To search for an element in a list",
+    "D) To sort a list of elements"
+  ],
+  "correctOption": "A",
+  "explanation": "Priority queues are data structures that store elements in order of their priority, so that the element with the highest priority can be accessed quickly",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Beginner"
+  ],
+  "domain": "Fundamental Algorithms and Data Structures",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a73ea5730a125ae5ce1d"
+  },
+  "question": "Which of the following is a dynamic programming algorithm?",
+  "options": [
+    "A) Floyd-Warshall algorithm",
+    "B) Bubble Sort",
+    "C) Depth-First Search",
+    "D) Quick Sort"
+  ],
+  "correctOption": "A",
+  "explanation": "Floyd-Warshall algorithm is a dynamic programming algorithm that solves the all-pairs shortest path problem in a graph",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Beginner"
+  ],
+  "domain": "Fundamental Algorithms and Data Structures",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a73ea5730a125ae5ce1e"
+  },
+  "question": "What is the time complexity of a binary search tree?",
+  "options": [
+    "A) O(1)",
+    "B) O(log n)",
+    "C) O(n)",
+    "D) O(n^2)"
+  ],
+  "correctOption": "B",
+  "explanation": "Binary search trees have a time complexity of O(log n) for search, insertion, and deletion operations",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Beginner"
+  ],
+  "domain": "Fundamental Algorithms and Data Structures",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a73ea5730a125ae5ce19"
+  },
+  "question": "Which of the following is a greedy algorithm?",
+  "options": [
+    "A) Dijkstra's Algorithm",
+    "B) Bubble Sort",
+    "C) Merge Sort",
+    "D) Depth-First Search"
+  ],
+  "correctOption": "A",
+  "explanation": "Dijkstra's Algorithm is a greedy algorithm that always chooses the locally optimal solution at each step",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Beginner"
+  ],
+  "domain": "Fundamental Algorithms and Data Structures",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a73ea5730a125ae5ce1a"
+  },
+  "question": "What is the purpose of a hash table?",
+  "options": [
+    "A) To store key-value pairs for fast lookup",
+    "B) To sort a list of elements",
+    "C) To search for an element in a sorted array",
+    "D) To represent a graph"
+  ],
+  "correctOption": "A",
+  "explanation": "Hash tables are data structures that allow fast constant-time lookup of values based on their keys",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Beginner"
+  ],
+  "domain": "Fundamental Algorithms and Data Structures",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a764a5730a125ae5ce2f"
+  },
+  "question": "What is the purpose of a feature engineering process?",
+  "options": [
+    "A) To improve the accuracy of machine learning models",
+    "B) To reduce the number of features in a dataset",
+    "C) To create new features from existing ones",
+    "D) All of the above"
+  ],
+  "correctOption": "D",
+  "explanation": "Feature engineering encompasses all of the mentioned tasks.",
+  "tags": [
+    "NLP",
+    "Text Processing",
+    "Machine Learning"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a764a5730a125ae5ce2e"
+  },
+  "question": "Which of the following is NOT a type of machine learning algorithm?",
+  "options": [
+    "A) Supervised learning",
+    "B) Unsupervised learning",
+    "C) Reinforcement learning",
+    "D) Regression analysis"
+  ],
+  "correctOption": "D",
+  "explanation": "Regression analysis is a statistical technique, not a machine learning algorithm.",
+  "tags": [
+    "NLP",
+    "Text Processing",
+    "Machine Learning"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a764a5730a125ae5ce30"
+  },
+  "question": "Which of the following is a common evaluation metric for classification models?",
+  "options": [
+    "A) Mean squared error",
+    "B) Accuracy",
+    "C) F1 score",
+    "D) R-squared"
+  ],
+  "correctOption": "B",
+  "explanation": "Accuracy is a common metric used to measure the proportion of correct predictions.",
+  "tags": [
+    "NLP",
+    "Text Processing",
+    "Machine Learning"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a764a5730a125ae5ce31"
+  },
+  "question": "What is the main difference between supervised and unsupervised learning algorithms?",
+  "options": [
+    "A) Supervised algorithms use labeled data, while unsupervised algorithms do not",
+    "B) Supervised algorithms are more accurate than unsupervised algorithms",
+    "C) Unsupervised algorithms can handle larger datasets than supervised algorithms",
+    "D) There is no difference between supervised and unsupervised learning algorithms"
+  ],
+  "correctOption": "A",
+  "explanation": "The presence of labeled data is the key distinguishing factor between supervised and unsupervised learning.",
+  "tags": [
+    "NLP",
+    "Text Processing",
+    "Machine Learning"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a764a5730a125ae5ce32"
+  },
+  "question": "How do you measure the performance of a regression model?",
+  "options": [
+    "A) Mean absolute error",
+    "B) R-squared",
+    "C) Root mean squared error",
+    "D) All of the above"
+  ],
+  "correctOption": "D",
+  "explanation": "All of the mentioned metrics are used to measure the performance of regression models.",
+  "tags": [
+    "NLP",
+    "Text Processing",
+    "Machine Learning"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a764a5730a125ae5ce33"
+  },
+  "question": "What is the role of hyperparameter tuning in machine learning?",
+  "options": [
+    "A) To optimize the performance of machine learning models",
+    "B) To reduce the risk of overfitting",
+    "C) To improve the generalization ability of models",
+    "D) All of the above"
+  ],
+  "correctOption": "D",
+  "explanation": "Hyperparameter tuning involves setting the optimal values for model parameters to improve performance.",
+  "tags": [
+    "NLP",
+    "Text Processing",
+    "Machine Learning"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a764a5730a125ae5ce36"
+  },
+  "question": "Which of the following is NOT a benefit of using machine learning?",
+  "options": [
+    "A) Automation",
+    "B) Improved decision-making",
+    "C) Increased data accuracy",
+    "D) Reduced costs"
+  ],
+  "correctOption": "C",
+  "explanation": "Machine learning does not directly improve data accuracy, although it can help identify and correct errors.",
+  "tags": [
+    "NLP",
+    "Text Processing",
+    "Machine Learning"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a764a5730a125ae5ce37"
+  },
+  "question": "What is a regularization technique in machine learning?",
+  "options": [
+    "A) A method to reduce overfitting",
+    "B) A technique to improve model accuracy",
+    "C) A procedure to simplify models",
+    "D) A method to handle missing data"
+  ],
+  "correctOption": "A",
+  "explanation": "Regularization techniques are used to prevent overfitting by penalizing complex models.",
+  "tags": [
+    "NLP",
+    "Text Processing",
+    "Machine Learning"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a764a5730a125ae5ce34"
+  },
+  "question": "Which type of machine learning model is suitable for tasks where the output is continuous?",
+  "options": [
+    "A) Regression model",
+    "B) Classification model",
+    "C) Clustering algorithm",
+    "D) Dimensionality reduction algorithm"
+  ],
+  "correctOption": "A",
+  "explanation": "Regression models are designed to predict continuous values.",
+  "tags": [
+    "NLP",
+    "Text Processing",
+    "Machine Learning"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a764a5730a125ae5ce35"
+  },
+  "question": "What is a confusion matrix used for?",
+  "options": [
+    "A) To visualize the performance of classification models",
+    "B) To identify misclassified data points",
+    "C) To calculate evaluation metrics",
+    "D) All of the above"
+  ],
+  "correctOption": "D",
+  "explanation": "Confusion matrices provide a comprehensive view of classification model performance.",
+  "tags": [
+    "NLP",
+    "Text Processing",
+    "Machine Learning"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a8e8a5730a125ae5ce47"
+  },
+  "question": "Which algorithm has a time complexity of O(n^2)?",
+  "options": [
+    "A) Insertion Sort",
+    "B) Merge Sort",
+    "C) Quick Sort",
+    "D) Bubble Sort"
+  ],
+  "correctOption": "D",
+  "explanation": "Bubble Sort has a time complexity of O(n^2) in both average and worst cases.",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Problem Solving"
+  ],
+  "domain": "Introductory Algorithm Design and Analysis",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a8e8a5730a125ae5ce48"
+  },
+  "question": "What is the purpose of a hash table?",
+  "options": [
+    "A) To store key-value pairs",
+    "B) To sort data",
+    "C) To find the minimum value in a dataset",
+    "D) To optimize search operations"
+  ],
+  "correctOption": "A",
+  "explanation": "A hash table is a data structure that stores key-value pairs and allows fast retrieval based on the key.",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Problem Solving"
+  ],
+  "domain": "Introductory Algorithm Design and Analysis",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a8e8a5730a125ae5ce4a"
+  },
+  "question": "What is the Big O notation for the time complexity of the Binary Search algorithm?",
+  "options": [
+    "A) O(n)",
+    "B) O(log n)",
+    "C) O(n^2)",
+    "D) O(1)"
+  ],
+  "correctOption": "B",
+  "explanation": "Binary Search has a time complexity of O(log n) because it divides the search space in half at each iteration.",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Problem Solving"
+  ],
+  "domain": "Introductory Algorithm Design and Analysis",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a8e8a5730a125ae5ce49"
+  },
+  "question": "What is the difference between a stack and a queue?",
+  "options": [
+    "A) Stack follows LIFO, while Queue follows FIFO",
+    "B) Queue follows LIFO, while Stack follows FIFO",
+    "C) Stack and Queue both follow LIFO",
+    "D) Stack and Queue both follow FIFO"
+  ],
+  "correctOption": "A",
+  "explanation": "Stack follows Last-In-First-Out (LIFO), while Queue follows First-In-First-Out (FIFO).",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Problem Solving"
+  ],
+  "domain": "Introductory Algorithm Design and Analysis",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a8e8a5730a125ae5ce4b"
+  },
+  "question": "What is the best way to learn algorithms?",
+  "options": [
+    "A) Reading books and tutorials",
+    "B) Practicing coding problems",
+    "C) Attending online courses",
+    "D) A combination of all of the above"
+  ],
+  "correctOption": "D",
+  "explanation": "The best way to learn algorithms is through a combination of reading, practicing, and attending online courses.",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Problem Solving"
+  ],
+  "domain": "Introductory Algorithm Design and Analysis",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a8e8a5730a125ae5ce4d"
+  },
+  "question": "Which of the following is a key concept in algorithm analysis?",
+  "options": [
+    "A) Asymptotic notation",
+    "B) Space complexity",
+    "C) Time complexity",
+    "D) All of the above"
+  ],
+  "correctOption": "D",
+  "explanation": "Asymptotic notation, space complexity, and time complexity are all fundamental concepts in algorithm analysis.",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Problem Solving"
+  ],
+  "domain": "Introductory Algorithm Design and Analysis",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a8e8a5730a125ae5ce4e"
+  },
+  "question": "What is the purpose of dynamic programming?",
+  "options": [
+    "A) To solve problems by breaking them down into smaller subproblems",
+    "B) To reduce the time complexity of algorithms",
+    "C) To optimize memory usage",
+    "D) To handle recursion"
+  ],
+  "correctOption": "A",
+  "explanation": "Dynamic programming is a technique used to solve problems by breaking them down into smaller subproblems and storing the results to avoid redundant calculations.",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Problem Solving"
+  ],
+  "domain": "Introductory Algorithm Design and Analysis",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a8e8a5730a125ae5ce4f"
+  },
+  "question": "Which of the following is NOT a type of sorting algorithm?",
+  "options": [
+    "A) Insertion Sort",
+    "B) Merge Sort",
+    "C) Binary Search",
+    "D) Heap Sort"
+  ],
+  "correctOption": "C",
+  "explanation": "Binary Search is a searching algorithm, not a sorting algorithm.",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Problem Solving"
+  ],
+  "domain": "Introductory Algorithm Design and Analysis",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a8e8a5730a125ae5ce50"
+  },
+  "question": "What is the computational complexity of finding the maximum element in an unsorted array?",
+  "options": [
+    "A) O(n)",
+    "B) O(n log n)",
+    "C) O(log n)",
+    "D) O(1)"
+  ],
+  "correctOption": "A",
+  "explanation": "Finding the maximum element in an unsorted array requires iterating through the entire array, hence the time complexity is O(n).",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Problem Solving"
+  ],
+  "domain": "Introductory Algorithm Design and Analysis",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a8faa5730a125ae5ce5a"
+  },
+  "question": "Which of the following is NOT a type of machine learning algorithm?",
+  "options": [
+    "A) Supervised Learning",
+    "B) Unsupervised Learning",
+    "C) Reinforcement Learning",
+    "D) Ensemble Learning"
+  ],
+  "correctOption": "D",
+  "explanation": "Ensemble Learning is not a type of machine learning algorithm, but rather a technique for combining multiple models to improve performance.",
+  "tags": [
+    "NLP",
+    "Text Classification",
+    "Sentiment Analysis"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a8faa5730a125ae5ce5b"
+  },
+  "question": "What is the primary goal of dimensionality reduction in machine learning?",
+  "options": [
+    "A) Improve model accuracy",
+    "B) Reduce computational complexity",
+    "C) Improve data visualization",
+    "D) Detect outliers"
+  ],
+  "correctOption": "B",
+  "explanation": "Dimensionality reduction aims to reduce the number of features in a dataset while preserving the most relevant information, thus reducing computational complexity.",
+  "tags": [
+    "NLP",
+    "Text Classification",
+    "Sentiment Analysis"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a8faa5730a125ae5ce5c"
+  },
+  "question": "Which of the following evaluation metrics is most appropriate for binary classification?",
+  "options": [
+    "A) Mean Squared Error",
+    "B) Root Mean Squared Error",
+    "C) Accuracy",
+    "D) F1-score"
+  ],
+  "correctOption": "C",
+  "explanation": "Accuracy measures the proportion of correct predictions, which is suitable for binary classification where the outcome can be either true or false.",
+  "tags": [
+    "NLP",
+    "Text Classification",
+    "Sentiment Analysis"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a8faa5730a125ae5ce5f"
+  },
+  "question": "In Reinforcement Learning, what is the purpose of the reward function?",
+  "options": [
+    "A) To provide feedback to the agent on its actions",
+    "B) To determine the optimal policy",
+    "C) To estimate the value of states",
+    "D) To update the agent's parameters"
+  ],
+  "correctOption": "A",
+  "explanation": "The reward function provides the agent with feedback on its actions, indicating whether an action is beneficial or not, thus guiding its learning.",
+  "tags": [
+    "NLP",
+    "Text Classification",
+    "Sentiment Analysis"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a8faa5730a125ae5ce5e"
+  },
+  "question": "Which of the following is a key characteristic of a Gaussian Mixture Model?",
+  "options": [
+    "A) Assumes normal distribution for each cluster",
+    "B) Uses k-means for cluster initialization",
+    "C) Can handle only numerical data",
+    "D) Requires equal-sized clusters"
+  ],
+  "correctOption": "A",
+  "explanation": "A Gaussian Mixture Model assumes that each cluster follows a normal distribution, which is a key characteristic of this unsupervised clustering algorithm.",
+  "tags": [
+    "NLP",
+    "Text Classification",
+    "Sentiment Analysis"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a8faa5730a125ae5ce60"
+  },
+  "question": "Which of the following techniques is used to address the overfitting problem in machine learning models?",
+  "options": [
+    "A) Hyperparameter Tuning",
+    "B) Cross-Validation",
+    "C) Regularization",
+    "D) Early Stopping"
+  ],
+  "correctOption": "C",
+  "explanation": "Regularization involves adding a penalty term to the loss function, which helps to prevent overfitting by reducing the model's complexity.",
+  "tags": [
+    "NLP",
+    "Text Classification",
+    "Sentiment Analysis"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a8faa5730a125ae5ce5d"
+  },
+  "question": "What is the primary advantage of using regularized linear regression?",
+  "options": [
+    "A) Improved model generalization",
+    "B) Reduced overfitting",
+    "C) Increased computational efficiency",
+    "D) Enhanced feature selection"
+  ],
+  "correctOption": "B",
+  "explanation": "Regularization in linear regression adds a penalty term to the loss function, which helps reduce overfitting and improves model generalization.",
+  "tags": [
+    "NLP",
+    "Text Classification",
+    "Sentiment Analysis"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a8faa5730a125ae5ce62"
+  },
+  "question": "In the context of collaborative filtering, what is the purpose of the user-item rating matrix?",
+  "options": [
+    "A) To store the ratings given by users to items",
+    "B) To represent the similarity between users and items",
+    "C) To predict the ratings for unknown user-item pairs",
+    "D) To identify groups of similar users"
+  ],
+  "correctOption": "A",
+  "explanation": "The user-item rating matrix is a central component of collaborative filtering, storing the ratings or preferences that users have expressed for different items.",
+  "tags": [
+    "NLP",
+    "Text Classification",
+    "Sentiment Analysis"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a8faa5730a125ae5ce61"
+  },
+  "question": "What is the purpose of using kernel functions in Support Vector Machines (SVMs)?",
+  "options": [
+    "A) To map data into higher-dimensional space",
+    "B) To reduce the dimensionality of the data",
+    "C) To improve the computational efficiency of SVM",
+    "D) To handle categorical data"
+  ],
+  "correctOption": "A",
+  "explanation": "Kernel functions play a crucial role in SVMs by mapping the data into higher-dimensional space, which can improve the model's ability to find linearly separable boundaries in the original feature space.",
+  "tags": [
+    "NLP",
+    "Text Classification",
+    "Sentiment Analysis"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a8faa5730a125ae5ce63"
+  },
+  "question": "Which of the following is NOT a learning style?",
+  "options": [
+    "A) Auditory Learner",
+    "B) Visual Learner",
+    "C) Kinesthetic Learner",
+    "D) Logical Learner"
+  ],
+  "correctOption": "D",
+  "explanation": "Logical Learner is not a recognized learning style. The three main learning styles are Auditory, Visual, and Kinesthetic.",
+  "tags": [
+    "NLP",
+    "Text Classification",
+    "Sentiment Analysis"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a97fb239c6442b428ea8"
+  },
+  "question": "Which of the following best describes an algorithm?",
+  "options": [
+    "A) A programming language",
+    "B) A sequence of steps to solve a problem",
+    "C) A type of computer hardware",
+    "D) A specific programming technique"
+  ],
+  "correctOption": "B",
+  "explanation": "An algorithm is a step-by-step procedure for solving a problem or accomplishing a task. ",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Problem Solving"
+  ],
+  "domain": "Introductory Algorithm Concepts",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a97fb239c6442b428ea9"
+  },
+  "question": "What is the primary purpose of a flowchart in algorithm design?",
+  "options": [
+    "A) To write executable code",
+    "B) To visually represent the flow of an algorithm",
+    "C) To define data structures",
+    "D) To debug existing code"
+  ],
+  "correctOption": "B",
+  "explanation": "Flowcharts provide a visual representation of the steps and logic within an algorithm, making it easier to understand and design.",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Problem Solving"
+  ],
+  "domain": "Introductory Algorithm Concepts",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a97fb239c6442b428eaa"
+  },
+  "question": "Which of the following is NOT a common step in algorithm development?",
+  "options": [
+    "A) Problem definition",
+    "B) Algorithm design",
+    "C) Code compilation",
+    "D) Testing and refinement"
+  ],
+  "correctOption": "C",
+  "explanation": "Code compilation is part of the implementation phase, after the algorithm has been designed and tested.",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Problem Solving"
+  ],
+  "domain": "Introductory Algorithm Concepts",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a97fb239c6442b428eab"
+  },
+  "question": "What is the time complexity of a linear search algorithm in the worst-case scenario?",
+  "options": [
+    "A) O(1)",
+    "B) O(log n)",
+    "C) O(n)",
+    "D) O(n^2)"
+  ],
+  "correctOption": "C",
+  "explanation": "In a linear search, the worst case is when the target element is at the end (or not present), requiring checking all n elements.",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Problem Solving"
+  ],
+  "domain": "Introductory Algorithm Concepts",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a97fb239c6442b428eae"
+  },
+  "question": "Consider a recursive algorithm to calculate the factorial of a number. What is the base case that stops the recursion?",
+  "options": [
+    "A) n > 0",
+    "B) n = 0",
+    "C) n < 0",
+    "D) n = 1"
+  ],
+  "correctOption": "B",
+  "explanation": "The base case for factorial is when n equals 0;  factorial(0) = 1. This stops the infinite recursion.",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Problem Solving"
+  ],
+  "domain": "Introductory Algorithm Concepts",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a97fb239c6442b428eaf"
+  },
+  "question": "How would you describe the difference between iterative and recursive algorithms?",
+  "options": [
+    "A) Iterative algorithms use loops; recursive algorithms use function calls that call themselves.",
+    "B) Recursive algorithms are always faster.",
+    "C) Iterative algorithms are always easier to understand.",
+    "D) They both solve the same problems with identical efficiency."
+  ],
+  "correctOption": "A",
+  "explanation": "Iterative algorithms use loops (for, while) to repeat steps, while recursive algorithms solve problems by breaking them into smaller subproblems of the same type.",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Problem Solving"
+  ],
+  "domain": "Introductory Algorithm Concepts",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a97fb239c6442b428eb0"
+  },
+  "question": "When learning a new algorithm, do you prefer:",
+  "options": [
+    "A) Reading detailed theoretical explanations",
+    "B) Working through many examples and practice problems",
+    "C) Visual aids like diagrams and animations",
+    "D) A combination of all the above"
+  ],
+  "correctOption": "D",
+  "explanation": "A multi-faceted approach combining theoretical understanding with practical application and visual aids often leads to better comprehension.",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Problem Solving"
+  ],
+  "domain": "Introductory Algorithm Concepts",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a97fb239c6442b428eb1"
+  },
+  "question": "Which learning style best describes your approach to understanding algorithms?",
+  "options": [
+    "A) Visual-spatial (learning through diagrams and images)",
+    "B) Auditory (learning through lectures and discussions)",
+    "C) Kinesthetic (learning through hands-on activities)",
+    "D) Reading/Writing (learning through texts and notes)"
+  ],
+  "correctOption": "D",
+  "explanation": "This is a subjective question, and the answer depends on the individual's learning preferences.  There is no single 'correct' answer.",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Problem Solving"
+  ],
+  "domain": "Introductory Algorithm Concepts",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a97fb239c6442b428eac"
+  },
+  "question": "What is the main advantage of using a binary search algorithm compared to a linear search?",
+  "options": [
+    "A) It works on unsorted data",
+    "B) It requires less memory",
+    "C) It's faster for large datasets",
+    "D) It's simpler to implement"
+  ],
+  "correctOption": "C",
+  "explanation": "Binary search is significantly faster for large datasets because it repeatedly halves the search space. It requires sorted data.",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Problem Solving"
+  ],
+  "domain": "Introductory Algorithm Concepts",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a97fb239c6442b428ead"
+  },
+  "question": "Which data structure is most commonly used in implementing a binary search algorithm?",
+  "options": [
+    "A) Linked list",
+    "B) Queue",
+    "C) Stack",
+    "D) Sorted array"
+  ],
+  "correctOption": "D",
+  "explanation": "Binary search efficiently works on sorted arrays or similar data structures allowing for efficient splitting into halves.",
+  "tags": [
+    "Algorithms",
+    "Data Structures",
+    "Problem Solving"
+  ],
+  "domain": "Introductory Algorithm Concepts",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a98db239c6442b428ec0"
+  },
+  "question": "Which of the following is NOT a type of machine learning?",
+  "options": [
+    "A) Supervised Learning",
+    "B) Unsupervised Learning",
+    "C) Reinforcement Learning",
+    "D) Procedural Learning"
+  ],
+  "correctOption": "D",
+  "explanation": "Procedural learning is a cognitive learning process, not a type of machine learning.",
+  "tags": [
+    "NLP",
+    "Text Classification",
+    "Sentiment Analysis"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a98db239c6442b428ec1"
+  },
+  "question": "In supervised learning, the training data includes:",
+  "options": [
+    "A) Only input data",
+    "B) Only output data",
+    "C) Both input and output data",
+    "D) Neither input nor output data"
+  ],
+  "correctOption": "C",
+  "explanation": "Supervised learning requires both input features and their corresponding correct output labels for training.",
+  "tags": [
+    "NLP",
+    "Text Classification",
+    "Sentiment Analysis"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a98db239c6442b428ec2"
+  },
+  "question": "What is the primary goal of a classification algorithm?",
+  "options": [
+    "A) To predict a continuous value",
+    "B) To group similar data points together",
+    "C) To predict a categorical value",
+    "D) To find patterns in data"
+  ],
+  "correctOption": "C",
+  "explanation": "Classification algorithms aim to assign data points to predefined categories or classes.",
+  "tags": [
+    "NLP",
+    "Text Classification",
+    "Sentiment Analysis"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a98db239c6442b428ec3"
+  },
+  "question": "A simple linear regression model aims to find:",
+  "options": [
+    "A) A complex non-linear relationship between variables",
+    "B) A straight line that best fits the data",
+    "C) Clusters of data points",
+    "D) A decision boundary"
+  ],
+  "correctOption": "B",
+  "explanation": "Linear regression models find the best-fitting straight line to represent the relationship between variables.",
+  "tags": [
+    "NLP",
+    "Text Classification",
+    "Sentiment Analysis"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a98db239c6442b428ec4"
+  },
+  "question": "What is the difference between k-means clustering and hierarchical clustering?",
+  "options": [
+    "A) k-means is hierarchical, hierarchical is not",
+    "B) k-means requires specifying the number of clusters beforehand, hierarchical does not.",
+    "C) k-means is unsupervised, hierarchical is supervised",
+    "D) They are essentially the same algorithm"
+  ],
+  "correctOption": "B",
+  "explanation": "K-means requires pre-defining the number of clusters, while hierarchical clustering builds a hierarchy of clusters.",
+  "tags": [
+    "NLP",
+    "Text Classification",
+    "Sentiment Analysis"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a98db239c6442b428ec5"
+  },
+  "question": "What is overfitting in machine learning?",
+  "options": [
+    "A) The model performs well on training data but poorly on unseen data.",
+    "B) The model performs poorly on both training and unseen data.",
+    "C) The model performs well on both training and unseen data.",
+    "D) The model is too simple to capture the patterns in the data."
+  ],
+  "correctOption": "A",
+  "explanation": "Overfitting occurs when a model learns the training data too well, including noise, resulting in poor generalization to new data.",
+  "tags": [
+    "NLP",
+    "Text Classification",
+    "Sentiment Analysis"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a98db239c6442b428ec9"
+  },
+  "question": "When learning a new machine learning algorithm, what resources do you find most helpful?",
+  "options": [
+    "A) Detailed mathematical explanations",
+    "B) Practical examples and code implementations",
+    "C) Conceptual overviews and diagrams",
+    "D) A combination of all of the above"
+  ],
+  "correctOption": "D",
+  "explanation": "While individual preferences vary, a combination of different learning resources often provides the most comprehensive understanding.",
+  "tags": [
+    "NLP",
+    "Text Classification",
+    "Sentiment Analysis"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a98db239c6442b428eca"
+  },
+  "question": "When encountering a challenging machine learning problem, what's your typical approach?",
+  "options": [
+    "A) Immediately search for a pre-built solution.",
+    "B) Break the problem down into smaller, manageable subproblems.",
+    "C) Give up and try something else.",
+    "D) Try multiple different approaches simultaneously."
+  ],
+  "correctOption": "B",
+  "explanation": "Breaking down complex problems into smaller parts is a crucial problem-solving strategy in many domains, including machine learning.",
+  "tags": [
+    "NLP",
+    "Text Classification",
+    "Sentiment Analysis"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a98db239c6442b428ecc"
+  },
+  "question": "Imagine you're struggling to understand a complex machine learning paper. What is your first step?",
+  "options": [
+    "A) Read the entire paper carefully from beginning to end",
+    "B) Focus on the introduction and conclusion to grasp the main idea",
+    "C) Skip to the experimental results section first to see if the method works",
+    "D) Search for online resources or tutorials explaining the same concept"
+  ],
+  "correctOption": "B",
+  "explanation": "Starting with the introduction and conclusion helps understand the big picture before delving into the technical details. This is generally a good approach to complex material.",
+  "tags": [
+    "NLP",
+    "Text Classification",
+    "Sentiment Analysis"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a98db239c6442b428ecd"
+  },
+  "question": "What type of feedback do you find most useful when learning a new machine learning technique?",
+  "options": [
+    "A) High-level conceptual feedback",
+    "B) Detailed technical feedback focusing on specific code",
+    "C) Immediate feedback on code errors during programming",
+    "D) A combination of high-level and detailed feedback"
+  ],
+  "correctOption": "D",
+  "explanation": "A balanced approach, combining both high-level understanding and detailed feedback is often the most effective learning strategy",
+  "tags": [
+    "NLP",
+    "Text Classification",
+    "Sentiment Analysis"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a98db239c6442b428ec6"
+  },
+  "question": "Which of the following techniques is commonly used to prevent overfitting?",
+  "options": [
+    "A) Increasing the complexity of the model",
+    "B) Using more training data",
+    "C) Regularization",
+    "D) Reducing the number of features"
+  ],
+  "correctOption": "C",
+  "explanation": "Regularization techniques add penalties to the model's complexity, preventing it from overfitting the training data.",
+  "tags": [
+    "NLP",
+    "Text Classification",
+    "Sentiment Analysis"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a98db239c6442b428ec7"
+  },
+  "question": "Explain the bias-variance tradeoff in a single sentence.",
+  "options": [
+    "A) It's a technique for improving model accuracy.",
+    "B) It refers to the balance between model simplicity and accuracy.",
+    "C) It's a type of regularization technique.",
+    "D) It's irrelevant to model performance."
+  ],
+  "correctOption": "B",
+  "explanation": "The bias-variance tradeoff describes the balance between a model's ability to fit the training data (variance) and its ability to generalize to new data (bias).",
+  "tags": [
+    "NLP",
+    "Text Classification",
+    "Sentiment Analysis"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a99ab239c6442b428edb"
+  },
+  "question": "Which of the following is NOT a type of machine learning?",
+  "options": [
+    "A) Supervised Learning",
+    "B) Unsupervised Learning",
+    "C) Reinforcement Learning",
+    "D) Deductive Learning"
+  ],
+  "correctOption": "D",
+  "explanation": "Deductive learning is a reasoning process, not a type of machine learning algorithm.",
+  "tags": [
+    "NLP",
+    "text processing",
+    "machine learning"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a99ab239c6442b428edc"
+  },
+  "question": "In supervised learning, what is the process of evaluating a model's performance on unseen data called?",
+  "options": [
+    "A) Training",
+    "B) Testing",
+    "C) Validation",
+    "D) Cross-validation"
+  ],
+  "correctOption": "B",
+  "explanation": "Testing involves evaluating the model's performance on a separate dataset not used during training.",
+  "tags": [
+    "NLP",
+    "text processing",
+    "machine learning"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a99ab239c6442b428edd"
+  },
+  "question": "What is the primary goal of clustering in unsupervised learning?",
+  "options": [
+    "A) Predicting a continuous outcome",
+    "B) Classifying data into predefined categories",
+    "C) Grouping similar data points together",
+    "D) Finding patterns in sequential data"
+  ],
+  "correctOption": "C",
+  "explanation": "Clustering aims to group data points based on their similarity, without prior knowledge of categories.",
+  "tags": [
+    "NLP",
+    "text processing",
+    "machine learning"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a99ab239c6442b428ede"
+  },
+  "question": "Which algorithm is commonly used for finding the best hyperparameters in a machine learning model?",
+  "options": [
+    "A) K-means",
+    "B) Gradient Descent",
+    "C) Random Forest",
+    "D) Grid Search"
+  ],
+  "correctOption": "D",
+  "explanation": "Grid search systematically tries different combinations of hyperparameters to find the best performing ones.",
+  "tags": [
+    "NLP",
+    "text processing",
+    "machine learning"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a99ab239c6442b428edf"
+  },
+  "question": "What is the bias-variance tradeoff in machine learning?",
+  "options": [
+    "A) Balancing model complexity and accuracy",
+    "B) Choosing between different loss functions",
+    "C) Tuning hyperparameters for optimal performance",
+    "D) Selecting the appropriate evaluation metric"
+  ],
+  "correctOption": "A",
+  "explanation": "It's the balance between a model that's too simple (high bias, underfitting) and one that's too complex (high variance, overfitting).",
+  "tags": [
+    "NLP",
+    "text processing",
+    "machine learning"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a99ab239c6442b428ee0"
+  },
+  "question": "Explain the difference between L1 and L2 regularization and their impact on model parameters.",
+  "options": [
+    "A) L1 produces sparse models; L2 produces dense models.",
+    "B) L1 is computationally faster; L2 is more robust to outliers.",
+    "C) L1 is always better than L2; L2 is always better than L1.",
+    "D) L1 and L2 have no significant differences in practice."
+  ],
+  "correctOption": "A",
+  "explanation": "L1 regularization (LASSO) tends to shrink some coefficients to exactly zero, creating sparse models, while L2 (Ridge) shrinks coefficients towards zero but rarely to zero.",
+  "tags": [
+    "NLP",
+    "text processing",
+    "machine learning"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a99ab239c6442b428ee1"
+  },
+  "question": "Describe a scenario where ensemble methods like Random Forest or Gradient Boosting would be particularly beneficial over a single decision tree.",
+  "options": [
+    "A) When dealing with very small datasets.",
+    "B) When high interpretability is crucial.",
+    "C) When dealing with high dimensional data and complex relationships.",
+    "D) When computational efficiency is the top priority."
+  ],
+  "correctOption": "C",
+  "explanation": "Ensemble methods excel at capturing complex relationships and reducing overfitting, especially in high-dimensional spaces where single decision trees might be too prone to overfitting.",
+  "tags": [
+    "NLP",
+    "text processing",
+    "machine learning"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a99ab239c6442b428ee2"
+  },
+  "question": "How do you handle imbalanced datasets in a classification problem?  Give at least two techniques.",
+  "options": [
+    "A) Ignore the imbalance; it's not a problem.",
+    "B) Oversample the minority class, Undersample the majority class.",
+    "C) Use only precision as an evaluation metric.",
+    "D) Use only recall as an evaluation metric."
+  ],
+  "correctOption": "B",
+  "explanation": "Oversampling and undersampling are common techniques to balance class distributions, improving model performance.  Other methods include using cost-sensitive learning or specialized algorithms.",
+  "tags": [
+    "NLP",
+    "text processing",
+    "machine learning"
+  ],
+  "domain": "Natural Language Processing",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a9a4b239c6442b428ef4"
+  },
+  "question": "What is a node in a linked list?",
+  "options": [
+    "A) The starting point of the list",
+    "B) A data element with a pointer to the next element",
+    "C) The last element of the list",
+    "D) A specific data type used in the list"
+  ],
+  "correctOption": "B",
+  "explanation": "A node in a linked list contains both data and a pointer that links it to the next node in the sequence.",
+  "tags": [
+    "Tree Traversal",
+    "Binary Trees",
+    "Binary Search Trees"
+  ],
+  "domain": "Tree Data Structures",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a9a4b239c6442b428ef1"
+  },
+  "question": "Which data structure follows the LIFO (Last-In, First-Out) principle?",
+  "options": [
+    "A) Queue",
+    "B) Stack",
+    "C) Linked List",
+    "D) Array"
+  ],
+  "correctOption": "B",
+  "explanation": "A stack operates on the principle of Last-In, First-Out, where the last element added is the first one removed.",
+  "tags": [
+    "Tree Traversal",
+    "Binary Trees",
+    "Binary Search Trees"
+  ],
+  "domain": "Tree Data Structures",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a9a4b239c6442b428ef3"
+  },
+  "question": "Which data structure is best suited for implementing a priority queue?",
+  "options": [
+    "A) Stack",
+    "B) Queue",
+    "C) Linked List",
+    "D) Heap"
+  ],
+  "correctOption": "D",
+  "explanation": "Heaps efficiently maintain a priority order, allowing for quick access to the highest or lowest priority element.",
+  "tags": [
+    "Tree Traversal",
+    "Binary Trees",
+    "Binary Search Trees"
+  ],
+  "domain": "Tree Data Structures",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a9a4b239c6442b428ef2"
+  },
+  "question": "What is a fundamental characteristic of an array data structure?",
+  "options": [
+    "A) Dynamic size",
+    "B)  Direct access to elements using index",
+    "C)  No size limit",
+    "D)  Unsorted elements only"
+  ],
+  "correctOption": "B",
+  "explanation": "Arrays provide direct access to elements using their index, making retrieval very efficient.",
+  "tags": [
+    "Tree Traversal",
+    "Binary Trees",
+    "Binary Search Trees"
+  ],
+  "domain": "Tree Data Structures",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a9a4b239c6442b428ef5"
+  },
+  "question": "What is the most efficient way to search for a specific element in a sorted array?",
+  "options": [
+    "A) Linear Search",
+    "B) Bubble Sort",
+    "C) Binary Search",
+    "D) Insertion Sort"
+  ],
+  "correctOption": "C",
+  "explanation": "Binary search efficiently searches sorted arrays by repeatedly dividing the search interval in half.",
+  "tags": [
+    "Tree Traversal",
+    "Binary Trees",
+    "Binary Search Trees"
+  ],
+  "domain": "Tree Data Structures",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a9a4b239c6442b428ef6"
+  },
+  "question": "Which data structure uses key-value pairs for efficient data retrieval?",
+  "options": [
+    "A) Array",
+    "B) Linked List",
+    "C) Hash Table",
+    "D) Stack"
+  ],
+  "correctOption": "C",
+  "explanation": "Hash tables use key-value pairs to allow for fast lookups and insertions based on the hash of the key.",
+  "tags": [
+    "Tree Traversal",
+    "Binary Trees",
+    "Binary Search Trees"
+  ],
+  "domain": "Tree Data Structures",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a9a4b239c6442b428ef7"
+  },
+  "question": "Which of the following is NOT a common type of tree data structure?",
+  "options": [
+    "A) Binary Tree",
+    "B) Trie",
+    "C) Graph",
+    "D) B-Tree"
+  ],
+  "correctOption": "C",
+  "explanation": "Graphs are a distinct type of data structure different from tree structures, although they can contain tree-like substructures.",
+  "tags": [
+    "Tree Traversal",
+    "Binary Trees",
+    "Binary Search Trees"
+  ],
+  "domain": "Tree Data Structures",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a9a4b239c6442b428ef8"
+  },
+  "question": "When choosing a data structure, what is the most important factor to consider?",
+  "options": [
+    "A) Code readability",
+    "B) Programmer familiarity",
+    "C) Efficiency for the specific operations required",
+    "D) Memory usage"
+  ],
+  "correctOption": "C",
+  "explanation": "The best data structure depends on the specific operations you need to perform (searching, insertion, deletion, etc.), prioritizing efficiency for those operations.",
+  "tags": [
+    "Tree Traversal",
+    "Binary Trees",
+    "Binary Search Trees"
+  ],
+  "domain": "Tree Data Structures",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a9a4b239c6442b428ef9"
+  },
+  "question": "How do you typically learn new data structures most effectively?",
+  "options": [
+    "A) By reading only the theoretical concepts",
+    "B) By implementing them from scratch",
+    "C) By watching videos and passively taking notes",
+    "D) By using existing libraries without understanding the implementation"
+  ],
+  "correctOption": "B",
+  "explanation": "Active learning, including implementation, solidifies understanding better than passive methods.  Implementing data structures helps understand their inner workings and limitations.",
+  "tags": [
+    "Tree Traversal",
+    "Binary Trees",
+    "Binary Search Trees"
+  ],
+  "domain": "Tree Data Structures",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a9a4b239c6442b428efa"
+  },
+  "question": "What kind of learning resources do you find most helpful when studying data structures (select all that apply)?",
+  "options": [
+    "A) Interactive coding tutorials",
+    "B) Textbooks",
+    "C) Video lectures",
+    "D) Real-world examples"
+  ],
+  "correctOption": "A, B, C, D",
+  "explanation": "A variety of learning resources cater to different learning styles. Combining interactive tutorials, textbooks, video lectures, and examples enhances learning.",
+  "tags": [
+    "Tree Traversal",
+    "Binary Trees",
+    "Binary Search Trees"
+  ],
+  "domain": "Tree Data Structures",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a9b1b239c6442b428f0a"
+  },
+  "question": "What is a database?",
+  "options": [
+    "A) A type of computer program",
+    "B) An organized collection of structured information",
+    "C) A way to connect to the internet",
+    "D) A type of computer hardware"
+  ],
+  "correctOption": "B",
+  "explanation": "A database is a structured set of data organized for use in a computer system.  It's designed for efficient storage and retrieval.",
+  "tags": [
+    "SQL",
+    "Relational Databases",
+    "Normalization"
+  ],
+  "domain": "Database Management Systems",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a9b1b239c6442b428f0b"
+  },
+  "question": "What does SQL stand for?",
+  "options": [
+    "A) Structured Query Language",
+    "B) Simple Query Language",
+    "C) Statistical Query Language",
+    "D) Sequential Query Language"
+  ],
+  "correctOption": "A",
+  "explanation": "SQL is the standard language for managing and manipulating databases.",
+  "tags": [
+    "SQL",
+    "Relational Databases",
+    "Normalization"
+  ],
+  "domain": "Database Management Systems",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a9b1b239c6442b428f0e"
+  },
+  "question": "What is normalization in database design?",
+  "options": [
+    "A) Making data smaller",
+    "B) Reducing data redundancy and improving data integrity",
+    "C) Adding more data to the database",
+    "D) Encrypting the database"
+  ],
+  "correctOption": "B",
+  "explanation": "Normalization organizes data to reduce redundancy and improve data integrity, making the database more efficient and reliable.",
+  "tags": [
+    "SQL",
+    "Relational Databases",
+    "Normalization"
+  ],
+  "domain": "Database Management Systems",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a9b1b239c6442b428f0d"
+  },
+  "question": "What is a table in a relational database?",
+  "options": [
+    "A) A list of commands",
+    "B) A way to store images",
+    "C) An organized collection of data in rows and columns",
+    "D) A type of database connection"
+  ],
+  "correctOption": "C",
+  "explanation": "Tables are the fundamental building blocks of relational databases, organizing data into rows (records) and columns (fields).",
+  "tags": [
+    "SQL",
+    "Relational Databases",
+    "Normalization"
+  ],
+  "domain": "Database Management Systems",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a9b1b239c6442b428f0c"
+  },
+  "question": "Which of these is NOT a common type of database?",
+  "options": [
+    "A) Relational Database",
+    "B) NoSQL Database",
+    "C) Spreadsheet Database",
+    "D) Cloud Database"
+  ],
+  "correctOption": "C",
+  "explanation": "While spreadsheets *can* store data, they aren't designed with the relational structure and querying capabilities of a formal database.",
+  "tags": [
+    "SQL",
+    "Relational Databases",
+    "Normalization"
+  ],
+  "domain": "Database Management Systems",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a9b1b239c6442b428f0f"
+  },
+  "question": "What is an index in a database?",
+  "options": [
+    "A) A type of query",
+    "B) A data structure that improves the speed of data retrieval",
+    "C) A backup of the database",
+    "D) A way to secure the database"
+  ],
+  "correctOption": "B",
+  "explanation": "Indexes speed up data retrieval by creating a separate data structure that points to rows matching certain search criteria.",
+  "tags": [
+    "SQL",
+    "Relational Databases",
+    "Normalization"
+  ],
+  "domain": "Database Management Systems",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a9b1b239c6442b428f11"
+  },
+  "question": "You need to retrieve data from a database that satisfies multiple conditions. Which SQL clause would you primarily use?",
+  "options": [
+    "A) SELECT",
+    "B) WHERE",
+    "C) FROM",
+    "D) INSERT"
+  ],
+  "correctOption": "B",
+  "explanation": "The WHERE clause allows you to specify conditions to filter the rows returned by a SELECT statement.",
+  "tags": [
+    "SQL",
+    "Relational Databases",
+    "Normalization"
+  ],
+  "domain": "Database Management Systems",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a9b1b239c6442b428f10"
+  },
+  "question": "What is the difference between a primary key and a foreign key?",
+  "options": [
+    "A) There is no difference",
+    "B) A primary key uniquely identifies a record within a table, while a foreign key establishes relationships between tables",
+    "C) A primary key is used for security, while a foreign key is used for data integrity",
+    "D) A primary key is visible to users while a foreign key is hidden."
+  ],
+  "correctOption": "B",
+  "explanation": "Primary keys enforce uniqueness within a table; foreign keys link records across multiple tables, establishing relationships.",
+  "tags": [
+    "SQL",
+    "Relational Databases",
+    "Normalization"
+  ],
+  "domain": "Database Management Systems",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a9bbb239c6442b428f21"
+  },
+  "question": "What does HTML stand for?",
+  "options": [
+    "A) Hyper Text Markup Language",
+    "B) Home Tool Markup Language",
+    "C) Hyperlink Text Markup Language",
+    "D) High Text Markup Language"
+  ],
+  "correctOption": "A",
+  "explanation": "HTML is the foundation of web pages and stands for Hyper Text Markup Language.",
+  "tags": [
+    "Web Design",
+    "UI/UX",
+    "HTML/CSS"
+  ],
+  "domain": "Web Design Learning Roadmap",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a9bbb239c6442b428f22"
+  },
+  "question": "Which of the following is NOT a web browser?",
+  "options": [
+    "A) Chrome",
+    "B) Firefox",
+    "C) Safari",
+    "D) HTML"
+  ],
+  "correctOption": "D",
+  "explanation": "HTML is a markup language, not a web browser used to view websites.",
+  "tags": [
+    "Web Design",
+    "UI/UX",
+    "HTML/CSS"
+  ],
+  "domain": "Web Design Learning Roadmap",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a9bbb239c6442b428f27"
+  },
+  "question": "In the context of web design, what does UX stand for?",
+  "options": [
+    "A) User Experience",
+    "B) Unique X-factor",
+    "C) User eXtension",
+    "D) Unlimited eXpansion"
+  ],
+  "correctOption": "A",
+  "explanation": "UX refers to User Experience, focusing on the overall user interaction and satisfaction with a website.",
+  "tags": [
+    "Web Design",
+    "UI/UX",
+    "HTML/CSS"
+  ],
+  "domain": "Web Design Learning Roadmap",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a9bbb239c6442b428f23"
+  },
+  "question": "What is CSS primarily used for?",
+  "options": [
+    "A) Creating website structure",
+    "B) Adding interactivity",
+    "C) Styling and formatting web pages",
+    "D) Programming website functionality"
+  ],
+  "correctOption": "C",
+  "explanation": "CSS (Cascading Style Sheets) is used to control the visual presentation of web pages.",
+  "tags": [
+    "Web Design",
+    "UI/UX",
+    "HTML/CSS"
+  ],
+  "domain": "Web Design Learning Roadmap",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a9bbb239c6442b428f28"
+  },
+  "question": "Which programming language is commonly used for adding interactive elements to websites?",
+  "options": [
+    "A) HTML",
+    "B) CSS",
+    "C) JavaScript",
+    "D) Python"
+  ],
+  "correctOption": "C",
+  "explanation": "JavaScript is used to add dynamic behavior and interactivity to web pages.",
+  "tags": [
+    "Web Design",
+    "UI/UX",
+    "HTML/CSS"
+  ],
+  "domain": "Web Design Learning Roadmap",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a9bbb239c6442b428f24"
+  },
+  "question": "What does a website's domain name represent?",
+  "options": [
+    "A) The website's IP address",
+    "B) The website's owner's email",
+    "C) The website's unique address on the internet",
+    "D) The website's content management system"
+  ],
+  "correctOption": "C",
+  "explanation": "A domain name (e.g., google.com) is a human-readable address for a website's server.",
+  "tags": [
+    "Web Design",
+    "UI/UX",
+    "HTML/CSS"
+  ],
+  "domain": "Web Design Learning Roadmap",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a9bbb239c6442b428f25"
+  },
+  "question": "What is the purpose of a website's navigation menu?",
+  "options": [
+    "A) To display advertisements",
+    "B) To help users find information easily",
+    "C) To track user activity",
+    "D) To host website images"
+  ],
+  "correctOption": "B",
+  "explanation": "Navigation menus provide a structured way for users to access different sections of a website.",
+  "tags": [
+    "Web Design",
+    "UI/UX",
+    "HTML/CSS"
+  ],
+  "domain": "Web Design Learning Roadmap",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a7a9bbb239c6442b428f26"
+  },
+  "question": "What is responsive web design?",
+  "options": [
+    "A) Designing websites that only work on desktop computers",
+    "B) Designing websites that adapt to different screen sizes",
+    "C) Designing websites that use a lot of images",
+    "D) Designing websites with only text content"
+  ],
+  "correctOption": "B",
+  "explanation": "Responsive design ensures a website looks good and functions well on all devices (desktops, tablets, phones).",
+  "tags": [
+    "Web Design",
+    "UI/UX",
+    "HTML/CSS"
+  ],
+  "domain": "Web Design Learning Roadmap",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a809c4271f2a57c9c0ffec"
+  },
+  "question": "Which collection is best suited for storing a key-value pair where the key is unique?",
+  "options": [
+    "A) ArrayList",
+    "B) LinkedList",
+    "C) HashMap",
+    "D) HashSet"
+  ],
+  "correctOption": "C",
+  "explanation": "HashMap provides fast key-based lookups and ensures key uniqueness.",
+  "tags": [
+    "Auditory",
+    "3"
+  ],
+  "domain": "job_interview",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a809c4271f2a57c9c0ffeb"
+  },
+  "question": "What is the purpose of the `finally` block in a `try-catch` statement?",
+  "options": [
+    "A) To handle exceptions",
+    "B) To execute code regardless of exceptions",
+    "C) To define the exception type",
+    "D) To throw an exception"
+  ],
+  "correctOption": "B",
+  "explanation": "The `finally` block always executes, whether an exception is thrown or not, typically used for cleanup resources.",
+  "tags": [
+    "Auditory",
+    "3"
+  ],
+  "domain": "job_interview",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a809c4271f2a57c9c0ffea"
+  },
+  "question": "Which keyword is used to prevent method overriding in Java?",
+  "options": [
+    "A) static",
+    "B) final",
+    "C) abstract",
+    "D) private"
+  ],
+  "correctOption": "B",
+  "explanation": "The `final` keyword prevents a method from being overridden in subclasses.",
+  "tags": [
+    "Auditory",
+    "3"
+  ],
+  "domain": "job_interview",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a809c4271f2a57c9c0ffed"
+  },
+  "question": "What does the keyword 'this' refer to inside a method?",
+  "options": [
+    "A) The current method",
+    "B) The calling method",
+    "C) The current object",
+    "D) The class itself"
+  ],
+  "correctOption": "C",
+  "explanation": "'this' keyword refers to the current instance of the class (the object) the method is part of.",
+  "tags": [
+    "Auditory",
+    "3"
+  ],
+  "domain": "job_interview",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a809c4271f2a57c9c0fff0"
+  },
+  "question": "Explain the difference between `==` and `.equals()` when comparing Strings in Java?",
+  "options": [
+    "A) Both are the same and compare content",
+    "B) `==` compares references, `.equals()` compares content",
+    "C) `==` compares content, `.equals()` compares references",
+    "D) They only work with Integer objects"
+  ],
+  "correctOption": "B",
+  "explanation": "`==` compares memory addresses (references), while `.equals()` compares the actual String content for equality.",
+  "tags": [
+    "Auditory",
+    "3"
+  ],
+  "domain": "job_interview",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a809c4271f2a57c9c0fff1"
+  },
+  "question": "When would you use a `transient` keyword in Java?",
+  "options": [
+    "A) To make a variable immutable",
+    "B) To prevent a variable from being serialized",
+    "C) To declare a constant variable",
+    "D) To declare a final variable"
+  ],
+  "correctOption": "B",
+  "explanation": "The `transient` keyword indicates that a variable should not be part of the serialization process when the object is saved.",
+  "tags": [
+    "Auditory",
+    "3"
+  ],
+  "domain": "job_interview",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a809c4271f2a57c9c0fff2"
+  },
+  "question": "What is the purpose of the `volatile` keyword in Java?",
+  "options": [
+    "A) To prevent a variable from being garbage collected",
+    "B) To ensure that multiple threads see the most up-to-date value of a variable",
+    "C) To make a variable thread-safe without synchronization",
+    "D) To make a variable immutable"
+  ],
+  "correctOption": "B",
+  "explanation": "The `volatile` keyword ensures that changes to a variable are immediately visible to all threads, preventing stale data issues.",
+  "tags": [
+    "Auditory",
+    "3"
+  ],
+  "domain": "job_interview",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a809c4271f2a57c9c0fff3"
+  },
+  "question": "How would you describe your preferred learning style when it comes to Java programming?",
+  "options": [
+    "A) Hands-on practice and coding immediately after learning a concept",
+    "B) Reading comprehensive documentation and theory before coding",
+    "C) Watching videos and tutorials then trying out examples.",
+    "D) A combination of the above."
+  ],
+  "correctOption": "D",
+  "explanation": "A multi-faceted approach incorporating theory, practical examples, and video tutorials is usually the most effective for learning.",
+  "tags": [
+    "Auditory",
+    "3"
+  ],
+  "domain": "job_interview",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a809c4271f2a57c9c0fff4"
+  },
+  "question": "What resources do you typically use to learn new Java concepts or solve coding challenges?",
+  "options": [
+    "A) Official Java documentation and textbooks",
+    "B) Online forums (Stack Overflow, etc.) and communities",
+    "C) Video tutorials (YouTube, Udemy, etc.)",
+    "D) All of the above."
+  ],
+  "correctOption": "D",
+  "explanation": "Utilizing multiple resources provides varied perspectives, explanations, and approaches for understanding Java.",
+  "tags": [
+    "Auditory",
+    "3"
+  ],
+  "domain": "job_interview",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a809c4271f2a57c9c0fff5"
+  },
+  "question": "When encountering a difficult Java problem, what is your first approach to resolving it?",
+  "options": [
+    "A) Immediately search for the solution online",
+    "B) Try to debug the code step-by-step and understand the error",
+    "C) Ask for help from a mentor or colleague",
+    "D) Give up and move to a different task"
+  ],
+  "correctOption": "B",
+  "explanation": "Debugging and understanding the error yourself is crucial for building expertise and problem-solving abilities.",
+  "tags": [
+    "Auditory",
+    "3"
+  ],
+  "domain": "job_interview",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a809c4271f2a57c9c0fff6"
+  },
+  "question": "Do you prefer learning Java through structured courses or by exploring individual concepts on your own?",
+  "options": [
+    "A) Structured courses provide a clear path",
+    "B) Self-exploration allows for more flexibility",
+    "C) A combination of both is ideal",
+    "D) I don't prefer either."
+  ],
+  "correctOption": "C",
+  "explanation": "A blend of structured learning and independent exploration provides a comprehensive approach to understanding Java.",
+  "tags": [
+    "Auditory",
+    "3"
+  ],
+  "domain": "job_interview",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a809c4271f2a57c9c0fff7"
+  },
+  "question": "How important is practical application (coding exercises/projects) to your Java learning process?",
+  "options": [
+    "A) Not very important, theory is sufficient",
+    "B) Moderately important, I do some exercises when needed",
+    "C) Very important, I learn best through hands-on practice",
+    "D)  I don't code at all."
+  ],
+  "correctOption": "C",
+  "explanation": "Practical coding is essential for reinforcing theoretical knowledge and developing practical skills in Java programming.",
+  "tags": [
+    "Auditory",
+    "3"
+  ],
+  "domain": "job_interview",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a809c4271f2a57c9c0fff8"
+  },
+  "question": "What type of feedback do you find most helpful during the learning process?",
+  "options": [
+    "A) General feedback on the correctness of the code",
+    "B) Detailed explanations of errors and suggestions for improvement",
+    "C) High-level overview of concepts without much detail",
+    "D) No feedback at all"
+  ],
+  "correctOption": "B",
+  "explanation": "Detailed feedback helps learners identify specific areas where they need improvement and fosters deeper understanding.",
+  "tags": [
+    "Auditory",
+    "3"
+  ],
+  "domain": "job_interview",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a809c4271f2a57c9c0ffee"
+  },
+  "question": "What is the difference between an interface and an abstract class in Java?",
+  "options": [
+    "A) Interfaces can have instance variables, abstract classes cannot.",
+    "B) Abstract classes can have concrete methods, interfaces cannot.",
+    "C) Interfaces can extend multiple interfaces, abstract classes can extend only one class.",
+    "D) All of the above."
+  ],
+  "correctOption": "D",
+  "explanation": "All statements highlight key distinctions between interfaces and abstract classes. Interfaces are fully abstract, while abstract classes allow a mix of abstract and concrete methods.",
+  "tags": [
+    "Auditory",
+    "3"
+  ],
+  "domain": "job_interview",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a809c4271f2a57c9c0ffef"
+  },
+  "question": "Which data structure underlies a Java PriorityQueue?",
+  "options": [
+    "A) Linked List",
+    "B) Array",
+    "C) Heap",
+    "D) Stack"
+  ],
+  "correctOption": "C",
+  "explanation": "Java's PriorityQueue uses a heap data structure for efficient priority-based retrieval.",
+  "tags": [
+    "Auditory",
+    "3"
+  ],
+  "domain": "job_interview",
+  "__v": 0
+}]
