@@ -17,8 +17,12 @@ const roadmapController = {
                 res.status(404).json({ message: "User not found" });
             }
 
-            const _res = await axios.post(`${process.env.FLASK_BASE_URL}/api/generate-roadmap`, { topic });
+            console.log(user.clusterId);
 
+            const clusterSummaryResponse = await axios.get(`${process.env.FLASK_BASE_URL}/clusters/cluster-summary?id=${user.clusterId}`);
+            const clusterSummary = clusterSummaryResponse.data.summary;
+
+            const _res = await axios.post(`${process.env.FLASK_BASE_URL}/api/generate-roadmap`, { topic, summary: clusterSummary });
             const roadmap = _res.data;
             
             const checkpoints = await Promise.all(roadmap.checkpoints.map(async (checkpoint, index) => {

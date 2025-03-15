@@ -185,6 +185,7 @@ def retrieve_relevant_resources(topic: str, vector_store: FAISS, resources_data:
 
 def generate_roadmap(
     topic: str,
+    summary: str
 ) -> Dict[str, Any]:
 
     try:
@@ -220,8 +221,12 @@ def generate_roadmap(
             Here are domain-specific resources you should use (distribute them appropriately among the checkpoints):
             {resources}
             also make sure that you change the type of the resource depending on the link URL
+
+
+            Make sure to tailor the roadmap to the user's learning needs and provide a clear, structured learning path.
+            Here is the summary of the user's learning needs: {summary}
             """,
-            input_variables=["topic", "resources"],
+            input_variables=["topic", "resources", "summary"],
             partial_variables={"format_instructions": parser.get_format_instructions()}
         )
         
@@ -229,7 +234,8 @@ def generate_roadmap(
         roadmap_chain = LLMChain(llm=llm, prompt=roadmap_prompt)
         result = roadmap_chain.invoke({
             "topic": validated_topic,
-            "resources": json.dumps(retrieved_resources)
+            "resources": json.dumps(retrieved_resources),
+            "summary": summary
         })
         
         try:
@@ -273,11 +279,9 @@ def roadmap_endpoint():
             return jsonify({"error": "Missing topic parameter"}), 400
             
         topic = data.get('topic')
-
+        summary = data.get('summary');
             
-        roadmap = generate_roadmap(
-            topic=topic
-        )
+        roadmap = generate_roadmap(topic, summary)
         
         if "error" in roadmap:
             return jsonify(roadmap), 500
