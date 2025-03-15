@@ -23,6 +23,9 @@ const userSchema = new Schema({
     ],
     default: [],
   },
+  clusterId: {
+    type: Number,
+  },
   avg_quiz_score: {
     type: Number,
     default: 0,
