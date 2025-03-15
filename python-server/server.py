@@ -17,6 +17,8 @@ from langchain_core.documents import Document
 from functools import lru_cache
 from dotenv import load_dotenv
 
+from clustering_routes import index, cluster_users, cluster_summary
+
 load_dotenv()
 
 app = Flask(__name__)
@@ -285,6 +287,19 @@ def roadmap_endpoint():
     except Exception as e:
         app.logger.error(f"Endpoint error: {str(e)}")
         return jsonify({"error": f"Failed to process request: {str(e)}"}), 500
+
+#clustering routes
+@app.route('/clusters/index', methods=['GET'])
+def index_route():
+    return index()
+
+@app.route('/clusters/cluster-users', methods=['POST'])
+def cluster_users_route():
+    return cluster_users()
+
+@app.route('/clusters/cluster-summary', methods=['GET'])
+def cluster_summary_route():
+    return cluster_summary()
 
 def init_app():
     try:
