@@ -7,8 +7,8 @@ const Home = () => {
     const {user} = state;
 
     return (
-        <div>
-        <h1>Welcome {user?.name}</h1>
+        <div className='bg-white w-full h-[100vh]'>
+        <h1 className='text-black'>Welcome {user?.name}</h1>
         <LearningStyleSurvey />
         </div>
     )

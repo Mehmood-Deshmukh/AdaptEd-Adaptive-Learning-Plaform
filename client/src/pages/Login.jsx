@@ -252,7 +252,7 @@ const Login = () => {
       {/* Left Section - Introduction */}
       <div className="hidden lg:flex lg:w-1/2 bg-white flex-col justify-center items-center p-10">
         <div className="max-w-md text-center">
-          <h1 className="text-5xl font-bold mb-6 text-black">Inspiron</h1>
+          <h1 className="text-5xl font-bold mb-6 text-black">AdaptEd</h1>
           <p className="text-xl font-light mb-8 text-gray-800">
             A community-driven personalized learning platform
           </p>
