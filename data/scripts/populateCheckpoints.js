@@ -2,7 +2,7 @@ const { MongoClient } = require('mongodb');
 const fs = require('fs');
 
 const DB_URI = 'mongodb://localhost:27017';
-const DB_NAME = 'inspiron';
+const DB_NAME = 'inspiron25';
 const COLLECTION_NAME = 'checkpoints';
 
 async function pushCheckpoints() {
