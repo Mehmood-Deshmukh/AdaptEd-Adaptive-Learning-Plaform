@@ -9,8 +9,6 @@ import matplotlib.pyplot as plt
 import os
 from dotenv import load_dotenv
 
-
-
 load_dotenv()
 mongo_url = os.getenv("MONGO_URI")
 db_name = os.getenv("DB_NAME")
