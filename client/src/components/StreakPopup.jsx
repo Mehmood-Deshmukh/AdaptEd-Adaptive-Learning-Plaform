@@ -102,36 +102,6 @@ const StreakPopup = ({ streak, isVisible, onClose }) => {
   );
 };
 
-// Usage component that handles the login response and shows popup
-const LoginStreakHandler = () => {
-  const [showStreakPopup, setShowStreakPopup] = useState(false);
-  const [streakData, setStreakData] = useState({ currentStreak: 0 });
-  
-  // This would be called after your login API call
-  const handleLoginSuccess = (loginResponse) => {
-    // Check if we have streak data and it's greater than 0
-    if (loginResponse?.data?.currentStreak > 0) {
-      setStreakData({
-        currentStreak: loginResponse.data.currentStreak,
-        maxStreak: loginResponse.data.maxStreak
-      });
-      setShowStreakPopup(true);
-    }
-  };
-  
-  return (
-    <>
-      {/* Your login form would be here */}
-      
-      {/* Streak popup */}
-      <StreakPopup 
-        streak={streakData.currentStreak}
-        isVisible={showStreakPopup}
-        onClose={() => setShowStreakPopup(false)}
-      />
-    </>
-  );
-};
 
 // Add this CSS to your global styles
 const globalStyles = `

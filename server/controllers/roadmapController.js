@@ -18,7 +18,6 @@ const roadmapController = {
             }
 
             const _res = await axios.post(`${process.env.FLASK_BASE_URL}/api/generate-roadmap`, { topic });
-
             const roadmap = _res.data;
             
             const checkpoints = await Promise.all(roadmap.checkpoints.map(async (checkpoint, index) => {

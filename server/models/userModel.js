@@ -47,6 +47,10 @@ const userSchema = new Schema({
     type: Date,
     default: null
   },
+  shouldShowStreakPopup: {
+    type: Boolean,
+    default: false
+  },
   currentStreak: {
     type: Number,
     default: 0
@@ -131,36 +135,44 @@ userSchema.statics.updateLoginStreak = async function (userId) {
 
     const now = new Date();
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    
-    
+
+    // First-time login case
     if (!user.lastLoginDate) {
       user.lastLoginDate = today;
       user.currentStreak = 1;
       user.maxStreak = 1;
+      user.shouldShowStreakPopup = true; // Add flag to show popup
       return user.save();
     }
 
     const lastLogin = new Date(user.lastLoginDate);
     const lastLoginDay = new Date(lastLogin.getFullYear(), lastLogin.getMonth(), lastLogin.getDate());
-    
+
+    // Reset the popup flag by default
+    user.shouldShowStreakPopup = false;
+
+    // Already logged in today
     if (today.getTime() === lastLoginDay.getTime()) {
-      return user;
+      return user.save();
     }
 
     const timeDiff = today.getTime() - lastLoginDay.getTime();
     const dayDiff = Math.floor(timeDiff / (1000 * 3600 * 24));
 
+    // Continuing streak (exactly one day difference)
     if (dayDiff === 1) {
       user.currentStreak += 1;
       if (user.currentStreak > user.maxStreak) {
         user.maxStreak = user.currentStreak;
       }
+      user.shouldShowStreakPopup = true; // Show popup for continuing streak
     }
-
+    // Streak broken (more than one day passed)
     else if (dayDiff > 1) {
       user.currentStreak = 1;
+      // No popup shown for reset streaks
     }
-    
+
     user.lastLoginDate = today;
     return user.save();
   } catch (error) {
