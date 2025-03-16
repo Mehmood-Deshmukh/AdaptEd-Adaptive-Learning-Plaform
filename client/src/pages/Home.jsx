@@ -138,6 +138,17 @@ const Home = () => {
                 <span>Generate Roadmap</span>
               </a>
             </div>
+
+            {/* Forum Button */}
+            <div className="mb-1">
+              <a
+                onClick={() => navigate("/forum")}
+                className="flex items-center px-4 py-3 rounded hover:bg-gray-800 transition-colors"
+              >
+                <BookOpen size={18} className="mr-3" />
+                <span>Forum</span>
+              </a>
+            </div>
           </div>
         </div>
 
