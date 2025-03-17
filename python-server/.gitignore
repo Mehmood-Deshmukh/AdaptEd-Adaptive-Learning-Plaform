@@ -7,3 +7,4 @@ myenv
 ./faiss_index.pkl
 faiss_index.pkl
 
+__pycache__
