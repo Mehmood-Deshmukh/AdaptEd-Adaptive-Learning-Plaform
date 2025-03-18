@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const dotenv = require("dotenv");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-
+const axios = require("axios");
 const Question = require("./questionModel");
 
 dotenv.config();
@@ -70,50 +70,17 @@ quizSchema.statics.generateQuiz = async function (
   difficulty,
   tags
 ) {
-  // i am not proud of this
-  // difficulty is not used in the prompt, we may use it if we want
-  const prompt = `purpose:
-    Generate a set of 10 comprehensive multiple-choice questions on the specified topic - ${topic}. The questions should assess both subject knowledge and learning preferences to enable personalized learning experiences.
-    Question Distribution:
-    questions should be of ${difficulty} difficulty level and stick to the topic and test all the concepts of the topic.
-    Format Requirements:
-   
-    Each question must include:
-    1. The question text
-    2. 4 answer options (labeled A through D)
-    3. The correct answer (letter only)
-    4. A concise explanation (1-2 lines) justifying why the correct answer is accurate
 
-    Output Format:
-    Provide the output as a JSON array of objects with the following structure:
-    [
-        {
-            "question": "What is the capital of France?",
-            "options": ["Berlin", "Madrid", "Paris", "Rome"],
-            "answer": "C",
-            "explanation": "Paris is the capital and most populous city of France."
-        },
-        // Additional questions follow the same structure
-    ]
-    "answer" should be a single letter corresponding to the correct option (A, B, C, or D).
-
-    Additional Guidelines:
-    Ensure all knowledge questions are factually accurate
-    Avoid ambiguous or misleading questions, questions should be clear.
-    start with easy questions and gradually increase the difficulty level.
-    obviously stick to the provided difficulty level. - ${difficulty}
-    `;
-
-  const result = await model.generateContent(prompt);
-  console.log(result);
-
-  const response = result.response;
-  let text = response.text();
-  text = text.replace("```json\n", "");
-  text = text.replace("```", "");
-  text = text.replace("```JSON", "");
-
-  const questions = JSON.parse(text);
+  const result = await axios.post(`${process.env.FLASK_BASE_URL}/api/generate-quiz`, {
+    title: title,
+    domain: domain,
+    topic: topic,
+    difficulty: difficulty,
+    tags: tags,
+  }
+  )
+  console.log(result.data);
+  const questions = result.data.questions;
   console.log(questions);
 
   let questionIds = [];
@@ -122,7 +89,7 @@ quizSchema.statics.generateQuiz = async function (
       const newQuestion = new Question({
         question: question.question,
         options: question.options,
-        correctOption: question.answer,
+        correctOption: question.correctOption,
         explanation: question.explanation,
         domain: domain,
         tags: tags,

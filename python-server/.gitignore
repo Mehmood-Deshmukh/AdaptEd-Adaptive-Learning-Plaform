@@ -7,3 +7,9 @@ myenv
 ./faiss_index.pkl
 faiss_index.pkl
 
+__pycache__
+./questions_faiss_index.pkl
+questions_faiss_index.pkl
+
+./resources_faiss_index.pkl
+resources_faiss_index.pkl
