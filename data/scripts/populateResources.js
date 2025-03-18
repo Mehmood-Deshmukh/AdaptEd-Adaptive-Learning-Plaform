@@ -13,6 +13,9 @@ async function pushResources() {
     
     const database = client.db(DB_NAME);
     const collection = database.collection(COLLECTION_NAME);
+
+    collection.deleteMany({});
+    console.log('Deleted all documents from collection');
     
     
     const resourcesData = fs.readFileSync('../updated-resources.json');

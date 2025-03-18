@@ -364,11 +364,9 @@ def validate_topic(topic: str, llm: ChatGroq) -> str:
 def retrieve_relevant_resources(topic: str, vector_store: FAISS, resources_data: Dict[str, List[Dict[str, str]]]) -> List[Dict[str, str]]:
     retriever = vector_store.as_retriever(search_kwargs={"k": 40})
     retrieved_docs = retriever.get_relevant_documents(topic)
-    
     retrieved_resources = []
     for doc in retrieved_docs:
-        if 'resource' in doc.metadata:
-            resource = doc.metadata['resource']
+            resource = doc.metadata
             
             transformed_resource = {
                 "name": resource.get("title", resource.get("name", "Unknown Resource")),
@@ -380,19 +378,6 @@ def retrieve_relevant_resources(topic: str, vector_store: FAISS, resources_data:
                 "description": resource.get("description", "")
             }
             retrieved_resources.append(transformed_resource)
-        elif 'title' in doc.metadata:
-            
-            transformed_resource = {
-                "name": doc.metadata.get("title", "Unknown Resource"),
-                "url": doc.metadata.get("url", ""),
-                "type": doc.metadata.get("type", "documentation"),
-                "tags": doc.metadata.get("tags", []),
-                "topics": doc.metadata.get("topics", []),
-                "difficulty": doc.metadata.get("difficulty", "beginner"),
-                "description": doc.metadata.get("description", "")
-            }
-            retrieved_resources.append(transformed_resource)
-    
 
     if len(retrieved_resources) < 15:
         normalized_topic = topic.lower().replace(' ', '_')
@@ -435,7 +420,7 @@ def retrieve_relevant_resources(topic: str, vector_store: FAISS, resources_data:
             seen.add(resource_key)
             unique_resources.append(resource)
     
-    return unique_resources[:20]
+    return unique_resources
 
 def retrieve_relevant_questions(topic: str, difficulty: str, tags: List[str], vector_store: FAISS) -> List[Dict[str, Any]]:
     
@@ -468,7 +453,7 @@ def generate_roadmap(
         llm = get_llm()
         vector_store = get_resources_vector_store()
         resources_data = load_resources()
-        print(type(resources_data))
+
         
         sanitized_topic = sanitize_input(topic)
         validated_topic = validate_topic(sanitized_topic, llm)
@@ -486,6 +471,7 @@ def generate_roadmap(
             - Have a clear, specific title.
             - Include a detailed, structured description (at least 2 lines).
             - List EXACTLY 3-4 high-quality learning resources, no more and no less.
+            - The roadmap will be invalid if any checkpoint has fewer than 3 resources. 
             - Be progressively more complex.
             
             The final roadmap MUST have EXACTLY 5 checkpoints, and each checkpoint MUST have AT LEAST 3 resources.
@@ -493,9 +479,16 @@ def generate_roadmap(
             {format_instructions}
             
             Here are domain-specific resources you should use (distribute them appropriately among the checkpoints):
-            {resources}
-            also make sure that you change the type of the resource depending on the link URL
+            make sure of the following regarding the resources:
+            - Each resource is relevant to the topic. eg a resource of 'Javascript' in a roadmap of 'java' is not relevant even though they are look similar.
+            - Don't follow the sequence of resources in the prompt, use the resources as needed. 
+            - dont use resources which dont have a topics, tags, difficulty, description, url, type, name.
+            - make sure the resources are unique, no duplicates.
+            - Discard resources with empty or missing fields.
+            - Discard resources whose topic is not {topic}.
 
+            {resources}
+ 
             Make sure to tailor the roadmap to the user's learning needs and provide a clear, structured learning path.
             Here is the summary of the user's learning needs: {summary}
             """,
@@ -690,27 +683,13 @@ def cluster_users_route():
 def cluster_summary_route():
     return cluster_summary()
 
-def periodic_update_check():
-    
-    while True:
-        try:
-            app.logger.info("Running scheduled vector store update check")
-            check_and_update_vector_stores()
-        except Exception as e:
-            app.logger.error(f"Error in periodic update check: {e}")
-        
-        
-        time.sleep(86400) 
+
 
 def init_app():
     try:
         
         load_resources()
         check_and_update_vector_stores()
-        
-    
-        update_thread = threading.Thread(target=periodic_update_check, daemon=True)
-        update_thread.start()
         
         app.logger.info("Application initialized successfully")
     except Exception as e:
