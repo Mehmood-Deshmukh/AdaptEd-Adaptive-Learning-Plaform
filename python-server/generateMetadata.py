@@ -263,7 +263,7 @@ class ResourceMetadataGenerator:
 
 def main():
     input_file = "resources.json"
-    output_file = "updated-resources.json"
+    output_file = "updated-resources-2.json"
 
     # Ensure input file exists
     if not os.path.exists(input_file):

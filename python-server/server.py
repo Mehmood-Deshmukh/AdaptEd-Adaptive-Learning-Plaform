@@ -420,7 +420,7 @@ def retrieve_relevant_resources(topic: str, vector_store: FAISS, resources_data:
             seen.add(resource_key)
             unique_resources.append(resource)
     
-    return unique_resources
+    return unique_resources[:20]
 
 def retrieve_relevant_questions(topic: str, difficulty: str, tags: List[str], vector_store: FAISS) -> List[Dict[str, Any]]:
     
