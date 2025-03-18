@@ -257,18 +257,6 @@ def sanitize_input(input_text: str) -> str:
     clean_text = re.sub(r'\s+', ' ', clean_text).strip()
     return clean_text
 
-def load_resources(file_path: str = "updated-resources.json") -> Dict[str, List[Dict[str, str]]]:
-    try:
-        with open(file_path, 'r') as f:
-            resources_by_category = json.load(f)
-        
-        
-        return {category: resources for category, resources in resources_by_category.items() if isinstance(resources, list)}
-    
-    except Exception as e:
-        print(f"Error loading resources: {e}")
-        return {}
-
 def get_resources_vector_store() -> FAISS:
     
     update_info = get_last_update_info()
@@ -361,7 +349,7 @@ def validate_topic(topic: str, llm: ChatGroq) -> str:
     
     return validated_topic
 
-def retrieve_relevant_resources(topic: str, vector_store: FAISS, resources_data: Dict[str, List[Dict[str, str]]]) -> List[Dict[str, str]]:
+def retrieve_relevant_resources(topic: str, vector_store: FAISS) -> List[Dict[str, str]]:
     retriever = vector_store.as_retriever(search_kwargs={"k": 40})
     retrieved_docs = retriever.get_relevant_documents(topic)
     retrieved_resources = []
@@ -378,39 +366,6 @@ def retrieve_relevant_resources(topic: str, vector_store: FAISS, resources_data:
                 "description": resource.get("description", "")
             }
             retrieved_resources.append(transformed_resource)
-
-    if len(retrieved_resources) < 15:
-        normalized_topic = topic.lower().replace(' ', '_')
-        
-
-        if normalized_topic in resources_data:
-            for resource in resources_data[normalized_topic]:
-                transformed_resource = {
-                    "name": resource.get("title", resource.get("name", "Unknown Resource")),
-                    "url": resource.get("url", ""),
-                    "type": resource.get("type", "documentation"),
-                    "tags": resource.get("tags", []),
-                    "topics": resource.get("topics", []),
-                    "difficulty": resource.get("difficulty", "beginner"),
-                    "description": resource.get("description", "")
-                }
-                retrieved_resources.append(transformed_resource)
-        else:
-
-            for key in resources_data:
-                if key in normalized_topic or normalized_topic in key:
-                    for resource in resources_data[key]:
-                        transformed_resource = {
-                            "name": resource.get("title", resource.get("name", "Unknown Resource")),
-                            "url": resource.get("url", ""),
-                            "type": resource.get("type", "documentation"),
-                            "tags": resource.get("tags", []),
-                            "topics": resource.get("topics", []),
-                            "difficulty": resource.get("difficulty", "beginner"),
-                            "description": resource.get("description", "")
-                        }
-                        retrieved_resources.append(transformed_resource)
-    
     
     seen = set()
     unique_resources = []
@@ -452,14 +407,13 @@ def generate_roadmap(
     try:
         llm = get_llm()
         vector_store = get_resources_vector_store()
-        resources_data = load_resources()
 
         
         sanitized_topic = sanitize_input(topic)
         validated_topic = validate_topic(sanitized_topic, llm)
         app.logger.info(f"Validated Topic: {validated_topic}")
         
-        retrieved_resources = retrieve_relevant_resources(validated_topic, vector_store, resources_data)
+        retrieved_resources = retrieve_relevant_resources(validated_topic, vector_store)
 
         app.logger.info(f"Found {len(retrieved_resources)} relevant resources")
         
