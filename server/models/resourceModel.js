@@ -13,7 +13,23 @@ const resourcesSchema = new Schema({
     type: {
         type: String,
         required: true
-    }
+    },
+    tags: {
+        type: [String],
+        required: true
+    },
+    difficulty: {
+        type: String,
+        required: true
+    },
+    topics : {
+        type: [String],
+        required: true
+    },
+    description : {
+        type: String,
+        required: true
+    },
 });
 
 resourcesSchema.statics.createResource = async function(resource){
