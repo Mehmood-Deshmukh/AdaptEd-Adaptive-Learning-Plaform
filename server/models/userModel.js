@@ -87,6 +87,12 @@ const userSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  communities: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Community",
+    },
+  ],
   resetPasswordToken: {
     type: String,
   },
@@ -95,19 +101,19 @@ const userSchema = new Schema({
   },
   lastLoginDate: {
     type: Date,
-    default: null
+    default: null,
   },
   shouldShowStreakPopup: {
     type: Boolean,
-    default: false
+    default: false,
   },
   currentStreak: {
     type: Number,
-    default: 0
+    default: 0,
   },
   maxStreak: {
     type: Number,
-    default: 0
+    default: 0,
   },
   createdAt: {
     type: Date,
@@ -196,7 +202,11 @@ userSchema.statics.updateLoginStreak = async function (userId) {
     }
 
     const lastLogin = new Date(user.lastLoginDate);
-    const lastLoginDay = new Date(lastLogin.getFullYear(), lastLogin.getMonth(), lastLogin.getDate());
+    const lastLoginDay = new Date(
+      lastLogin.getFullYear(),
+      lastLogin.getMonth(),
+      lastLogin.getDate()
+    );
 
     // Reset the popup flag by default
     user.shouldShowStreakPopup = false;
