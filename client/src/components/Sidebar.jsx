@@ -67,7 +67,7 @@ const Sidebar = ({user}) => {
             <div className="mb-1">
               <a
                 onClick={() => navigate("/")}
-                className="flex items-center px-4 py-3 rounded hover:bg-gray-800 transition-colors"
+                className="flex items-center px-4 py-3 rounded hover:bg-gray-800 transition-colors cursor-pointer"
               >
                 <HomeIcon size={18} className="mr-3" />
                 <span>Dashboard</span>
@@ -78,7 +78,7 @@ const Sidebar = ({user}) => {
             <div className="mb-1">
               <a
                 onClick={() => navigate("/quiz-generator")}
-                className="flex items-center px-4 py-3 rounded hover:bg-gray-800 transition-colors"
+                className="flex items-center px-4 py-3 rounded hover:bg-gray-800 transition-colors cursor-pointer"
               >
                 <BookOpen size={18} className="mr-3" />
                 <span>Generate Quiz</span>
@@ -89,7 +89,7 @@ const Sidebar = ({user}) => {
             <div className="mb-1">
               <a
                 onClick={() => navigate("/roadmap-generator")}
-                className="flex items-center px-4 py-3 rounded hover:bg-gray-800 transition-colors"
+                className="flex items-center px-4 py-3 rounded hover:bg-gray-800 transition-colors cursor-pointer"
               >
                 <Map size={18} className="mr-3" />
                 <span>Generate Roadmap</span>
@@ -100,10 +100,20 @@ const Sidebar = ({user}) => {
             <div className="mb-1">
               <a
                 onClick={() => navigate("/forum")}
-                className="flex items-center px-4 py-3 rounded hover:bg-gray-800 transition-colors"
+                className="flex items-center px-4 py-3 rounded hover:bg-gray-800 transition-colors cursor-pointer"
               >
                 <BookOpen size={18} className="mr-3" />
                 <span>Forum</span>
+              </a>
+            </div>
+
+            <div className="mb-1">
+              <a
+                onClick={() => navigate("/profile")}
+                className="flex items-center px-4 py-3 rounded hover:bg-gray-800 transition-colors cursor-pointer"
+              >
+                <User size={18} className="mr-3" />
+                <span>Profile</span>
               </a>
             </div>
           </div>
@@ -113,7 +123,7 @@ const Sidebar = ({user}) => {
         <div className="p-4 border-t border-gray-800">
           <button
             onClick={handleLogout}
-            className="flex items-center w-full px-4 py-3 rounded hover:bg-gray-800 transition-colors"
+            className="flex items-center w-full px-4 py-3 rounded hover:bg-gray-800 transition-colors cursor-pointer"
           >
             <LogOut size={18} className="mr-3" />
             <span>Logout</span>
