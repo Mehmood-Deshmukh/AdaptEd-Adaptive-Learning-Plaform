@@ -79,4 +79,4 @@ communitySchema.statics.createCommunity = async function(
 }
 
 
-module.exports = mongoose.model(communitySchema, 'Community');
+module.exports = mongoose.model("Community", communitySchema);

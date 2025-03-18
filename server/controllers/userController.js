@@ -60,6 +60,8 @@ const userController = {
             const updatedUser = await userModel.findById(user._id);
             console.log(updatedUser);
 
+            await updatedUser.populate('roadmaps');
+
             const token = jwt.sign({ userId: updatedUser._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
             res.status(200).json({
@@ -163,6 +165,8 @@ const userController = {
                     message: 'User not found'
                 });
             }
+
+            await user.populate('roadmaps');
 
             res.status(200).json({
                 status: 'success',
