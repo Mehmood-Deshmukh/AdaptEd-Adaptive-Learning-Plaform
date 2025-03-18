@@ -137,10 +137,10 @@ def aggregate_cluster_data(cluster_labels, user_ids):
     }
 
     for uid, label in zip(user_ids, cluster_labels):
-        user = users_collection.find_one({"_id": uid})  # Fix: Remove ObjectId()
+        user = users_collection.find_one({"_id": uid})
         if not user:
             print(f"User {uid} not found. Skipping...")
-            continue  # Skip missing users
+            continue
 
         lp = user.get("learningParameters", {})
         survey_params = user.get("surveyParameters", {})
@@ -181,12 +181,10 @@ def aggregate_cluster_data(cluster_labels, user_ids):
     return cluster_data
 
 
-# @app.route("/", methods=["GET"])
 def index():
     return "<h1>Welcome to clustering api loosers</h1>"
 
 
-# @app.route("/cluster", methods=["POST"])
 def cluster_users():
     users = list(users_collection.find({}))
     if not users:
@@ -264,7 +262,6 @@ def cluster_users():
     )
 
 
-# @app.route("/cluster/summary", methods=["GET"])
 def cluster_summary():
     id = request.args.get("id")
 
@@ -284,6 +281,3 @@ def cluster_summary():
 
     return jsonify(summary)
 
-
-# if __name__ == "__main__":
-#     app.run(debug=True, port=8000)
