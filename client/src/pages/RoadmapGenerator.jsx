@@ -16,6 +16,8 @@ import {
   Search,
   Lock,
 } from "lucide-react";
+import Sidebar from "../components/Sidebar";
+import useAuthContext from "../hooks/useAuthContext";
 
 // Main App Component
 const RoadmapGenerator = () => {
@@ -30,6 +32,9 @@ const RoadmapGenerator = () => {
     type: "",
   });
   const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
+  const { state } = useAuthContext();
+  const { user } = state;
 
   // Get token from localStorage
   const getToken = () => {
@@ -517,9 +522,10 @@ const RoadmapGenerator = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="flex h-screen bg-gray-50">
+      <Sidebar user={user} />
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 overflow-scroll">
         {isLoading && (
           <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50">
             <div className="bg-white p-6 rounded-lg shadow-xl flex items-center space-x-4 animate-pulse">
