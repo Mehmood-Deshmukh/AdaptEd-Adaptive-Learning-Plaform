@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Toast } from "primereact/toast";
 import { motion, AnimatePresence } from "framer-motion";
 import { Eye, EyeOff, Lock, Mail, X } from 'lucide-react';
+import Sidebar from '../components/Sidebar';
 const ProfilePage = () => {
   const { state } = useAuthContext();
   const { user } = state;
@@ -183,9 +184,10 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="h-[100vh] bg-gray-50 flex ">
       <Toast ref={toast} />
-      <div className="max-w-4xl mx-auto">
+      <Sidebar user={user} />
+      <div className="max-w-6xl mx-auto my-4 overflow-scroll">
         {/* Profile Card */}
         <div className="bg-white shadow-xl rounded-xl overflow-hidden border border-gray-100">
           {/* Header with Avatar */}
