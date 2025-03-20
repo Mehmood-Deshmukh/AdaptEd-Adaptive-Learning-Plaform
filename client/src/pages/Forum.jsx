@@ -13,6 +13,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import useAuthContext from "../hooks/useAuthContext";
 import { useState } from "react";
+import Sidebar from "../components/Sidebar";
 
 const Forum = () => {
   const navigate = useNavigate();
@@ -22,10 +23,6 @@ const Forum = () => {
   const [newComment, setNewComment] = useState("");
   const [votes, setVotes] = useState({});
 
-  const handleLogout = () => {
-    dispatch({ type: "LOADING" });
-    dispatch({ type: "LOGOUT" });
-  };
 
   const handleCommentSubmit = (postId) => {
     if (!newComment.trim()) return;
