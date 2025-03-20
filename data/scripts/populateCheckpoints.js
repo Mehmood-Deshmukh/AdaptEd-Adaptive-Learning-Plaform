@@ -1,11 +1,8 @@
 const { MongoClient } = require('mongodb');
 const fs = require('fs');
 
-// const DB_URI = 'mongodb://localhost:27017';
-// const DB_NAME = 'inspiron25';
-
-const DB_URI = 'mongodb+srv://yashbhosale0709:jm3ZDQTVpQG4YfMe@cluster0.olque.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0s';
-const DB_NAME = 'test';
+const DB_URI = 'mongodb://localhost:27017';
+const DB_NAME = 'inspiron25';
 
 const COLLECTION_NAME = 'checkpoints';
 
