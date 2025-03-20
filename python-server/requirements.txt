@@ -8,12 +8,16 @@ blinker==1.9.0
 certifi==2025.1.31
 charset-normalizer==3.4.1
 click==8.1.8
+contourpy==1.3.1
+cycler==0.12.1
 dataclasses-json==0.6.7
 distro==1.9.0
+dnspython==2.7.0
 dotenv==0.9.9
 faiss-cpu==1.10.0
 filelock==3.17.0
 Flask==3.1.0
+fonttools==4.56.0
 frozenlist==1.5.0
 fsspec==2025.3.0
 greenlet==3.1.1
@@ -30,6 +34,7 @@ Jinja2==3.1.6
 joblib==1.4.2
 jsonpatch==1.33
 jsonpointer==3.0.0
+kiwisolver==1.4.8
 langchain==0.3.20
 langchain-community==0.3.19
 langchain-core==0.3.44
@@ -38,6 +43,7 @@ langchain-text-splitters==0.3.6
 langsmith==0.3.13
 MarkupSafe==3.0.2
 marshmallow==3.26.1
+matplotlib==3.10.1
 mpmath==1.3.0
 multidict==6.1.0
 mypy-extensions==1.0.0
@@ -63,6 +69,9 @@ propcache==0.3.0
 pydantic==2.10.6
 pydantic-settings==2.8.1
 pydantic_core==2.27.2
+pymongo==4.11.2
+pyparsing==3.2.1
+python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
 PyYAML==6.0.2
 regex==2024.11.6
@@ -73,6 +82,7 @@ scikit-learn==1.6.1
 scipy==1.15.2
 sentence-transformers==3.4.1
 setuptools==76.0.0
+six==1.17.0
 sniffio==1.3.1
 SQLAlchemy==2.0.39
 sympy==1.13.1
@@ -91,4 +101,3 @@ urllib3==2.3.0
 Werkzeug==3.1.3
 yarl==1.18.3
 zstandard==0.23.0
-gunicorn
