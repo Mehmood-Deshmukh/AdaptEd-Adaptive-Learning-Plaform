@@ -741,51 +741,116 @@ def get_projects_overview():
         app.logger.error(f"Failed to get projects overview: {str(e)}")
         return jsonify({"error": str(e)}), 500
 
-@app.route('/api/project-markdown/<title>', methods=['GET'])
-def get_project_markdown(title):
-    """Get project markdown content based on title"""
+@app.route('/api/get-project', methods=['GET'])
+def get_project():
+    """Get a project by its title and return in a clean JSON format (no markdown)"""
     try:
-        # Find the project with the given title
-        with open("codedex_projects.json", "r") as f:
-            projects = json.load(f)
+        title = request.args.get('title')
         
+        if not title:
+            return jsonify({"error": "Missing project title parameter"}), 400
+        
+        # Get the vector store
+        vector_store = get_projects_vector_store()
+        
+        # Use exact title search
+        retriever = vector_store.as_retriever(search_kwargs={"k": 10})
+        retrieved_docs = retriever.get_relevant_documents(f"Title: {title}")
+        
+        # Find exact match
         project = None
-        for p in projects:
-            if p.get("title") == title:
-                project = p
+        for doc in retrieved_docs:
+            if doc.metadata.get("title", "").lower() == title.lower():
+                project = doc.metadata
                 break
         
         if not project:
-            return jsonify({"error": "Project not found"}), 404
+            return jsonify({"error": f"Project with title '{title}' not found"}), 404
         
-        # Use LLM to generate markdown from the project structure
-        llm = get_llm()
+        # Helper function to clean markdown formatting
+        def clean_markdown(text):
+            if not text:
+                return ""
+            # Remove heading markers
+            text = re.sub(r'^#+\s+', '', text)
+            # Remove bold/italic markers
+            text = re.sub(r'\*\*|\*|__|\^', '', text)
+            # Remove list markers
+            text = re.sub(r'^\s*[-*+]\s+', '', text)
+            # Remove code markers
+            text = re.sub(r'`', '', text)
+            return text.strip()
         
-        markdown_prompt = PromptTemplate(
-            template="""
-            Convert the following project data into a well-formatted markdown document.
-            Use appropriate markdown syntax for headings, paragraphs, code blocks, and images.
-            no underlines, use ### for headings and ``` for code blocks. also add appropriate language
-            Project data:
-            {project_data}
+        # Format the project in a clean structure
+        formatted_project = {
+            "title": project.get("title", "Untitled Project"),
+            "link": project.get("link", ""),
+            "tags": project.get("tags", []),
+            "image": project.get("image", ""),
+            "prerequisite": project.get("prerequisite", {}),
+            "content": []
+        }
+        
+        # Process and clean up checkpoints
+        checkpoints = project.get("checkpoints", [])
+        for checkpoint in checkpoints:
+            # Clean section title from markdown
+            clean_title = clean_markdown(checkpoint.get("checkpoint", ""))
             
-            Return only the markdown content, no additional explanations or formatting.
-            """,
-            input_variables=["project_data"]
-        )
+            section = {
+                "title": clean_title,
+                "elements": []
+            }
+            
+            # Process content sections
+            for item in checkpoint.get("content", []):
+                item_type = item.get("type", "")
+                
+                if item_type == "p":
+                    # Clean text content from markdown
+                    clean_content = clean_markdown(item.get("text", ""))
+                    section["elements"].append({
+                        "type": "text",
+                        "content": clean_content
+                    })
+                elif item_type == "pre":
+                    # Code blocks remain as-is
+                    section["elements"].append({
+                        "type": "code",
+                        "content": item.get("text", "")
+                    })
+                elif item_type == "img":
+                    section["elements"].append({
+                        "type": "image",
+                        "url": item.get("src", "")
+                    })
+                elif item_type == "h3-li":
+                    # Handle header with list items
+                    clean_header = clean_markdown(item.get("h3", ""))
+                    list_items = item.get("li", [])
+                    
+                    # Add header as text first
+                    if clean_header:
+                        section["elements"].append({
+                            "type": "text",
+                            "content": clean_header
+                        })
+                    
+                    # Add list items as individual text elements
+                    for list_item in list_items:
+                        clean_item = clean_markdown(list_item)
+                        section["elements"].append({
+                            "type": "text",
+                            "content": f"• {clean_item}"
+                        })
+            
+            formatted_project["content"].append(section)
         
-        markdown_chain = LLMChain(llm=llm, prompt=markdown_prompt)
-        result = markdown_chain.invoke({"project_data": json.dumps(project)})
+        return jsonify(formatted_project), 200
         
-        markdown_content = result.get("text", "").strip()
-
-
-        
-        return jsonify({"title": title, "markdown": markdown_content}), 200
     except Exception as e:
-        app.logger.error(f"Failed to get project markdown: {str(e)}")
-        return jsonify({"error": str(e)}), 500
-
+        app.logger.error(f"Error getting project: {str(e)}")
+        return jsonify({"error": f"Failed to get project: {str(e)}"}), 500
 
 def init_app():
     try:

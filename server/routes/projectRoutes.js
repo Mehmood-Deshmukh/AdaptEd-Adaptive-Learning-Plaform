@@ -4,6 +4,6 @@ const router = express.Router();
 const projectController = require('../controllers/projectController');
 
 router.get('/', projectController.getProjectsOverview);
-router.get('/projects-markdown/:title', projectController.getProjectMarkdown);
+router.get('/get-project/:title', projectController.getProject);
 
 module.exports = router;

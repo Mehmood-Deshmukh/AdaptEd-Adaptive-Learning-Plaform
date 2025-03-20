@@ -12,8 +12,11 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.0.9",
     "axios": "^1.8.2",
+    "dompurify": "^3.2.4",
     "framer-motion": "^12.4.10",
+    "highlight.js": "^11.11.1",
     "lucide-react": "^0.477.0",
+    "marked": "^15.0.7",
     "primeflex": "^4.0.0",
     "primeicons": "^7.0.0",
     "primereact": "^10.9.2",

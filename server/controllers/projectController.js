@@ -13,16 +13,15 @@ const projectController = {
     }
   },
   
-  getProjectMarkdown: async (req, res) => {
+  getProject: async (req, res) => {
     try {
       const { title } = req.params;
       if (!title) {
         return res.status(400).json({ error: 'Missing title parameter' });
       }
       
-      const response = await axios.get(`${process.env.FLASK_BASE_URL}/api/project-markdown/${encodeURIComponent(title)}`);
-      const markdown = response.data.markdown;
-      fs.writeFileSync(`${title}.md`, markdown);
+      const response = await axios.get(`${process.env.FLASK_BASE_URL}/api/get-project?title=${encodeURIComponent(title)}`);
+
       res.status(200).json(response.data);
     } catch (error) {
       console.error('Error fetching project markdown:', error.message);
