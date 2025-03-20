@@ -33,6 +33,11 @@ const Forum = () => {
     setNewComment("");
   };
 
+  const handleLogout = () => {
+    dispatch({ type: "LOADING" });
+    dispatch({ type: "LOGOUT" });
+  };
+  
   const handleVote = (postId, replyIndex, type) => {
     setPosts((prevPosts) =>
       prevPosts.map((post) =>
@@ -106,9 +111,8 @@ const Forum = () => {
 
   return (
     <>
-      <div className="flex h-screen bg-gray-50">
-        {/* SideBar*/}
-        <Sidebar user={user} />
+      <div className="flex bg-gray-50">
+      <Sidebar user={user}/>
 
         <div className="forum">
           <div className="w-6xl mx-auto bg-white shadow-md rounded-lg p-4">

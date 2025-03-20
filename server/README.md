@@ -3,6 +3,7 @@
 ```bash
 PORT=
 MONGO_URI=
+DB_NAME=
 JWT_SECRET=
 GEMINI_API_KEY=
 

@@ -1,43 +1,91 @@
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const Attachment = require("../models/attachmentModel");
+
+dotenv.config();
 const Schema = mongoose.Schema;
 
 const postSchema = new Schema({
 	title: {
-		type: string,
-		required: true
+		type: String,
+		required: true,
 	},
 	description: {
-		type: string,
-		required: true
+		type: String,
+		required: true,
 	},
-	attachment: [{
-		type: mongoose.Types.ObjectId,
-		ref: "Attachment"
-	}],
+	attachments: [
+		{
+			type: mongoose.Types.ObjectId,
+			ref: "Attachment",
+		},
+	],
+	tags: [
+		{
+			type: String,
+		},
+	],
 	author: {
 		type: mongoose.Types.ObjectId,
-		ref: "User"
+		ref: "User",
 	},
-	upvotes: [{
-		type: mongoose.Types.ObjectId,
-		ref: "User"
-	}],
-	downvotes: [{
-		type: mongoose.Types.ObjectId,
-		ref: "User"
-	}],
-	comments: [{
-		type: mongoose.Types.ObjectId,
-		ref: "Comment"
-	}],
+	upvotes: [
+		{
+			type: mongoose.Types.ObjectId,
+			ref: "User",
+		},
+	],
+	downvotes: [
+		{
+			type: mongoose.Types.ObjectId,
+			ref: "User",
+		},
+	],
+	comments: [
+		{
+			type: mongoose.Types.ObjectId,
+			ref: "Comment",
+		},
+	],
 	createdAt: {
 		type: Date,
-		default: Date.now()
+		default: Date.now(),
 	},
 	updatedAt: {
 		type: Date,
-		default: Date.now()
-	}
+		default: Date.now(),
+	},
 });
 
-module.exports = mongoose.model(postSchema, "Post");
+postSchema.statics.createPost = async function (
+	title,
+	description,
+	author,
+	tags,
+	attachments
+) {
+	try {
+		const post = new this({
+			title,
+			description,
+			tags,
+			author,
+		});
+		console.log("attachments in post model", attachments);
+		if (attachments?.length != 0) {
+			const uploadedAttachments = await Attachment.uploadFiles(
+				attachments,
+				author,
+				post._id
+			);
+			post.attachments = uploadedAttachments;
+		}
+
+		await post.save();
+		return post;
+	} catch (e) {
+		throw e;
+	}
+};
+
+module.exports = mongoose.model("Post", postSchema);

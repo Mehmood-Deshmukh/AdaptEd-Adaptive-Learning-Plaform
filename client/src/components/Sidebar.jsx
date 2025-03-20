@@ -32,7 +32,7 @@ const Sidebar = ({ user }) => {
   const avatarUrl = `https://avatar.iran.liara.run/username?username=${avatarUsername}`;
 
   return (
-    <div className="w-64 bg-black text-white h-full shadow-lg flex flex-col">
+    <div className="w-64 bg-black text-white  shadow-lg flex flex-col">
       <div className="p-5 border-b border-gray-800">
         <h2 className="text-xl font-bold">AdaptEd</h2>
       </div>
@@ -119,6 +119,17 @@ const Sidebar = ({ user }) => {
             >
               <BookOpen size={18} className="mr-3" />
               <span>Forum</span>
+            </a>
+          </div>
+
+          {/* Projects Button */}
+          <div className="mb-1">
+            <a
+              onClick={() => navigate("/project-tutorial")}
+              className="flex items-center px-4 py-3 rounded hover:bg-gray-800 transition-colors cursor-pointer"
+            >
+              <BookOpen size={18} className="mr-3" />
+              <span>Project Tutorials</span>
             </a>
           </div>
 
