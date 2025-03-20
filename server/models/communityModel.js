@@ -22,6 +22,10 @@ let communitySchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     }],
+    membersCount: {
+        type: Number,
+        default: 0
+    },
     createdBy: {
         type: Schema.Types.ObjectId,
         ref: 'User'
@@ -73,6 +77,7 @@ communitySchema.statics.createCommunity = async function(
     });
     
     community.members.push(createdBy);
+    community.membersCount = 1;
     await community.save();
 
     return community;

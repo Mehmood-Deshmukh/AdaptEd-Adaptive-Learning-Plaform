@@ -2,6 +2,7 @@ const userModel = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
+const Community = require("../models/communityModel")
 const sendMail = require('../utils/sendMail');
 
 const userController = {
@@ -178,6 +179,65 @@ const userController = {
                 status: 'error',
                 message: error.message
             });
+        }
+    },
+
+    joinCommunity: async (req, res) => {
+        try{
+            const { communityId } = req.body;
+            const user = await userModel.findById(req.userId);
+
+            if (user.communities.includes(communityId)) {
+                return res.status(203).json({
+                    success: true,
+                    message: "Already in the community",
+                    data: null
+                })
+            }
+
+            user.communities.push(communityId);
+            await user.save();
+
+            const community = await Community.findById(communityId);
+            community.membersCount += 1;
+
+            await community.save();
+
+            res.status(201).json({
+                success: true,
+                message: "successfully joined the community",
+                data: null
+            })
+        }catch(e) {
+            console.log(e.message);
+            res.status(500).json({
+                success: false, 
+                message: e.message,
+                data: null
+            })
+        }
+    },
+    leaveCommunity: async (req, res) => {
+        try{
+            const {communityId} = req.body;
+            const user = await userModel.findById(req.userId);
+
+            user.communities = user.communities.filter(c => c != communityId)
+            const community = await Community.findById(communityId);
+
+            community.membersCount--;
+            
+            await user.save();
+            await community.save();
+
+
+        }catch(e) {
+            console.log(e.message);
+            res.status(500).json({
+                success: false,
+                message: e.message,
+                data: null
+            })
         }
     }
 }
