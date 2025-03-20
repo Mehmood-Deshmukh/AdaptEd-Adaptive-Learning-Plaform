@@ -13,3 +13,6 @@ questions_faiss_index.pkl
 
 ./resources_faiss_index.pkl
 resources_faiss_index.pkl
+
+projects_faiss_index.pkl
+./projects_faiss_index.pkl

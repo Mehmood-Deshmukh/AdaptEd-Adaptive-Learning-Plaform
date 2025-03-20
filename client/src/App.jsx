@@ -7,6 +7,8 @@ import Roadmap from './pages/RoadmapGenerator'
 import Quiz from './pages/Quiz'
 import Forum from './pages/Forum'
 import ProfilePage from './pages/Profile'
+import ProjectsPage from './pages/Projects'
+
 function App() {
   const { state } = useAuthContext()
   const { isAuthenticated, Loading } = state;
@@ -32,6 +34,7 @@ function App() {
         <Route path="/forum" element={isAuthenticated ? <Forum /> : <Navigate to="/login" />} />
         <Route path="*" element={<h1>Not Found</h1>} />
         <Route path='/profile'  element={isAuthenticated ? <ProfilePage /> : <Navigate to="/login" />}/>
+        <Route path='/projects' element={isAuthenticated ? <ProjectsPage /> : <Navigate to="/login" />}/>
       </Routes>
     </BrowserRouter>
   )

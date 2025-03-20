@@ -30,6 +30,7 @@ app = Flask(__name__)
 
 RESOURCES_FAISS_INDEX_PATH = "resources_faiss_index"
 QUESTIONS_FAISS_INDEX_PATH = "questions_faiss_index"
+PROJECTS_FAISS_INDEX_PATH = "projects_faiss_index"
 EMBEDDINGS_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 MONGODB_URI = "mongodb://localhost:27017"
 DB_NAME = "inspiron25"
@@ -79,8 +80,88 @@ class Quiz(BaseModel):
     tags: List[str] = Field(description="List of relevant tags for the quiz")
     questions: List[QuizQuestion] = Field(description="List of 10 questions for the quiz")
 
+class Project(BaseModel):
+    title: str = Field(description="Title of the project")
+    link: str = Field(description="URL of the project")
+    tags: List[str] = Field(description="List of tags related to the project")
+    description: str = Field(description="A brief description of the project")
+    content: Dict[str, Any] = Field(description="Project content including code samples and instructions")
+
+
 roadmap_parser = JsonOutputParser(pydantic_object=Roadmap)
 quiz_parser = JsonOutputParser(pydantic_object=Quiz)
+project_parser = JsonOutputParser(pydantic_object=Project)
+
+
+
+def load_projects():
+    """Load projects from JSON file and create vector store"""
+    try:
+        app.logger.info("Loading projects...")
+        if os.path.exists(PROJECTS_FAISS_INDEX_PATH):
+            app.logger.info("Projects vector store already exists")
+            return
+
+        if not os.path.exists("codedex_projects.json"):
+            app.logger.warning("codedex_projects.json not found")
+            return
+            
+        with open("codedex_projects.json", "r") as f:
+            projects_data = json.load(f)
+        
+        documents = []
+        for project in projects_data:
+            # Extract searchable content
+            content = f"Title: {project.get('title', '')}\n"
+            content += f"Tags: {', '.join(project.get('tags', []))}\n"
+            
+            # Extract text from checkpoints to make searchable
+            for checkpoint in project.get('checkpoints', []):
+                content += f"Checkpoint: {checkpoint.get('checkpoint', '')}\n"
+                for item in checkpoint.get('content', []):
+                    if item.get('type') == 'p':
+                        content += f"{item.get('text', '')}\n"
+                    elif item.get('type') == 'pre':
+                        content += f"Code: {item.get('text', '')}\n"
+            
+            doc = Document(page_content=content, metadata=project)
+            documents.append(doc)
+        
+        app.logger.info(f"Loaded {len(documents)} projects")
+        
+        # Create vector store
+        embeddings = HuggingFaceEmbeddings(model_name=EMBEDDINGS_MODEL_NAME)
+        text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
+        split_docs = text_splitter.split_documents(documents)
+        
+        vector_store = FAISS.from_documents(split_docs, embeddings)
+        
+        # Save vector store
+        with open(f"{PROJECTS_FAISS_INDEX_PATH}.pkl", "wb") as f:
+            pickle.dump(vector_store, f)
+            
+        app.logger.info(f"Projects vector store created with {len(documents)} documents")
+        
+    except Exception as e:
+        app.logger.error(f"Failed to load projects: {str(e)}")
+
+def get_projects_vector_store() -> FAISS:
+    """Get the projects vector store"""
+    if os.path.exists(f"{PROJECTS_FAISS_INDEX_PATH}.pkl"):
+        app.logger.info("Loading existing projects FAISS index...")
+        with open(f"{PROJECTS_FAISS_INDEX_PATH}.pkl", "rb") as f:
+            vector_store = pickle.load(f)
+        return vector_store
+    else:
+        load_projects()
+    
+    app.logger.info("Creating a new projects FAISS index...")
+    load_projects()
+    
+    with open(f"{PROJECTS_FAISS_INDEX_PATH}.pkl", "rb") as f:
+        vector_store = pickle.load(f)
+    
+    return vector_store
 
 
 def get_mongodb_client():
@@ -321,7 +402,7 @@ def get_llm() -> ChatGroq:
         groq_llm = ChatGroq(
             model_name="llama3-70b-8192",
             temperature=0.1,
-            max_tokens=2000,
+            max_tokens=4000,
             api_key=os.environ.get("GROQ_API_KEY")
         )
         return groq_llm
@@ -638,11 +719,77 @@ def cluster_summary_route():
     return cluster_summary()
 
 
+@app.route('/api/projects-overview', methods=['GET'])
+def get_projects_overview():
+    """Get all projects with just titles and images"""
+    try:
+        with open("codedex_projects.json", "r") as f:
+            projects = json.load(f)
+        
+        overview = []
+        for project in projects:
+            overview.append({
+                "title": project.get("title", ""),
+                "link": project.get("link", ""),
+                "tags": project.get("tags", []),
+                "image": project.get("image", ""),
+                "prerequisite": project.get("prerequisite", {})
+            })
+        
+        return jsonify(overview), 200
+    except Exception as e:
+        app.logger.error(f"Failed to get projects overview: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/project-markdown/<title>', methods=['GET'])
+def get_project_markdown(title):
+    """Get project markdown content based on title"""
+    try:
+        # Find the project with the given title
+        with open("codedex_projects.json", "r") as f:
+            projects = json.load(f)
+        
+        project = None
+        for p in projects:
+            if p.get("title") == title:
+                project = p
+                break
+        
+        if not project:
+            return jsonify({"error": "Project not found"}), 404
+        
+        # Use LLM to generate markdown from the project structure
+        llm = get_llm()
+        
+        markdown_prompt = PromptTemplate(
+            template="""
+            Convert the following project data into a well-formatted markdown document.
+            Use appropriate markdown syntax for headings, paragraphs, code blocks, and images.
+            no underlines, use ### for headings and ``` for code blocks. also add appropriate language
+            Project data:
+            {project_data}
+            
+            Return only the markdown content, no additional explanations or formatting.
+            """,
+            input_variables=["project_data"]
+        )
+        
+        markdown_chain = LLMChain(llm=llm, prompt=markdown_prompt)
+        result = markdown_chain.invoke({"project_data": json.dumps(project)})
+        
+        markdown_content = result.get("text", "").strip()
+
+
+        
+        return jsonify({"title": title, "markdown": markdown_content}), 200
+    except Exception as e:
+        app.logger.error(f"Failed to get project markdown: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+
 
 def init_app():
     try:
-        
-        load_resources()
+
         check_and_update_vector_stores()
         
         app.logger.info("Application initialized successfully")
