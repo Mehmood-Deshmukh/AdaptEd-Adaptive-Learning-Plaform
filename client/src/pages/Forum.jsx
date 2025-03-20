@@ -107,8 +107,97 @@ const Forum = () => {
   return (
     <>
       <div className="flex h-screen bg-gray-50">
-        {/* SideBar*/}
-        <Sidebar user={user} />
+        <div className="w-64 bg-black text-white h-full shadow-lg flex flex-col">
+          <div className="p-5 border-b border-gray-800">
+            <h2 className="text-xl font-bold">AdaptEd</h2>
+          </div>
+
+          <div className="p-5 border-b border-gray-800">
+            <div className="flex items-center mb-4">
+              <div className="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center">
+                <User size={20} className="text-white" />
+              </div>
+              <div className="ml-3">
+                <p className="font-medium">{user?.name}</p>
+                <p className="text-xs text-gray-400">{userStats.rank}</p>
+              </div>
+            </div>
+
+            <div className="flex justify-between text-sm mb-2">
+              <div className="flex items-center">
+                <Flame size={16} className="mr-1" />
+                <span>{userStats.streak} days</span>
+              </div>
+              <div className="flex items-center">
+                <Crown size={16} className="mr-1" />
+                <span>{userStats.points} XP</span>
+              </div>
+            </div>
+
+            <div className="mt-2">
+              <div className="w-full bg-gray-700 rounded-full h-1.5">
+                <div
+                  className="bg-white h-1.5 rounded-full"
+                  style={{ width: `${userStats.progress}%` }}
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex-1 overflow-y-auto">
+            <div className="p-4">
+              <div className="mb-1">
+                <a
+                  onClick={() => navigate("/")}
+                  className="flex items-center px-4 py-3 rounded hover:bg-gray-800 transition-colors"
+                >
+                  <HomeIcon size={18} className="mr-3" />
+                  <span>Dashboard</span>
+                </a>
+              </div>
+
+              <div className="mb-1">
+                <a
+                  onClick={() => navigate("/quiz-generator")}
+                  className="flex items-center px-4 py-3 rounded hover:bg-gray-800 transition-colors"
+                >
+                  <BookOpen size={18} className="mr-3" />
+                  <span>Generate Quiz</span>
+                </a>
+              </div>
+
+              <div className="mb-1">
+                <a
+                  onClick={() => navigate("/roadmap-generator")}
+                  className="flex items-center px-4 py-3 rounded hover:bg-gray-800 transition-colors"
+                >
+                  <Map size={18} className="mr-3" />
+                  <span>Generate Roadmap</span>
+                </a>
+              </div>
+
+              <div className="mb-1">
+                <a
+                  onClick={() => navigate("/forum")}
+                  className="flex items-center px-4 py-3 rounded hover:bg-gray-800 transition-colors"
+                >
+                  <BookOpen size={18} className="mr-3" />
+                  <span>Forum</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-4 border-t border-gray-800">
+            <button
+              onClick={handleLogout}
+              className="flex items-center w-full px-4 py-3 rounded hover:bg-gray-800 transition-colors"
+            >
+              <LogOut size={18} className="mr-3" />
+              <span>Logout</span>
+            </button>
+          </div>
+        </div>
 
         <div className="forum">
           <div className="w-6xl mx-auto bg-white shadow-md rounded-lg p-4">

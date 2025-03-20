@@ -36,6 +36,7 @@ async function createCommunity(req, res) {
   }
 }
 
+// We might want to send top 10 posts or something it'll look good on community landing page
 async function getCommunity(req, res) {
   try {
     const { id } = req.params;

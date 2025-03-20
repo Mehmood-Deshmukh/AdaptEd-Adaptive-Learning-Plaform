@@ -5,6 +5,8 @@ const connectDB = require('./config/connectDB');
 const userRoutes = require('./routes/userRoutes');
 const roadmapRoutes = require('./routes/roadmapRoutes');
 const quizRoutes = require('./routes/quizRoutes');
+const postRoutes = require('./routes/postRoutes');
+const attachmentRoutes = require('./routes/attachmentRoutes');
 
 dotenv.config();
 const app = express();
@@ -19,6 +21,8 @@ app.get('/', (req, res) => {
 app.use('/api/user', userRoutes);
 app.use('/api/roadmap', roadmapRoutes);
 app.use('/api/quiz', quizRoutes);
+app.use('/api/post', postRoutes);
+app.use('/api/attachments', attachmentRoutes);
 
 connectDB();
 app.listen(port, () => {

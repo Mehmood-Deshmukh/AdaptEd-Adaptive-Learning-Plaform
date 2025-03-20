@@ -6,7 +6,9 @@ import useAuthContext from './hooks/useAuthContext'
 import Roadmap from './pages/RoadmapGenerator'
 import Quiz from './pages/Quiz'
 import Forum from './pages/Forum'
+import CreatePost from './pages/CreatePost'
 import ProfilePage from './pages/Profile'
+
 function App() {
   const { state } = useAuthContext()
   const { isAuthenticated, Loading } = state;
@@ -31,6 +33,7 @@ function App() {
         <Route path="/quiz-generator" element={isAuthenticated ? <Quiz /> : <Navigate to="/login" />} />
         <Route path="/forum" element={isAuthenticated ? <Forum /> : <Navigate to="/login" />} />
         <Route path="*" element={<h1>Not Found</h1>} />
+        <Route path='/create-post' element={<CreatePost />} />
         <Route path='/profile'  element={isAuthenticated ? <ProfilePage /> : <Navigate to="/login" />}/>
       </Routes>
     </BrowserRouter>
