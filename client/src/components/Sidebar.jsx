@@ -32,7 +32,7 @@ const Sidebar = ({ user }) => {
   const avatarUrl = `https://avatar.iran.liara.run/username?username=${avatarUsername}`;
 
   return (
-    <div className="w-64 bg-black text-white h-full shadow-lg flex flex-col">
+    <div className="w-64 bg-black text-white  shadow-lg flex flex-col">
       <div className="p-5 border-b border-gray-800">
         <h2 className="text-xl font-bold">AdaptEd</h2>
       </div>
