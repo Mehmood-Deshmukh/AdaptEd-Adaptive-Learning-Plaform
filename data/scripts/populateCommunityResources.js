@@ -23,8 +23,9 @@ async function pushResources() {
 
     const resources = [];
     let count = 0;
-    
+
     for (const category in updatedResource) {
+      
       updatedResource[category].forEach(resource => {
         
         const formattedResource = {
@@ -46,6 +47,7 @@ async function pushResources() {
 
     const result = await collection.insertMany(resources);
     console.log(`\x1b[32mInserted ${result.insertedCount} resources\x1b[0m`);
+
     
   } catch (e) {
     console.error('Error inserting resources:', e);
