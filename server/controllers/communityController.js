@@ -2,8 +2,20 @@ const Community = require("../models/communityModel");
 
 async function getCommunities(req, res) {
 	try {
-		const communities = await Community.getCommunities().sort({
-			createdAt: -1,
+		// fetch 10 communities at a time
+		const page = parseInt(req.query.page) || 1;
+		const limit = parseInt(req.query.limit) || 10;
+		const skip = (page - 1) * limit;
+
+		const communities = await Community.find()
+			.sort({ createdAt: -1 })
+			.skip(skip)
+			.limit(limit);
+
+		res.status(200).json({
+			success: true,
+			message: "Communities fetched successfully",
+			data: communities,
 		});
 	} catch (e) {
 		console.error(e);
@@ -72,6 +84,7 @@ async function getCommunity(req, res) {
 }
 
 module.exports = {
+	getCommunities,
 	createCommunity,
 	getCommunity,
 };
