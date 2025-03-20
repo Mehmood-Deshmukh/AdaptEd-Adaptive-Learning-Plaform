@@ -33,7 +33,6 @@ function App() {
         <Route path="/roadmap-generator" element={isAuthenticated ? <Roadmap /> : <Navigate to="/login" />} />
         <Route path="/quiz-generator" element={isAuthenticated ? <Quiz /> : <Navigate to="/login" />} />
         <Route path="/forum" element={isAuthenticated ? <Forum /> : <Navigate to="/login" />} />
-        <Route path="/project-tutorial" element={isAuthenticated ? <Project/> : <Navigate to="/login" />} />
         <Route path="*" element={<h1>Not Found</h1>} />
         <Route path='/create-post' element={<CreatePost />} />
         <Route path='/profile'  element={isAuthenticated ? <ProfilePage /> : <Navigate to="/login" />}/>
