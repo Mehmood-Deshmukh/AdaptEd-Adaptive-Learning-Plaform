@@ -152,15 +152,6 @@ const ProjectViewer = () => {
                   <div className="p-6">
                     {/* Header section with image and meta */}
                     <div className="mb-8">
-                      {projectData.image && (
-                        <div className="rounded-xl overflow-hidden mb-6 border border-gray-100 shadow-sm">
-                          <img 
-                            src={projectData.image} 
-                            alt={projectData.title} 
-                            className="w-full h-64 object-cover grayscale"
-                          />
-                        </div>
-                      )}
                       
                       <div className="flex flex-wrap gap-3 mb-4">
                         {projectData.tags && projectData.tags.map((tag, idx) => (
@@ -283,7 +274,7 @@ const ProjectViewer = () => {
                   <img 
                     src={project.image} 
                     alt={project.title} 
-                    className="w-full h-full object-contain grayscale"
+                    className="w-full h-full object-contain"
                   />
                 </div>
               )}

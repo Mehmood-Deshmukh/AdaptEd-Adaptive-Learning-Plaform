@@ -2,10 +2,13 @@ import {
   BookOpen,
   Crown,
   Flame,
-  HomeIcon,
+  Home,
   LogOut,
   Map,
   User,
+  Users,
+  Code,
+  BookMarked
 } from "lucide-react";
 import React from "react";
 import useAuthContext from "../hooks/useAuthContext";
@@ -14,12 +17,12 @@ import { useNavigate } from "react-router-dom";
 const Sidebar = ({ user }) => {
   const { dispatch } = useAuthContext();
   const navigate = useNavigate();
-
+  
   const handleLogout = () => {
     dispatch({ type: "LOADING" });
     dispatch({ type: "LOGOUT" });
   };
-
+  
   const userStats = {
     streak: 7,
     points: 2350,
@@ -27,16 +30,15 @@ const Sidebar = ({ user }) => {
     completedQuizzes: 12,
     progress: 68,
   };
-
+  
   const avatarUsername = encodeURIComponent(user.name);
   const avatarUrl = `https://avatar.iran.liara.run/username?username=${avatarUsername}`;
-
+  
   return (
-    <div className="w-64 bg-black text-white  shadow-lg flex flex-col">
+    <div className="w-64 bg-black text-white shadow-lg flex flex-col">
       <div className="p-5 border-b border-gray-800">
         <h2 className="text-xl font-bold">AdaptEd</h2>
       </div>
-
       {/* User info */}
       <div className="p-5 border-b border-gray-800">
         <div className="flex items-center mb-4">
@@ -53,7 +55,6 @@ const Sidebar = ({ user }) => {
             <p className="text-xs text-gray-400">{userStats.rank}</p>
           </div>
         </div>
-
         <div className="flex justify-between text-sm mb-2">
           <div className="flex items-center">
             <Flame size={16} className="mr-1" />
@@ -64,7 +65,6 @@ const Sidebar = ({ user }) => {
             <span>{userStats.points} XP</span>
           </div>
         </div>
-
         {/* Progress Bar */}
         <div className="mt-2">
           <div className="w-full bg-gray-700 rounded-full h-1.5">
@@ -75,7 +75,6 @@ const Sidebar = ({ user }) => {
           </div>
         </div>
       </div>
-
       {/* Navigation */}
       <div className="flex-1 overflow-y-auto">
         <div className="p-4">
@@ -84,22 +83,20 @@ const Sidebar = ({ user }) => {
               onClick={() => navigate("/")}
               className="flex items-center px-4 py-3 rounded hover:bg-gray-800 transition-colors cursor-pointer"
             >
-              <HomeIcon size={18} className="mr-3" />
+              <Home size={18} className="mr-3" />
               <span>Dashboard</span>
             </a>
           </div>
-
           {/* Generate Quiz Button */}
           <div className="mb-1">
             <a
               onClick={() => navigate("/quiz-generator")}
               className="flex items-center px-4 py-3 rounded hover:bg-gray-800 transition-colors cursor-pointer"
             >
-              <BookOpen size={18} className="mr-3" />
+              <BookMarked size={18} className="mr-3" />
               <span>Generate Quiz</span>
             </a>
           </div>
-
           {/* Generate Roadmap Button */}
           <div className="mb-1">
             <a
@@ -110,29 +107,26 @@ const Sidebar = ({ user }) => {
               <span>Generate Roadmap</span>
             </a>
           </div>
-
           {/* Forum Button */}
           <div className="mb-1">
             <a
               onClick={() => navigate("/forum")}
               className="flex items-center px-4 py-3 rounded hover:bg-gray-800 transition-colors cursor-pointer"
             >
-              <BookOpen size={18} className="mr-3" />
+              <Users size={18} className="mr-3" />
               <span>Forum</span>
             </a>
           </div>
-
           {/* Projects Button */}
           <div className="mb-1">
             <a
-              onClick={() => navigate("/project-tutorial")}
+              onClick={() => navigate("/projects")}
               className="flex items-center px-4 py-3 rounded hover:bg-gray-800 transition-colors cursor-pointer"
             >
-              <BookOpen size={18} className="mr-3" />
+              <Code size={18} className="mr-3" />
               <span>Project Tutorials</span>
             </a>
           </div>
-
           <div className="mb-1">
             <a
               onClick={() => navigate("/profile")}
@@ -144,7 +138,6 @@ const Sidebar = ({ user }) => {
           </div>
         </div>
       </div>
-
       {/* Logout Button */}
       <div className="p-4 border-t border-gray-800">
         <button
