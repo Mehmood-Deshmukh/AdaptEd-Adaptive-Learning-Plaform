@@ -122,6 +122,17 @@ const Sidebar = ({ user }) => {
             </a>
           </div>
 
+          {/* Projects Button */}
+          <div className="mb-1">
+            <a
+              onClick={() => navigate("/project-tutorial")}
+              className="flex items-center px-4 py-3 rounded hover:bg-gray-800 transition-colors cursor-pointer"
+            >
+              <BookOpen size={18} className="mr-3" />
+              <span>Project Tutorials</span>
+            </a>
+          </div>
+
           <div className="mb-1">
             <a
               onClick={() => navigate("/profile")}
