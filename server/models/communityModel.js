@@ -34,11 +34,11 @@ let communitySchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'Post'
 	},
-	dateCreated: {
+	createdAt: {
 		type: Date,
 		default: Date.now()
 	},
-	dateUpdated: {
+	updatedAt: {
 		type: Date,
 		default: Date.now()
 	}

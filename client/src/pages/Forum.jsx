@@ -110,13 +110,11 @@ const Forum = () => {
   return (
     <>
       <div className="flex h-screen bg-gray-50">
-        {/* SideBar*/}
         <div className="w-64 bg-black text-white h-full shadow-lg flex flex-col">
           <div className="p-5 border-b border-gray-800">
             <h2 className="text-xl font-bold">AdaptEd</h2>
           </div>
 
-          {/* User info */}
           <div className="p-5 border-b border-gray-800">
             <div className="flex items-center mb-4">
               <div className="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center">
@@ -139,7 +137,6 @@ const Forum = () => {
               </div>
             </div>
 
-            {/* Progress Bar */}
             <div className="mt-2">
               <div className="w-full bg-gray-700 rounded-full h-1.5">
                 <div
@@ -150,7 +147,6 @@ const Forum = () => {
             </div>
           </div>
 
-          {/* Navigation */}
           <div className="flex-1 overflow-y-auto">
             <div className="p-4">
               <div className="mb-1">
@@ -163,7 +159,6 @@ const Forum = () => {
                 </a>
               </div>
 
-              {/* Generate Quiz Button */}
               <div className="mb-1">
                 <a
                   onClick={() => navigate("/quiz-generator")}
@@ -174,7 +169,6 @@ const Forum = () => {
                 </a>
               </div>
 
-              {/* Generate Roadmap Button */}
               <div className="mb-1">
                 <a
                   onClick={() => navigate("/roadmap-generator")}
@@ -185,7 +179,6 @@ const Forum = () => {
                 </a>
               </div>
 
-              {/* Forum Button */}
               <div className="mb-1">
                 <a
                   onClick={() => navigate("/forum")}
@@ -198,7 +191,6 @@ const Forum = () => {
             </div>
           </div>
 
-          {/* Logout Button */}
           <div className="p-4 border-t border-gray-800">
             <button
               onClick={handleLogout}

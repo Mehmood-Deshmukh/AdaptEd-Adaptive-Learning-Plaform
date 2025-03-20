@@ -7,5 +7,5 @@ const {
     getCommunity,
 } = require('../controllers/communityController');
 
-router.post('/create', createCommunity);
-router.get('/:id', getCommunity);
+router.post('/create', authenticateUser, createCommunity);
+router.get('/:id',authenticateUser, getCommunity);
