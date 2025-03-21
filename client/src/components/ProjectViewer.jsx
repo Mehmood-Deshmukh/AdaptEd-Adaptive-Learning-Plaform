@@ -259,9 +259,6 @@ const ProjectViewer = () => {
             <motion.div 
               key={index} 
               className="bg-white border-2 border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: index * 0.05 }}
             >
               <div className="p-4">
                 <h3 className="text-lg font-semibold text-black h-14 line-clamp-2">
