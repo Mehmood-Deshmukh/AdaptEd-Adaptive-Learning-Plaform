@@ -58,7 +58,7 @@ const Sidebar = ({ user }) => {
         <div className="flex justify-between text-sm mb-2">
           <div className="flex items-center">
             <Flame size={16} className="mr-1" />
-            <span>{userStats.streak} days</span>
+            <span>{user.currentStreak} days</span>
           </div>
           <div className="flex items-center">
             <Crown size={16} className="mr-1" />

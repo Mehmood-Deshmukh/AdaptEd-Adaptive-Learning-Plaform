@@ -86,7 +86,7 @@ const Login = () => {
               payload: { user: data.data, token: data.token },
             });
             navigate("/");
-          }, 4000);
+          }, 2000);
         } else {
           // No popup needed, just navigate directly
           dispatch({
