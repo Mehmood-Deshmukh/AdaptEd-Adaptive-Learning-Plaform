@@ -31,6 +31,7 @@ const Forum = () => {
 	const [newComment, setNewComment] = useState("");
 	const [isCreatePostModalOpen, setIsCreatePostModalOpen] = useState(false);
 	const [activeTag, setActiveTag] = useState("All");
+	const [loading, setLoading] = useState(true);
 
 	const handleCommentSubmit = (postId) => {
 		if (!newComment.trim()) return;
@@ -44,16 +45,16 @@ const Forum = () => {
 	const handleVote = (postId, type) => {
 		setPosts((prevPosts) =>
 			prevPosts.map((post) =>
-				post.id === postId
+				post._id === postId
 					? {
 							...post,
 							upvotes:
 								type === "upvote"
-									? post.upvotes + 1
+									? [...post.upvotes, user?.id]
 									: post.upvotes,
 							downvotes:
 								type === "downvote"
-									? post.downvotes + 1
+									? [...post.downvotes, user?.id]
 									: post.downvotes,
 					  }
 					: post
@@ -61,246 +62,206 @@ const Forum = () => {
 		);
 	};
 
-	const [posts, setPosts] = useState([
+	const placeholderPosts = [
 		{
-			id: 1,
+			_id: "placeholder1",
 			title: "How to style elements with Tailwind CSS?",
-			content:
+			description:
 				"I'm new to Tailwind CSS and looking for best practices for styling components efficiently.",
-			author: "JohnDoe",
-			authorAvatar: "https://picsum.photos/seed/john/100",
-			community: "Web Development",
+			author: {
+				_id: "placeuser1",
+				name: "JohnDoe",
+				profileImage: "https://picsum.photos/seed/john/100",
+			},
 			tags: ["CSS", "Tailwind", "Frontend"],
-			upvotes: 24,
-			downvotes: 2,
-			commentCount: 8,
-			createdAt: "2 hours ago",
-			images: ["https://picsum.photos/seed/tailwind/1280"],
+			upvotes: [],
+			downvotes: [],
+			comments: [],
+			createdAt: new Date(Date.now() - 7200000).toISOString(), // 2 hours ago
+			attachments: ["https://picsum.photos/seed/tailwind/1280"],
 		},
 		{
-			id: 2,
+			_id: "placeholder2",
 			title: "React performance optimization techniques",
-			content:
+			description:
 				"What are some ways to optimize React applications for better performance?",
-			author: "JaneDoe",
-			authorAvatar: "https://picsum.photos/seed/jane/100",
-			community: "React",
+			author: {
+				_id: "placeuser2",
+				name: "JaneDoe",
+				profileImage: "https://picsum.photos/seed/jane/100",
+			},
 			tags: ["React", "Performance", "JavaScript"],
-			upvotes: 45,
-			downvotes: 3,
-			commentCount: 12,
-			createdAt: "5 hours ago",
-			images: [
+			upvotes: [],
+			downvotes: [],
+			comments: [],
+			createdAt: new Date(Date.now() - 18000000).toISOString(), // 5 hours ago
+			attachments: [
 				"https://picsum.photos/seed/react1/1280",
 				"https://picsum.photos/seed/react2/1280",
-				"https://picsum.photos/seed/react3/1280",
-				"https://picsum.photos/seed/react4/1280",
 			],
 		},
 		{
-			id: 3,
+			_id: "placeholder3",
 			title: "Building accessible forms - best practices",
-			content:
+			description:
 				"I want to ensure my forms are accessible to all users. What are the current best practices for creating accessible forms?",
-			author: "AccessibilityAdvocate",
-			authorAvatar: "https://picsum.photos/seed/accessibility/100",
-			community: "Web Accessibility",
+			author: {
+				_id: "placeuser3",
+				name: "AccessibilityAdvocate",
+				profileImage: "https://picsum.photos/seed/accessibility/100",
+			},
 			tags: ["Accessibility", "HTML", "Forms"],
-			upvotes: 87,
-			downvotes: 1,
-			commentCount: 24,
-			createdAt: "1 day ago",
-			images: [
+			upvotes: [],
+			downvotes: [],
+			comments: [],
+			createdAt: new Date(Date.now() - 86400000).toISOString(), // 1 day ago
+			attachments: [
 				"https://picsum.photos/seed/forms1/1280",
 				"https://picsum.photos/seed/forms2/1280",
 			],
 		},
-		{
-			id: 4,
-			title: "State Management in Large React Applications",
-			content:
-				"Which state management library do you prefer for large React applications? Redux, Zustand, or something else?",
-			author: "DevMaster",
-			authorAvatar: "https://picsum.photos/seed/state/100",
-			community: "React",
-			tags: ["React", "State Management", "Redux"],
-			upvotes: 65,
-			downvotes: 5,
-			commentCount: 14,
-			createdAt: "3 hours ago",
-			images: ["https://picsum.photos/seed/state-mgmt/1280"],
-		},
-		{
-			id: 5,
-			title: "Best backend frameworks for scalability",
-			content:
-				"I need a backend framework that scales well. What are your recommendations?",
-			author: "BackendGuru",
-			authorAvatar: "https://picsum.photos/seed/backend/100",
-			community: "Backend Development",
-			tags: ["Node.js", "Django", "Scalability"],
-			upvotes: 92,
-			downvotes: 3,
-			commentCount: 19,
-			createdAt: "6 hours ago",
-			images: [
-				"https://picsum.photos/seed/backend1/1280",
-				"https://picsum.photos/seed/backend2/1280",
-				"https://picsum.photos/seed/backend3/1280",
-			],
-		},
-		{
-			id: 6,
-			title: "Deploying a Full-Stack App on AWS",
-			content:
-				"I want to deploy my full-stack application on AWS. What are the best practices?",
-			author: "CloudExpert",
-			authorAvatar: "https://picsum.photos/seed/cloud/100",
-			community: "Cloud Computing",
-			tags: ["AWS", "DevOps", "Deployment"],
-			upvotes: 78,
-			downvotes: 4,
-			commentCount: 22,
-			createdAt: "1 day ago",
-			images: ["https://picsum.photos/seed/aws/1280"],
-		},
-		{
-			id: 7,
-			title: "Understanding JavaScript Closures",
-			content:
-				"Closures in JavaScript always confuse me. Can someone explain them with real-world examples?",
-			author: "JSNinja",
-			authorAvatar: "https://picsum.photos/seed/js/100",
-			community: "JavaScript",
-			tags: ["JavaScript", "Closures", "Functions"],
-			upvotes: 120,
-			downvotes: 6,
-			commentCount: 33,
-			createdAt: "2 days ago",
-			images: ["https://picsum.photos/seed/closures/1280"],
-		},
-		{
-			id: 8,
-			title: "Machine Learning in Web Applications",
-			content:
-				"How can I integrate machine learning models into a web application efficiently?",
-			author: "MLGeek",
-			authorAvatar: "https://picsum.photos/seed/ml/100",
-			community: "Machine Learning",
-			tags: ["AI", "Web", "TensorFlow"],
-			upvotes: 88,
-			downvotes: 2,
-			commentCount: 25,
-			createdAt: "3 days ago",
-			images: [
-				"https://picsum.photos/seed/ml1/1280",
-				"https://picsum.photos/seed/ml2/1280",
-				"https://picsum.photos/seed/ml3/1280",
-			],
-		},
-		{
-			id: 9,
-			title: "Using Docker for Local Development",
-			content:
-				"Is using Docker for local development a good practice? What are the benefits?",
-			author: "DevOpsPro",
-			authorAvatar: "https://picsum.photos/seed/docker/100",
-			community: "DevOps",
-			tags: ["Docker", "DevOps", "Containers"],
-			upvotes: 70,
-			downvotes: 3,
-			commentCount: 15,
-			createdAt: "4 days ago",
-			images: ["https://picsum.photos/seed/docker-dev/1280"],
-		},
-		{
-			id: 10,
-			title: "Building a REST API with Express.js",
-			content:
-				"What are the best practices for designing a scalable REST API with Express.js?",
-			author: "APIWizard",
-			authorAvatar: "https://picsum.photos/seed/api/100",
-			community: "Backend Development",
-			tags: ["API", "Express", "Node.js"],
-			upvotes: 83,
-			downvotes: 2,
-			commentCount: 21,
-			createdAt: "5 days ago",
-			images: [
-				"https://picsum.photos/seed/api1/1280",
-				"https://picsum.photos/seed/api2/1280",
-				"https://picsum.photos/seed/api3/1280",
-			],
-		},
-		{
-			id: 11,
-			title: "GraphQL vs REST: Which one to choose?",
-			content:
-				"I'm building an API-heavy application. Should I go with GraphQL or stick to REST?",
-			author: "GraphQLFan",
-			authorAvatar: "https://picsum.photos/seed/graphql/100",
-			community: "API Development",
-			tags: ["GraphQL", "REST", "API"],
-			upvotes: 95,
-			downvotes: 4,
-			commentCount: 28,
-			createdAt: "6 days ago",
-			images: ["https://picsum.photos/seed/graphql-vs-rest/1280"],
-		},
-	]);
+	];
 
-	const [communities, setCommunities] = useState([
-		{
-			id: 1,
-			name: "Web Development",
-			members: 15240,
-			joined: false,
-		},
-		{
-			id: 2,
-			name: "React",
-			members: 12350,
-			joined: true,
-		},
-		{
-			id: 3,
-			name: "JavaScript",
-			members: 24560,
-			joined: false,
-		},
-		{
-			id: 4,
-			name: "UI/UX Design",
-			members: 9870,
-			joined: false,
-		},
-		{
-			id: 5,
-			name: "Web Accessibility",
-			members: 5420,
-			joined: true,
-		},
-	]);
+	const [posts, setPosts] = useState([]);
+	const [communities, setCommunities] = useState([]);
+
+	const fetchPosts = async () => {
+		setLoading(true);
+		try {
+			const response = await fetch(
+				`${import.meta.env.VITE_BACKEND_URL}/api/post/?page=1&limit=5`,
+				{
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem(
+							"token"
+						)}`,
+					},
+				}
+			);
+			const data = await response.json();
+
+			if (data.success && data.data.length > 0) {
+				setPosts(data.data);
+			} else {
+				setPosts(placeholderPosts);
+			}
+		} catch (e) {
+			console.error("Error fetching posts:", e);
+			setPosts(placeholderPosts);
+		} finally {
+			setLoading(false);
+		}
+	};
+
+	const formatDate = (dateString) => {
+		const date = new Date(dateString);
+		const now = new Date();
+		const diffTime = Math.abs(now - date);
+		const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+		const diffHours = Math.floor(diffTime / (1000 * 60 * 60));
+		const diffMinutes = Math.floor(diffTime / (1000 * 60));
+
+		if (diffDays > 0) {
+			return diffDays === 1 ? "1 day ago" : `${diffDays} days ago`;
+		} else if (diffHours > 0) {
+			return diffHours === 1 ? "1 hour ago" : `${diffHours} hours ago`;
+		} else {
+			return diffMinutes === 0
+				? "just now"
+				: `${diffMinutes} minutes ago`;
+		}
+	};
 
 	const fetchCommunities = async () => {
 		try {
-			const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/community/?page=1&limit=5`,{
-				headers: {
-					Authorization: `Bearer ${localStorage.getItem("token")}`,
+			const response = await fetch(
+				`${
+					import.meta.env.VITE_BACKEND_URL
+				}/api/community/?page=1&limit=5`,
+				{
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem(
+							"token"
+						)}`,
+					},
 				}
-			});
+			);
 			const data = await response.json();
 			if (data.success) {
 				setCommunities(data.data);
+			} else {
+				setCommunities([
+					{
+						id: 1,
+						name: "Web Development",
+						membersCount: 15240,
+						joined: false,
+					},
+					{
+						id: 2,
+						name: "React",
+						membersCount: 12350,
+						joined: true,
+					},
+					{
+						id: 3,
+						name: "JavaScript",
+						membersCount: 24560,
+						joined: false,
+					},
+					{
+						id: 4,
+						name: "UI/UX Design",
+						membersCount: 9870,
+						joined: false,
+					},
+					{
+						id: 5,
+						name: "Web Accessibility",
+						membersCount: 5420,
+						joined: true,
+					},
+				]);
 			}
-			console.log("Communities fetched successfully");
-		}catch(e) {
-			console.error(e);
-
+		} catch (e) {
+			console.error("Error fetching communities:", e);
+			setCommunities([
+				{
+					id: 1,
+					name: "Web Development",
+					membersCount: 15240,
+					joined: false,
+				},
+				{
+					id: 2,
+					name: "React",
+					membersCount: 12350,
+					joined: true,
+				},
+				{
+					id: 3,
+					name: "JavaScript",
+					membersCount: 24560,
+					joined: false,
+				},
+				{
+					id: 4,
+					name: "UI/UX Design",
+					membersCount: 9870,
+					joined: false,
+				},
+				{
+					id: 5,
+					name: "Web Accessibility",
+					membersCount: 5420,
+					joined: true,
+				},
+			]);
 		}
-	}
+	};
 
 	useEffect(() => {
+		fetchPosts();
 		fetchCommunities();
 	}, []);
 
@@ -320,7 +281,7 @@ const Forum = () => {
 	const handleJoinCommunity = (communityId) => {
 		setCommunities(
 			communities.map((community) =>
-				community.id === communityId
+				community.id === communityId || community._id === communityId
 					? { ...community, joined: !community.joined }
 					: community
 			)
@@ -328,14 +289,29 @@ const Forum = () => {
 	};
 
 	const formatNumber = (num) => {
+		if (!num) return 0;
+		if (Array.isArray(num)) return num.length;
+
 		if (num >= 1000) {
 			return (num / 1000).toFixed(1) + "k";
 		}
 		return num;
 	};
 
-	const renderImageGrid = (images) => {
-		if (!images || images.length === 0) return null;
+	const getAttachmentUrl = (attachmentId) => {
+		return `${
+			import.meta.env.VITE_BACKEND_URL
+		}/api/attachments/${attachmentId}`;
+	};
+
+	const renderImageGrid = (attachments) => {
+		if (!attachments || attachments.length === 0) return null;
+
+		const images = attachments.map((attachment) =>
+			typeof attachment === "string" && attachment.startsWith("http")
+				? attachment
+				: getAttachmentUrl(attachment)
+		);
 
 		if (images.length === 1) {
 			return (
@@ -343,7 +319,7 @@ const Forum = () => {
 					<img
 						src={images[0]}
 						alt="Post content"
-						className="rounded-lg w-full max-h-80 object-cover"
+						className="rounded-lg w-[40%] max-h-80 object-cover"
 					/>
 				</div>
 			);
@@ -398,13 +374,6 @@ const Forum = () => {
 						</div>
 
 						<div className="flex space-x-4 mb-6">
-							{/* <button
-								className="flex items-center space-x-2 px-5 py-2.5 bg-black text-white rounded-lg hover:bg-gray-800 transition"
-								onClick={() => setIsCreatePostModalOpen(true)}
-							>
-								<Plus size={18} />
-								<span>New Post</span>
-							</button> */}
 							<CreatePostModal />
 							<button className="flex items-center space-x-2 px-5 py-2.5 border border-black text-black rounded-lg hover:bg-gray-50 transition">
 								<Plus size={18} />
@@ -431,7 +400,7 @@ const Forum = () => {
 									className={`px-4 py-1.5 rounded-md ${
 										activeTag === tag
 											? "bg-black text-white"
-											: "border border-gray-1280 text-black hover:bg-gray-50"
+											: "border border-gray-300 text-black hover:bg-gray-50"
 									}`}
 									onClick={() => setActiveTag(tag)}
 								>
@@ -443,115 +412,152 @@ const Forum = () => {
 
 					<div className="flex pt-6 gap-6">
 						<div className="flex-1">
-							{posts.map((post) => (
-								<div
-									key={post.id}
-									className="bg-white p-6 rounded-xl shadow-sm mb-6 border border-gray-200 hover:shadow-md transition"
-								>
-									<div className="flex items-start">
-										<img
-											src={post.authorAvatar}
-											alt={post.author}
-											className="w-12 h-12 rounded-full mr-4"
-										/>
-										<div className="flex-1">
+							{loading ? (
+								<div className="bg-white p-6 rounded-xl shadow-sm mb-6 border border-gray-200">
+									<div className="animate-pulse">
+										<div className="flex items-start">
+											<div className="w-12 h-12 bg-gray-200 rounded-full mr-4"></div>
+											<div className="flex-1">
+												<div className="h-4 bg-gray-200 rounded w-1/4 mb-2"></div>
+												<div className="h-6 bg-gray-200 rounded w-1/2"></div>
+											</div>
+										</div>
+										<div className="mt-4 h-16 bg-gray-200 rounded"></div>
+										<div className="mt-4 h-48 bg-gray-200 rounded"></div>
+									</div>
+								</div>
+							) : posts.length === 0 ? (
+								<div className="bg-white p-6 rounded-xl shadow-sm mb-6 border border-gray-200 text-center">
+									<p className="text-lg text-gray-500">
+										No posts found
+									</p>
+								</div>
+							) : (
+								posts.map((post) => (
+									<div
+										key={post._id}
+										className="bg-white p-6 rounded-xl shadow-sm mb-6 border border-gray-200 hover:shadow-md transition"
+									>
+										<div className="flex items-start">
+											<img
+												src={
+													post.author?.profileImage ||
+													"https://picsum.photos/seed/author/100"
+												}
+												alt={
+													post.author?.name ||
+													"Anonymous"
+												}
+												className="w-12 h-12 rounded-full mr-4"
+											/>
+											<div className="flex-1">
+												<div className="flex items-center space-x-2">
+													<span className="font-medium text-black">
+														{post.author?.name ||
+															"Anonymous"}
+													</span>
+													<span className="text-gray-500 text-sm">
+														in
+													</span>
+													<span className="text-black font-medium">
+														{post.community?.name ||
+															"General"}
+													</span>
+													<span className="text-gray-500 text-sm">
+														{formatDate(
+															post.createdAt
+														)}
+													</span>
+												</div>
+
+												<h2 className="text-xl font-bold text-black mt-2">
+													{post.title}
+												</h2>
+											</div>
+										</div>
+
+										<div className="mt-4 text-black text-lg">
+											{post.description}
+										</div>
+
+										<div className="flex flex-wrap mt-4 gap-2">
+											{post.tags &&
+												post.tags
+													.filter((tag) => tag)
+													.map((tag) => (
+														<span
+															key={tag}
+															className="px-3 py-1.5 bg-gray-100 text-black text-sm rounded-md flex items-center hover:bg-gray-200 transition cursor-pointer"
+														>
+															<TagIcon
+																size={14}
+																className="mr-1.5"
+															/>
+															{tag}
+														</span>
+													))}
+										</div>
+
+										{renderImageGrid(post.attachments)}
+
+										<div className="flex items-center mt-6 space-x-8">
 											<div className="flex items-center space-x-2">
-												<span className="font-medium text-black">
-													{post.author}
-												</span>
-												<span className="text-gray-500 text-sm">
-													in
-												</span>
+												<button
+													onClick={() =>
+														handleVote(
+															post._id,
+															"upvote"
+														)
+													}
+													className="p-1.5 hover:bg-gray-100 rounded-full transition"
+												>
+													<ThumbsUp
+														size={20}
+														className="text-black"
+													/>
+												</button>
 												<span className="text-black font-medium">
-													{post.community}
+													{formatNumber(post.upvotes)}
 												</span>
-												<span className="text-gray-1280 text-sm">
-													{post.createdAt}
+												<button
+													onClick={() =>
+														handleVote(
+															post._id,
+															"downvote"
+														)
+													}
+													className="p-1.5 hover:bg-gray-100 rounded-full transition"
+												>
+													<ThumbsDown
+														size={20}
+														className="text-black"
+													/>
+												</button>
+												<span className="text-black font-medium">
+													{formatNumber(
+														post.downvotes
+													)}
 												</span>
 											</div>
 
-											<h2 className="text-xl font-bold text-black mt-2">
-												{post.title}
-											</h2>
+											<button className="flex items-center space-x-2 text-black hover:bg-gray-100 py-1.5 px-3 rounded-md transition">
+												<MessageSquare size={20} />
+												<span>
+													{formatNumber(
+														post.comments
+													)}{" "}
+													Comments
+												</span>
+											</button>
+
+											<button className="flex items-center space-x-2 text-black hover:bg-gray-100 py-1.5 px-3 rounded-md transition">
+												<Share2 size={20} />
+												<span>Share</span>
+											</button>
 										</div>
 									</div>
-
-									<div className="mt-4 text-black text-lg">
-										{post.content}
-									</div>
-
-									<div className="flex flex-wrap mt-4 gap-2">
-										{post.tags.map((tag) => (
-											<span
-												key={tag}
-												className="px-3 py-1.5 bg-gray-100 text-black text-sm rounded-md flex items-center hover:bg-gray-200 transition cursor-pointer"
-											>
-												<TagIcon
-													size={14}
-													className="mr-1.5"
-												/>
-												{tag}
-											</span>
-										))}
-									</div>
-
-									{renderImageGrid(post.images)}
-
-									<div className="flex items-center mt-6 space-x-8">
-										<div className="flex items-center space-x-2">
-											<button
-												onClick={() =>
-													handleVote(
-														post.id,
-														"upvote"
-													)
-												}
-												className="p-1.5 hover:bg-gray-100 rounded-full transition"
-											>
-												<ThumbsUp
-													size={20}
-													className="text-black"
-												/>
-											</button>
-											<span className="text-black font-medium">
-												{formatNumber(post.upvotes)}
-											</span>
-											<button
-												onClick={() =>
-													handleVote(
-														post.id,
-														"downvote"
-													)
-												}
-												className="p-1.5 hover:bg-gray-100 rounded-full transition"
-											>
-												<ThumbsDown
-													size={20}
-													className="text-black"
-												/>
-											</button>
-											<span className="text-black font-medium">
-												{formatNumber(post.downvotes)}
-											</span>
-										</div>
-
-										<button className="flex items-center space-x-2 text-black hover:bg-gray-100 py-1.5 px-3 rounded-md transition">
-											<MessageSquare size={20} />
-											<span>
-												{formatNumber(
-													post.commentCount
-												)}{" "}
-												Comments
-											</span>
-										</button>
-
-										<button className="flex items-center space-x-2 text-black hover:bg-gray-100 py-1.5 px-3 rounded-md transition">
-											<Share2 size={20} />
-											<span>Share</span>
-										</button>
-									</div>
-								</div>
-							))}
+								))
+							)}
 						</div>
 
 						<div className="w-80">
@@ -561,7 +567,7 @@ const Forum = () => {
 								</h2>
 								{communities.map((community) => (
 									<div
-										key={community.id}
+										key={community.id || community._id}
 										className="mb-5 pb-4 border-b border-gray-100 last:border-b-0 last:pb-0"
 									>
 										<div className="flex items-center justify-between">
@@ -571,27 +577,32 @@ const Forum = () => {
 												</p>
 												<p className="text-gray-500 text-sm mt-1">
 													{formatNumber(
-														community?.membersCount
+														community.membersCount
 													)}{" "}
 													members
 												</p>
 											</div>
-											<button
-												className={`px-4 py-1.5 rounded-md text-sm font-medium transition ${
-													community.joined
-														? "bg-gray-200 text-black hover:bg-gray-300"
-														: "bg-black text-white hover:bg-gray-800"
-												}`}
-												onClick={() =>
-													handleJoinCommunity(
-														community.id
-													)
-												}
-											>
-												{community.joined
-													? "Joined"
-													: "Join"}
-											</button>
+
+											{community.createdBy !=
+												state.user._id && (
+												<button
+													className={`px-4 py-1.5 rounded-md text-sm font-medium transition ${
+														community.joined
+															? "bg-gray-200 text-black hover:bg-gray-300"
+															: "bg-black text-white hover:bg-gray-800"
+													}`}
+													onClick={() =>
+														handleJoinCommunity(
+															community.id ||
+																community._id
+														)
+													}
+												>
+													{community.joined
+														? "Joined"
+														: "Join"}
+												</button>
+											)}
 										</div>
 									</div>
 								))}

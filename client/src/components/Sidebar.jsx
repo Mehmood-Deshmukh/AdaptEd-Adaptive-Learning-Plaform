@@ -42,7 +42,7 @@ const Sidebar = ({ user }) => {
         <div className="flex items-center mb-4">
           <div className="rounded-full bg-gray-700 flex items-center justify-center">
             <img
-              src={avatarUrl}
+              src={avatarUrl || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXk7bce5gDKSyD7wmj1fSTzw_pMVPaD7Xuww&s"}
               alt={`${user.name}'s avatar`}
               className="w-16 h-16 rounded-full object-cover border-4 border-white shadow-lg"
               loading="lazy"

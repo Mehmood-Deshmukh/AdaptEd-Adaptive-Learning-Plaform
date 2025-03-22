@@ -47,6 +47,10 @@ const postSchema = new Schema({
 			ref: "Comment",
 		},
 	],
+	community: {
+		type: mongoose.Types.ObjectId,
+		ref: "Community",
+	},
 	createdAt: {
 		type: Date,
 		default: Date.now(),
@@ -62,13 +66,15 @@ postSchema.statics.createPost = async function (
 	description,
 	author,
 	tags,
-	attachments
+	attachments,
+	communityId
 ) {
 	const post = new this({
 		title,
 		description,
 		tags,
 		author,
+		community: communityId,
 	});
 
 	if (attachments && attachments?.length != 0) {
