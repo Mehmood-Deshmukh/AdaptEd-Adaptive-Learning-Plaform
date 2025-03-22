@@ -75,7 +75,7 @@ const Home = () => {
                   <Flame size={18} className="text-gray-700" />
                 </div>
                 <p className="text-xl font-bold mt-1 text-black">
-                  {userStats.streak} days
+                  {user?.currentStreak} days
                 </p>
               </div>
 

@@ -111,7 +111,7 @@ const Forum = () => {
 
   return (
     <>
-      <div className="flex bg-gray-50">
+      <div className="flex bg-gray-50 h-screen">
       <Sidebar user={user}/>
 
         <div className="forum">

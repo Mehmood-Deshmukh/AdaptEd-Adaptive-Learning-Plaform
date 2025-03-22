@@ -151,8 +151,8 @@ const QuizBlock = ({ questions, quizId }) => {
         </div>
 
         {/* Question */}
-        <div className="min-h-[120px] mb-6">
-          <h2 className="text-2xl font-bold text-gray-900">
+        <div>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
             {currentReview.question.question}
           </h2>
         </div>
@@ -240,7 +240,7 @@ const QuizBlock = ({ questions, quizId }) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 py-10 px-4">
+    <div className="flex flex-col items-center justify-center h-full bg-gray-50 py-4 px-4 w-full max-w-xl mx-auto">
       <div className="bg-white rounded-lg shadow-lg w-full max-w-2xl overflow-hidden">
         {!isSubmitted ? (
           <div className="p-8">
