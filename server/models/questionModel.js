@@ -30,4 +30,8 @@ const questionSchema = new Schema({
     }
 });
 
+questionSchema.statics.createQuestion = async function(questionData) {
+    return await this.create(questionData);
+}
+
 module.exports = mongoose.models.Question || mongoose.model("Question", questionSchema);
