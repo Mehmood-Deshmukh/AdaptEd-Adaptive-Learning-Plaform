@@ -17,11 +17,11 @@ import {
   File,
   X
 } from 'lucide-react';
-import 'primereact/resources/themes/lara-light-indigo/theme.css';
-import 'primereact/resources/primereact.min.css';
+
 import { Dialog } from 'primereact/dialog';
 import Sidebar from "../components/Sidebar";
 import useAuthContext from '../hooks/useAuthContext';
+import { Toast } from 'primereact/toast';
 
 const UserContributionsPage = () => {
   const [activeTab, setActiveTab] = useState('myContributions');
@@ -32,6 +32,7 @@ const UserContributionsPage = () => {
   const { state } = useAuthContext();
   const { user } = state;
   
+  const toast = useRef(null);
   // Resource form state
   const [resourceForm, setResourceForm] = useState({
     name: '',
@@ -132,23 +133,15 @@ const UserContributionsPage = () => {
         description: ''
       });
       
-      // Show success modal
-      setFeedbackModal({
-        visible: true,
-        title: 'Success',
-        message: 'Resource submitted successfully!'
-      });
+
+      toast.current.show({ severity: 'success', summary: 'Success', detail: 'Resource submitted successfully!' });
       
       // Switch to contributions tab
       setActiveTab('myContributions');
       fetchContributions();
     } catch (err) {
       setError('Failed to submit resource');
-      setFeedbackModal({
-        visible: true,
-        title: 'Error',
-        message: err.message || 'Failed to submit resource'
-      });
+      toast.current.show({ severity: 'error', summary: 'Error', detail: err.message || 'Failed to submit resource' });
       console.error(err);
     }
   };
@@ -160,21 +153,13 @@ const UserContributionsPage = () => {
       const filteredOptions = questionForm.options.filter(option => option.trim() !== '');
       
       if (filteredOptions.length < 2) {
-        setFeedbackModal({
-          visible: true,
-          title: 'Warning',
-          message: 'Please provide at least 2 options'
-        });
+        toast.current.show({ severity: 'error', summary: 'Error', detail: 'Please provide at least 2 options' });
         return;
       }
       
       // Check if a correct option is selected
       if (!questionForm.correctOption) {
-        setFeedbackModal({
-          visible: true,
-          title: 'Warning',
-          message: 'Please select a correct option'
-        });
+        toast.current.show({ severity: 'error', summary: 'Error', detail: 'Please select a correct option' });
         return;
       }
       
@@ -183,11 +168,7 @@ const UserContributionsPage = () => {
       
       // Ensure the correct option index is valid for the filtered options
       if (correctIndex < 0 || correctIndex >= filteredOptions.length) {
-        setFeedbackModal({
-          visible: true,
-          title: 'Warning',
-          message: 'Invalid correct option selected'
-        });
+        toast.current.show({ severity: 'error', summary: 'Error', detail: 'Invalid correct option selected' });
         return;
       }
       
@@ -224,22 +205,14 @@ const UserContributionsPage = () => {
       });
       
       // Show success modal
-      setFeedbackModal({
-        visible: true,
-        title: 'Success',
-        message: 'Question submitted successfully!'
-      });
+      toast.current.show({ severity: 'success', summary: 'Success', detail: 'Question submitted successfully!' });
       
       // Switch to contributions tab
       setActiveTab('myContributions');
       fetchContributions();
     } catch (err) {
       setError('Failed to submit question');
-      setFeedbackModal({
-        visible: true,
-        title: 'Error',
-        message: err.message || 'Failed to submit question'
-      });
+      toast.current.show({ severity: 'error', summary: 'Error', detail: err.message || 'Failed to submit question' });
       console.error(err);
     }
   };
@@ -359,6 +332,7 @@ const UserContributionsPage = () => {
 
   return (
     <div className="flex h-[100vh] bg-white text-black">
+      <Toast ref={toast} />
       <Sidebar user={user} />
       
       {/* Feedback Modal */}
