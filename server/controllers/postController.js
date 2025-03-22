@@ -124,6 +124,7 @@ async function deletePost(req, res) {
 		});
 	}
 }
+const mongoose = require("mongoose");
 
 async function upvotePost(req, res) {
 	try {
@@ -133,14 +134,18 @@ async function upvotePost(req, res) {
 			throw new Error("Post not found!");
 		}
 
-		if (post.upvotes.includes(userId)) {
+		const userObjectId = new mongoose.Types.ObjectId(userId);
+
+		if (post.upvotes.some((id) => id.equals(userObjectId))) {
 			throw new Error("User already upvoted this post!");
 		}
-		post.upvotes.push(userId);
 
-		if (post.downvotes.includes(userId)) {
-			post.downvotes = post.downvotes.filter((id) => id !== userId);
-		}
+		post.upvotes.push(userObjectId);
+
+		post.downvotes = post.downvotes.filter(
+			(id) => !id.equals(userObjectId)
+		);
+
 		await post.save();
 
 		res.status(200).json({
@@ -166,14 +171,16 @@ async function downvotePost(req, res) {
 			throw new Error("Post not found!");
 		}
 
-		if (post.downvotes.includes(userId)) {
+		const userObjectId = new mongoose.Types.ObjectId(userId);
+
+		if (post.downvotes.some((id) => id.equals(userObjectId))) {
 			throw new Error("User already downvoted this post!");
 		}
-		post.downvotes.push(userId);
 
-		if (post.upvotes.includes(userId)) {
-			post.upvotes = post.upvotes.filter((id) => id !== userId);
-		}
+		post.downvotes.push(userObjectId);
+
+		post.upvotes = post.upvotes.filter((id) => !id.equals(userObjectId));
+
 		await post.save();
 
 		res.status(200).json({
