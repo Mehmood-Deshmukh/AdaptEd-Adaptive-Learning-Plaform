@@ -85,7 +85,11 @@ const Login = () => {
               type: "LOGIN_SUCCESS",
               payload: { user: data.data, token: data.token },
             });
-            navigate("/");
+            if (data.data.role === "admin") {
+              navigate("/admin");
+            } else {
+              navigate("/");
+            }
           }, 2000);
         } else {
           // No popup needed, just navigate directly
@@ -93,7 +97,11 @@ const Login = () => {
             type: "LOGIN_SUCCESS",
             payload: { user: data.data, token: data.token },
           });
-          navigate("/");
+          if (data.data.role === "admin") {
+            navigate("/admin");
+          } else {
+            navigate("/");
+          }
         }
       } else {
         toast.current.show({

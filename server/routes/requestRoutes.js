@@ -1,10 +1,15 @@
-const router = require('express').Router();
-const { postRequest, getAllRequest, giveFeedback, getFeedback } = require('../controllers/requestController');
+const express = require('express');
+const router = express.Router();
+const requestController = require('../controllers/requestController');
 const authenticateUser = require('../middlewares/auth');
+const verifyRole = require('../middlewares/verifyRole');
+// User routes
+router.post('/contribute', authenticateUser, requestController.createRequest);
+router.get('/my-contributions', authenticateUser, requestController.getUserRequests);
 
-router.post('/submit-request/:userId',authenticateUser, postRequest);
-router.get('/get-request',authenticateUser, getAllRequest);
-router.post('/give-feedback/:userId',authenticateUser, giveFeedback);
-router.get('/get-feedback/:userId', authenticateUser, getFeedback);
+// Admin routes
+router.get('/admin/requests', authenticateUser, verifyRole('admin'), requestController.getAllRequests);
+router.put('/admin/requests/:requestId/approve', authenticateUser, verifyRole('admin'), requestController.approveRequest);
+router.put('/admin/requests/:requestId/reject', authenticateUser, verifyRole('admin'), requestController.rejectRequest);
 
 module.exports = router;

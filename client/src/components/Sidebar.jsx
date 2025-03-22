@@ -10,7 +10,8 @@ import {
   Code,
   BookMarked,
   Menu,
-  X
+  X,
+  HeartHandshake
 } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import useAuthContext from "../hooks/useAuthContext";
@@ -146,6 +147,7 @@ const Sidebar = ({ user }) => {
             <NavItem icon={<Users />} text="Forum" path="/forum" />
             <NavItem icon={<Code />} text="Project Tutorials" path="/projects" />
             <NavItem icon={<User />} text="Profile" path="/profile" />
+            <NavItem icon={<HeartHandshake />} text="Contribute" path="/contribute" />
           </div>
         </div>
         

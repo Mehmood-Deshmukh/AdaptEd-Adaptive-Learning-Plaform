@@ -1,86 +1,119 @@
-const User = require('../models/userModel');
-const Quiz = require('../models/quizModel');
-const Resource = require('../models/resourceModel');
-const Request = require('../models/requestModel');
+const Request = require("../models/requestModel");
 
-const postRequest = async(req,res) => {
-    try{
-        const userId = req.params.userId;
-        const {type, payload} = req.body;
+const requestController = {
+  createRequest: async (req, res) => {
+    try {
+      const { type, payload } = req.body;
 
-        const user = await User.findOne({ _id: userId });
-        if (!user) {
-            throw new Error('User not found');
-        }
-
-        console.log(type, payload, userId);
-
-        const request = new Request({
-            type,
-            requestBy: userId,
-            payload,
+      // Validate request type
+      if (!["Resource", "Quiz"].includes(type)) {
+        return res.status(400).json({
+          success: false,
+          message: "Invalid request type. Must be Resource or Quiz.",
         });
+      }
 
-        await request.save();
-        res.status(200).json({message : "request send successfully", request : request})
+      // Create new request
+      const request = await Request.createRequest({
+        type,
+        payload,
+        requestedBy: req.userId, // Assuming user is authenticated
+      });
 
+      res.status(201).json({
+        success: true,
+        data: request,
+        message: "Contribution request submitted successfully!",
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: "Error creating request",
+        error: error.message,
+      });
     }
-    catch(e){
-        res.status(500).json({message : e.message});
+  },
+  getUserRequests: async (req, res) => {
+    try {
+      const requests = await Request.fetchUserRequests(req.userId);
+
+      res.status(200).json({
+        success: true,
+        count: requests.length,
+        data: requests,
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: "Error fetching user requests",
+        error: error.message,
+      });
     }
-}
+  },
+  getAllRequests: async (req, res) => {
+    try {
+      const requests = await Request.fetchAllRequests();
 
-const getAllRequest = async(req,res) => {
-    try{
-        const requests = await Request.find({ status: "pending" }).populate('requestBy', 'email').sort({ postedOn: 1 });
-        res.status(200).json(requests);
+      res.status(200).json({
+        success: true,
+        count: requests.length,
+        data: requests,
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: "Error fetching all requests",
+        error: error.message,
+      });
     }
-    catch(e){
-        res.status(500).json({message : e.message});
+  },
+  approveRequest: async (req, res) => {
+    try {
+      const { requestId } = req.params;
+
+      const updatedRequest = await Request.approveRequest(requestId);
+
+      res.status(200).json({
+        success: true,
+        data: updatedRequest,
+        message: "Request approved successfully!",
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: "Error approving request",
+        error: error.message,
+      });
     }
-}
+  },
+  rejectRequest: async (req, res) => {
+    try {
+      const { requestId } = req.params;
+      const { feedback } = req.body;
 
-const giveFeedback = async(req,res) => {
-    try{
-        const userId = req.params.userId;
-        const request = await Request.findOne({ requestBy: userId });
-        if (!request) {
-            return res.status(404).json({ message: 'Request not found' });
-        }
+      if (!feedback) {
+        return res.status(400).json({
+          success: false,
+          message: "Feedback is required when rejecting a request",
+        });
+      }
 
-        const {feedback, status } = req.body;
-        request.feedback = feedback
-        request.status = status
+      const updatedRequest = await Request.rejectRequest(requestId, feedback);
 
-        //if status == 'approved' add to db 
-
-        await request.save();
-        res.status(200).json({message : "feedback given successfully", request})
-
+      res.status(200).json({
+        success: true,
+        data: updatedRequest,
+        message: "Request rejected successfully",
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: "Error rejecting request",
+        error: error.message,
+      });
     }
-    catch(e){
-        res.status(500).json({message : e.message});
-    }
-}
+  },
+};
 
-const getFeedback = async(req,res) => {
-    try{
-        const userId = req.params.userId;
-        const request = await Request.findOne({ requestBy: userId });
-        if (!request) {
-            return res.status(404).json({ message: 'Request not found' });
-        }
-        res.status(200).json({message : "feedback displayed successfully", request})
 
-    }
-    catch(e){
-        res.status(500).json({message : e.message});
-    }
-}
-
-module.exports = {
-    postRequest,
-    getAllRequest,
-    giveFeedback,
-    getFeedback
-}
+module.exports = requestController;

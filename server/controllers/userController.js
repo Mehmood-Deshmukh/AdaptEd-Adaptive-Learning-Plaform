@@ -20,7 +20,7 @@ const userController = {
             const hashedPassword = await bcrypt.hash(password, 10);
             const newUser = await userModel.createUser(name, email, hashedPassword);
 
-            const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+            const token = jwt.sign({ userId: newUser._id , role : newUser.role}, process.env.JWT_SECRET, { expiresIn: '1h' });
 
             res.status(201).json({
                 status: 'success',
@@ -62,7 +62,7 @@ const userController = {
 
             await updatedUser.populate('roadmaps');
 
-            const token = jwt.sign({ userId: updatedUser._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+            const token = jwt.sign({ userId: updatedUser._id, role: updatedUser.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
             res.status(200).json({
                 status: 'success',
