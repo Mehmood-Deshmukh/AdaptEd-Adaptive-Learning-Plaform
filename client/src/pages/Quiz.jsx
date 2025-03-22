@@ -3,6 +3,9 @@ import "../index.css";
 import { MultiSelect } from 'primereact/multiselect';
 import { Dropdown } from 'primereact/dropdown';
 import QuizBlock from "./QuizBlock";
+import useAuthContext from "../hooks/useAuthContext";
+import Sidebar from "../components/Sidebar";
+
 
 const Quiz = () => {
   const [quiz, setQuiz] = useState([]);
@@ -10,7 +13,8 @@ const Quiz = () => {
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedDifficulty, setSelectedDifficulty] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-
+  const { state } = useAuthContext();
+  const { user } = state;
   // Computer science related tags for selection
   const csTagsOptions = [
     { name: 'Algorithms', code: 'algorithms' },
@@ -72,7 +76,8 @@ const Quiz = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-50 py-10">
+    <div className="flex justify-center items-center h-[100vh] bg-gray-50">
+      <Sidebar user={user} />
       {isLoading ? (
         <div className="w-full max-w-xl mx-auto bg-white shadow-md rounded-lg overflow-hidden p-8 text-center">
           <div className="mb-6">

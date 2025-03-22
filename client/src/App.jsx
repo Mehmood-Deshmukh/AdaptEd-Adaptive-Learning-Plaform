@@ -8,10 +8,14 @@ import Quiz from './pages/Quiz'
 import Forum from './pages/Forum'
 import CreatePost from './pages/CreatePost'
 import ProfilePage from './pages/Profile'
+import ProjectsPage from './pages/Projects'
+import AdminDashboard from './pages/AdminDashboard'
+import UserContributionsPage from './pages/userContributionsPage'
 
 function App() {
   const { state } = useAuthContext()
   const { isAuthenticated, Loading } = state;
+  
 
   if (Loading) {
     console.log('loading');
@@ -23,10 +27,11 @@ function App() {
     );
   }
 
+ 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={isAuthenticated ? <Home /> : <Navigate to="/login" />} />
+        <Route path="/" element={!isAuthenticated ? <Navigate to="/login" /> : state?.user?.role === 'admin' ? <Navigate to="/admin" /> : <Home />} />
         <Route path="/login" element={!isAuthenticated ? <Login /> : <Navigate to="/" />} />
         <Route path="/register" element={!isAuthenticated ? <Register /> : <Navigate to="/" />} />
         <Route path="/roadmap-generator" element={isAuthenticated ? <Roadmap /> : <Navigate to="/login" />} />
@@ -35,6 +40,9 @@ function App() {
         <Route path="*" element={<h1>Not Found</h1>} />
         <Route path='/create-post' element={<CreatePost />} />
         <Route path='/profile'  element={isAuthenticated ? <ProfilePage /> : <Navigate to="/login" />}/>
+        <Route path='/projects' element={isAuthenticated ? <ProjectsPage /> : <Navigate to="/login" />}/>
+        <Route path='/admin' element={!isAuthenticated ? <Navigate to="/login" /> : state?.user?.role === 'admin' ? <AdminDashboard /> : <Navigate to="/" />} />
+        <Route path='/contribute' element={isAuthenticated ? <UserContributionsPage /> : <Navigate to="/login" />} />
       </Routes>
     </BrowserRouter>
   )

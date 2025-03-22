@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Toast } from "primereact/toast";
 import { motion, AnimatePresence } from "framer-motion";
 import { Eye, EyeOff, Lock, Mail, X } from 'lucide-react';
+import Sidebar from '../components/Sidebar';
 const ProfilePage = () => {
   const { state } = useAuthContext();
   const { user } = state;
@@ -183,9 +184,10 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="h-[100vh] bg-gray-50 flex ">
       <Toast ref={toast} />
-      <div className="max-w-4xl mx-auto">
+      <Sidebar user={user} />
+      <div className="max-w-6xl mx-auto my-4 overflow-scroll">
         {/* Profile Card */}
         <div className="bg-white shadow-xl rounded-xl overflow-hidden border border-gray-100">
           {/* Header with Avatar */}
@@ -232,8 +234,45 @@ const ProfilePage = () => {
                 </div>
               </div>
 
-              {/* Roadmaps Section */}
+
+
+              {/* Learning Progress Section */}
               <div>
+                <h2 className="text-xl font-semibold text-gray-900 border-b border-gray-200 pb-3 flex items-center mb-6">
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                  </svg>
+                  Learning Progress
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="bg-gray-50 p-4 rounded-lg text-center">
+                    <h3 className="text-sm font-medium text-gray-500 mb-2">Average Quiz Score</h3>
+                    <p className="text-2xl font-bold text-gray-900">{user.avg_quiz_score ? user.avg_quiz_score.toFixed(1) : 0}/10</p>
+                  </div>
+                  <div className="bg-gray-50 p-4 rounded-lg text-center">
+                    <h3 className="text-sm font-medium text-gray-500 mb-2">Current Streak</h3>
+                    <p className="text-2xl font-bold text-gray-900">{user.currentStreak || 0} days</p>
+                  </div>
+                  <div className="bg-gray-50 p-4 rounded-lg text-center">
+                    <h3 className="text-sm font-medium text-gray-500 mb-2">Max Streak</h3>
+                    <p className="text-2xl font-bold text-gray-900">{user.maxStreak || 0} days</p>
+                  </div>
+                </div>
+                <div className="mt-6 text-center">
+                  <button 
+                    onClick={() => navigate('/')}
+                    className="inline-flex items-center px-5 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-200 text-sm font-medium"
+                  >
+                    View Learning Dashboard
+                    <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+                            {/* Roadmaps Section */}
+                            <div>
                 <h2 className="text-xl font-semibold text-gray-900 border-b border-gray-200 pb-3 flex items-center mb-6">
                   <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
@@ -316,41 +355,6 @@ const ProfilePage = () => {
                     </button>
                   </div>
                 )}
-              </div>
-
-              {/* Learning Progress Section */}
-              <div>
-                <h2 className="text-xl font-semibold text-gray-900 border-b border-gray-200 pb-3 flex items-center mb-6">
-                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                  </svg>
-                  Learning Progress
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="bg-gray-50 p-4 rounded-lg text-center">
-                    <h3 className="text-sm font-medium text-gray-500 mb-2">Average Quiz Score</h3>
-                    <p className="text-2xl font-bold text-gray-900">{user.avg_quiz_score ? user.avg_quiz_score.toFixed(1) : 0}/10</p>
-                  </div>
-                  <div className="bg-gray-50 p-4 rounded-lg text-center">
-                    <h3 className="text-sm font-medium text-gray-500 mb-2">Current Streak</h3>
-                    <p className="text-2xl font-bold text-gray-900">{user.currentStreak || 0} days</p>
-                  </div>
-                  <div className="bg-gray-50 p-4 rounded-lg text-center">
-                    <h3 className="text-sm font-medium text-gray-500 mb-2">Max Streak</h3>
-                    <p className="text-2xl font-bold text-gray-900">{user.maxStreak || 0} days</p>
-                  </div>
-                </div>
-                <div className="mt-6 text-center">
-                  <button 
-                    onClick={() => navigate('/')}
-                    className="inline-flex items-center px-5 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-200 text-sm font-medium"
-                  >
-                    View Learning Dashboard
-                    <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                  </button>
-                </div>
               </div>
 
               {/* Account Management */}
@@ -482,17 +486,6 @@ const ProfilePage = () => {
                     "Send Reset Instructions"
                   )}
                 </button>
-
-                <div className="text-center mt-4">
-                  <button
-                    type="button"
-                    className="text-sm text-gray-600 hover:text-black"
-                    onClick={() => {setShowForgotPasswordModal(true);
-                      setForgotPasswordEmail(email);}}
-                  >
-                    Back to login
-                  </button>
-                </div>
               </form>
             </motion.div>
           </motion.div>
