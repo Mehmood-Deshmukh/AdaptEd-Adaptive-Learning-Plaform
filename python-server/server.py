@@ -106,7 +106,7 @@ def load_projects():
             app.logger.warning("codedex_projects.json not found")
             return
             
-        with open("codedex_projects.json", "r") as f:
+        with open("codedex_projects.json", "r", encoding ="utf-8") as f:
             projects_data = json.load(f)
         
         documents = []
@@ -723,7 +723,7 @@ def cluster_summary_route():
 def get_projects_overview():
     """Get all projects with just titles and images"""
     try:
-        with open("codedex_projects.json", "r") as f:
+        with open("codedex_projects.json", "r", encoding="utf-8") as f:
             projects = json.load(f)
         
         overview = []
@@ -854,7 +854,7 @@ def get_project():
 
 def init_app():
     try:
-
+        load_projects()
         check_and_update_vector_stores()
         
         app.logger.info("Application initialized successfully")
