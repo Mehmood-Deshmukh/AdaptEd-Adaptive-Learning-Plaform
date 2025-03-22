@@ -1,7 +1,10 @@
 import React from "react";
 import { formatNumber } from "../utils/helpers";
+import useAuthContext from "../hooks/useAuthContext";
 
-const CommunitiesSidebar = ({ communities, handleJoinCommunity, user }) => {
+const CommunitiesSidebar = ({ communities, handleJoinCommunity }) => {
+	const { state } = useAuthContext();
+	const { user } = state;
 	return (
 		<div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
 			<h2 className="text-xl font-bold text-black mb-5">

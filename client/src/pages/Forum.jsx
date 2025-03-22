@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import useAuthContext from "../hooks/useAuthContext";
 import Sidebar from "../components/Sidebar";
-import CreatePostModal from "../components/CreatePostModal";
 import PostItem from "../components/PostItem";
 import PostSkeleton from "../components/PostSkeleton";
 import CommunitiesSidebar from "../components/CommunitiesSidebar";
@@ -11,153 +9,228 @@ import ForumHeader from "../components/ForumHeader";
 import { placeholderCommunities, placeholderPosts, tags } from "../utils/lib";
 
 const Forum = () => {
-  const navigate = useNavigate();
-  const { state, dispatch } = useAuthContext();
-  const { user } = state;
-  const [comments, setComments] = useState({});
-  const [newComment, setNewComment] = useState("");
-  const [activeTag, setActiveTag] = useState("All");
-  const [loading, setLoading] = useState(true);
-  const [posts, setPosts] = useState([]);
-  const [communities, setCommunities] = useState([]);
+	const { state, dispatch } = useAuthContext();
+	const { user } = state;
+	const [activeTag, setActiveTag] = useState("All");
+	const [loading, setLoading] = useState(true);
+	const [posts, setPosts] = useState([]);
+	const [communities, setCommunities] = useState([]);
 
+	const handleVote = (postId, type) => {
+		setPosts((prevPosts) =>
+			prevPosts.map((post) =>
+				post._id === postId
+					? {
+							...post,
+							upvotes:
+								type === "upvote"
+									? [...post.upvotes, user?.id]
+									: post.upvotes,
+							downvotes:
+								type === "downvote"
+									? [...post.downvotes, user?.id]
+									: post.downvotes,
+					  }
+					: post
+			)
+		);
+	};
 
-  const handleCommentSubmit = (postId) => {
-    if (!newComment.trim()) return;
-    setComments((prev) => ({
-      ...prev,
-      [postId]: [...(prev[postId] || []), newComment],
-    }));
-    setNewComment("");
-  };
+	const fetchPosts = async () => {
+		setLoading(true);
+		try {
+			const response = await fetch(
+				`${import.meta.env.VITE_BACKEND_URL}/api/post/?page=1&limit=5`,
+				{
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem(
+							"token"
+						)}`,
+					},
+				}
+			);
+			const data = await response.json();
 
-  const handleVote = (postId, type) => {
-    setPosts((prevPosts) =>
-      prevPosts.map((post) =>
-        post._id === postId
-          ? {
-              ...post,
-              upvotes:
-                type === "upvote" ? [...post.upvotes, user?.id] : post.upvotes,
-              downvotes:
-                type === "downvote"
-                  ? [...post.downvotes, user?.id]
-                  : post.downvotes,
-            }
-          : post
-      )
-    );
-  };
+			if (data.success && data.data.length > 0) {
+				setPosts(data.data);
+			} else {
+				setPosts(placeholderPosts);
+			}
+		} catch (e) {
+			console.error("Error fetching posts:", e);
+			setPosts(placeholderPosts);
+		} finally {
+			setLoading(false);
+		}
+	};
 
-  const fetchPosts = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/api/post/?page=1&limit=5`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
-      const data = await response.json();
+	const fetchCommunities = async () => {
+		try {
+			const response = await fetch(
+				`${
+					import.meta.env.VITE_BACKEND_URL
+				}/api/community/?page=1&limit=5`,
+				{
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem(
+							"token"
+						)}`,
+					},
+				}
+			);
+			const data = await response.json();
+			if (data.success) {
+				setCommunities(data.data);
+			} else {
+				setCommunities(placeholderCommunities);
+			}
+		} catch (e) {
+			console.error("Error fetching communities:", e);
+			setCommunities(placeholderCommunities);
+		}
+	};
 
-      if (data.success && data.data.length > 0) {
-        setPosts(data.data);
-      } else {
-        setPosts(placeholderPosts);
-      }
-    } catch (e) {
-      console.error("Error fetching posts:", e);
-      setPosts(placeholderPosts);
-    } finally {
-      setLoading(false);
-    }
-  };
+	const handleJoinCommunity = async (communityId) => {
+		try {
+			const joinStatus = communities.find(
+				(community) =>
+					community.id === communityId ||
+					community._id === communityId
+			).joined;
 
-  const fetchCommunities = async () => {
-    try {
-      const response = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/api/community/?page=1&limit=5`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
-      const data = await response.json();
-      if (data.success) {
-        setCommunities(data.data);
-      } else {
-        setCommunities(placeholderCommunities);
-      }
-    } catch (e) {
-      console.error("Error fetching communities:", e);
-      setCommunities(placeholderCommunities);
-    }
-  };
+			setCommunities(
+				communities.map((community) =>
+					community.id === communityId ||
+					community._id === communityId
+						? {
+								...community,
+								joined: !community.joined,
+								membersCount: community.joined
+									? community.membersCount - 1
+									: community.membersCount + 1,
+						  }
+						: community
+				)
+			);
 
-  const handleJoinCommunity = (communityId) => {
-    setCommunities(
-      communities.map((community) =>
-        community.id === communityId || community._id === communityId
-          ? { ...community, joined: !community.joined }
-          : community
-      )
-    );
-  };
+			if (!joinStatus) {
+				// join the community if not already joined
+				const response = await fetch(
+					`${
+						import.meta.env.VITE_BACKEND_URL
+					}/api/user/join-community`,
+					{
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: `Bearer ${localStorage.getItem(
+								"token"
+							)}`,
+						},
+						body: JSON.stringify({ communityId }),
+					}
+				);
+				const data = await response.json();
+				if (data.success) {
+					console.log("Successfully joined community");
+					const newUser = {
+						...user,
+						communities: [...user.communities, communityId],
+					};
+					dispatch({ type: "UPDATE_USER", payload: newUser });
+				} else {
+					console.log("Error joining community");
+				}
+			}
 
-  useEffect(() => {
-    fetchPosts();
-    fetchCommunities();
-  }, []);
+			// leave the community if already joined
+			else {
+				const response = await fetch(
+					`${
+						import.meta.env.VITE_BACKEND_URL
+					}/api/user/leave-community`,
+					{
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: `Bearer ${localStorage.getItem(
+								"token"
+							)}`,
+						},
+						body: JSON.stringify({ communityId }),
+					}
+				);
+				const data = await response.json();
+				if (data.success) {
+					console.log("Successfully left community");
+					const newUser = {
+						...user,
+						communities: user.communities.filter(
+							(id) => id !== communityId
+						),
+					};
+					dispatch({ type: "UPDATE_USER", payload: newUser });
+				} else {
+					console.log("Error leaving community");
+				}
+			}
+		} catch (e) {
+			console.error("Error joining community:", e);
+		}
+	};
 
-  return (
-    <div className="flex h-screen bg-gray-100">
-      <Sidebar user={user} />
+	useEffect(() => {
+		fetchPosts();
+		fetchCommunities();
+	}, []);
 
-      <div className="flex-1 overflow-auto">
-        <div className="max-w-8xl mx-auto px-6">
-          <ForumHeader
-            tags={tags}
-            activeTag={activeTag}
-            setActiveTag={setActiveTag}
-          />
+	return (
+		<div className="flex h-screen bg-gray-100">
+			<Sidebar user={user} />
 
-          <div className="flex pt-6 gap-6">
-            <div className="flex-1">
-              {loading ? (
-                <PostSkeleton />
-              ) : posts.length === 0 ? (
-                <div className="bg-white p-6 rounded-xl shadow-sm mb-6 border border-gray-200 text-center">
-                  <p className="text-lg text-gray-500">No posts found</p>
-                </div>
-              ) : (
-                posts.map((post) => (
-                  <PostItem
-                    key={post._id}
-                    post={post}
-                    user={user}
-                    handleVote={handleVote}
-                  />
-                ))
-              )}
-            </div>
+			<div className="flex-1 overflow-auto">
+				<div className="max-w-8xl mx-auto px-6">
+					<ForumHeader
+						tags={tags}
+						activeTag={activeTag}
+						setActiveTag={setActiveTag}
+					/>
 
-            <div className="w-80">
-              <CommunitiesSidebar
-                communities={communities}
-                handleJoinCommunity={handleJoinCommunity}
-                user={state.user}
-              />
-              <TrendingTopics />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+					<div className="flex pt-6 gap-6">
+						<div className="flex-1">
+							{loading ? (
+								<PostSkeleton />
+							) : posts.length === 0 ? (
+								<div className="bg-white p-6 rounded-xl shadow-sm mb-6 border border-gray-200 text-center">
+									<p className="text-lg text-gray-500">
+										No posts found
+									</p>
+								</div>
+							) : (
+								posts.map((post) => (
+									<PostItem
+										key={post._id}
+										post={post}
+										user={user}
+										handleVote={handleVote}
+									/>
+								))
+							)}
+						</div>
+
+						<div className="w-80">
+							<CommunitiesSidebar
+								communities={communities}
+								handleJoinCommunity={handleJoinCommunity}
+								user={state.user}
+							/>
+							<TrendingTopics />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 };
-
 
 export default Forum;

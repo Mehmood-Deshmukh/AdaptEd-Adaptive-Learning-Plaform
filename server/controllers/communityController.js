@@ -37,7 +37,8 @@ async function getCommunities(req, res) {
 		const communities = await Community.find()
 			.sort({ createdAt: -1 })
 			.skip(skip)
-			.limit(limit);
+			.limit(limit)
+			.lean();
 
 		const user = await User.findById(req.userId);
 		if (!user) {
@@ -49,7 +50,7 @@ async function getCommunities(req, res) {
 		}
 
 		communities.forEach((community) => {
-			community.joined = user.communities.includes(community._id);
+			community.joined = user.communities.map(String).includes(community._id.toString());
 		});
 
 		res.status(200).json({
