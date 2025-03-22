@@ -17,9 +17,9 @@ import {
   File,
   X
 } from 'lucide-react';
-import { Toast } from 'primereact/toast';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.min.css';
+import { Dialog } from 'primereact/dialog';
 import Sidebar from "../components/Sidebar";
 import useAuthContext from '../hooks/useAuthContext';
 
@@ -53,12 +53,16 @@ const UserContributionsPage = () => {
     domain: ''
   });
 
+  // Modal state for feedback
+  const [feedbackModal, setFeedbackModal] = useState({
+    visible: false,
+    title: '',
+    message: ''
+  });
+
   const getToken = () => {
     return localStorage.getItem('token');
   };
-  
-  // Toast reference
-  const toast = useRef(null);
   
   // Current tag input values
   const [resourceTagInput, setResourceTagInput] = useState('');
@@ -128,12 +132,11 @@ const UserContributionsPage = () => {
         description: ''
       });
       
-      // Show success toast
-      toast.current.show({ 
-        severity: 'success', 
-        summary: 'Success', 
-        detail: 'Resource submitted successfully!', 
-        life: 3000 
+      // Show success modal
+      setFeedbackModal({
+        visible: true,
+        title: 'Success',
+        message: 'Resource submitted successfully!'
       });
       
       // Switch to contributions tab
@@ -141,11 +144,10 @@ const UserContributionsPage = () => {
       fetchContributions();
     } catch (err) {
       setError('Failed to submit resource');
-      toast.current.show({ 
-        severity: 'error', 
-        summary: 'Error', 
-        detail: err.message || 'Failed to submit resource', 
-        life: 3000 
+      setFeedbackModal({
+        visible: true,
+        title: 'Error',
+        message: err.message || 'Failed to submit resource'
       });
       console.error(err);
     }
@@ -153,31 +155,43 @@ const UserContributionsPage = () => {
 
   const handleQuestionSubmit = async (e) => {
     e.preventDefault();
-    
     try {
       // Filter out any empty options
       const filteredOptions = questionForm.options.filter(option => option.trim() !== '');
       
       if (filteredOptions.length < 2) {
-        toast.current.show({ 
-          severity: 'warn', 
-          summary: 'Warning', 
-          detail: 'Please provide at least 2 options', 
-          life: 3000 
+        setFeedbackModal({
+          visible: true,
+          title: 'Warning',
+          message: 'Please provide at least 2 options'
         });
         return;
       }
       
-      if (!filteredOptions.includes(questionForm.correctOption)) {
-        toast.current.show({ 
-          severity: 'warn', 
-          summary: 'Warning', 
-          detail: 'Correct option must be one of the provided options', 
-          life: 3000 
+      // Check if a correct option is selected
+      if (!questionForm.correctOption) {
+        setFeedbackModal({
+          visible: true,
+          title: 'Warning',
+          message: 'Please select a correct option'
         });
         return;
       }
       
+      // Convert letter (A, B, C, D) to index (0, 1, 2, 3)
+      const correctIndex = questionForm.correctOption.charCodeAt(0) - 65;
+      
+      // Ensure the correct option index is valid for the filtered options
+      if (correctIndex < 0 || correctIndex >= filteredOptions.length) {
+        setFeedbackModal({
+          visible: true,
+          title: 'Warning',
+          message: 'Invalid correct option selected'
+        });
+        return;
+      }
+      
+      // Create the payload with the correct option stored as the actual option value
       const payload = {
         ...questionForm,
         options: filteredOptions
@@ -194,7 +208,7 @@ const UserContributionsPage = () => {
           payload
         })
       });
-
+      
       if (!response.ok) {
         throw new Error('Failed to submit question');
       }
@@ -209,12 +223,11 @@ const UserContributionsPage = () => {
         domain: ''
       });
       
-      // Show success toast
-      toast.current.show({ 
-        severity: 'success', 
-        summary: 'Success', 
-        detail: 'Question submitted successfully!', 
-        life: 3000 
+      // Show success modal
+      setFeedbackModal({
+        visible: true,
+        title: 'Success',
+        message: 'Question submitted successfully!'
       });
       
       // Switch to contributions tab
@@ -222,27 +235,27 @@ const UserContributionsPage = () => {
       fetchContributions();
     } catch (err) {
       setError('Failed to submit question');
-      toast.current.show({ 
-        severity: 'error', 
-        summary: 'Error', 
-        detail: err.message || 'Failed to submit question', 
-        life: 3000 
+      setFeedbackModal({
+        visible: true,
+        title: 'Error',
+        message: err.message || 'Failed to submit question'
       });
       console.error(err);
     }
   };
   
-  // Display feedback using Toast
-  const showFeedbackToast = (contribution) => {
+  // Display feedback using Modal
+  const showFeedbackModal = (contribution) => {
     const title = contribution.type === 'Resource' 
       ? contribution.payload.name 
       : contribution.payload.question;
     
     const feedback = contribution.feedback || "No specific feedback was provided.";
     
-    toast.current.show({ 
-      severity: 'error', 
-      detail: feedback,
+    setFeedbackModal({
+      visible: true,
+      title: title,
+      message: feedback
     });
   };
 
@@ -331,12 +344,33 @@ const UserContributionsPage = () => {
       </span>
     );
   };
+  
+  // Feedback Modal Footer
+  const feedbackModalFooter = (
+    <div className="flex justify-end">
+      <button 
+        onClick={() => setFeedbackModal({...feedbackModal, visible: false})}
+        className="bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800"
+      >
+        Close
+      </button>
+    </div>
+  );
 
   return (
     <div className="flex h-[100vh] bg-white text-black">
       <Sidebar user={user} />
-      {/* PrimeReact Toast */}
-      <Toast ref={toast} position="top-right" />
+      
+      {/* Feedback Modal */}
+      <Dialog 
+        header={feedbackModal.title} 
+        visible={feedbackModal.visible} 
+        style={{ width: '50vw' }} 
+        footer={feedbackModalFooter}
+        onHide={() => setFeedbackModal({...feedbackModal, visible: false})}
+      >
+        <p className="m-0">{feedbackModal.message}</p>
+      </Dialog>
       
       <div className='flex flex-col h-full w-6xl mx-auto overflow-y-auto'>
       <header className="text-black">
@@ -347,7 +381,7 @@ const UserContributionsPage = () => {
       </header>
 
       {/* Main content */}
-      <main className="container mx-auto px-4 py-8 w-[60vw]">
+      <main className="container mx-auto px-4 py-8 w-[70vw]">
         {/* Tabs */}
         <div className="mb-8 border-b border-gray-200">
           <nav className="flex -mb-px">
@@ -424,9 +458,9 @@ const UserContributionsPage = () => {
                       <div className="flex justify-between items-start mb-4">
                         <div className="flex items-center">
                           {contribution.type === 'Resource' ? (
-                            <Book className="w-5 h-5 text-blue-500" />
+                            <Book className="w-5 h-5 text-black" />
                           ) : (
-                            <HelpCircle className="w-5 h-5 text-purple-500" />
+                            <HelpCircle className="w-5 h-5 text-black" />
                           )}
                           <span className="ml-2 font-medium">{contribution.type}</span>
                         </div>
@@ -476,8 +510,8 @@ const UserContributionsPage = () => {
                         
                         {contribution.status === 'rejected' && (
                           <button
-                            onClick={() => showFeedbackToast(contribution)}
-                            className="text-xs text-red-600 hover:text-red-800 flex items-center gap-1 cursor-pointer"
+                            onClick={() => showFeedbackModal(contribution)}
+                            className="text-xs text-white rounded-xl flex items-center gap-1 cursor-pointer p-3 bg-black hover:bg-slate-700"
                           >
                             <Info className="w-4 h-4" />
                             View Feedback
@@ -624,7 +658,7 @@ const UserContributionsPage = () => {
                           <button
                             type="button"
                             onClick={() => removeTag(tag, 'resource-tag')}
-                            className="ml-1 text-gray-500 hover:text-red-500"
+                            className="ml-1 text-gray-500 hover:text-black"
                           >
                             <XCircle className="w-4 h-4" />
                           </button>
@@ -662,7 +696,7 @@ const UserContributionsPage = () => {
                           <button
                             type="button"
                             onClick={() => removeTag(topic, 'resource-topic')}
-                            className="ml-1 text-gray-500 hover:text-red-500"
+                            className="ml-1 text-gray-500 hover:text-black"
                           >
                             <XCircle className="w-4 h-4" />
                           </button>
@@ -731,72 +765,73 @@ const UserContributionsPage = () => {
                   </div>
                   
                   <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-medium mb-2">
-                      Options (minimum 2)
-                    </label>
-                    {questionForm.options.map((option, index) => (
-                      <div key={index} className="flex items-center mb-2">
-                        <div className="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full mr-2">
-                          {String.fromCharCode(65 + index)}
-                        </div>
-                        <input
-                          type="text"
-                          value={option}
-                          onChange={(e) => {
-                            const newOptions = [...questionForm.options];
-                            newOptions[index] = e.target.value;
-                            setQuestionForm({...questionForm, options: newOptions});
-                          }}
-                          className="flex-1 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
-                          placeholder={`Option ${index + 1}`}
-                        />
-                        <button
-                          type="button"
-                          onClick={() => {
-                            if (questionForm.correctOption === option) {
-                              setQuestionForm({...questionForm, correctOption: ''});
-                            }
-                            
-                            const newOptions = [...questionForm.options];
-                            newOptions[index] = '';
-                            setQuestionForm({...questionForm, options: newOptions});
-                          }}
-                          className="ml-2 text-gray-400 hover:text-red-500"
-                          title="Clear option"
-                        >
-                          <XCircle className="w-5 h-5" />
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-medium mb-2">
-                      Correct Option
-                    </label>
-                    <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-                      {questionForm.options.map((option, index) => (
-                        <button
-                          key={index}
-                          type="button"
-                          disabled={!option.trim()}
-                          onClick={() => setQuestionForm({...questionForm, correctOption: option})}
-                          className={`py-2 px-3 text-sm border rounded-md ${
-                            option.trim() === ''
-                              ? 'bg-gray-100 text-gray-400 cursor-not-allowed border-gray-200'
-                              : questionForm.correctOption === option
-                                ? 'bg-black text-white border-black'
-                                : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
-                          }`}
-                        >
-                          <div className="flex items-center justify-center gap-2">
-                            <span>{String.fromCharCode(65 + index)}</span>
-                            {questionForm.correctOption === option && <Check className="w-4 h-4" />}
-                          </div>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
+  <label className="block text-gray-700 text-sm font-medium mb-2">
+    Options (minimum 2)
+  </label>
+  {questionForm.options.map((option, index) => (
+    <div key={index} className="flex items-center mb-2">
+      <div className="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full mr-2">
+        {String.fromCharCode(65 + index)}
+      </div>
+      <input
+        type="text"
+        value={option}
+        onChange={(e) => {
+          const newOptions = [...questionForm.options];
+          newOptions[index] = e.target.value;
+          setQuestionForm({...questionForm, options: newOptions});
+        }}
+        className="flex-1 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+        placeholder={`Option ${index + 1}`}
+      />
+      <button
+        type="button"
+        onClick={() => {
+          if (questionForm.correctOption === String.fromCharCode(65 + index)) {
+            setQuestionForm({...questionForm, correctOption: ''});
+          }
+          const newOptions = [...questionForm.options];
+          newOptions[index] = '';
+          setQuestionForm({...questionForm, options: newOptions});
+        }}
+        className="ml-2 text-gray-400 hover:text-black"
+        title="Clear option"
+      >
+        <XCircle className="w-5 h-5" />
+      </button>
+    </div>
+  ))}
+</div>
+<div className="mb-4">
+  <label className="block text-gray-700 text-sm font-medium mb-2">
+    Correct Option
+  </label>
+  <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+    {questionForm.options.map((option, index) => {
+      const letterOption = String.fromCharCode(65 + index);
+      return (
+        <button
+          key={index}
+          type="button"
+          disabled={!option.trim()}
+          onClick={() => setQuestionForm({...questionForm, correctOption: letterOption})}
+          className={`py-2 px-3 text-sm border rounded-md ${
+            option.trim() === ''
+              ? 'bg-gray-100 text-gray-400 cursor-not-allowed border-gray-200'
+              : questionForm.correctOption === letterOption
+                ? 'bg-black text-white border-black'
+                : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
+          }`}
+        >
+          <div className="flex items-center justify-center gap-2">
+            <span>{letterOption}</span>
+            {questionForm.correctOption === letterOption && <Check className="w-4 h-4" />}
+          </div>
+        </button>
+      );
+    })}
+  </div>
+</div>
                   
                   <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-medium mb-2" htmlFor="explanation">
@@ -853,7 +888,7 @@ const UserContributionsPage = () => {
                           <button
                             type="button"
                             onClick={() => removeTag(tag, 'question-tag')}
-                            className="ml-1 text-gray-500 hover:text-red-500"
+                            className="ml-1 text-gray-500 hover:text-black"
                           >
                             <XCircle className="w-4 h-4" />
                           </button>
