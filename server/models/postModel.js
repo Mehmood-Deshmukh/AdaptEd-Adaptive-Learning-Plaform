@@ -47,6 +47,10 @@ const postSchema = new Schema({
 			ref: "Comment",
 		},
 	],
+	community: {
+		type: mongoose.Types.ObjectId,
+		ref: "Community",
+	},
 	createdAt: {
 		type: Date,
 		default: Date.now(),
@@ -62,30 +66,28 @@ postSchema.statics.createPost = async function (
 	description,
 	author,
 	tags,
-	attachments
+	attachments,
+	communityId
 ) {
-	try {
-		const post = new this({
-			title,
-			description,
-			tags,
-			author,
-		});
-		console.log("attachments in post model", attachments);
-		if (attachments?.length != 0) {
-			const uploadedAttachments = await Attachment.uploadFiles(
-				attachments,
-				author,
-				post._id
-			);
-			post.attachments = uploadedAttachments;
-		}
+	const post = new this({
+		title,
+		description,
+		tags,
+		author,
+		community: communityId,
+	});
 
-		await post.save();
-		return post;
-	} catch (e) {
-		throw e;
+	if (attachments && attachments?.length != 0) {
+		const uploadedAttachments = await Attachment.uploadFiles(
+			attachments,
+			author,
+			post._id
+		);
+		post.attachments = uploadedAttachments;
 	}
+
+	await post.save();
+	return post;
 };
 
 module.exports = mongoose.model("Post", postSchema);

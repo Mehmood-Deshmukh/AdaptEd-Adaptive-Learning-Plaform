@@ -1,11 +1,17 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const authenticateUser = require('../middlewares/auth');
+const authenticateUser = require("../middlewares/auth");
 
 const {
-    createCommunity,
-    getCommunity,
-} = require('../controllers/communityController');
+	getCommunities,
+	createCommunity,
+	getCommunity,
+	searchCommunities
+} = require("../controllers/communityController");
 
-router.post('/create', authenticateUser, createCommunity);
-router.get('/:id',authenticateUser, getCommunity);
+router.get("/", authenticateUser, getCommunities);
+router.get("/search", authenticateUser, searchCommunities);
+router.get("/:id", authenticateUser, getCommunity);
+router.post("/create", authenticateUser, createCommunity);
+
+module.exports = router;
