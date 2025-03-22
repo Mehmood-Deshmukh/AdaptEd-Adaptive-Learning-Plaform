@@ -1,4 +1,31 @@
+const User = require("../models/userModel");
 const Community = require("../models/communityModel");
+const Post = require("../models/postModel");
+
+async function searchCommunities(req, res) {
+	try {
+		const searchQuery = req.query.query || "";
+		if (!searchQuery.trim()) {
+			return res.json([]);
+		}
+
+		const communities = await Community.find(
+			{ name: new RegExp(searchQuery, "i") },
+			{ _id: 1, name: 1, membersCount: 1 }
+		)
+			.limit(10)
+			.lean();
+
+		res.json({
+			success: true,
+			message: "Communities fetched successfully",
+			data: communities,
+		});
+	} catch (error) {
+		console.error("Search error:", error);
+		res.status(500).json({ error: "Server error" });
+	}
+}
 
 async function getCommunities(req, res) {
 	try {
@@ -11,6 +38,19 @@ async function getCommunities(req, res) {
 			.sort({ createdAt: -1 })
 			.skip(skip)
 			.limit(limit);
+
+		const user = await User.findById(req.userId);
+		if (!user) {
+			return res.status(404).json({
+				success: false,
+				message: "Invalid User!",
+				data: null,
+			});
+		}
+
+		communities.forEach((community) => {
+			community.joined = user.communities.includes(community._id);
+		});
 
 		res.status(200).json({
 			success: true,
@@ -29,12 +69,13 @@ async function getCommunities(req, res) {
 
 async function createCommunity(req, res) {
 	try {
-		const { name, description, domain, tags, createdBy, dominentCluster } =
-			req.body;
-		if (req.userId != createdBy) {
-			res.status(401).json({
+		const { name, description, domain, tags, dominentCluster } = req.body;
+
+		const user = await User.findById(req.userId);
+		if (!user) {
+			return res.status(404).json({
 				success: false,
-				message: "Unauthorized",
+				message: "User not found",
 				data: null,
 			});
 		}
@@ -44,7 +85,7 @@ async function createCommunity(req, res) {
 			description,
 			domain,
 			tags,
-			createdBy,
+			req.userId,
 			dominentCluster
 		);
 
@@ -68,10 +109,18 @@ async function getCommunity(req, res) {
 	try {
 		const { id } = req.params;
 		const community = await Community.getCommunityById(id);
+
+		// return top 10 posts in the community
+		const posts = await Post.find({ community: id })
+			.sort({ createdAt: -1 })
+			.limit(10);
+
 		res.status(200).json({
 			success: true,
 			message: "Community found successfully",
-			data: community,
+			data: {
+				community,
+			},
 		});
 	} catch (e) {
 		console.error(e);
@@ -84,6 +133,7 @@ async function getCommunity(req, res) {
 }
 
 module.exports = {
+	searchCommunities,
 	getCommunities,
 	createCommunity,
 	getCommunity,

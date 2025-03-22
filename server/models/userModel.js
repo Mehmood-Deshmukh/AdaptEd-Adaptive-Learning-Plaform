@@ -133,8 +133,6 @@ userSchema.statics.createUser = async function (name, email, password) {
 userSchema.statics.getUserByEmail = async function (email) {
   try {
     return this.findOne({ email });
-
-
   } catch (error) {
     throw error;
   }

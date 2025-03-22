@@ -7,6 +7,7 @@ const roadmapRoutes = require('./routes/roadmapRoutes');
 const quizRoutes = require('./routes/quizRoutes');
 const postRoutes = require('./routes/postRoutes');
 const attachmentRoutes = require('./routes/attachmentRoutes');
+const communityRoutes = require("./routes/communityRoutes");
 
 dotenv.config();
 const app = express();
@@ -23,6 +24,7 @@ app.use('/api/roadmap', roadmapRoutes);
 app.use('/api/quiz', quizRoutes);
 app.use('/api/post', postRoutes);
 app.use('/api/attachments', attachmentRoutes);
+app.use('/api/community', communityRoutes);
 
 connectDB();
 app.listen(port, () => {

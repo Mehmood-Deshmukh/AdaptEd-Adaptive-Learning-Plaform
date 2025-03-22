@@ -40,6 +40,8 @@ const userController = {
         const { email, password } = req.body;
 
         try {
+
+            
             const user = await userModel.getUserByEmail(email);
             if (!user) {
                 return res.status(404).json({
@@ -185,9 +187,18 @@ const userController = {
     joinCommunity: async (req, res) => {
         try{
             const { communityId } = req.body;
+            console.log(req.userId);
             const user = await userModel.findById(req.userId);
 
-            if (user.communities.includes(communityId)) {
+            if (!user) {
+                return res.status(404).json({
+                    success: false,
+                    message: "User not found",
+                    data: null
+                })
+            }
+
+            if (user.communities?.includes(communityId)) {
                 return res.status(203).json({
                     success: true,
                     message: "Already in the community",
@@ -199,7 +210,7 @@ const userController = {
             await user.save();
 
             const community = await Community.findById(communityId);
-            community.membersCount += 1;
+            community.membersCount++;
 
             await community.save();
 
@@ -230,7 +241,11 @@ const userController = {
             await user.save();
             await community.save();
 
-
+            res.status(200).json({
+                success: true,
+                message: "successfully left the community",
+                data: null
+            })
         }catch(e) {
             console.log(e.message);
             res.status(500).json({

@@ -50,11 +50,15 @@ async function createPost(req, res) {
 		const { title, description, author, tags, communityId } =  req.body;
 		// const attachments = [];
 		// attachments.push(req.file);
-		const attachments = req.files;
+		let attachments = req.files;
 		const community = await Community.findById(communityId);
 
 		if(!community) {
 			throw new Error("Community Not found!");
+		}
+
+		if(!attachments) {
+			attachments = [];
 		}
 
 		const post = await Post.createPost(title, description, author, tags, attachments);

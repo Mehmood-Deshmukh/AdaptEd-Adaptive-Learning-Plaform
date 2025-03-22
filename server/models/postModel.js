@@ -64,28 +64,24 @@ postSchema.statics.createPost = async function (
 	tags,
 	attachments
 ) {
-	try {
-		const post = new this({
-			title,
-			description,
-			tags,
-			author,
-		});
-		console.log("attachments in post model", attachments);
-		if (attachments?.length != 0) {
-			const uploadedAttachments = await Attachment.uploadFiles(
-				attachments,
-				author,
-				post._id
-			);
-			post.attachments = uploadedAttachments;
-		}
+	const post = new this({
+		title,
+		description,
+		tags,
+		author,
+	});
 
-		await post.save();
-		return post;
-	} catch (e) {
-		throw e;
+	if (attachments && attachments?.length != 0) {
+		const uploadedAttachments = await Attachment.uploadFiles(
+			attachments,
+			author,
+			post._id
+		);
+		post.attachments = uploadedAttachments;
 	}
+
+	await post.save();
+	return post;
 };
 
 module.exports = mongoose.model("Post", postSchema);

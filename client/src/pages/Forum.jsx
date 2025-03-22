@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
 	BookOpen,
 	Map,
@@ -21,6 +21,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import useAuthContext from "../hooks/useAuthContext";
 import Sidebar from "../components/Sidebar";
+import CreatePostModal from "../components/CreatePostModal";
 
 const Forum = () => {
 	const navigate = useNavigate();
@@ -281,6 +282,28 @@ const Forum = () => {
 		},
 	]);
 
+	const fetchCommunities = async () => {
+		try {
+			const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/community/?page=1&limit=5`,{
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem("token")}`,
+				}
+			});
+			const data = await response.json();
+			if (data.success) {
+				setCommunities(data.data);
+			}
+			console.log("Communities fetched successfully");
+		}catch(e) {
+			console.error(e);
+
+		}
+	}
+
+	useEffect(() => {
+		fetchCommunities();
+	}, []);
+
 	const tags = [
 		"All",
 		"CSS",
@@ -375,13 +398,14 @@ const Forum = () => {
 						</div>
 
 						<div className="flex space-x-4 mb-6">
-							<button
+							{/* <button
 								className="flex items-center space-x-2 px-5 py-2.5 bg-black text-white rounded-lg hover:bg-gray-800 transition"
 								onClick={() => setIsCreatePostModalOpen(true)}
 							>
 								<Plus size={18} />
 								<span>New Post</span>
-							</button>
+							</button> */}
+							<CreatePostModal />
 							<button className="flex items-center space-x-2 px-5 py-2.5 border border-black text-black rounded-lg hover:bg-gray-50 transition">
 								<Plus size={18} />
 								<span>Create Community</span>
@@ -547,7 +571,7 @@ const Forum = () => {
 												</p>
 												<p className="text-gray-500 text-sm mt-1">
 													{formatNumber(
-														community.members
+														community?.membersCount
 													)}{" "}
 													members
 												</p>
