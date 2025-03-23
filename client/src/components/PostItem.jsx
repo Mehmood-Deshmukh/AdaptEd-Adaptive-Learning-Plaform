@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { formatDate, formatNumber, getAttachmentUrl } from "../utils/helpers";
 import useAuthContext from "../hooks/useAuthContext";
+import { useNavigate } from "react-router-dom";
 
 export const renderImageGrid = (attachments) => {
 	if (!attachments || attachments.length === 0) return null;
@@ -60,6 +61,7 @@ export const renderImageGrid = (attachments) => {
 };
 
 const PostItem = ({ post, handleVote }) => {
+	const navigate = useNavigate();
 	const { state } = useAuthContext();
 	const { user } = state;
 	return (
@@ -87,7 +89,10 @@ const PostItem = ({ post, handleVote }) => {
 						</span>
 					</div>
 
-					<h2 className="text-xl font-bold text-black mt-2">
+					<h2
+						onClick={() => navigate(`/post/${post._id}`)}
+						className="text-xl cursor-pointer font-bold text-black mt-2"
+					>
 						{post.title}
 					</h2>
 				</div>

@@ -1,7 +1,35 @@
+const mongoose = require("mongoose");
 const Post = require("../models/postModel");
 const Community = require("../models/communityModel");
 
 // update post route pending
+
+async function getPost(req, res) {
+	try{
+		const postId = req.params.postId;
+		const post = await Post
+			.findById(postId)
+			.populate("author", "name")
+			.populate("community", "name");
+		if (!post) {
+			throw new Error("Post not found!");
+		}
+
+		res.status(200).json({
+			success: true,
+			message: "Post fetched successfully!",
+			data: post,
+		});
+
+	}catch(e) {
+		console.log(e)
+		res.status(500).json({
+			success: false,
+			message: "Error getting post: " + e.message,
+			data: null,
+		});
+	}
+}
 
 async function getPosts(req, res) {
 	try {
@@ -124,7 +152,6 @@ async function deletePost(req, res) {
 		});
 	}
 }
-const mongoose = require("mongoose");
 
 async function upvotePost(req, res) {
 	try {
@@ -199,6 +226,7 @@ async function downvotePost(req, res) {
 }
 
 module.exports = {
+	getPost,
 	getPosts,
 	createPost,
 	upvotePost,
