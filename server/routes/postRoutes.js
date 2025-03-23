@@ -4,6 +4,7 @@ const multer = require("multer");
 
 const authenticateUser = require("../middlewares/auth.js");
 const {
+	getPost,
 	getPosts,
 	createPost,
 	upvotePost,
@@ -12,6 +13,7 @@ const {
 } = require("../controllers/postController");
 const upload = multer();
 
+router.get("/:postId", getPost);
 router.get("/", getPosts);
 router.post(
     "/create",

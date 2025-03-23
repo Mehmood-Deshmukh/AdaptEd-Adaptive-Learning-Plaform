@@ -1,7 +1,35 @@
+const mongoose = require("mongoose");
 const Post = require("../models/postModel");
 const Community = require("../models/communityModel");
 
 // update post route pending
+
+async function getPost(req, res) {
+	try{
+		const postId = req.params.postId;
+		const post = await Post
+			.findById(postId)
+			.populate("author", "name")
+			.populate("community", "name");
+		if (!post) {
+			throw new Error("Post not found!");
+		}
+
+		res.status(200).json({
+			success: true,
+			message: "Post fetched successfully!",
+			data: post,
+		});
+
+	}catch(e) {
+		console.log(e)
+		res.status(500).json({
+			success: false,
+			message: "Error getting post: " + e.message,
+			data: null,
+		});
+	}
+}
 
 async function getPosts(req, res) {
 	try {
@@ -24,6 +52,7 @@ async function getPosts(req, res) {
 				.sort({ createdAt: -1 })
 				.skip(skip)
 				.limit(limit)
+				.populate("comments")
 				.populate("community", "name")
 				.populate("author", "name");
 			res.status(200).json({
@@ -36,6 +65,7 @@ async function getPosts(req, res) {
 				.sort({ createdAt: -1 })
 				.skip(skip)
 				.limit(limit)
+				.populate("comments")
 				.populate("author", "name")
 				.populate("community", "name");
 		}
@@ -133,14 +163,18 @@ async function upvotePost(req, res) {
 			throw new Error("Post not found!");
 		}
 
-		if (post.upvotes.includes(userId)) {
+		const userObjectId = new mongoose.Types.ObjectId(userId);
+
+		if (post.upvotes.some((id) => id.equals(userObjectId))) {
 			throw new Error("User already upvoted this post!");
 		}
-		post.upvotes.push(userId);
 
-		if (post.downvotes.includes(userId)) {
-			post.downvotes = post.downvotes.filter((id) => id !== userId);
-		}
+		post.upvotes.push(userObjectId);
+
+		post.downvotes = post.downvotes.filter(
+			(id) => !id.equals(userObjectId)
+		);
+
 		await post.save();
 
 		res.status(200).json({
@@ -166,14 +200,16 @@ async function downvotePost(req, res) {
 			throw new Error("Post not found!");
 		}
 
-		if (post.downvotes.includes(userId)) {
+		const userObjectId = new mongoose.Types.ObjectId(userId);
+
+		if (post.downvotes.some((id) => id.equals(userObjectId))) {
 			throw new Error("User already downvoted this post!");
 		}
-		post.downvotes.push(userId);
 
-		if (post.upvotes.includes(userId)) {
-			post.upvotes = post.upvotes.filter((id) => id !== userId);
-		}
+		post.downvotes.push(userObjectId);
+
+		post.upvotes = post.upvotes.filter((id) => !id.equals(userObjectId));
+
 		await post.save();
 
 		res.status(200).json({
@@ -192,6 +228,7 @@ async function downvotePost(req, res) {
 }
 
 module.exports = {
+	getPost,
 	getPosts,
 	createPost,
 	upvotePost,

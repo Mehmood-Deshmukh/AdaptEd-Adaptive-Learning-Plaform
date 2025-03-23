@@ -1,6 +1,14 @@
 import React from "react";
-import { ThumbsUp, ThumbsDown, MessageSquare, Share2, TagIcon } from "lucide-react";
+import {
+	ThumbsUp,
+	ThumbsDown,
+	MessageSquare,
+	Share2,
+	TagIcon,
+} from "lucide-react";
 import { formatDate, formatNumber, getAttachmentUrl } from "../utils/helpers";
+import useAuthContext from "../hooks/useAuthContext";
+import { useNavigate } from "react-router-dom";
 
 export const renderImageGrid = (attachments) => {
 	if (!attachments || attachments.length === 0) return null;
@@ -52,7 +60,10 @@ export const renderImageGrid = (attachments) => {
 	}
 };
 
-const PostItem = ({ post, user, handleVote }) => {
+const PostItem = ({ post, handleVote }) => {
+	const navigate = useNavigate();
+	const { state } = useAuthContext();
+	const { user } = state;
 	return (
 		<div className="bg-white p-6 rounded-xl shadow-sm mb-6 border border-gray-200 hover:shadow-md transition">
 			<div className="flex items-start">
@@ -70,7 +81,9 @@ const PostItem = ({ post, user, handleVote }) => {
 							{post.author?.name || "Anonymous"}
 						</span>
 						<span className="text-gray-500 text-sm">in</span>
-						<span className="text-black font-medium">
+						<span className="text-black font-medium cursor-pointer" 
+							onClick={() => navigate(`/community/${post.community?._id}`)}
+						>
 							{post.community?.name || "General"}
 						</span>
 						<span className="text-gray-500 text-sm">
@@ -78,7 +91,10 @@ const PostItem = ({ post, user, handleVote }) => {
 						</span>
 					</div>
 
-					<h2 className="text-xl font-bold text-black mt-2">
+					<h2
+						onClick={() => navigate(`/post/${post._id}`)}
+						className="text-xl cursor-pointer font-bold text-black mt-2"
+					>
 						{post.title}
 					</h2>
 				</div>
@@ -109,7 +125,12 @@ const PostItem = ({ post, user, handleVote }) => {
 						onClick={() => handleVote(post._id, "upvote")}
 						className="p-1.5 hover:bg-gray-100 rounded-full transition"
 					>
-						<ThumbsUp size={20} className="text-black" />
+						{/* <ThumbsUp size={20} className="text-black" /> */}
+						{post.upvotes.includes(user._id) ? (
+							<ThumbsUp size={20} className="text-blue-500" />
+						) : (
+							<ThumbsUp size={20} className="text-black" />
+						)}
 					</button>
 					<span className="text-black font-medium">
 						{formatNumber(post.upvotes)}
@@ -118,7 +139,12 @@ const PostItem = ({ post, user, handleVote }) => {
 						onClick={() => handleVote(post._id, "downvote")}
 						className="p-1.5 hover:bg-gray-100 rounded-full transition"
 					>
-						<ThumbsDown size={20} className="text-black" />
+						{/* <ThumbsDown size={20} className="text-black" /> */}
+						{post.downvotes.includes(user._id) ? (
+							<ThumbsDown size={20} className="text-red-500" />
+						) : (
+							<ThumbsDown size={20} className="text-black" />
+						)}
 					</button>
 					<span className="text-black font-medium">
 						{formatNumber(post.downvotes)}

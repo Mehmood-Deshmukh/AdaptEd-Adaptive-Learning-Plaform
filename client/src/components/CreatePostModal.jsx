@@ -100,14 +100,37 @@ const CreatePostModal = () => {
 		setFormData({ ...formData, [name]: value });
 	};
 
+	const addTag = (tag) => {
+		if (tag.trim() && !formData.tags.includes(tag.trim())) {
+			setFormData({
+				...formData,
+				tags: [...formData.tags, tag.trim()],
+			});
+		}
+	};
+
 	const handleTagKeyDown = (e) => {
 		if (e.key === "Enter" && currentTag.trim()) {
 			e.preventDefault();
-			setFormData({
-				...formData,
-				tags: [...formData.tags, currentTag.trim()],
-			});
+			addTag(currentTag);
 			setCurrentTag("");
+		}
+	};
+
+	const handleTagInputChange = (e) => {
+		const value = e.target.value;
+		
+		if (value.includes(",")) {
+			const parts = value.split(",");
+			const newTag = parts[0].trim();
+			
+			if (newTag) {
+				addTag(newTag);
+			}
+			
+			setCurrentTag(parts.slice(1).join(","));
+		} else {
+			setCurrentTag(value);
 		}
 	};
 
@@ -183,10 +206,14 @@ const CreatePostModal = () => {
 			form.append("description", formData.description);
 			form.append("communityId", formData.communityId);
 			form.append("author", state.user._id);
-			form.append("tags", formData.tags ? formData.tags : []);
-
+			// form.append("tags", formData.tags ? formData.tags : []);
+			
 			for (let i = 0; i < formData.attachments.length; i++) {
 				form.append("attachments", formData.attachments[i]);
+			}
+
+			for (let j = 0; j < formData.tags.length; j++) {
+				form.append("tags", formData.tags[j]);
 			}
 
 			const response = await fetch(
@@ -468,10 +495,10 @@ const CreatePostModal = () => {
 							<input
 								type="text"
 								value={currentTag}
-								onChange={(e) => setCurrentTag(e.target.value)}
+								onChange={handleTagInputChange}
 								onKeyDown={handleTagKeyDown}
 								className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black text-black"
-								placeholder="Type tag and press Enter"
+								placeholder="Type tag and press Enter or add comma to separate tags"
 							/>
 						</div>
 
