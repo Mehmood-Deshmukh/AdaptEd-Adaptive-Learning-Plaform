@@ -364,7 +364,14 @@ const CommunityPage = () => {
 											</button>
 										)}
 
-										<CreatePostModal />
+										<CreatePostModal
+											community={{
+												_id: community._id,
+												name: community.name,
+												membersCount:
+													community.membersCount,
+											}}
+										/>
 									</div>
 								</div>
 
@@ -444,9 +451,16 @@ const CommunityPage = () => {
 											Be the first to post in this
 											community!
 										</p>
-                                        <div className="w-fit mx-auto">
-									        <CreatePostModal />
-                                        </div>
+										<div className="w-fit mx-auto">
+											<CreatePostModal
+												community={{
+													_id: community._id,
+													name: community.name,
+													membersCount:
+														community.membersCount
+												}}
+											/>
+										</div>
 									</div>
 								</>
 							) : (
