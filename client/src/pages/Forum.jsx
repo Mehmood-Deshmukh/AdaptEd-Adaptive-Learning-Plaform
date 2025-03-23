@@ -6,6 +6,7 @@ import PostSkeleton from "../components/PostSkeleton";
 import CommunitiesSidebar from "../components/CommunitiesSidebar";
 import TrendingTopics from "../components/TrendingTopics";
 import ForumHeader from "../components/ForumHeader";
+import CreateCommunityModal from "../components/CreateCommunityModal";
 import { placeholderCommunities, placeholderPosts, tags } from "../utils/lib";
 
 const Forum = () => {
@@ -15,6 +16,7 @@ const Forum = () => {
 	const [loading, setLoading] = useState(true);
 	const [posts, setPosts] = useState([]);
 	const [communities, setCommunities] = useState([]);
+	const [createCommunityModalOpen, setCreateCommunityModalOpen ] = useState(false);
 
 	const handlePostVote = async (postId, type) => {
 		if (type == "upvote") {
