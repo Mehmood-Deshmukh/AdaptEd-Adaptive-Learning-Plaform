@@ -12,6 +12,7 @@ import ProjectsPage from './pages/Projects'
 import AdminDashboard from './pages/AdminDashboard'
 import UserContributionsPage from './pages/userContributionsPage'
 import ViewPost from './pages/ViewPost'
+import ViewCommunity from './pages/ViewCommunity'
 
 function App() {
   const { state } = useAuthContext()
@@ -45,6 +46,7 @@ function App() {
         <Route path='/admin' element={!isAuthenticated ? <Navigate to="/login" /> : state?.user?.role === 'admin' ? <AdminDashboard /> : <Navigate to="/" />} />
         <Route path='/contribute' element={isAuthenticated ? <UserContributionsPage /> : <Navigate to="/login" />} />
         <Route path='/post/:id' element={isAuthenticated ? <ViewPost /> : <Navigate to="/login" />} />
+        <Route path='/community/:id' element={isAuthenticated ? <ViewCommunity /> : <Navigate to="/login" />} />
       </Routes>
     </BrowserRouter>
   )

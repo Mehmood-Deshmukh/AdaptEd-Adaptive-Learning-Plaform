@@ -81,7 +81,9 @@ const PostItem = ({ post, handleVote }) => {
 							{post.author?.name || "Anonymous"}
 						</span>
 						<span className="text-gray-500 text-sm">in</span>
-						<span className="text-black font-medium">
+						<span className="text-black font-medium cursor-pointer" 
+							onClick={() => navigate(`/community/${post.community?._id}`)}
+						>
 							{post.community?.name || "General"}
 						</span>
 						<span className="text-gray-500 text-sm">
