@@ -13,6 +13,8 @@ import AdminDashboard from './pages/AdminDashboard'
 import UserContributionsPage from './pages/userContributionsPage'
 import ViewPost from './pages/ViewPost'
 import ViewCommunity from './pages/ViewCommunity'
+import ChatRoom from './pages/Chatroom'
+
 
 function App() {
   const { state } = useAuthContext()
@@ -47,6 +49,7 @@ function App() {
         <Route path='/contribute' element={isAuthenticated ? <UserContributionsPage /> : <Navigate to="/login" />} />
         <Route path='/post/:id' element={isAuthenticated ? <ViewPost /> : <Navigate to="/login" />} />
         <Route path='/community/:id' element={isAuthenticated ? <ViewCommunity /> : <Navigate to="/login" />} />
+        <Route path='/chatroom' element={isAuthenticated ? <ChatRoom /> : <Navigate to="/login" />} />
       </Routes>
     </BrowserRouter>
   )
