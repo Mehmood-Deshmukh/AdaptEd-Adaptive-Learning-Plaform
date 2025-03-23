@@ -1,8 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import useAuthContext from "../hooks/useAuthContext";
+import { useNavigate } from "react-router-dom";
 import { Toast } from "primereact/toast";
 
-const CreateCommunityModal = () => {
+const CreateCommunityModal = ({ commnunities, setCommunities }) => {
+	const navigate = useNavigate();
 	const toast = useRef(null);
 	const [isOpen, setIsOpen] = useState(false);
 	const { state } = useAuthContext();
@@ -110,7 +112,8 @@ const CreateCommunityModal = () => {
 					summary: "Success",
 					detail: data.message,
 				});
-				handleCloseModal();
+				// navigate(`/community/${data.data._id}`);
+				setCommunities([data.data, ...commnunities]);
 			} else {
 				toast.current.show({
 					severity: "error",
@@ -125,6 +128,16 @@ const CreateCommunityModal = () => {
 				summary: "Error",
 				detail: "An unexpected error occurred",
 			});
+		} finally {
+			setFormData({
+				name: "",
+				description: "",
+				domain: "",
+				tags: [],
+				dominentCluster: user?.clusterId || "",
+			});
+			setCurrentTag("");
+			handleCloseModal();
 		}
 	};
 

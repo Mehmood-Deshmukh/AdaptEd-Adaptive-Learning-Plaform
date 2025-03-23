@@ -305,6 +305,10 @@ const Forum = () => {
 			<div className="flex-1 overflow-auto">
 				<div className="max-w-8xl mx-auto px-6">
 					<ForumHeader
+						posts={posts}
+						setPosts={setPosts}
+						communities={communities}
+						setCommunities={setCommunities}
 						tags={tags}
 						activeTag={activeTag}
 						setActiveTag={setActiveTag}

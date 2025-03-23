@@ -12,7 +12,7 @@ import { Toast } from "primereact/toast";
 	no need to thank me
 */
 
-const CreatePostModal = () => {
+const CreatePostModal = ({ posts, setPosts, community = null }) => {
 	const toast = useRef(null);
 
 	const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +29,7 @@ const CreatePostModal = () => {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [searchResults, setSearchResults] = useState([]);
 	const [isSearching, setIsSearching] = useState(false);
-	const [selectedCommunity, setSelectedCommunity] = useState(null);
+	const [selectedCommunity, setSelectedCommunity] = useState(community);
 	const modalContentRef = useRef(null);
 	const searchTimeoutRef = useRef(null);
 
@@ -231,16 +231,29 @@ const CreatePostModal = () => {
 
 			const data = await response.json();
 			console.log(data.data);
+			if(data.success) {
+				setPosts([data.data, ...posts]);
+				toast.current.show({
+					severity: "success",
+					summary: "Success",
+					detail: data.message,
+				});
+			}
 
-			toast.current.show({
-				severity: "success",
-				summary: "Success",
-				detail: data.message,
-			});
-
-			handleCloseModal();
 		} catch (e) {
 			console.error(e);
+		}finally{
+			setFormData({
+				title: "",
+				description: "",
+				tags: [],
+				attachments: [],
+				communityId: null,
+			});
+			setCurrentTag("");
+			setPreviewUrls([]);
+			setSelectedCommunity(null);
+			handleCloseModal();
 		}
 	};
 

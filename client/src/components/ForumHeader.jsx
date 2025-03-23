@@ -3,7 +3,7 @@ import { Filter, Plus, Flame, BookOpen, Search, StretchVertical } from "lucide-r
 import CreatePostModal from "./CreatePostModal";
 import CreateCommunityModal from "./CreateCommunityModal";
 
-const ForumHeader = ({ tags, activeTag, setActiveTag }) => {
+const ForumHeader = ({ posts, setPosts, communities, setCommunities, tags, activeTag, setActiveTag }) => {
     return (
       <div className="z-10 bg-white pt-6 pb-3 px-6 shadow-sm mt-5 rounded-xl mx-auto max-h-[30vh]">
         <div className="flex justify-between items-center mb-6">
@@ -19,13 +19,13 @@ const ForumHeader = ({ tags, activeTag, setActiveTag }) => {
         </div>
   
         <div className="flex space-x-4 mb-6">
-          <CreatePostModal />
+          <CreatePostModal posts={posts} setPosts={setPosts}/>
           {/* <button
           className="flex items-center space-x-2 px-5 py-2.5 border border-black text-black rounded-lg hover:bg-gray-50 transition">
             <Plus size={18} />
             <span>Create Community</span>
           </button> */}
-          <CreateCommunityModal />
+          <CreateCommunityModal commnunities={communities} setCommunities={setCommunities}/>
           <button className="flex items-center space-x-2 px-5 py-2.5 border border-black text-black rounded-lg hover:bg-gray-50 transition">
             <Flame size={18} />
             <span>Trending</span>
