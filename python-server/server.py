@@ -97,8 +97,7 @@ project_parser = JsonOutputParser(pydantic_object=Project)
 def load_projects():
     """Load projects from JSON file and create vector store"""
     try:
-        app.logger.info("Loading projects...")
-        if os.path.exists(PROJECTS_FAISS_INDEX_PATH):
+        if os.path.exists(PROJECTS_FAISS_INDEX_PATH+".pkl"):
             app.logger.info("Projects vector store already exists")
             return
 

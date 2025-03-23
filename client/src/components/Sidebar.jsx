@@ -54,7 +54,7 @@ const Sidebar = ({ user }) => {
   };
   
   const avatarUsername = encodeURIComponent(user.name);
-  const avatarUrl = `https://avatar.iran.liara.run/username?username=${avatarUsername}`;
+  const avatarUrl = `https://api.dicebear.com/9.x/initials/svg?seed=${avatarUsername}`;
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -114,7 +114,7 @@ const Sidebar = ({ user }) => {
             </div>
             <div className="ml-3">
               <p className="font-medium">{user?.name}</p>
-              <p className="text-xs text-gray-400">{userStats.rank}</p>
+              <p className="text-xs text-gray-400">{user?.level}</p>
             </div>
           </div>
           <div className="flex justify-between text-sm mb-2">
@@ -124,7 +124,7 @@ const Sidebar = ({ user }) => {
             </div>
             <div className="flex items-center">
               <Crown size={16} className="mr-1" />
-              <span>{userStats.points} XP</span>
+              <span>{user?.xps} XP</span>
             </div>
           </div>
           {/* Progress Bar */}
@@ -132,7 +132,7 @@ const Sidebar = ({ user }) => {
             <div className="w-full bg-gray-700 rounded-full h-1.5">
               <div
                 className="bg-white h-1.5 rounded-full"
-                style={{ width: `${userStats.progress}%` }}
+                style={{ width: `${(user.xps % 1000) / 10}%` }}
               ></div>
             </div>
           </div>

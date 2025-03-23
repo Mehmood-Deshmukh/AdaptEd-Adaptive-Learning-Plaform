@@ -1,4 +1,6 @@
 const Request = require("../models/requestModel");
+const { achievementEmitter } = require('../services/achievementService');
+const { xpEmitter } = require('../services/xpService');
 
 const requestController = {
   createRequest: async (req, res) => {
@@ -19,6 +21,8 @@ const requestController = {
         payload,
         requestedBy: req.userId, // Assuming user is authenticated
       });
+
+      xpEmitter.emit('contribution-submitted', { userId: req.userId });
 
       res.status(201).json({
         success: true,
@@ -70,8 +74,15 @@ const requestController = {
   approveRequest: async (req, res) => {
     try {
       const { requestId } = req.params;
-
+      const userId = req.userId;
       const updatedRequest = await Request.approveRequest(requestId);
+
+      achievementEmitter.emit('contribution-made', { userId : updatedRequest.requestedBy });
+
+      xpEmitter.emit('contribution-approved', {
+        userId: updatedRequest.requestedBy,
+        requestId
+      });
 
       res.status(200).json({
         success: true,

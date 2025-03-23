@@ -493,7 +493,7 @@ const RoadmapGenerator = () => {
                     key={resource._id}
                     className="flex items-center p-2 hover:bg-gray-50 rounded-lg transition-colors duration-200"
                   >
-                    {getResourceIcon(resource.type)}
+                    {getResourceIcon(resource?.type)}
                     <a
                       href={resource.url}
                       target="_blank"

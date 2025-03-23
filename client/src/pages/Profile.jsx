@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import useAuthContext from "../hooks/useAuthContext";
 import { useNavigate } from "react-router-dom";
 import { Toast } from "primereact/toast";
@@ -16,6 +16,16 @@ import {
   Target,
   Rocket,
   Zap,
+
+  Star,
+  GraduationCap,
+  FileEdit,
+  Users,
+  Crown,
+  Calendar,
+  Medal,
+  UserPlus,
+  HelpCircle
 } from "lucide-react";
 import Sidebar from "../components/Sidebar";
 
@@ -26,6 +36,8 @@ const ProfilePage = () => {
   const [showForgotPasswordModal, setShowForgotPasswordModal] = useState(false);
   const [forgotPasswordEmail, setForgotPasswordEmail] = useState("");
   const [forgotPasswordLoading, setForgotPasswordLoading] = useState(false);
+  const [achievements, setAchievements] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Reset password modal states
   const [showResetPasswordModal, setShowResetPasswordModal] = useState(false);
@@ -37,45 +49,63 @@ const ProfilePage = () => {
 
   const toast = useRef(null);
 
-  // Achievement data
-  const achievements = [
-    {
-      id: 1,
-      title: "First Roadmap",
-      icon: <Rocket size={36} />,
-      isUnlocked: true,
-    },
-    {
-      id: 2,
-      title: "Quiz Master",
-      icon: <Brain size={36} />,
-      isUnlocked: true,
-    },
-    {
-      id: 3,
-      title: "Streak Hero",
-      icon: <Flame size={36} />,
-      isUnlocked: true,
-    },
-    {
-      id: 4,
-      title: "Checkpoint Pro",
-      icon: <Target size={36} />,
-      isUnlocked: false,
-    },
-    {
-      id: 5,
-      title: "Knowledge Expert",
-      icon: <Award size={36} />,
-      isUnlocked: false,
-    },
-    {
-      id: 6,
-      title: "Champion",
-      icon: <Trophy size={36} />,
-      isUnlocked: false,
-    },
-  ];
+  const iconMap = {
+    Trophy: Trophy,
+    Award: Award,
+    Star: Star,
+    Rocket: Rocket,
+    GraduationCap: GraduationCap,
+    FileEdit: FileEdit,
+    Users: Users,
+    Crown: Crown,
+    Flame: Flame,
+    Calendar: Calendar,
+    Medal: Medal,
+    UserPlus: UserPlus
+  };
+
+  const AchievementIcon = ({ iconName, size = 36}) => {
+    const IconComponent = iconMap[iconName] || HelpCircle;
+    return <IconComponent size={size} />;
+  };
+
+  useEffect(() => {
+    const fetchAchievements = async () => {
+      try {
+        setIsLoading(true);
+        const token = localStorage.getItem('token');
+        
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/achievements`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch achievements');
+        }
+        
+        const data = await response.json();
+        
+        if (data.success && data.data) {
+          setAchievements(data.data);
+        } else {
+          throw new Error(data.message || 'Failed to load achievements');
+        }
+      } catch (error) {
+        console.error('Error fetching achievements:', error);
+        toast.current.show({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Failed to load achievements. Please try again later.'
+        });
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchAchievements();
+  }, []);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -219,7 +249,7 @@ const ProfilePage = () => {
 
   // Get username for avatar from user's name
   const avatarUsername = encodeURIComponent(user.name);
-  const avatarUrl = `https://avatar.iran.liara.run/username?username=${avatarUsername}`;
+  const avatarUrl = `https://api.dicebear.com/9.x/initials/svg?seed=${avatarUsername}`;
 
   // Display only the first 3 roadmaps with option to view all
   const displayedRoadmaps =
@@ -376,7 +406,6 @@ const ProfilePage = () => {
                 </div>
               </div>
 
-              {/* Achievements Section */}
               <div className="bg-white rounded-xl p-8">
                 <h2 className="text-2xl font-bold text-black flex items-center mb-8 border-b border-gray-100 pb-4">
                   <svg
@@ -443,22 +472,14 @@ const ProfilePage = () => {
                   .achievement-item:hover .hex-shadow {
                     transform: translateY(8px) scale(0.95);
                     opacity: 0.7;
-                    filter: blur(8px);
+                    filter: blur(20px);
                   }
 
                   .hex-shadow {
-                    clip-path: polygon(
-                      50% 0%,
-                      100% 25%,
-                      100% 75%,
-                      50% 100%,
-                      0% 75%,
-                      0% 25%
-                    );
                     position: absolute;
                     inset: 5px;
-                    background: rgba(0, 0, 0, 0.25);
-                    filter: blur(5px);
+                    background: rgba(0, 0, 0, 0.75);
+                    filter: blur(15px);
                     transform: translateY(5px) scale(0.9);
                     opacity: 0.5;
                     z-index: -1;
@@ -466,90 +487,108 @@ const ProfilePage = () => {
                   }
                 `}</style>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
-                  {achievements.map((achievement) => (
-                    <div
-                      key={achievement.id}
-                      className="achievement-item transition-all duration-300 hover:-translate-y-2 group"
-                    >
-                      <div className="hex-container mb-4">
-                        {/* Shadow element */}
-                        <div className="hex-shadow"></div>
+                {isLoading ? (
+                  <div className="flex justify-center items-center py-10">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-black"></div>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
+                    {achievements.map((achievement) => (
+                      <div
+                        key={achievement.id}
+                        className="achievement-item transition-all duration-300 hover:-translate-y-2 group"
+                      >
+                        <div className="hex-container mb-4">
+                          {/* Shadow element */}
+                          <div className="hex-shadow"></div>
 
-                        <div
-                          className={`
-            hex-outer 
-            ${
-              achievement.isUnlocked
-                ? "bg-black shadow-[0_18px_30px_-10px_rgba(0,0,0,0.6),0_6px_10px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.3)]"
-                : "bg-gray-300 shadow-[0_12px_20px_-8px_rgba(0,0,0,0.25),0_4px_8px_rgba(0,0,0,0.2)]"
-            }
-          `}
-                        ></div>
-
-                        <div
-                          className={`
-            hex-inner
-            ${
-              achievement.isUnlocked
-                ? "bg-white shadow-[inset_0_3px_6px_rgba(0,0,0,0.1)]"
-                : "bg-gray-100 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]"
-            }
-          `}
-                        >
                           <div
                             className={`
-              relative z-10
-              transition-all duration-300
-              ${
-                achievement.isUnlocked
-                  ? "text-black text-opacity-90 scale-100 drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]"
-                  : "text-gray-400 text-opacity-60 scale-90"
-              }
-              group-hover:scale-110 group-hover:rotate-[5deg] 
-            `}
+                              hex-outer 
+                              ${
+                                achievement.isUnlocked
+                                  ? "bg-black shadow-[0_18px_30px_-10px_rgba(0,0,0,0.6),0_6px_10px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.3)]"
+                                  : "bg-gray-300 shadow-[0_12px_20px_-8px_rgba(0,0,0,0.25),0_4px_8px_rgba(0,0,0,0.2)]"
+                              }
+                            `}
+                          ></div>
+
+                          <div
+                            className={`
+                              hex-inner
+                              ${
+                                achievement.isUnlocked
+                                  ? "bg-white shadow-[inset_0_3px_6px_rgba(0,0,0,0.1)]"
+                                  : "bg-gray-100 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]"
+                              }
+                            `}
                           >
-                            {achievement.icon}
-                          </div>
-
-                          {!achievement.isUnlocked && (
-                            <div className="absolute inset-0 flex items-center justify-center z-[10]">
-                              <svg
-                                className="w-5 h-5 text-gray-500 drop-shadow-[0_1px_1px_rgba(0,0,0,0.2)]"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20"
-                                fill="black"
-                              >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                                  clipRule="evenodd"
-                                />
-                              </svg>
+                            <div
+                              className={`
+                                relative z-10
+                                transition-all duration-300
+                                ${
+                                  achievement.isUnlocked
+                                    ? "text-black text-opacity-90 scale-100 drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]"
+                                    : "text-gray-400 text-opacity-60 scale-90"
+                                }
+                                group-hover:scale-110 group-hover:rotate-[5deg] 
+                              `}
+                            >
+                              <AchievementIcon 
+                                iconName={achievement.icon} 
+                                size={36} 
+                                color={achievement.isUnlocked ? "#000000" : "#6B7280"} 
+                              />
                             </div>
-                          )}
+
+                            {!achievement.isUnlocked && (
+                              <div className="absolute inset-0 flex items-center justify-center z-[10]">
+                                <svg
+                                  className="w-5 h-5 text-gray-500 drop-shadow-[0_1px_1px_rgba(0,0,0,0.2)]"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 20 20"
+                                  fill="black"
+                                >
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                                    clipRule="evenodd"
+                                  />
+                                </svg>
+                              </div>
+                            )}
+                          </div>
                         </div>
-                      </div>
 
-                      <div className="text-center">
-                        <h3
-                          className={`
-            text-sm font-semibold
-            ${achievement.isUnlocked ? "text-black" : "text-gray-500"}
-          `}
-                        >
-                          {achievement.title}
-                        </h3>
+                        <div className="text-center">
+                          <h3
+                            className={`
+                              text-sm font-semibold
+                              ${achievement.isUnlocked ? "text-black" : "text-gray-500"}
+                            `}
+                          >
+                            {achievement.name}
+                          </h3>
 
-                        {achievement.isUnlocked && achievement.description && (
-                          <p className="text-xs text-gray-600 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                          <div className="h-10">
+                            {achievement.isUnlocked && (
+                              <div className="mt-1">
+                                <span className="text-xs font-medium bg-black text-white px-2 py-1 rounded-full">
+                                  +{achievement.xp} XP
+                                </span>
+                              </div>
+                            )}
+                          </div>
+                          
+                          <p className="text-xs text-gray-600 mt-1 opacity-0 group-hover:opacity-100 transition-opacity line-clamp-2">
                             {achievement.description}
                           </p>
-                        )}
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                )}
               </div>
 
               {/* Roadmaps Section */}

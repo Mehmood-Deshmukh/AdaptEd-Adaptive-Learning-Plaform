@@ -50,6 +50,7 @@ const QuizBlock = ({ questions, quizId }) => {
   };
 
   const handleSubmit = async (finalAnswers) => {
+    console.log("Submitting quiz...");
     if (!userId) {
       console.error("User ID not available");
       return;

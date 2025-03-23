@@ -4,6 +4,8 @@ const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
 const Community = require("../models/communityModel")
 const sendMail = require('../utils/sendMail');
+const { achievementEmitter } = require('../services/achievementService');
+const { xpEmitter } = require('../services/xpService');
 
 const userController = {
     register: async (req, res) => {
@@ -58,10 +60,24 @@ const userController = {
                 });
             }
 
+            const beforeUpdate = user.currentStreak;
             await userModel.updateLoginStreak(user._id);
-
             const updatedUser = await userModel.findById(user._id);
-            console.log(updatedUser);
+            
+            // Check if this is a new login day to award XP
+            const isNewLoginDay = updatedUser.currentStreak > beforeUpdate || 
+                                  (beforeUpdate === 0 && updatedUser.currentStreak === 1);
+            
+            if (isNewLoginDay) {
+                // Emit XP event for daily login
+                xpEmitter.emit('daily-login', {
+                    userId: user._id,
+                    streak: updatedUser.currentStreak
+                });
+            }
+
+
+            achievementEmitter.emit('streak-updated', { userId: user._id });
 
             await updatedUser.populate('roadmaps');
 
@@ -213,6 +229,13 @@ const userController = {
             community.membersCount++;
 
             await community.save();
+
+            achievementEmitter.emit('community-joined', { userId: req.userId });
+
+            xpEmitter.emit('community-joined', {
+                userId: req.userId,
+                communityId
+            });
 
             res.status(201).json({
                 success: true,

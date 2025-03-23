@@ -3,6 +3,8 @@ const roadmapSchema = require('../models/roadmapModel');
 const checkpointSchema = require('../models/checkpointModel');
 const resourceSchema = require('../models/resourceModel');
 const generateRoadmap = require('../utils/roadmapGeneration');
+const { achievementEmitter } = require('../services/achievementService');
+const { xpEmitter } = require('../services/xpService');
 const userModel = require('../models/userModel');
 const axios = require('axios');
 const dotenv = require('dotenv');
@@ -88,7 +90,10 @@ const roadmapController = {
                 });
             }
 
+            const isNewCompletion = status === 'completed' && checkpoint.status !== 'completed';
+
             if(status === 'completed'){
+                checkpoint.startedAt = checkpoint.startedAt != null ? checkpoint.startedAt : new Date();
                 checkpoint.completedAt = new Date();
                 checkpoint.totalTimeTaken = (checkpoint.completedAt - checkpoint.startedAt);
             }
@@ -105,6 +110,31 @@ const roadmapController = {
             const totalCheckpoints = roadmap.checkpoints.length;
             const completedCheckpoints = roadmap.checkpoints.filter(checkpoint => checkpoint.status === 'completed').length;
             roadmap.totalProgress = Math.floor((completedCheckpoints / totalCheckpoints) * 100);
+
+            if (isNewCompletion) {
+                xpEmitter.emit('checkpoint-completed', {
+                    userId: roadmap.userId,
+                    checkpointId
+                });
+            }
+
+            const isRoadmapCompleted = roadmap.totalProgress === 100 && roadmap.completedAt === null;
+
+            if(isRoadmapCompleted){
+                roadmap.completedAt = new Date();
+                const currentUser = await userModel.findById(roadmap.userId);
+                currentUser.completedRoadmaps.push(roadmapId);
+                await currentUser.save();
+
+                achievementEmitter.emit('roadmap-completed', { 
+                    userId: roadmap.userId 
+                });
+
+                xpEmitter.emit('roadmap-completed', {
+                    userId: roadmap.userId,
+                    roadmapId
+                });
+            }
 
 
             await roadmap.save();

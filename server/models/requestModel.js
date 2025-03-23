@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const resourcesSchema = require('./resourceModel');
 const questionsSchema = require('./questionModel');
 const {MongoClient} = require('mongodb');
+const userModel = require('./userModel');
 const DB_URI = 'mongodb://localhost:27017';
 const DB_NAME = 'inspiron25';
 
@@ -82,12 +83,15 @@ requestSchema.statics.approveRequest = async function(requestId) {
     const result = await collection.insertOne(request.payload);
     console.log(`\x1b[32mInserted ${result.insertedCount} questions\x1b[0m`);
   }
-  
 
-  return await this.findByIdAndUpdate(requestId, 
-    { status: 'approved', updatedAt: Date.now() }, 
-    { new: true }
-  );
+  const updatedRequest = await this.findByIdAndUpdate
+  (requestId, { status: 'approved', updatedAt: Date.now() }, { new: true });
+  await client.close();
+
+  const user = await userModel.findById(request.requestedBy);
+  user.contributions.push(updatedRequest._id);
+  await user.save();
+  return updatedRequest;
 };
 
 

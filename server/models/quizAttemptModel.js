@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Quiz = require('./quizModel');
 const User = require('./userModel');
+
 const Schema = mongoose.Schema;
 
 const quizAttemptSchema = new Schema({
