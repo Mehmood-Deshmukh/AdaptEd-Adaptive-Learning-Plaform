@@ -854,7 +854,7 @@ def get_project():
 
 def init_app():
     try:
-
+        load_projects()
         check_and_update_vector_stores()
         
         app.logger.info("Application initialized successfully")

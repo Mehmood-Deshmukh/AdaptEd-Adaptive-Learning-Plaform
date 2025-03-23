@@ -95,7 +95,7 @@ const Home = () => {
                   <Trophy size={18} className="text-gray-700" />
                 </div>
                 <p className="text-xl font-bold mt-1 text-black">
-                  {userStats.completedQuizzes}
+                  {user?.quizzes.length}
                 </p>
               </div>
             </div>

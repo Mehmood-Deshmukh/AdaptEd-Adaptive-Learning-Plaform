@@ -21,7 +21,12 @@ async function pushResources() {
     const questionsData = fs.readFileSync('../inspiron25.questions.json');
     const questions = JSON.parse(questionsData);
 
-    const result = await collection.insertMany(questions);
+    const transformedQuestions = questions.map(question => ({
+      ...question,
+      _id: question._id.$oid,
+    }));
+
+    const result = await collection.insertMany(transformedQuestions);
     console.log(`\x1b[32mInserted ${result.insertedCount} Questions\x1b[0m`);
 
     
