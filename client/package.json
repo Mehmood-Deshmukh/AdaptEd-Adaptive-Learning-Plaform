@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.9",
-    "axios": "^1.8.2",
+    "axios": "^1.8.4",
     "dompurify": "^3.2.4",
     "framer-motion": "^12.4.10",
     "highlight.js": "^11.11.1",

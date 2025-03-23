@@ -151,7 +151,9 @@ const PostItem = ({ post, handleVote }) => {
 					</span>
 				</div>
 
-				<button className="flex items-center space-x-2 text-black hover:bg-gray-100 py-1.5 px-3 rounded-md transition">
+				<button className="flex cursor-pointer items-center space-x-2 text-black hover:bg-gray-100 py-1.5 px-3 rounded-md transition"
+					onClick={() => navigate(`/post/${post._id}`)}
+				>
 					<MessageSquare size={20} />
 					<span>{formatNumber(post.comments)} Comments</span>
 				</button>
