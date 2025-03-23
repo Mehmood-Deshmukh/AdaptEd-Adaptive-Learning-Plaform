@@ -348,7 +348,8 @@ const CommunityPage = () => {
 									</h1>
 
 									<div className="flex gap-3">
-										{community.createdBy === user._id ? null : (
+										{community.createdBy ===
+										user._id ? null : (
 											<button
 												onClick={handleJoinCommunity}
 												className={`px-4 py-2 rounded-md transition-colors ${
@@ -434,20 +435,20 @@ const CommunityPage = () => {
 							</div>
 
 							{!Array.isArray(posts) || posts.length === 0 ? (
-								<div className="bg-white p-8 rounded-xl shadow-sm text-center border border-gray-200">
-									<h3 className="text-xl font-medium text-gray-700">
-										No posts yet
-									</h3>
-									<p className="mt-2 text-gray-500">
-										Be the first to post in this community!
-									</p>
-									<button
-										onClick={() => setIsModalOpen(true)}
-										className="mt-4 px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800"
-									>
-										Create a Post
-									</button>
-								</div>
+								<>
+									<div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
+										<h3 className="text-xl font-medium text-gray-700 text-center">
+											No posts yet
+										</h3>
+										<p className="mt-2 text-gray-500 mb-3 text-center">
+											Be the first to post in this
+											community!
+										</p>
+                                        <div className="w-fit mx-auto">
+									        <CreatePostModal />
+                                        </div>
+									</div>
+								</>
 							) : (
 								posts.map((post) => {
 									console.log("Rendering post:", post);
@@ -511,16 +512,6 @@ const CommunityPage = () => {
 					</div>
 				</div>
 			</div>
-
-			{isModalOpen && (
-				<div className="fixed inset-0 z-50">
-					<CreatePostModal
-						isOpen={isModalOpen}
-						onClose={() => setIsModalOpen(false)}
-						defaultCommunity={community}
-					/>
-				</div>
-			)}
 		</div>
 	);
 };

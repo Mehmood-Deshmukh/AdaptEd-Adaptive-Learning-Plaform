@@ -1,8 +1,10 @@
 import React from "react";
 import { formatNumber } from "../utils/helpers";
 import useAuthContext from "../hooks/useAuthContext";
+import {useNavigate} from	"react-router-dom"
 
 const CommunitiesSidebar = ({ communities, handleJoinCommunity }) => {
+	const navigate = useNavigate();
 	const { state } = useAuthContext();
 	const { user } = state;
 	return (
@@ -12,8 +14,9 @@ const CommunitiesSidebar = ({ communities, handleJoinCommunity }) => {
 			</h2>
 			{communities.map((community) => (
 				<div
+					onClick={() => navigate(`/community/${community._id}`)}
 					key={community.id || community._id}
-					className="mb-5 pb-4 border-b border-gray-100 last:border-b-0 last:pb-0"
+					className="mb-5 pb-4 border-b border-gray-100 last:border-b-0 last:pb-0 cursor-pointer"
 				>
 					<div className="flex items-center justify-between">
 						<div>
