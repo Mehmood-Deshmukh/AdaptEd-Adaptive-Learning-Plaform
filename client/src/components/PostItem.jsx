@@ -92,7 +92,7 @@ const PostItem = ({ post, handleVote }) => {
 					<img
 						src={
 							post.author?.profileImage ||
-							"https://picsum.photos/seed/author/100"
+							`https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(post.author?.name || "Anonymous")}`
 						}
 						alt={post.author?.name || "Anonymous"}
 						className="w-12 h-12 rounded-full mr-4"

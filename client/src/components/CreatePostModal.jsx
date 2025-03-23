@@ -231,6 +231,12 @@ const CreatePostModal = ({ posts, setPosts, community = null }) => {
 
 			const data = await response.json();
 			console.log(data.data);
+
+			data.data.author = {
+				_id: state.user._id,
+				name: state.user.name,
+			};
+
 			if(data.success) {
 				setPosts([data.data, ...posts]);
 				toast.current.show({
