@@ -68,6 +68,7 @@ export const renderImageGrid = (attachments, onImageClick) => {
 };
 
 const PostItem = ({ post, handleVote }) => {
+	const navigate = useNavigate();
 	const { state } = useAuthContext();
 	const { user } = state;
 	const [previewOpen, setPreviewOpen] = useState(false);

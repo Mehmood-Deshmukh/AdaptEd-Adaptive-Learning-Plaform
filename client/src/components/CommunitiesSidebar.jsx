@@ -30,7 +30,7 @@ const CommunitiesSidebar = ({ communities, handleJoinCommunity }) => {
 
 						{community.createdBy != user._id && (
 							<button
-								className={`px-4 py-1.5 rounded-md text-sm font-medium transition ${
+								className={`px-4 py-1.5 rounded-md text-sm font-medium cursor-pointer transition ${
 									community.joined
 										? "bg-gray-200 text-black hover:bg-gray-300"
 										: "bg-black text-white hover:bg-gray-800"
