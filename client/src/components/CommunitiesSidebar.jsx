@@ -1,7 +1,7 @@
 import React from "react";
 import { formatNumber } from "../utils/helpers";
 import useAuthContext from "../hooks/useAuthContext";
-import {useNavigate} from	"react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 const CommunitiesSidebar = ({ communities, handleJoinCommunity }) => {
 	const navigate = useNavigate();
@@ -35,11 +35,14 @@ const CommunitiesSidebar = ({ communities, handleJoinCommunity }) => {
 										? "bg-gray-200 text-black hover:bg-gray-300"
 										: "bg-black text-white hover:bg-gray-800"
 								}`}
-								onClick={() =>
+								onClick={(e) => {
+									e.preventDefault();
+									e.stopPropagation();
+
 									handleJoinCommunity(
 										community.id || community._id
-									)
-								}
+									);
+								}}
 							>
 								{community.joined ? "Joined" : "Join"}
 							</button>
