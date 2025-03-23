@@ -1,6 +1,8 @@
 const Quiz = require('../models/quizModel');
 const QuizAttempt = require('../models/quizAttemptModel');
 const User = require('../models/userModel');
+const { xpEmitter } = require('../services/xpService');
+const { achievementEmitter } = require('../services/achievementService');
 
 const generateQuiz = async (req, res) => {
     try {
@@ -47,6 +49,22 @@ const submitQuiz = async (req, res) => {
     try {
         const {quizId, answers } = req.body;
         const attempt = await QuizAttempt.createAttempt(quizId, req.userId , answers);
+
+        const percentageScore = (attempt.score / attempt.answers.length) * 100;
+        const userId = req.userId;
+
+        
+        achievementEmitter.emit('quiz-completed', { 
+            userId, 
+            score: percentageScore
+        });
+
+        xpEmitter.emit('quiz-completed', {
+            userId,
+            score: attempt.score,
+            totalQuestions: answers.length
+          });
+
 
 
         res.status(200).json({ attempt });

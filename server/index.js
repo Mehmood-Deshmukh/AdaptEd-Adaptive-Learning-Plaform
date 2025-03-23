@@ -12,6 +12,10 @@ const projectRoutes = require("./routes/projectRoutes");
 const requestRoutes = require("./routes/requestRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const commentRoutes = require("./routes/commentRoutes");
+const achievementRoutes = require('./routes/achievementRoutes');
+const xpRoutes = require('./routes/xpRoutes');
+const { initializeAchievements, setupEventListeners } = require('./services/achievementService');
+const { setupXpEventListeners } = require('./services/xpService');
 
 dotenv.config();
 const app = express();
@@ -33,8 +37,27 @@ app.use("/api/projects", projectRoutes);
 app.use("/api/request", requestRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/comment", commentRoutes);
+app.use('/api/achievements', achievementRoutes);
+app.use('/api/xp', xpRoutes);
 
 connectDB();
+
+(async () => {
+    try {
+      await initializeAchievements();
+      setupEventListeners();
+      setupXpEventListeners();
+    console.log('Achievement and XP systems initialized successfully');
+    } catch (error) {
+      console.error('Failed to initialize achievement system:', error);
+    }
+  })();
+
 app.listen(port, () => {
 	console.log(`Server is running on port ${port}`);
 });
+
+
+
+
+

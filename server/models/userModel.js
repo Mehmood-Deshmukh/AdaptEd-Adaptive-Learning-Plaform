@@ -1,5 +1,17 @@
 const mongoose = require("mongoose");
+const sendMail = require("../utils/sendMail");
 const Schema = mongoose.Schema;
+
+const levels = [ "Beginner", "Novice", "Apprentice", "Expert", "Master", "Grandmaster", "Tourist"];
+
+
+const formatDate = (date) => {
+  return date.toISOString().split('T')[0];
+};
+// Get current formatted date
+const getCurrentFormattedDate = () => {
+  return formatDate(new Date());
+};
 
 const userSchema = new Schema({
   name: {
@@ -97,6 +109,26 @@ const userSchema = new Schema({
       ref: "Community",
     },
   ],
+  completedRoadmaps: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Roadmap",
+    }
+  ],
+  contributions: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Request",
+    }
+  ],
+  xps: {
+    type: Number,
+    default: 0,
+  },
+  level : {
+    type: String,
+    default: "Beginner"
+  },
   resetPasswordToken: {
     type: String,
   },
@@ -243,5 +275,61 @@ userSchema.statics.updateLoginStreak = async function (userId) {
     throw error;
   }
 };
+
+
+const sendLevelUpEmail = async (user, levelData) => {
+  try {
+    // Get stats for email
+    const completedRoadmaps = user.completedRoadmaps?.length || 0;
+    const quizzesCompleted = user.quizzes?.length || 0;
+    const xpForNextLevel = (levelData.newLevel + 1) * 1000;
+    const currentLevelBaseXP = levelData.newLevel * 1000;
+    const xpSinceLastLevel = user.xps - currentLevelBaseXP;
+    const percentToNextLevel = Math.min(Math.round((xpSinceLastLevel / 1000) * 100), 99);
+
+    await sendMail(
+      user.email,
+      `🚀 Level Up! You've Reached ${levelData.levelName} Level`,
+      'levelUp',
+      {
+        userName: user.name,
+        newLevel: levelData.newLevel,
+        levelName: levelData.levelName,
+        completedRoadmaps: completedRoadmaps,
+        quizzesCompleted: quizzesCompleted,
+        totalXP: user.xps,
+        currentXP: user.xps,
+        xpNeededForNextLevel: xpForNextLevel,
+        percentToNextLevel: percentToNextLevel,
+        platformUrl: `${process.env.FRONTEND_URL}/profile`,
+        currentDate: getCurrentFormattedDate()
+      }
+    );
+    
+    console.log(`Level up email sent to ${user.email}`);
+  } catch (error) {
+    console.error('Error sending level up email:', error);
+  }
+};
+
+userSchema.statics.updateXP = async function (userId, xp) {
+  try {
+    const user = await this.findById(userId);
+    const previousLevel = user.level;
+    const previousLevelIndex = levels.indexOf(previousLevel);
+
+    user.xps += xp;
+
+    const level = Math.floor(user.xps / 1000);
+    user.level = levels[level];
+    if(previousLevelIndex < levels.indexOf(user.level)){
+      sendLevelUpEmail(user, { newLevel: level, levelName: user.level });
+    }
+
+    return user.save();
+  } catch (error) {
+    throw error;
+  }
+}
 
 module.exports = mongoose.model("User", userSchema);
