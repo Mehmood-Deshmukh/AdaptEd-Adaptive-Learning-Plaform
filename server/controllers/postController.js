@@ -52,6 +52,7 @@ async function getPosts(req, res) {
 				.sort({ createdAt: -1 })
 				.skip(skip)
 				.limit(limit)
+				.populate("comments")
 				.populate("community", "name")
 				.populate("author", "name");
 			res.status(200).json({
@@ -64,6 +65,7 @@ async function getPosts(req, res) {
 				.sort({ createdAt: -1 })
 				.skip(skip)
 				.limit(limit)
+				.populate("comments")
 				.populate("author", "name")
 				.populate("community", "name");
 		}
