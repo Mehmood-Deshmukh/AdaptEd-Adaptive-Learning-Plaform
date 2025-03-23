@@ -1,6 +1,7 @@
 import TagsFilter from "./TagsFilter";
-import { Filter, Plus, Flame, BookOpen, Search } from "lucide-react";
+import { Filter, Plus, Flame, BookOpen, Search, StretchVertical } from "lucide-react";
 import CreatePostModal from "./CreatePostModal";
+import CreateCommunityModal from "./CreateCommunityModal";
 
 const ForumHeader = ({ tags, activeTag, setActiveTag }) => {
     return (
@@ -19,10 +20,12 @@ const ForumHeader = ({ tags, activeTag, setActiveTag }) => {
   
         <div className="flex space-x-4 mb-6">
           <CreatePostModal />
-          <button className="flex items-center space-x-2 px-5 py-2.5 border border-black text-black rounded-lg hover:bg-gray-50 transition">
+          {/* <button
+          className="flex items-center space-x-2 px-5 py-2.5 border border-black text-black rounded-lg hover:bg-gray-50 transition">
             <Plus size={18} />
             <span>Create Community</span>
-          </button>
+          </button> */}
+          <CreateCommunityModal />
           <button className="flex items-center space-x-2 px-5 py-2.5 border border-black text-black rounded-lg hover:bg-gray-50 transition">
             <Flame size={18} />
             <span>Trending</span>

@@ -6,6 +6,7 @@ import PostSkeleton from "../components/PostSkeleton";
 import CommunitiesSidebar from "../components/CommunitiesSidebar";
 import TrendingTopics from "../components/TrendingTopics";
 import ForumHeader from "../components/ForumHeader";
+import CreateCommunityModal from "../components/CreateCommunityModal";
 import { placeholderCommunities, placeholderPosts, tags } from "../utils/lib";
 
 const Forum = () => {
@@ -15,25 +16,138 @@ const Forum = () => {
 	const [loading, setLoading] = useState(true);
 	const [posts, setPosts] = useState([]);
 	const [communities, setCommunities] = useState([]);
+	const [createCommunityModalOpen, setCreateCommunityModalOpen ] = useState(false);
 
-	const handleVote = (postId, type) => {
-		setPosts((prevPosts) =>
-			prevPosts.map((post) =>
-				post._id === postId
-					? {
-							...post,
-							upvotes:
-								type === "upvote"
-									? [...post.upvotes, user?.id]
-									: post.upvotes,
-							downvotes:
-								type === "downvote"
-									? [...post.downvotes, user?.id]
-									: post.downvotes,
-					  }
-					: post
-			)
-		);
+	const handlePostVote = async (postId, type) => {
+		if (type == "upvote") {
+			if (
+				posts
+					.find((post) => post._id === postId)
+					.upvotes.includes(user?._id)
+			) {
+				return;
+			}
+
+			// remove downvote if already downvoted
+			if (
+				posts
+					.find((post) => post._id === postId)
+					.downvotes.includes(user?._id)
+			) {
+				setPosts((prevPosts) =>
+					prevPosts.map((post) =>
+						post._id === postId
+							? {
+									...post,
+									downvotes: post.downvotes.filter(
+										(id) => id !== user?._id
+									),
+							  }
+							: post
+					)
+				);
+			}
+
+			// add upvote
+			setPosts((prevPosts) =>
+				prevPosts.map((post) =>
+					post._id === postId
+						? {
+								...post,
+								upvotes: [...post.upvotes, user?._id],
+						  }
+						: post
+				)
+			);
+
+			try {
+				const response = await fetch(
+					`${import.meta.env.VITE_BACKEND_URL}/api/post/upvote`,
+					{
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: `Bearer ${localStorage.getItem(
+								"token"
+							)}`,
+						},
+						body: JSON.stringify({ postId, userId: user?._id }),
+					}
+				);
+				const data = await response.json();
+				if (data.success) {
+					console.log("Post upvoted successfully");
+				} else {
+					console.log("Error upvoting post");
+				}
+			} catch (e) {
+				console.error("Error upvoting post:", e);
+			}
+		} else {
+			if (
+				posts
+					.find((post) => post._id === postId)
+					.downvotes.includes(user?._id)
+			) {
+				return;
+			}
+
+			// remove upvote if already upvoted
+			if (
+				posts
+					.find((post) => post._id === postId)
+					.upvotes.includes(user?._id)
+			) {
+				setPosts((prevPosts) =>
+					prevPosts.map((post) =>
+						post._id === postId
+							? {
+									...post,
+									upvotes: post.upvotes.filter(
+										(id) => id !== user?._id
+									),
+							  }
+							: post
+					)
+				);
+			}
+
+			// add downvote
+			setPosts((prevPosts) =>
+				prevPosts.map((post) =>
+					post._id === postId
+						? {
+								...post,
+								downvotes: [...post.downvotes, user?._id],
+						  }
+						: post
+				)
+			);
+
+			try {
+				const response = await fetch(
+					`${import.meta.env.VITE_BACKEND_URL}/api/post/downvote`,
+					{
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: `Bearer ${localStorage.getItem(
+								"token"
+							)}`,
+						},
+						body: JSON.stringify({ postId, userId: user?._id }),
+					}
+				);
+				const data = await response.json();
+				if (data.success) {
+					console.log("Post downvoted successfully");
+				} else {
+					console.log("Error downvoting post");
+				}
+			} catch (e) {
+				console.error("Error downvoting post:", e);
+			}
+		}
 	};
 
 	const fetchPosts = async () => {
@@ -212,7 +326,7 @@ const Forum = () => {
 										key={post._id}
 										post={post}
 										user={user}
-										handleVote={handleVote}
+										handleVote={handlePostVote}
 									/>
 								))
 							)}

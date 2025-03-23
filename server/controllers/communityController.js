@@ -50,7 +50,9 @@ async function getCommunities(req, res) {
 		}
 
 		communities.forEach((community) => {
-			community.joined = user.communities.map(String).includes(community._id.toString());
+			community.joined = user.communities
+				.map(String)
+				.includes(community._id.toString());
 		});
 
 		res.status(200).json({
@@ -109,19 +111,34 @@ async function createCommunity(req, res) {
 async function getCommunity(req, res) {
 	try {
 		const { id } = req.params;
-		const community = await Community.getCommunityById(id);
-
-		// return top 10 posts in the community
-		const posts = await Post.find({ community: id })
-			.sort({ createdAt: -1 })
-			.limit(10);
+		const community = await Community.findById(id)
+			.populate({
+				path: "posts",
+				options: { sort: { createdAt: -1 }, limit: 10 },
+				populate: [
+					{
+						path: "author",
+						select: "name profileImage",
+					},
+					{
+						path: "community",
+						select: "name",
+					},
+				],
+			})
+			.lean();
+		if (!community) {
+			return res.status(404).json({
+				success: false,
+				message: "Community not found",
+				data: null,
+			});
+		}
 
 		res.status(200).json({
 			success: true,
 			message: "Community found successfully",
-			data: {
-				community,
-			},
+			data: community,
 		});
 	} catch (e) {
 		console.error(e);
