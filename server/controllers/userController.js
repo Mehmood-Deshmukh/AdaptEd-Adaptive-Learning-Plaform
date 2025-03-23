@@ -2,6 +2,7 @@ const userModel = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
+const Community = require("../models/communityModel")
 const sendMail = require('../utils/sendMail');
 
 const userController = {
@@ -39,6 +40,8 @@ const userController = {
         const { email, password } = req.body;
 
         try {
+
+            
             const user = await userModel.getUserByEmail(email);
             if (!user) {
                 return res.status(404).json({
@@ -178,6 +181,78 @@ const userController = {
                 status: 'error',
                 message: error.message
             });
+        }
+    },
+
+    joinCommunity: async (req, res) => {
+        try{
+            const { communityId } = req.body;
+            console.log(req.userId);
+            const user = await userModel.findById(req.userId);
+
+            if (!user) {
+                return res.status(404).json({
+                    success: false,
+                    message: "User not found",
+                    data: null
+                })
+            }
+
+            if (user.communities?.includes(communityId)) {
+                return res.status(203).json({
+                    success: true,
+                    message: "Already in the community",
+                    data: null
+                })
+            }
+
+            user.communities.push(communityId);
+            await user.save();
+
+            const community = await Community.findById(communityId);
+            community.membersCount++;
+
+            await community.save();
+
+            res.status(201).json({
+                success: true,
+                message: "successfully joined the community",
+                data: null
+            })
+        }catch(e) {
+            console.log(e.message);
+            res.status(500).json({
+                success: false, 
+                message: e.message,
+                data: null
+            })
+        }
+    },
+    leaveCommunity: async (req, res) => {
+        try{
+            const {communityId} = req.body;
+            const user = await userModel.findById(req.userId);
+
+            user.communities = user.communities.filter(c => c != communityId)
+            const community = await Community.findById(communityId);
+
+            community.membersCount--;
+            
+            await user.save();
+            await community.save();
+
+            res.status(200).json({
+                success: true,
+                message: "successfully left the community",
+                data: null
+            })
+        }catch(e) {
+            console.log(e.message);
+            res.status(500).json({
+                success: false,
+                message: e.message,
+                data: null
+            })
         }
     }
 }

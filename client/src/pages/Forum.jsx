@@ -1,215 +1,236 @@
-import {
-  BookOpen,
-  Map,
-  Flame,
-  Trophy,
-  Crown,
-  LogOut,
-  User,
-  ThumbsUp,
-  ThumbsDown,
-  Home as HomeIcon,
-} from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import useAuthContext from "../hooks/useAuthContext";
-import { useState } from "react";
 import Sidebar from "../components/Sidebar";
+import PostItem from "../components/PostItem";
+import PostSkeleton from "../components/PostSkeleton";
+import CommunitiesSidebar from "../components/CommunitiesSidebar";
+import TrendingTopics from "../components/TrendingTopics";
+import ForumHeader from "../components/ForumHeader";
+import { placeholderCommunities, placeholderPosts, tags } from "../utils/lib";
 
 const Forum = () => {
-  const navigate = useNavigate();
-  const { state, dispatch } = useAuthContext();
-  const { user } = state;
-  const [comments, setComments] = useState({});
-  const [newComment, setNewComment] = useState("");
-  const [votes, setVotes] = useState({});
+	const { state, dispatch } = useAuthContext();
+	const { user } = state;
+	const [activeTag, setActiveTag] = useState("All");
+	const [loading, setLoading] = useState(true);
+	const [posts, setPosts] = useState([]);
+	const [communities, setCommunities] = useState([]);
 
+	const handleVote = (postId, type) => {
+		setPosts((prevPosts) =>
+			prevPosts.map((post) =>
+				post._id === postId
+					? {
+							...post,
+							upvotes:
+								type === "upvote"
+									? [...post.upvotes, user?.id]
+									: post.upvotes,
+							downvotes:
+								type === "downvote"
+									? [...post.downvotes, user?.id]
+									: post.downvotes,
+					  }
+					: post
+			)
+		);
+	};
 
-  const handleCommentSubmit = (postId) => {
-    if (!newComment.trim()) return;
-    setComments((prev) => ({
-      ...prev,
-      [postId]: [...(prev[postId] || []), newComment],
-    }));
-    setNewComment("");
-  };
+	const fetchPosts = async () => {
+		setLoading(true);
+		try {
+			const response = await fetch(
+				`${import.meta.env.VITE_BACKEND_URL}/api/post/?page=1&limit=5`,
+				{
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem(
+							"token"
+						)}`,
+					},
+				}
+			);
+			const data = await response.json();
 
-  const handleLogout = () => {
-    dispatch({ type: "LOADING" });
-    dispatch({ type: "LOGOUT" });
-  };
-  
-  const handleVote = (postId, replyIndex, type) => {
-    setPosts((prevPosts) =>
-      prevPosts.map((post) =>
-        post.id === postId
-          ? {
-              ...post,
-              replies: post.replies.map((reply, index) =>
-                index === replyIndex
-                  ? {
-                      ...reply,
-                      upvotes:
-                        type === "upvote" ? reply.upvotes + 1 : reply.upvotes,
-                      downvotes:
-                        type === "downvote"
-                          ? reply.downvotes + 1
-                          : reply.downvotes,
-                    }
-                  : reply
-              ),
-            }
-          : post
-      )
-    );
-  };
-  const userStats = {
-    streak: 7,
-    points: 2350,
-    rank: "Explorer",
-    completedQuizzes: 12,
-    progress: 68,
-  };
+			if (data.success && data.data.length > 0) {
+				setPosts(data.data);
+			} else {
+				setPosts(placeholderPosts);
+			}
+		} catch (e) {
+			console.error("Error fetching posts:", e);
+			setPosts(placeholderPosts);
+		} finally {
+			setLoading(false);
+		}
+	};
 
-  const posts = [
-    {
-      id: 1,
-      title: "How to style elements?",
-      author: "JohnDoe",
-      replies: [
-        {
-          user: "Alice",
-          text: "You can start by installing Tailwind via npm.",
-          upvotes: 0,
-          downvotes: 0,
-        },
-        {
-          user: "Bob",
-          text: "Use utility classes to style elements easily.",
-          upvotes: 0,
-          downvotes: 0,
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: "Best practices for React?",
-      author: "JaneDoe",
-      replies: [
-        {
-          user: "Alice",
-          text: "You can start by creating project in vite",
-          upvotes: 0,
-          downvotes: 0,
-        },
-        { user: "Bob", text: "Use utility classes to style elements easily."
-            ,upvotes: 0,
-            downvotes: 0,
-         },
-      ],
-    },
-  ];
+	const fetchCommunities = async () => {
+		try {
+			const response = await fetch(
+				`${
+					import.meta.env.VITE_BACKEND_URL
+				}/api/community/?page=1&limit=5`,
+				{
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem(
+							"token"
+						)}`,
+					},
+				}
+			);
+			const data = await response.json();
+			if (data.success) {
+				setCommunities(data.data);
+			} else {
+				setCommunities(placeholderCommunities);
+			}
+		} catch (e) {
+			console.error("Error fetching communities:", e);
+			setCommunities(placeholderCommunities);
+		}
+	};
 
-  return (
-    <>
-      <div className="flex bg-gray-50 h-screen">
-      <Sidebar user={user}/>
+	const handleJoinCommunity = async (communityId) => {
+		try {
+			const joinStatus = communities.find(
+				(community) =>
+					community.id === communityId ||
+					community._id === communityId
+			).joined;
 
-        <div className="forum">
-          <div className="w-6xl mx-auto bg-white shadow-md rounded-lg p-4">
-            <h1 className="text-2xl font-bold mb-4 text-black">
-              AdaptEd Community Forum
-              <button className="mt-4 bg-black text-lg text-white float-right py-1 px-3 rounded-lg mr-4">
-                Create Post
-              </button>
-            </h1>
+			setCommunities(
+				communities.map((community) =>
+					community.id === communityId ||
+					community._id === communityId
+						? {
+								...community,
+								joined: !community.joined,
+								membersCount: community.joined
+									? community.membersCount - 1
+									: community.membersCount + 1,
+						  }
+						: community
+				)
+			);
 
-            {posts.map((post) => (
-              <div
-                key={post.id}
-                className="border-b border-solid border-gray-700 py-3"
-              >
-                <h2 className="text-lg font-semibold text-black">
-                  {post.title}
-                </h2>
-                <p className="text-gray-400 text-sm">
-                  Posted by {post.author} • {post.replies.length} replies
-                </p>
+			if (!joinStatus) {
+				// join the community if not already joined
+				const response = await fetch(
+					`${
+						import.meta.env.VITE_BACKEND_URL
+					}/api/user/join-community`,
+					{
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: `Bearer ${localStorage.getItem(
+								"token"
+							)}`,
+						},
+						body: JSON.stringify({ communityId }),
+					}
+				);
+				const data = await response.json();
+				if (data.success) {
+					console.log("Successfully joined community");
+					const newUser = {
+						...user,
+						communities: [...user.communities, communityId],
+					};
+					dispatch({ type: "UPDATE_USER", payload: newUser });
+				} else {
+					console.log("Error joining community");
+				}
+			}
 
-                {/* Replies Section */}
-                <div className="mt-2 space-y-2">
-                  {post.replies.map((reply, index) => (
-                    <div
-                      key={index}
-                      className="ml-4 border-l-2 border-gray-700 pl-3 p-2 m-2"
-                    >
-                      <div className="flex items-center space-x-2">
-                        <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center">
-                          <User size={20} className="text-white" />
-                        </div>
+			// leave the community if already joined
+			else {
+				const response = await fetch(
+					`${
+						import.meta.env.VITE_BACKEND_URL
+					}/api/user/leave-community`,
+					{
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: `Bearer ${localStorage.getItem(
+								"token"
+							)}`,
+						},
+						body: JSON.stringify({ communityId }),
+					}
+				);
+				const data = await response.json();
+				if (data.success) {
+					console.log("Successfully left community");
+					const newUser = {
+						...user,
+						communities: user.communities.filter(
+							(id) => id !== communityId
+						),
+					};
+					dispatch({ type: "UPDATE_USER", payload: newUser });
+				} else {
+					console.log("Error leaving community");
+				}
+			}
+		} catch (e) {
+			console.error("Error joining community:", e);
+		}
+	};
 
-                        <p className="text-black">
-                          <span className="font-semibold text-black">
-                            {reply.user}:
-                          </span>{" "}
-                          {reply.text}
-                        </p>
-                      </div>
+	useEffect(() => {
+		fetchPosts();
+		fetchCommunities();
+	}, []);
 
-                      {/* Upvote & Downvote */}
-                      <div className="flex items-center space-x-2 mt-2">
-                        <button
-                          onClick={() => handleVote(post.id, index, "upvote")}
-                          className="text-black"
-                        >
-                          <ThumbsUp size={18} />
-                        </button>
-                        <span className="text-gray-600">{reply.upvotes}</span>
-                        <button
-                          onClick={() => handleVote(post.id, index, "downvote")}
-                          className="text-black "
-                        >
-                          <ThumbsDown size={18} />
-                        </button>
-                        <span className="text-gray-600">{reply.downvotes}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+	return (
+		<div className="flex h-screen bg-gray-100">
+			<Sidebar user={user} />
 
-                {/* Comment Input */}
-                <div className="mt-2">
-                  <input
-                    type="text"
-                    className="w-full bg-black text-white p-2 rounded-md py-6"
-                    placeholder="Write a comment..."
-                    value={newComment}
-                    onChange={(e) => setNewComment(e.target.value)}
-                  />
-                  <button
-                    className="mt-2 bg-black text-gray-200 py-1 px-3 rounded-md"
-                    onClick={() => handleCommentSubmit(post.id)}
-                  >
-                    Comment
-                  </button>
-                </div>
+			<div className="flex-1 overflow-auto">
+				<div className="max-w-8xl mx-auto px-6">
+					<ForumHeader
+						tags={tags}
+						activeTag={activeTag}
+						setActiveTag={setActiveTag}
+					/>
 
-                {/* Display Comments */}
-                {comments[post.id] && (
-                  <div className="mt-2">
-                    {comments[post.id].map((comment, index) => (
-                      <p key={index} className="text-gray-400 text-sm">
-                        ➤ {comment}
-                      </p>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </>
-  );
+					<div className="flex pt-6 gap-6">
+						<div className="flex-1">
+							{loading ? (
+								<PostSkeleton />
+							) : posts.length === 0 ? (
+								<div className="bg-white p-6 rounded-xl shadow-sm mb-6 border border-gray-200 text-center">
+									<p className="text-lg text-gray-500">
+										No posts found
+									</p>
+								</div>
+							) : (
+								posts.map((post) => (
+									<PostItem
+										key={post._id}
+										post={post}
+										user={user}
+										handleVote={handleVote}
+									/>
+								))
+							)}
+						</div>
+
+						<div className="w-80">
+							<CommunitiesSidebar
+								communities={communities}
+								handleJoinCommunity={handleJoinCommunity}
+								user={state.user}
+							/>
+							<TrendingTopics />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default Forum;

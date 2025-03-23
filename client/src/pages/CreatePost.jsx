@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { Toast } from "primereact/toast"; 
 
 const CreatePost = () => {
+    const toast = useRef(null);
+
     const [formData, setFormData] = useState({
         title: "",
         description: "",
@@ -39,6 +42,7 @@ const CreatePost = () => {
                     "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2RiMTI2NDIwYzMzMjExZTBiMWQ3MjIiLCJpYXQiOjE3NDI0NTk0NTQsImV4cCI6MTc0MjQ2MzA1NH0.ppRZSTVJ7VWkVwM284vcXwX58scFE34sEh945c8FlUA`,
                 }
             });
+            
             const data = await response.json();
             console.log(data);
 

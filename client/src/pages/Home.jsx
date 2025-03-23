@@ -19,7 +19,7 @@ const Home = () => {
   const { state, dispatch } = useAuthContext();
   const { user } = state;
   const [timeOfDay, setTimeOfDay] = useState("");
-  const [showSurvey, setShowSurvey] = useState(true);
+  const [showSurvey, setShowSurvey] = useState(false);
   const [learningProfile, setLearningProfile] = useState(null);
   
 
@@ -29,7 +29,6 @@ const Home = () => {
     else if (hour < 17) setTimeOfDay("afternoon");
     else setTimeOfDay("evening");
 
-    // Check if user has already completed the survey
     const savedProfile = localStorage.getItem("learningProfile");
     if (savedProfile) {
       setLearningProfile(JSON.parse(savedProfile));

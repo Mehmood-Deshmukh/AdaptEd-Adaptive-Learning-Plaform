@@ -22,6 +22,10 @@ let communitySchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     }],
+    membersCount: {
+        type: Number,
+        default: 0
+    },
     createdBy: {
         type: Schema.Types.ObjectId,
         ref: 'User'
@@ -30,10 +34,10 @@ let communitySchema = new Schema({
         type: Number,
         default: 0
     },
-	posts: {
+	posts: [{
 		type: Schema.Types.ObjectId,
 		ref: 'Post'
-	},
+	}],
 	createdAt: {
 		type: Date,
 		default: Date.now()
@@ -64,7 +68,7 @@ communitySchema.statics.createCommunity = async function(
         throw new Error('Community name cannot be longer than 40 characters');
     }
  
-    const illegalCharacters = ['$', '.', ' ', '#', '[', ']'];
+    const illegalCharacters = ['$', '.', '@', '#', '%', '&'];
     
     illegalCharacters.forEach(character => {
         if(community.name.includes(character)){
@@ -73,6 +77,7 @@ communitySchema.statics.createCommunity = async function(
     });
     
     community.members.push(createdBy);
+    community.membersCount = 1;
     await community.save();
 
     return community;
