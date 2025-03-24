@@ -703,6 +703,43 @@ def quiz_endpoint():
     except Exception as e:
         app.logger.error(f"Quiz endpoint error: {str(e)}")
         return jsonify({"error": f"Failed to process quiz request: {str(e)}"}), 500
+    
+
+@app.route('/api/generate-recommendations', methods=['POST'])
+def generate_recommendations():
+    try:
+        data = request.get_json()
+        
+        if not data or not data.get('summary'):
+            return jsonify({"error": "Missing summary parameter"}), 400
+            
+        summary = data.get('summary')
+        
+        visual_learning_threshold = 5.0
+        easy_difficulty = "beginner"
+        
+        domain_interests = []
+        visual_learning_score = 0.0
+        for line in summary.split('\n'):
+            if "domain interests" in line:
+                domain_interests = re.findall(r'\b\w+\b', line.split(":")[1])
+            if "visualLearning" in line:
+                visual_learning_score = float(re.findall(r'\d+\.\d+', line)[0])
+        
+        difficulty = easy_difficulty if visual_learning_score > visual_learning_threshold else "intermediate"
+        
+        vector_store = get_resources_vector_store()
+        topic = " ".join(domain_interests)
+        retrieved_resources = retrieve_relevant_resources(topic, vector_store)
+        
+        filtered_resources = [res for res in retrieved_resources if res.get("difficulty") == difficulty]
+        
+        return jsonify(filtered_resources[:3]), 200
+        
+    except Exception as e:
+        app.logger.error(f"Error generating resources: {str(e)}")
+        return jsonify({"error": f"Failed to generate resources: {str(e)}"}), 500
+    
 
 
 @app.route('/clusters/index', methods=['GET'])

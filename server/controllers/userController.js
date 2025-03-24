@@ -1,11 +1,12 @@
-const userModel = require("../models/userModel");
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
-const crypto = require("crypto");
-const Community = require("../models/communityModel");
-const sendMail = require("../utils/sendMail");
-const { achievementEmitter } = require("../services/achievementService");
-const { xpEmitter } = require("../services/xpService");
+const userModel = require('../models/userModel');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const crypto = require('crypto');
+const Community = require("../models/communityModel")
+const sendMail = require('../utils/sendMail');
+const { achievementEmitter } = require('../services/achievementService');
+const { xpEmitter } = require('../services/xpService');
+const { default: axios } = require('axios');
 
 const userController = {
 	register: async (req, res) => {
@@ -284,6 +285,37 @@ const userController = {
 			await user.save();
 			await community.save();
 
+            res.status(200).json({
+                success: true,
+                message: "successfully left the community",
+                data: null
+            })
+        }catch(e) {
+            console.log(e.message);
+            res.status(500).json({
+                success: false,
+                message: e.message,
+                data: null
+            })
+        }
+    },
+    getRecommendations: async (req, res) => {
+        try {
+            const user = await userModel.findById(req.userId);
+    
+            const clusterSummaryResponse = await axios.get(`${process.env.FLASK_BASE_URL}/clusters/cluster-summary?id=${user.clusterId}`);
+            const clusterSummary = clusterSummaryResponse.data.summary;
+    
+            const recommendationsResponse = await axios.post(`${process.env.FLASK_BASE_URL}/api/generate-recommendations`, { summary: clusterSummary });
+            const recommendations = recommendationsResponse.data;
+    
+            return res.status(200).json(recommendations);
+        } catch (error) {
+            console.error(`Error generating recommendations: ${error}`);
+            return res.status(500).json({ error: 'Failed to generate recommendations' });
+        }
+    }
+}
 			res.status(200).json({
 				success: true,
 				message: "successfully left the community",
