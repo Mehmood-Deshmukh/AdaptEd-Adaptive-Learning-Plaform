@@ -6,6 +6,7 @@ const Community = require("../models/communityModel")
 const sendMail = require('../utils/sendMail');
 const { achievementEmitter } = require('../services/achievementService');
 const { xpEmitter } = require('../services/xpService');
+const { default: axios } = require('axios');
 
 const userController = {
     register: async (req, res) => {
@@ -276,6 +277,22 @@ const userController = {
                 message: e.message,
                 data: null
             })
+        }
+    },
+    getRecommendations: async (req, res) => {
+        try {
+            const user = await userModel.findById(req.userId);
+    
+            const clusterSummaryResponse = await axios.get(`${process.env.FLASK_BASE_URL}/clusters/cluster-summary?id=${user.clusterId}`);
+            const clusterSummary = clusterSummaryResponse.data.summary;
+    
+            const recommendationsResponse = await axios.post(`${process.env.FLASK_BASE_URL}/api/generate-recommendations`, { summary: clusterSummary });
+            const recommendations = recommendationsResponse.data;
+    
+            return res.status(200).json(recommendations);
+        } catch (error) {
+            console.error(`Error generating recommendations: ${error}`);
+            return res.status(500).json({ error: 'Failed to generate recommendations' });
         }
     }
 }

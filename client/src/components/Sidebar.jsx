@@ -79,7 +79,7 @@ const Sidebar = ({ user }) => {
   const SidebarToggle = () => (
     <button 
       onClick={toggleSidebar}
-      className="fixed top-4 left-4 z-50 p-2 bg-black rounded-md md:hidden"
+      className="fixed top-4 left-4 z-50 p-2 bg-black rounded-md md:hidden text-white"
       aria-label={isOpen ? "Close menu" : "Open menu"}
     >
       {isOpen ? <X size={24} /> : <Menu size={24} />}
