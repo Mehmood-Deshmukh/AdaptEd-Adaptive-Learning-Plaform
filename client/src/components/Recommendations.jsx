@@ -76,7 +76,8 @@ const Recommendations = () => {
               </div>
             </div>
             <p className="text-sm text-gray-600 mt-1">
-              <strong>Topics:</strong> {resource.topics.join(", ")}
+            <strong>Topics:</strong> {resource.topics.map(topic => topic.replace(/_/g, ' ')).map(topic => topic.charAt(0).toUpperCase() + topic.slice(1)).join(", ")}
+              
             </p>
             <div className="mt-auto pt-4">
               <a
