@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
+import Recommendations from "../components/Recommendations";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -21,7 +22,6 @@ const Home = () => {
   const [timeOfDay, setTimeOfDay] = useState("");
   const [showSurvey, setShowSurvey] = useState(false);
   const [learningProfile, setLearningProfile] = useState(null);
-  
 
   useEffect(() => {
     const hour = new Date().getHours();
@@ -100,32 +100,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">
-              Recommended Resources
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-4 border border-gray-200 rounded-lg hover:border-gray-400 transition-colors">
-                <h3 className="font-medium text-black">
-                  Machine Learning Fundamentals
-                </h3>
-                <p className="text-sm text-gray-600 mt-1">
-                  {learningProfile?.visualLearning > 50
-                    ? "Best matched to your visual learning style"
-                    : "Recommended for your profile"}
-                </p>
-              </div>
-
-              <div className="p-4 border border-gray-200 rounded-lg hover:border-gray-400 transition-colors">
-                <h3 className="font-medium text-black">
-                  Web Development Pathway
-                </h3>
-                <p className="text-sm text-gray-600 mt-1">
-                  Aligned with your current progress
-                </p>
-              </div>
-            </div>
-          </div>
+          <Recommendations />
 
           <div className="bg-white rounded-lg shadow-sm p-6">
             <h2 className="text-xl font-bold text-gray-900 mb-4">
