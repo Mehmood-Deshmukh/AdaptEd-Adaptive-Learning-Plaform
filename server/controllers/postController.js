@@ -112,10 +112,17 @@ async function createPost(req, res) {
 		community.posts.push(post._id);
 		await community.save();
 
+		const postObj = post.toObject();
+		postObj.community = {
+			_id: community._id,
+			name: community.name,
+			membersCount: community.membersCount
+		}
+
 		res.status(201).json({
 			success: true,
 			message: "Post created succcessfully!",
-			data: post,
+			data: postObj,
 		});
 	} catch (error) {
 		console.log(error);

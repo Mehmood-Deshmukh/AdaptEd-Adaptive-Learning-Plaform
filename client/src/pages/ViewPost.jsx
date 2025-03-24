@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import useAuthContext from "../hooks/useAuthContext";
 import Sidebar from "../components/Sidebar";
+import CommentSection from "../components/CommentSection";
 
 const PostDisplay = () => {
 	const [post, setPost] = useState(null);
@@ -325,6 +326,7 @@ const PostDisplay = () => {
 						</button>
 					</div>
 				</div>
+				<CommentSection postId={id} />
 			</div>
 		);
 	};
