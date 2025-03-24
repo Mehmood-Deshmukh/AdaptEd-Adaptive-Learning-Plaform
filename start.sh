@@ -10,5 +10,5 @@ nodemon index.js &
 
 cd ../python-server
 source .venv/bin/activate
-pip -r install requirements.txt
+pip install -r requirements.txt
 python server.py
