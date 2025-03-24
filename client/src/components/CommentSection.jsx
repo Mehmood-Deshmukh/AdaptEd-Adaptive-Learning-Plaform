@@ -141,6 +141,7 @@ const CommentSection = ({ postId }) => {
 		setReplyingToComment(null);
 	};
 
+
 	const submitComment = async (e) => {
 		e.preventDefault();
 
@@ -174,6 +175,19 @@ const CommentSection = ({ postId }) => {
 						[replyingTo]: {
 							...openReplies[replyingTo],
 							replies: refreshedReplies,
+							visible: true, // Ensure replies are visible
+							page: 1,
+							hasMore: refreshedReplies.length === 5,
+						},
+					});
+				} else if (replyingTo) {
+					// This is a new reply to a comment that doesn't have the replies open yet
+					const refreshedReplies = await fetchReplies(replyingTo);
+					setOpenReplies({
+						...openReplies,
+						[replyingTo]: {
+							replies: refreshedReplies,
+							visible: true, // Make sure replies are visible
 							page: 1,
 							hasMore: refreshedReplies.length === 5,
 						},
@@ -185,7 +199,7 @@ const CommentSection = ({ postId }) => {
 				setError("Failed to post comment");
 			}
 		} catch (err) {
-			setError("Failed to post comment");
+			setError("Failed to post comment", err.message);
 		}
 	};
 
