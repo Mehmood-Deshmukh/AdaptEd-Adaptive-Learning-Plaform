@@ -1,12 +1,12 @@
-const userModel = require('../models/userModel');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
-const crypto = require('crypto');
-const Community = require("../models/communityModel")
-const sendMail = require('../utils/sendMail');
-const { achievementEmitter } = require('../services/achievementService');
-const { xpEmitter } = require('../services/xpService');
-const { default: axios } = require('axios');
+const userModel = require("../models/userModel");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
+const crypto = require("crypto");
+const Community = require("../models/communityModel");
+const sendMail = require("../utils/sendMail");
+const { achievementEmitter } = require("../services/achievementService");
+const { xpEmitter } = require("../services/xpService");
+const { default: axios } = require("axios");
 
 const userController = {
 	register: async (req, res) => {
@@ -285,37 +285,6 @@ const userController = {
 			await user.save();
 			await community.save();
 
-            res.status(200).json({
-                success: true,
-                message: "successfully left the community",
-                data: null
-            })
-        }catch(e) {
-            console.log(e.message);
-            res.status(500).json({
-                success: false,
-                message: e.message,
-                data: null
-            })
-        }
-    },
-    getRecommendations: async (req, res) => {
-        try {
-            const user = await userModel.findById(req.userId);
-    
-            const clusterSummaryResponse = await axios.get(`${process.env.FLASK_BASE_URL}/clusters/cluster-summary?id=${user.clusterId}`);
-            const clusterSummary = clusterSummaryResponse.data.summary;
-    
-            const recommendationsResponse = await axios.post(`${process.env.FLASK_BASE_URL}/api/generate-recommendations`, { summary: clusterSummary });
-            const recommendations = recommendationsResponse.data;
-    
-            return res.status(200).json(recommendations);
-        } catch (error) {
-            console.error(`Error generating recommendations: ${error}`);
-            return res.status(500).json({ error: 'Failed to generate recommendations' });
-        }
-    }
-}
 			res.status(200).json({
 				success: true,
 				message: "successfully left the community",
@@ -328,6 +297,29 @@ const userController = {
 				message: e.message,
 				data: null,
 			});
+		}
+	},
+	getRecommendations: async (req, res) => {
+		try {
+			const user = await userModel.findById(req.userId);
+
+			const clusterSummaryResponse = await axios.get(
+				`${process.env.FLASK_BASE_URL}/clusters/cluster-summary?id=${user.clusterId}`
+			);
+			const clusterSummary = clusterSummaryResponse.data.summary;
+
+			const recommendationsResponse = await axios.post(
+				`${process.env.FLASK_BASE_URL}/api/generate-recommendations`,
+				{ summary: clusterSummary }
+			);
+			const recommendations = recommendationsResponse.data;
+
+			return res.status(200).json(recommendations);
+		} catch (error) {
+			console.error(`Error generating recommendations: ${error}`);
+			return res
+				.status(500)
+				.json({ error: "Failed to generate recommendations" });
 		}
 	},
 	updateLearningParameters: async (req, res) => {
@@ -344,35 +336,35 @@ const userController = {
 				feedbackPreference,
 			} = req.body;
 
-            const user = await userModel.findById(req.userId);
-            if (!user) {
-                return res.status(404).json({
-                    success: false,
-                    message: "User not found",
-                    data: null,
-                });
-            }
+			const user = await userModel.findById(req.userId);
+			if (!user) {
+				return res.status(404).json({
+					success: false,
+					message: "User not found",
+					data: null,
+				});
+			}
 
-            user.surveyParameters = {
-                visualLearning,
-                auditoryLearning,
-                readingWritingLearning,
-                kinestheticLearning,
-                challengeTolerance,
-                timeCommitment,
-                learningPace,
-                socialPreference,
-                feedbackPreference,
-            };
+			user.surveyParameters = {
+				visualLearning,
+				auditoryLearning,
+				readingWritingLearning,
+				kinestheticLearning,
+				challengeTolerance,
+				timeCommitment,
+				learningPace,
+				socialPreference,
+				feedbackPreference,
+			};
 
-            user.isAssessmentComplete = true;
-            await user.save();
+			user.isAssessmentComplete = true;
+			await user.save();
 
-            res.status(200).json({
-                success: true,
-                message: "Learning parameters updated successfully",
-                data: user,
-            });
+			res.status(200).json({
+				success: true,
+				message: "Learning parameters updated successfully",
+				data: user,
+			});
 		} catch (e) {
 			console.log(e.message);
 			res.status(500).json({
