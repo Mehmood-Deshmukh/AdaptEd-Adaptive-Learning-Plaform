@@ -408,7 +408,7 @@ const Login = () => {
       <AnimatePresence>
         {showForgotPasswordModal && (
           <motion.div
-            className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50"
+            className="fixed inset-0 backdrop-blur-md bg-black/60 flex items-center justify-center z-50"
             initial="hidden"
             animate="visible"
             exit="hidden"
@@ -515,7 +515,7 @@ const Login = () => {
       <AnimatePresence>
         {showResetPasswordModal && (
           <motion.div
-            className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50"
+            className="fixed inset-0 backdrop-blur-md bg-black/60 flex items-center justify-center z-50"
             initial="hidden"
             animate="visible"
             exit="hidden"

@@ -14,6 +14,7 @@ import UserContributionsPage from './pages/userContributionsPage'
 import ViewPost from './pages/ViewPost'
 import ViewCommunity from './pages/ViewCommunity'
 
+
 function App() {
   const { state } = useAuthContext()
   const { isAuthenticated, Loading } = state;
@@ -47,6 +48,7 @@ function App() {
         <Route path='/contribute' element={isAuthenticated ? <UserContributionsPage /> : <Navigate to="/login" />} />
         <Route path='/post/:id' element={isAuthenticated ? <ViewPost /> : <Navigate to="/login" />} />
         <Route path='/community/:id' element={isAuthenticated ? <ViewCommunity /> : <Navigate to="/login" />} />
+
       </Routes>
     </BrowserRouter>
   )
