@@ -91,11 +91,12 @@ const roadmapController = {
             }
 
             const isNewCompletion = status === 'completed' && checkpoint.status !== 'completed';
+            console.log(checkpoint.startedAt , Date.now());
 
             if(status === 'completed'){
                 checkpoint.startedAt = checkpoint.startedAt != null ? checkpoint.startedAt : new Date();
                 checkpoint.completedAt = new Date();
-                checkpoint.totalTimeTaken = (checkpoint.completedAt - checkpoint.startedAt);
+                 checkpoint.totalTimeTaken = checkpoint.completedAt.getTime() - new Date(checkpoint.startedAt).getTime();
             }
 
             if(status === 'in_progress'){
