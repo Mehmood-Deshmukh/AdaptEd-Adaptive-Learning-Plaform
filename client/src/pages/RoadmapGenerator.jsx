@@ -71,7 +71,7 @@ const RoadmapGenerator = () => {
           
           roadmap.checkpoints = roadmap.checkpoints.map((checkpoint) => {
             // First checkpoint (order 1) should be in progress if not already completed
-            if (checkpoint.order === 1 && checkpoint.status !== "completed") {
+            if (checkpoint.order === 1 && checkpoint.status !== "completed" && checkpoint.status != "in_progress"){
               // Send update to backend to ensure server state matches
               fetch(`${BASE_URL}/api/roadmap/update-checkpoint-status`, {
                 method: "POST",
@@ -89,7 +89,7 @@ const RoadmapGenerator = () => {
               return { ...checkpoint, status: "in_progress" };
             }
             // For second checkpoint, if first is completed, it should be in progress
-            else if (checkpoint.order === 2 && isCheckpoint1Completed && checkpoint.status === "not_started") {
+            else if (checkpoint.order === 2 && isCheckpoint1Completed && checkpoint.status === "not_started" && checkpoint.status != "in_progress") {
               // Send update to backend to ensure server state matches
               fetch(`${BASE_URL}/api/roadmap/update-checkpoint-status`, {
                 method: "POST",
@@ -112,7 +112,7 @@ const RoadmapGenerator = () => {
                 (cp) => cp.order === checkpoint.order - 1
               );
               
-              if (prevCheckpoint && prevCheckpoint.status === "completed" && checkpoint.status === "not_started") {
+              if (prevCheckpoint && prevCheckpoint.status === "completed" && checkpoint.status === "not_started" && checkpoint.status != "in_progress") {
                 // Send update to backend to ensure server state matches
                 fetch(`${BASE_URL}/api/roadmap/update-checkpoint-status`, {
                   method: "POST",
@@ -403,6 +403,7 @@ const RoadmapGenerator = () => {
     const formatTimeDuration = (milliseconds) => {
       if (!milliseconds) return "0 min";
 
+
       const seconds = Math.floor(milliseconds / 1000);
       const minutes = Math.floor(seconds / 60);
       const hours = Math.floor(minutes / 60);
@@ -418,11 +419,12 @@ const RoadmapGenerator = () => {
     };
 
     const calculateTimeSpent = () => {
-      if (checkpoint.status === "completed" && checkpoint.totalTimeTaken) {
+      if (checkpoint?.status === "completed" && checkpoint?.totalTimeTaken) {
         return formatTimeDuration(checkpoint.totalTimeTaken);
-      } else if (checkpoint.status === "in_progress" && checkpoint.startedAt) {
+      } else if (checkpoint?.status === "in_progress" && checkpoint?.startedAt) {
         const currentTime = Date.now();
         const startTime = new Date(checkpoint.startedAt).getTime();
+        console.log(checkpoint.startedAt);
         return formatTimeDuration(currentTime - startTime);
       }
       return "0 min";

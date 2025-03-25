@@ -218,7 +218,7 @@ const ChatRoom = ({ communityId, communityName, isOpen, onClose }) => {
                 <div className="text-xs text-gray-300">{currentDateTime || '2025-03-24 04:26:14'}</div>
                 <button
                   onClick={() => onClose(false)}
-                  className="text-white hover:bg-white hover:bg-opacity-20 rounded p-1"
+                  className="text-white cursor-pointer hover:bg-white hover:bg-opacity-20 hover:text-black rounded p-1"
                 >
                   <X size={20} />
                 </button>

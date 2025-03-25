@@ -73,7 +73,13 @@ const roadmapController = {
                 res.status(404).json({ message: "Roadmap not found" });
             }
 
-            const checkpoint = await checkpointSchema.findById(checkpointId);
+            const checkpoint = await checkpointSchema.findById(checkpointId).populate(
+                {
+                    path: 'resources',
+                    model: 'Resource'
+                }
+            );
+            
             if(!checkpoint){
                 res.status(404).json({ message: "Checkpoint not found" });
             }
@@ -96,7 +102,10 @@ const roadmapController = {
             if(status === 'completed'){
                 checkpoint.startedAt = checkpoint.startedAt != null ? checkpoint.startedAt : new Date();
                 checkpoint.completedAt = new Date();
-                 checkpoint.totalTimeTaken = checkpoint.completedAt.getTime() - new Date(checkpoint.startedAt).getTime();
+                checkpoint.totalTimeTaken = checkpoint.completedAt.getTime() - new Date(checkpoint.startedAt).getTime();
+
+                const nextCheckpoint = roadmap.checkpoints.find(c => c.order === (checkpoint.order + 1));
+                if(nextCheckpoint) nextCheckpoint.status = 'in_progress'
             }
 
             if(status === 'in_progress'){
