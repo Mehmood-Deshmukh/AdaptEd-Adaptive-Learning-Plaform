@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const sendMail = require("../utils/sendMail");
 const Schema = mongoose.Schema;
 
-const levels = [ "Beginner", "Novice", "Apprentice", "Expert", "Master", "Grandmaster", "Tourist"];
+const levels = [ "Beginner", "Novice", "Apprentice", "Expert", "Master", "Grandmaster", "Martial", "GrandMartial", "Tourist"]
 
 
 const formatDate = (date) => {
