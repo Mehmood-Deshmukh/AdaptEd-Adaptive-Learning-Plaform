@@ -16,7 +16,8 @@ from config import (
     QUESTIONS_FAISS_INDEX_PATH,
     PROJECTS_FAISS_INDEX_PATH,
     EMBEDDINGS_MODEL_NAME,
-    UPDATE_INTERVAL_DAYS
+    UPDATE_INTERVAL_DAYS,
+    DB_NAME
 )
 from utils.db_utils import get_mongodb_client, get_last_update_info, save_last_update_info
 

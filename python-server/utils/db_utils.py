@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 from pymongo import MongoClient
 from typing import Dict
 
-from config import MONGODB_URI, DB_NAME, LAST_UPDATE_FILE
+from config import MONGODB_URI, DB_NAME, LAST_UPDATE_FILE, UPDATE_INTERVAL_DAYS
 
 logger = logging.getLogger(__name__)
 
