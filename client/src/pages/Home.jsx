@@ -47,7 +47,7 @@ const Home = () => {
 			<Sidebar user={user} />
 
 			<div className="flex-1 overflow-auto">
-				<div className="p-6 max-w-4xl mx-auto">
+				<div className="p-6 max-w-6xl mx-auto">
 					<div className="bg-white rounded-lg shadow-sm p-6 mb-6">
 						<h1 className="text-2xl font-bold text-gray-900">
 							Good {timeOfDay}, {user?.name}!
@@ -105,9 +105,9 @@ const Home = () => {
 						</div>
 					</div>
 
-          <Recommendations />
-		
-		  <RecentQuiz/>
+					<Recommendations />
+
+					<RecentQuiz />
 
 					<div className="bg-white rounded-lg shadow-sm p-6">
 						<h2 className="text-xl font-bold text-gray-900 mb-4">
