@@ -95,7 +95,7 @@ const Sidebar = ({ user }) => {
           isOpen ? "translate-x-0" : "-translate-x-full"
         } transform md:translate-x-0 transition-transform duration-300 fixed md:static top-0 left-0 z-40 h-full bg-black text-white shadow-lg flex flex-col ${
           isMobile ? "w-64" : "w-64"
-        }`}
+        } `}
       >
         <div className="p-5 border-b border-gray-800 flex justify-between items-center">
           <h2 className={`text-xl font-bold ${isMobile ? "ml-auto" : ""}`}>AdaptEd</h2>
