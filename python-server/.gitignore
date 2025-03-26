@@ -3,6 +3,8 @@ myenv
 ./.env
 .env
 /.venv
+.venv
+./venv
 
 ./faiss_index.pkl
 faiss_index.pkl
@@ -16,3 +18,6 @@ resources_faiss_index.pkl
 
 projects_faiss_index.pkl
 ./projects_faiss_index.pkl
+
+**/last_update.json
+last_update.json

@@ -734,7 +734,7 @@ const RoadmapGenerator = () => {
                         {roadmap.mainTopic}
                       </h3>
                       <div className="flex items-center mt-2">
-                        <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div className="w-full bg-gray-300 rounded-full h-2">
                           <div
                             className="bg-black h-2 rounded-full transition-all duration-500 ease-out"
                             style={{ width: `${roadmap.totalProgress}%` }}
