@@ -76,25 +76,39 @@ const submitQuiz = async (req, res) => {
 
 const getUserQuizzes = async (req, res) => {
     try {
-    const user = await User.findOne({ _id: req.params.userId })
-    .populate({
-        path: 'quizzes',
-        populate: {
-            path: 'attempts',
-            model: 'QuizAttempt'
-        }
-    });
-
+        const user = await User.findOne({ _id: req.params.userId })
+            .populate({
+                path: 'quizzes',
+                populate: [
+                    {
+                        path: 'attempts',
+                        model: 'QuizAttempt',
+                        populate: {
+                            path: 'answers.question',
+                            select: 'question correctOption explanation options'
+                        }
+                    }
+                ],
+                options : { sort: { dateCreated: -1 }, limit: 3 }
+            })
+            ;
 
         if (!user) {
-            throw new Error('User not found');
+            return res.status(404).json({ message: 'User not found' });
         }
 
-        res.status(200).json({ quizzes : user.quizzes });
-    } catch (e) {
-        res.status(500).json({ message: e.message });
+        res.status(200).json({ 
+            quizzes: user.quizzes,
+            totalQuizzes: user.quizzes.length
+        });
+    } catch (error) {
+        console.error('Error fetching user quizzes:', error);
+        res.status(500).json({ 
+            message: 'Internal server error',
+            error: error.message 
+        });
     }
-}
+};
 
 module.exports = {
     generateQuiz,

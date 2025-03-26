@@ -100,7 +100,7 @@ quizSchema.statics.generateQuiz = async function (
   );
 
   const newQuiz = new this({
-    title: `Quiz on ${domain}`,
+    title: `Quiz on ${title}`,
     questions: questionIds,
     tags: tags,
     difficulty: difficulty,

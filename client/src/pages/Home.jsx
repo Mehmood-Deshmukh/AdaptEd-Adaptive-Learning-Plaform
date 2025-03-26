@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import Sidebar from "../components/Sidebar";
 import Recommendations from "../components/Recommendations";
+import RecentQuiz from "./RecentQuiz";
 
 const Home = () => {
 	const { state } = useAuthContext();
@@ -105,6 +106,8 @@ const Home = () => {
 					</div>
 
           <Recommendations />
+		
+		  <RecentQuiz/>
 
 					<div className="bg-white rounded-lg shadow-sm p-6">
 						<h2 className="text-xl font-bold text-gray-900 mb-4">

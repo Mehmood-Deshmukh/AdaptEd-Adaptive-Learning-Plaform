@@ -48,7 +48,8 @@ function App() {
         <Route path='/contribute' element={isAuthenticated ? <UserContributionsPage /> : <Navigate to="/login" />} />
         <Route path='/post/:id' element={isAuthenticated ? <ViewPost /> : <Navigate to="/login" />} />
         <Route path='/community/:id' element={isAuthenticated ? <ViewCommunity /> : <Navigate to="/login" />} />
-
+        {/* <Route path='/quiz/:quizId' element={isAuthenticated ? <QuizReview /> : <Navigate to="/login" />} /> */}
+      
       </Routes>
     </BrowserRouter>
   )
