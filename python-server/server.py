@@ -20,12 +20,13 @@ import pymongo
 from pymongo import MongoClient
 import threading
 import time
-
+import logging
 from clustering_routes import index, cluster_users, cluster_summary
 
 load_dotenv()
 
 app = Flask(__name__)
+app.logger.setLevel(logging.DEBUG)
 
 
 RESOURCES_FAISS_INDEX_PATH = "resources_faiss_index"
