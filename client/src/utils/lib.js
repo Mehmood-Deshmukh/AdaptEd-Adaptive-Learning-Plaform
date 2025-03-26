@@ -214,3 +214,31 @@ export const questions = [
 		],
 	},
 ];
+
+export const domainSuggestions = [
+	"Artificial Intelligence",
+	"Machine Learning",
+	"Deep Learning",
+	"Data Science",
+	"Big Data",
+	"Computer Vision",
+	"Natural Language Processing",
+	"Robotics",
+	"Cybersecurity",
+	"Cloud Computing",
+	"Blockchain",
+	"Quantum Computing",
+	"Bioinformatics",
+	"Network Security",
+	"Computer Networks",
+	"Database Systems",
+	"Distributed Systems",
+	"Parallel Computing",
+	"Virtual Reality",
+	"Augmented Reality",
+	"Operating Systems",
+	"Embedded Systems",
+	"Web Development",
+	"Algorithm Design",
+	"Theory of Computation"
+];

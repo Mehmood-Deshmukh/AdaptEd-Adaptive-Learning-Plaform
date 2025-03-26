@@ -334,6 +334,7 @@ const userController = {
 				learningPace,
 				socialPreference,
 				feedbackPreference,
+				domainInterests
 			} = req.body;
 
 			const user = await userModel.findById(req.userId);
@@ -355,6 +356,11 @@ const userController = {
 				learningPace,
 				socialPreference,
 				feedbackPreference,
+			};
+
+			user.learningParameters = {
+				...user.learningParameters,
+				domainInterest: domainInterests
 			};
 
 			user.isAssessmentComplete = true;
