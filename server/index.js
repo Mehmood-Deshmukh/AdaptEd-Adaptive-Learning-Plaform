@@ -13,6 +13,7 @@ const requestRoutes = require("./routes/requestRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const commentRoutes = require("./routes/commentRoutes");
 const achievementRoutes = require('./routes/achievementRoutes');
+const feedbackRoutes = require('./routes/feedbackRoutes');
 const xpRoutes = require('./routes/xpRoutes');
 const { initializeAchievements, setupEventListeners } = require('./services/achievementService');
 const { setupXpEventListeners } = require('./services/xpService');
@@ -39,6 +40,7 @@ app.use("/api/admin", adminRoutes);
 app.use("/api/comment", commentRoutes);
 app.use('/api/achievements', achievementRoutes);
 app.use('/api/xp', xpRoutes);
+app.use('/api/feedback', feedbackRoutes);
 
 connectDB();
 

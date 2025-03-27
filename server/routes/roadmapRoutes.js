@@ -9,4 +9,8 @@ router.get('/get', authenticateUser, roadmapController.getRoadmaps);
 router.post('/update-checkpoint-status', authenticateUser, roadmapController.updateCheckpointStatus);
 router.get('/leaderboard/:roadmapId', authenticateUser, roadmapController.getLeaderboard);
 
+router.post('/feedback', authenticateUser, roadmapController.submitFeedback);
+router.get('/feedback/checkpoint/:checkpointId', authenticateUser, roadmapController.getCheckpointFeedback);
+router.get('/feedback/user/checkpoint/:checkpointId', authenticateUser, roadmapController.getUserFeedback);
+
 module.exports = router;
