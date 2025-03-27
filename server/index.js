@@ -15,6 +15,8 @@ const commentRoutes = require("./routes/commentRoutes");
 const achievementRoutes = require('./routes/achievementRoutes');
 const feedbackRoutes = require('./routes/feedbackRoutes');
 const xpRoutes = require('./routes/xpRoutes');
+const publicProfileRoutes = require('./routes/publicProfileRoutes');
+
 const { initializeAchievements, setupEventListeners } = require('./services/achievementService');
 const { setupXpEventListeners } = require('./services/xpService');
 
@@ -41,6 +43,7 @@ app.use("/api/comment", commentRoutes);
 app.use('/api/achievements', achievementRoutes);
 app.use('/api/xp', xpRoutes);
 app.use('/api/feedback', feedbackRoutes);
+app.use('/api/publicprofile', publicProfileRoutes);
 
 connectDB();
 

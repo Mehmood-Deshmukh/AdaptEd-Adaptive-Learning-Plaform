@@ -380,6 +380,84 @@ const userController = {
 			});
 		}
 	},
+	followUser: async (req, res) => {
+		try {
+			const user = await userModel.findById(req.userId);
+			const { userId } = req.body;
+			if (!user) {
+				return res.status(404).json({
+					success: false,
+					message: "User not found",
+					data: null,
+				});
+			}
+
+
+			if (user.following.includes(userId)) {
+				return res.status(203).json({
+					success: true,
+					message: "Already following the user",
+					data: null,
+				});
+			}
+			
+			user.following.push(userId);
+			await user.save();
+
+			const userToBeFollowed = await userModel.findById(userId);
+			userToBeFollowed.followers.push(user._id);
+			await userToBeFollowed.save();
+
+			res.status(200).json({
+				success: true,
+				message: "Successfully followed the user",
+				data: user
+			});
+
+		}catch(e) {
+			console.log(e.message);
+			res.status(500).json({
+				success: false,
+				message: e.message,
+				data: null,
+			});
+		}
+	},
+	unfollowUser: async (req, res) => {
+		try {
+			const user = await userModel.findById(req.userId);
+			const { userId } = req.body;
+			if (!user) {
+				return res.status(404).json({
+					success: false,
+					message: "User not found",
+					data: null,
+				});
+			}
+
+			user.following = user.following.filter((u) => u != userId);
+			await user.save();
+
+			const userToBeUnfollowed = await userModel.findById(userId);
+			userToBeUnfollowed.followers = userToBeUnfollowed.followers.filter(
+				(u) => u != user._id
+			);
+			await userToBeUnfollowed.save();
+
+			res.status(200).json({
+				success: true,
+				message: "Successfully unfollowed the user",
+				data: null,
+			});
+		} catch (e) {
+			console.log(e.message);
+			res.status(500).json({
+				success: false,
+				message: e.message,
+				data: null,
+			});
+		}
+	},
 };
 
 module.exports = userController;

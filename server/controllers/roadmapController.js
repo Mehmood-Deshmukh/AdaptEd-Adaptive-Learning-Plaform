@@ -74,14 +74,12 @@ const roadmapController = {
                 return res.status(200).json(roadmapData);
             }
 
-            console.log(user.clusterId);
 
             const clusterSummaryResponse = await axios.get(`${process.env.FLASK_BASE_URL}/clusters/cluster-summary?id=${user.clusterId}`);
             const clusterSummary = clusterSummaryResponse.data.summary;
 
             const _res = await axios.post(`${process.env.FLASK_BASE_URL}/api/generate-roadmap`, { topic, summary: clusterSummary });
             const roadmap = _res.data;
-            console.log(roadmap);
             
             const checkpoints = await Promise.all(roadmap.checkpoints.map(async (checkpoint, index) => {
                 checkpoint.order = index + 1;
