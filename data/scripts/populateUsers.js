@@ -2,7 +2,7 @@ const { MongoClient, ObjectId } = require("mongodb");
 const fs = require("fs");
 
 const DB_URI = "mongodb://localhost:27017";
-const DB_NAME = "inspiron";
+const DB_NAME = "inspiron25";
 
 const COLLECTION_NAME = "users";
 
@@ -22,7 +22,7 @@ async function pushUsers() {
 		console.log(users[0].dateJoined.$date);
 		const transformedUsers = users.map((user) => ({
 			...user,
-			_id: ObjectId(user._id.$oid),
+			_id: new ObjectId(user._id.$oid),
 			roadmaps: user.roadmaps.map((roadmap) => roadmap.$oid),
 			quizzes: user.quizzes.map((quiz) => quiz.$oid),
 			dateJoined: new Date(user.dateJoined?.$date),
@@ -76,5 +76,5 @@ async function fixUsers() {
 	}
 }
 
-// pushUsers();
-fixUsers();
+pushUsers();
+// fixUsers();
