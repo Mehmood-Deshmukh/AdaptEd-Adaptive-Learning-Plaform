@@ -384,6 +384,7 @@ const userController = {
 		try {
 			const user = await userModel.findById(req.userId);
 			const { userId } = req.body;
+			
 			if (!user) {
 				return res.status(404).json({
 					success: false,
@@ -391,9 +392,12 @@ const userController = {
 					data: null,
 				});
 			}
-
-
-			if (user.following.includes(userId)) {
+	
+			const alreadyFollowing = user.following.some(followedId => 
+				followedId.toString() === userId.toString()
+			);
+			
+			if (alreadyFollowing) {
 				return res.status(203).json({
 					success: true,
 					message: "Already following the user",
@@ -403,18 +407,18 @@ const userController = {
 			
 			user.following.push(userId);
 			await user.save();
-
+	
 			const userToBeFollowed = await userModel.findById(userId);
 			userToBeFollowed.followers.push(user._id);
 			await userToBeFollowed.save();
-
+	
 			res.status(200).json({
 				success: true,
 				message: "Successfully followed the user",
 				data: user
 			});
-
-		}catch(e) {
+	
+		} catch(e) {
 			console.log(e.message);
 			res.status(500).json({
 				success: false,
@@ -423,10 +427,12 @@ const userController = {
 			});
 		}
 	},
+	
 	unfollowUser: async (req, res) => {
 		try {
 			const user = await userModel.findById(req.userId);
 			const { userId } = req.body;
+			
 			if (!user) {
 				return res.status(404).json({
 					success: false,
@@ -434,16 +440,20 @@ const userController = {
 					data: null,
 				});
 			}
-
-			user.following = user.following.filter((u) => u != userId);
-			await user.save();
-
-			const userToBeUnfollowed = await userModel.findById(userId);
-			userToBeUnfollowed.followers = userToBeUnfollowed.followers.filter(
-				(u) => u != user._id
+	
+			user.following = user.following.filter(followingId => 
+				followingId.toString() !== userId.toString()
 			);
+			await user.save();
+	
+			const userToBeUnfollowed = await userModel.findById(userId);
+			
+			userToBeUnfollowed.followers = userToBeUnfollowed.followers.filter(
+				followerId => followerId.toString() !== user._id.toString()
+			);
+	
 			await userToBeUnfollowed.save();
-
+	
 			res.status(200).json({
 				success: true,
 				message: "Successfully unfollowed the user",
@@ -457,7 +467,7 @@ const userController = {
 				data: null,
 			});
 		}
-	},
+	}
 };
 
 module.exports = userController;
