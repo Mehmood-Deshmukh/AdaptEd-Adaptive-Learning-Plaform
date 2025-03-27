@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const roadmapSchema = require('../models/roadmapModel');
 const checkpointSchema = require('../models/checkpointModel');
 const resourceSchema = require('../models/resourceModel');
+const feedbackSchema = require('../models/feedbackModel'); // Add this line
 const generateRoadmap = require('../utils/roadmapGeneration');
 const { achievementEmitter } = require('../services/achievementService');
 const { xpEmitter } = require('../services/xpService');
@@ -59,7 +60,8 @@ const roadmapController = {
                         status: userProgress.status,
                         startedAt: userProgress.startedAt,
                         completedAt: userProgress.completedAt,
-                        totalTimeTaken: userProgress.totalTimeTaken
+                        totalTimeTaken: userProgress.totalTimeTaken,
+                        isFeedbackCompleted: userProgress.isFeedbackCompleted || false
                     };
                 });
                 
@@ -114,7 +116,8 @@ const roadmapController = {
                     status: userProgress.status,
                     startedAt: userProgress.startedAt,
                     completedAt: userProgress.completedAt,
-                    totalTimeTaken: userProgress.totalTimeTaken
+                    totalTimeTaken: userProgress.totalTimeTaken,
+                    isFeedbackCompleted: userProgress.isFeedbackCompleted || false
                 };
             });
             
@@ -142,7 +145,8 @@ const roadmapController = {
                         status: userProgress.status,
                         startedAt: userProgress.startedAt,
                         completedAt: userProgress.completedAt,
-                        totalTimeTaken: userProgress.totalTimeTaken
+                        totalTimeTaken: userProgress.totalTimeTaken,
+                        isFeedbackCompleted: userProgress.isFeedbackCompleted || false
                     };
                 });
                 
@@ -354,7 +358,8 @@ const roadmapController = {
                     status: cpUserProgress.status,
                     startedAt: cpUserProgress.startedAt,
                     completedAt: cpUserProgress.completedAt,
-                    totalTimeTaken: cpUserProgress.totalTimeTaken
+                    totalTimeTaken: cpUserProgress.totalTimeTaken,
+                    isFeedbackCompleted: cpUserProgress.isFeedbackCompleted || false
                 };
             });
             
@@ -369,7 +374,107 @@ const roadmapController = {
             console.log(error);
             res.status(500).json({ message: error.message });
         }
+    },
+
+    submitFeedback: async (req, res) => {
+        try {
+            const { roadmapId, checkpointId, rating, comment } = req.body;
+            
+            if (!roadmapId || !checkpointId || !rating) {
+                return res.status(400).json({ 
+                    message: "Roadmap ID, Checkpoint ID, and rating are required" 
+                });
+            }
+            
+            const roadmap = await roadmapSchema.findById(roadmapId)
+                .populate('checkpoints');
+            
+            if (!roadmap) {
+                return res.status(404).json({ message: "Roadmap not found" });
+            }
+            
+            const checkpoint = roadmap.checkpoints.find(
+                cp => cp._id.toString() === checkpointId
+            );
+            
+            if (!checkpoint) {
+                return res.status(404).json({ 
+                    message: "Checkpoint not found in this roadmap" 
+                });
+            }
+            
+            const userProgress = checkpoint.getUserProgress(req.userId);
+            if (userProgress.status !== 'completed') {
+                return res.status(400).json({ 
+                    message: "You must complete the checkpoint before providing feedback" 
+                });
+            }
+            
+            const feedback = await feedbackSchema.createOrUpdateFeedback({
+                userId: req.userId,
+                roadmapId,
+                checkpointId,
+                rating,
+                comment
+            });
+            
+            const userProgressIndex = checkpoint.userProgress.findIndex(
+                progress => progress.userId.toString() === req.userId
+            );
+            
+            if (userProgressIndex !== -1) {
+                checkpoint.userProgress[userProgressIndex].isFeedbackCompleted = true;
+                await checkpoint.save();
+            }
+            
+            res.status(201).json({
+                message: "Feedback submitted successfully",
+                feedback
+            });
+            
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({ message: error.message });
+        }
+    },
+    
+    getCheckpointFeedback: async (req, res) => {
+        try {
+            const { checkpointId } = req.params;
+            
+            const feedback = await feedbackSchema.getCheckpointFeedback(checkpointId);
+            
+            const averageRating = await feedbackSchema.getCheckpointAverageRating(checkpointId);
+
+            console.log(averageRating);
+            
+            res.status(200).json({
+                feedback,
+                averageRating
+            });
+            
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({ message: error.message });
+        }
+    },
+    
+    getUserFeedback: async (req, res) => {
+        try {
+            const { checkpointId } = req.params;
+            
+            const feedback = await feedbackSchema.findOne({
+                userId: req.userId,
+                checkpointId
+            });
+            
+            res.status(200).json(feedback || { exists: false });
+            
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({ message: error.message });
+        }
     }
-}
+};
 
 module.exports = roadmapController;

@@ -24,6 +24,10 @@ const checkpointProgressSchema = new Schema({
     totalTimeTaken: {
         type: Number,
         default: 0
+    },
+    isFeedbackCompleted: {
+        type: Boolean,
+        default: false
     }
 });
 
@@ -88,7 +92,8 @@ checkpointSchema.methods.getUserProgress = function(userId) {
             status: 'not_started',
             startedAt: null,
             completedAt: null,
-            totalTimeTaken: 0
+            totalTimeTaken: 0,
+            isFeedbackCompleted: false
         };
     }
     
@@ -106,7 +111,8 @@ checkpointSchema.methods.updateUserProgress = async function(userId, status) {
             status: 'not_started',
             startedAt: null,
             completedAt: null,
-            totalTimeTaken: 0
+            totalTimeTaken: 0,
+            isFeedbackCompleted: false
         };
         this.userProgress.push(userProgress);
     }
@@ -130,6 +136,19 @@ checkpointSchema.methods.updateUserProgress = async function(userId, status) {
     }
     
     return await this.save();
+}
+
+checkpointSchema.methods.updateFeedbackStatus = async function(userId, isCompleted) {
+    const userProgressIndex = this.userProgress.findIndex(progress => 
+        progress.userId.toString() === userId.toString()
+    );
+    
+    if (userProgressIndex !== -1) {
+        this.userProgress[userProgressIndex].isFeedbackCompleted = isCompleted;
+        return await this.save();
+    }
+    
+    return this;
 }
 
 module.exports = mongoose.model('Checkpoint', checkpointSchema);

@@ -29,6 +29,8 @@ import useAuthContext from "../hooks/useAuthContext";
 import {Toast} from "primereact/toast";
 import LeaderboardModal from "../components/LeaderboardModal";
 import StyleTag from "../components/StyleTag";
+import FeedbackModal from "../components/FeedbackModal";
+import CheckpointFeedbackSummary from "../components/CheckpointFeedbackSummary";
 
 const RoadmapGenerator = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -38,6 +40,8 @@ const RoadmapGenerator = () => {
   const [showModal, setShowModal] = useState(false);
   const [showLeaderboard, setShowLeaderboard] = useState(false);
   const [leaderboardData, setLeaderboardData] = useState([]);
+  const [showFeedbackModal, setShowFeedbackModal] = useState(false);
+  const [selectedCheckpoint, setSelectedCheckpoint] = useState(null);
 
   const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -172,7 +176,6 @@ const RoadmapGenerator = () => {
     }
   };
 
-
   const generateRoadmap = async () => {
     if (!topic.trim()) {
       toast.current.show({
@@ -275,9 +278,7 @@ const RoadmapGenerator = () => {
   };
 
   const isCheckpointLocked = (checkpoints, currentCheckpoint) => {
-
     if (currentCheckpoint.order === 1) return false;
-
 
     const previousCheckpoint = checkpoints.find(
       (cp) => cp.order === currentCheckpoint.order - 1
@@ -420,13 +421,95 @@ const RoadmapGenerator = () => {
     }
   };
 
+  const handleFeedbackSubmitted = (roadmapId, checkpointId) => {
+
+    const roadmap = roadmaps.find(r => r._id === roadmapId);
+    if (!roadmap) return;
+    
+
+    const updatedCheckpoints = roadmap.checkpoints.map(cp => {
+      if (cp._id === checkpointId) {
+        const updatedUserProgress = cp.userProgress.map(up => {
+          if (up.userId === user._id) {
+            return {
+              ...up,
+              isFeedbackCompleted: true
+            };
+          }
+          return up;
+        });
+        
+        return {
+          ...cp,
+          userProgress: updatedUserProgress,
+          isFeedbackCompleted: true
+        };
+      }
+      return cp;
+    });
+    
+    const updatedRoadmap = {
+      ...roadmap,
+      checkpoints: updatedCheckpoints
+    };
+    
+    setRoadmaps(roadmaps.map(r => r._id === roadmapId ? updatedRoadmap : r));
+    
+    if (selectedRoadmap && selectedRoadmap._id === roadmapId) {
+      setSelectedRoadmap(updatedRoadmap);
+    }
+  };
+
   useEffect(() => {
     fetchRoadmaps();
   }, []);
 
   const CheckpointItem = ({ checkpoint, roadmapId, checkpoints }) => {
     const [isExpanded, setIsExpanded] = useState(false);
+    const [feedbackData, setFeedbackData] = useState(null);
+    const [isFeedbackLoading, setIsFeedbackLoading] = useState(false);
     const locked = isCheckpointLocked(checkpoints, checkpoint);
+
+    const currentUserProgress = checkpoint.userProgress.find(
+      (up) => up.userId === user?._id
+    );
+
+    const isFeedbackCompleted = currentUserProgress?.isFeedbackCompleted;
+
+    const handleOpenFeedbackModal = (e) => {
+      e.stopPropagation();
+      setSelectedCheckpoint(checkpoint);
+      setShowFeedbackModal(true);
+    };
+
+    useEffect(() => {
+      if (checkpoint.status === "completed") {
+        fetchFeedbackData(checkpoint._id);
+      }
+    }, [checkpoint._id]);
+
+    const fetchFeedbackData = async (checkpointId) => {
+      try {
+        setIsFeedbackLoading(true);
+        const response = await fetch(
+          `${BASE_URL}/api/roadmap/feedback/user/checkpoint/${checkpointId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${getToken()}`,
+            },
+          }
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          setFeedbackData(data);
+        }
+      } catch (error) {
+        console.error("Error fetching feedback:", error);
+      } finally {
+        setIsFeedbackLoading(false);
+      }
+    };
 
     const formatTimeDuration = (milliseconds) => {
       if (!milliseconds) return "0 min";
@@ -451,14 +534,12 @@ const RoadmapGenerator = () => {
       } else if (checkpoint?.status === "in_progress" && checkpoint?.startedAt) {
         const currentTime = Date.now();
         const startTime = new Date(checkpoint.startedAt).getTime();
-        console.log(checkpoint.startedAt);
         return formatTimeDuration(currentTime - startTime);
       }
       return "0 min";
     };
 
     const ResourceItem = ({ resource }) => {
-
       if (
         resource.name &&
         resource.tags &&
@@ -511,9 +592,7 @@ const RoadmapGenerator = () => {
             </a>
           </div>
         );
-      }
-
-      else {
+      } else {
         return (
           <div className="bg-white border border-gray-100 rounded-lg p-3 mb-2 shadow-sm hover:shadow-md transition-shadow duration-200">
             <div className="flex items-center justify-between">
@@ -603,6 +682,47 @@ const RoadmapGenerator = () => {
                   Time spent: {calculateTimeSpent()}
                 </span>
 
+                {checkpoint.status === "completed" && !isFeedbackCompleted && (
+                  <button
+                    onClick={handleOpenFeedbackModal}
+                    className={`ml-2 rounded-lg text-white transition-all duration-300 shadow-md hover:shadow-lg bg-black hover:bg-slate-700 cursor-pointer`}
+                    title="Leave Feedback"
+                  >
+                    <div className="px-2 py-2 flex items-center">
+                      <span className="flex items-center justify-center w-7 h-7 rounded-full bg-white/20 group-hover:bg-white/30">
+                        <Star className="w-4 h-4" />
+                      </span>
+                      <span className="ml-2 text-white">Leave Feedback</span>
+                    </div>
+                  </button>
+                )}
+
+                {checkpoint.status === "completed" && isFeedbackLoading && (
+                  <div className="flex items-center text-sm text-gray-600">
+                    <div className="w-4 h-4 border-2 border-gray-300 border-t-black rounded-full animate-spin mr-1"></div>
+                    <span>Loading feedback...</span>
+                  </div>
+                )}
+
+                {checkpoint.status === "completed" && isFeedbackCompleted && !isFeedbackLoading && (
+                  <div className="flex items-center text-sm text-gray-600">
+                    {feedbackData && feedbackData._id  && (
+                      <>
+                        <Star className="w-4 h-4 text-yellow-500 mr-1" />
+                        <span>
+                          You rated this checkpoint {feedbackData.rating}/5
+                        </span>
+                        <button
+                          onClick={handleOpenFeedbackModal}
+                          className="ml-2 text-blue-600 hover:underline"
+                        >
+                          Edit feedback
+                        </button>
+                      </>
+                    )}
+                  </div>
+                )}
+
                 {checkpoint.status !== "completed" && (
                   <button
                     onClick={(e) => {
@@ -656,6 +776,10 @@ const RoadmapGenerator = () => {
                 No resources available for this checkpoint.
               </p>
             )}
+
+            
+            <CheckpointFeedbackSummary checkpointId={checkpoint._id} />
+            
           </div>
         )}
       </div>
@@ -667,7 +791,7 @@ const RoadmapGenerator = () => {
       <Sidebar user={user} />
       <Toast ref={toast} />
     
-      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 overflow-scroll">
+      <div className="w-[80vw] mx-auto px-4 sm:px-6 lg:px-8 py-8 overflow-scroll">
         {isLoading && (
           <div className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-50">
             <div className="bg-white p-6 rounded-lg shadow-xl flex items-center space-x-4 animate-pulse">
@@ -677,6 +801,16 @@ const RoadmapGenerator = () => {
           </div>
         )}
 
+        {showFeedbackModal && selectedCheckpoint && (
+          <FeedbackModal
+            isOpen={showFeedbackModal}
+            onClose={() => setShowFeedbackModal(false)}
+            checkpointId={selectedCheckpoint._id}
+            roadmapId={selectedRoadmap._id}
+            checkpointTitle={selectedCheckpoint.title}
+            onFeedbackSubmitted={handleFeedbackSubmitted}
+          />
+        )}
   
         <LeaderboardModal 
           isOpen={showLeaderboard}
