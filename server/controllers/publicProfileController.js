@@ -5,6 +5,31 @@ const Post = require("../models/postModel");
 // please note this is public controller so auth middleware will not be used
 // so always access userId from params and not from req.userId
 
+async function searchUsers(req, res) {
+    try {
+        const searchQuery = req.query.query || "";
+        if (!searchQuery.trim()) {
+            return res.json([]);
+        }
+
+        const users = await User.find(
+            { name: new RegExp(searchQuery, "i") },
+            { _id: 1, name: 1, followers: 1, following: 1 }
+        )
+            .limit(10)
+            .lean();
+
+        res.json({
+            success: true,
+            message: "Users fetched successfully",
+            data: users,
+        });
+    } catch (error) {
+        console.error("Search error:", error);
+        res.status(500).json({ error: "Server error" });
+    }
+}
+
 async function fetchPublicProfile(req, res) {
     try {
         const { userId } = req.params;
@@ -98,6 +123,7 @@ async function fetchPublicPosts(req, res) {
 
         const posts = await Post.find({ author: userId })
             .populate("author", "name _id")
+            .populate("community", "name _id")
             .sort({ createdAt: -1 })
             .skip(skip)
             .limit(limit);
@@ -137,4 +163,5 @@ module.exports = {
     fetchPublicProfile,
     fetchPublicProfileRoadmaps,
     fetchPublicPosts,
+    searchUsers,
 };
