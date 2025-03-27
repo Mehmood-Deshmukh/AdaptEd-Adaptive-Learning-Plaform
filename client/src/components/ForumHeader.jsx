@@ -10,9 +10,13 @@ const ForumHeader = ({ posts, setPosts, communities, setCommunities, tags, activ
     const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
     const navigate = useNavigate();
 
-    const handleCommunitySelect = (communityId) => {
-        navigate(`/community/${communityId}`);
-    };
+    const handleSelect = (id, type) => {
+        if (type === "community") {
+            navigate(`/community/${id}`);
+        } else if (type === "user") {
+            navigate(`/public-profile/${id}`);
+        }
+    }
 
     return (
         <div className="z-10 bg-white pt-6 pb-3 px-6 shadow-sm mt-5 rounded-xl mx-auto max-h-[30vh]">
@@ -59,7 +63,7 @@ const ForumHeader = ({ posts, setPosts, communities, setCommunities, tags, activ
             {isSearchModalOpen && (
                 <SearchCommunitiesModal 
                     onClose={() => setIsSearchModalOpen(false)}
-                    onSelect={handleCommunitySelect}
+                    onSelect={handleSelect}
                 />
             )}
         </div>

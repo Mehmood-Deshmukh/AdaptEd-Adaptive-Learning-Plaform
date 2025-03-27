@@ -45,13 +45,13 @@ const PublicProfile = () => {
 			const profileResponse = await axios.get(
 				`${
 					import.meta.env.VITE_BACKEND_URL
-				}/api/publicprofile/${userId}`
+				}/api/publicprofile/user/${userId}`
 			);
 
 			const roadmapsResponse = await axios.get(
 				`${
 					import.meta.env.VITE_BACKEND_URL
-				}/api/publicprofile/${userId}/roadmaps`,
+				}/api/publicprofile/roadmaps/${userId}`,
 				{
 					params: { page: roadmapsPage, limit: 4 },
 				}
@@ -60,7 +60,7 @@ const PublicProfile = () => {
 			const postsResponse = await axios.get(
 				`${
 					import.meta.env.VITE_BACKEND_URL
-				}/api/publicprofile/${userId}/posts`,
+				}/api/publicprofile/posts/${userId}`,
 				{
 					params: { page: postsPage, limit: 3 },
 				}

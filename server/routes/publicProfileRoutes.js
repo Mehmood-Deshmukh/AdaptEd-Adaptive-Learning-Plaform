@@ -5,14 +5,14 @@ const {
     fetchPublicProfile,
     fetchPublicProfileRoadmaps,
     fetchPublicPosts,
-    searchUsers
+    search
 } = require('../controllers/publicProfileController');
 const { getUserQuizzes } = require('../controllers/quizController');
 
-router.get('/:userId', fetchPublicProfile);
-router.get('/:userId/roadmaps', fetchPublicProfileRoadmaps);
-router.get('/:userId/posts', fetchPublicPosts);
-router.get('/:userId/quizzes', getUserQuizzes);
-router.get('/search', searchUsers);
+router.get('/search', search);
+router.get('/user/:userId', fetchPublicProfile);
+router.get('/roadmaps/:userId', fetchPublicProfileRoadmaps);
+router.get('/posts/:userId', fetchPublicPosts);
+router.get('/quizzes/:userId', getUserQuizzes);
 
 module.exports = router;

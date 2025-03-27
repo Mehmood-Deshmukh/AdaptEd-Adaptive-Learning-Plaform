@@ -1,32 +1,76 @@
 const User = require("../models/userModel");
 const Roadmap = require("../models/roadmapModel");
 const Post = require("../models/postModel");
+const Community = require("../models/communityModel");
 
 // please note this is public controller so auth middleware will not be used
 // so always access userId from params and not from req.userId
 
-async function searchUsers(req, res) {
+async function search(req, res) {
     try {
         const searchQuery = req.query.query || "";
+        const entityType = req.query.type || "all"; // 'communities', 'users', or 'all'
+
         if (!searchQuery.trim()) {
-            return res.json([]);
+            return res.json({ success: true, data: [] });
         }
 
-        const users = await User.find(
-            { name: new RegExp(searchQuery, "i") },
-            { _id: 1, name: 1, followers: 1, following: 1 }
-        )
-            .limit(10)
-            .lean();
+        let searchResults = [];
+
+        const searchRegex = new RegExp(searchQuery, "i");
+
+        switch (entityType) {
+            case 'communities':
+                searchResults = await Community.find(
+                    { name: searchRegex },
+                    { _id: 1, name: 1, membersCount: 1, type: "community" }
+                )
+                    .limit(3)
+                    .lean();
+                break;
+
+            case 'users':
+                searchResults = await User.find(
+                    { name: searchRegex },
+                    { _id: 1, name: 1, followers: 1, following: 1, type: "user" }
+                )
+                    .limit(4)
+                    .lean();
+                break;
+
+            case 'all':
+            default:
+                const [communities, users] = await Promise.all([
+                    Community.find(
+                        { name: searchRegex },
+                        { _id: 1, name: 1, membersCount: 1, type: "community" }
+                    )
+                        .limit(5)
+                        .lean(),
+                    User.find(
+                        { name: searchRegex },
+                        { _id: 1, name: 1, type: "user", followers: 1, following: 1 }
+                    )
+                        .limit(5)
+                        .lean()
+                ]);
+
+                searchResults = [...communities, ...users];
+                break;
+        }
 
         res.json({
             success: true,
-            message: "Users fetched successfully",
-            data: users,
+            message: "Entities fetched successfully",
+            data: searchResults
         });
     } catch (error) {
         console.error("Search error:", error);
-        res.status(500).json({ error: "Server error" });
+        res.status(500).json({
+            success: false,
+            error: "Server error during search",
+            details: error.message
+        });
     }
 }
 
@@ -163,5 +207,5 @@ module.exports = {
     fetchPublicProfile,
     fetchPublicProfileRoadmaps,
     fetchPublicPosts,
-    searchUsers,
+    search,
 };

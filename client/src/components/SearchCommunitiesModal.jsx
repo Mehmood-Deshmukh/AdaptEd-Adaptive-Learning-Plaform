@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Search, X } from 'lucide-react';
+import { Search, X, Users, Globe, UserCircle2, Users as UsersIcon } from 'lucide-react';
 
-const SearchCommunitiesModal = ({ onClose, onSelect }) => {
+const SearchModal = ({ onClose, onSelect, searchType = 'all' }) => {
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     const [isSearching, setIsSearching] = useState(false);
+    const [currentSearchType, setCurrentSearchType] = useState(searchType);
     const modalRef = useRef(null);
     const searchTimeoutRef = useRef(null);
     const inputRef = useRef(null);
@@ -34,7 +35,7 @@ const SearchCommunitiesModal = ({ onClose, onSelect }) => {
         searchTimeoutRef.current = setTimeout(async () => {
             try {
                 const response = await fetch(
-                    `${import.meta.env.VITE_BACKEND_URL}/api/community/search?query=${encodeURIComponent(searchTerm)}`,
+                    `${import.meta.env.VITE_BACKEND_URL}/api/publicprofile/search?query=${encodeURIComponent(searchTerm)}&type=${currentSearchType}`,
                     {
                         headers: {
                             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -47,7 +48,7 @@ const SearchCommunitiesModal = ({ onClose, onSelect }) => {
                 const data = await response.json();
                 setSearchResults(data.data);
             } catch (error) {
-                console.error("Error searching communities:", error);
+                console.error("Error searching entities:", error);
                 setSearchResults([]);
             } finally {
                 setIsSearching(false);
@@ -59,7 +60,7 @@ const SearchCommunitiesModal = ({ onClose, onSelect }) => {
                 clearTimeout(searchTimeoutRef.current);
             }
         };
-    }, [searchTerm]);
+    }, [searchTerm, currentSearchType]);
 
     const handleOutsideClick = (e) => {
         if (modalRef.current && !modalRef.current.contains(e.target)) {
@@ -67,9 +68,94 @@ const SearchCommunitiesModal = ({ onClose, onSelect }) => {
         }
     };
 
-    const handleCommunityClick = (community) => {
-        onSelect(community._id);
+    const handleEntityClick = (entity) => {
+        onSelect(entity._id, entity.type);
         onClose();
+    };
+
+    const renderSearchTypeToggle = () => {
+        const searchTypes = [
+            { type: 'all', icon: <Globe size={16} />, label: 'All' },
+            { type: 'communities', icon: <UsersIcon size={16} />, label: 'Communities' },
+            { type: 'users', icon: <UserCircle2 size={16} />, label: 'Users' }
+        ];
+
+        return (
+            <div className="flex justify-center space-x-2 mb-2 border-b border-gray-200 pb-2">
+                {searchTypes.map((type) => (
+                    <button
+                        key={type.type}
+                        onClick={() => setCurrentSearchType(type.type)}
+                        className={`
+                            flex items-center space-x-1 px-3 py-1 rounded-md text-sm 
+                            ${currentSearchType === type.type 
+                                ? 'bg-black text-white' 
+                                : 'text-gray-600 hover:bg-gray-100'}
+                            transition-colors
+                        `}
+                    >
+                        {type.icon}
+                        <span>{type.label}</span>
+                    </button>
+                ))}
+            </div>
+        );
+    };
+
+    const renderResultItem = (entity) => {
+        const isUser = entity.type === 'user';
+        const isComm = entity.type === 'community';
+
+        return (
+            <div
+                key={entity._id}
+                onClick={() => handleEntityClick(entity)}
+                className="p-4 hover:bg-gray-50 cursor-pointer transition-colors border-b border-gray-100 last:border-b-0 flex items-center space-x-4"
+            >
+                {/* Avatar/Icon */}
+                <div className="flex-shrink-0">
+                    {isUser ? (
+                        <UserCircle2 
+                            className="text-gray-400" 
+                            size={40} 
+                            strokeWidth={1.5} 
+                        />
+                    ) : (
+                        <div className="bg-gray-200 rounded-full w-10 h-10 flex items-center justify-center">
+                            <UsersIcon 
+                                className="text-gray-600" 
+                                size={24} 
+                                strokeWidth={1.5} 
+                            />
+                        </div>
+                    )}
+                </div>
+
+                {/* Details */}
+                <div className="flex-grow">
+                    <h3 className="text-lg font-medium text-black">
+                        {entity.name}
+                    </h3>
+                    <p className="text-sm text-gray-500 mt-1">
+                        {isComm 
+                            ? `${entity.membersCount} members` 
+                            : `${entity.followers?.length || 0} followers`}
+                    </p>
+                </div>
+
+                {/* View Action */}
+                <div className="text-sm text-gray-400 flex items-center space-x-2">
+                    <span className="text-xs uppercase tracking-wider">
+                        View {entity.type}
+                    </span>
+                    {isUser ? (
+                        <UserCircle2 size={16} className="text-gray-400" />
+                    ) : (
+                        <Globe size={16} className="text-gray-400" />
+                    )}
+                </div>
+            </div>
+        );
     };
 
     return (
@@ -83,13 +169,14 @@ const SearchCommunitiesModal = ({ onClose, onSelect }) => {
                 className="bg-white rounded-xl shadow-2xl w-full max-w-2xl overflow-hidden"
             >
                 <div className="p-4 border-b border-gray-100">
+                    {renderSearchTypeToggle()}
                     <div className="relative">
                         <input
                             ref={inputRef}
                             type="text"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            placeholder="Search communities..."
+                            placeholder={`Search ${currentSearchType}...`}
                             className="w-full pl-10 pr-4 py-3 text-black placeholder-gray-400 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
                         />
                         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
@@ -110,36 +197,16 @@ const SearchCommunitiesModal = ({ onClose, onSelect }) => {
                             Searching...
                         </div>
                     ) : searchResults.length > 0 ? (
-                        <div className="divide-y divide-gray-100">
-                            {searchResults.map((community) => (
-                                <div
-                                    key={community._id}
-                                    onClick={() => handleCommunityClick(community)}
-                                    className="p-4 hover:bg-gray-50 cursor-pointer transition-colors"
-                                >
-                                    <div className="flex items-center justify-between">
-                                        <div>
-                                            <h3 className="text-lg font-medium text-black">
-                                                {community.name}
-                                            </h3>
-                                            <p className="text-sm text-gray-500 mt-1">
-                                                {community.membersCount} members
-                                            </p>
-                                        </div>
-                                        <div className="text-sm text-gray-400">
-                                            Click to view
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
+                        <div>
+                            {searchResults.map(renderResultItem)}
                         </div>
                     ) : searchTerm ? (
                         <div className="p-4 text-center text-gray-500">
-                            No communities found
+                            No results found
                         </div>
                     ) : (
                         <div className="p-4 text-center text-gray-500">
-                            Start typing to search communities
+                            Start typing to search {currentSearchType}
                         </div>
                     )}
                 </div>
@@ -157,4 +224,4 @@ const SearchCommunitiesModal = ({ onClose, onSelect }) => {
     );
 };
 
-export default SearchCommunitiesModal;
+export default SearchModal;
