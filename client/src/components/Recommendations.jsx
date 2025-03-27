@@ -65,7 +65,8 @@ const Recommendations = () => {
             <div className="text-sm text-gray-600 mt-1">
               <strong>Tags:</strong>
               <div className="flex flex-wrap gap-1 mt-1">
-                {resource.tags.map((tag, index) => (
+
+                {resource.tags.map(tag => tag.replace(/_/g, ' ')).map(tag => tag.charAt(0).toUpperCase() + tag.slice(1)).map((tag, index) => (
                   <span
                     key={index}
                     className="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded-full"
