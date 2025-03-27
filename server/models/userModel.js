@@ -39,6 +39,16 @@ const userSchema = new Schema({
 		type: String,
 		default: "user",
 	},
+	followers: [{
+		type: Schema.Types.ObjectId,
+		ref: "User",
+	}],
+	following: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: "User",
+		},
+	],
 	roadmaps: {
 		type: [
 			{

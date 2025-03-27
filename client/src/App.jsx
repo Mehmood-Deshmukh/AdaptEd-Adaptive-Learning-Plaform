@@ -14,7 +14,7 @@ import UserContributionsPage from './pages/userContributionsPage'
 import ViewPost from './pages/ViewPost'
 import ViewCommunity from './pages/ViewCommunity'
 import AllQuizzes from './pages/Quizzes'
-
+import PublicProfile from './components/PublicProfile'
 
 function App() {
   const { state } = useAuthContext()
@@ -50,6 +50,7 @@ function App() {
         <Route path='/post/:id' element={isAuthenticated ? <ViewPost /> : <Navigate to="/login" />} />
         <Route path='/community/:id' element={isAuthenticated ? <ViewCommunity /> : <Navigate to="/login" />} />
         <Route path='/quizzes' element={isAuthenticated ? <AllQuizzes /> : <Navigate to="/login" />} />
+        <Route path='/public-profile/:userId' element={<PublicProfile />} />
         {/* <Route path='/quiz/:quizId' element={isAuthenticated ? <QuizReview /> : <Navigate to="/login" />} /> */}
       
       </Routes>

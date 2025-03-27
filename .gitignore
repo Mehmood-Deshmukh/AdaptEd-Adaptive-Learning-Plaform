@@ -1,0 +1,9 @@
+**/ignore_*
+**/test_*
+
+*.env
+.env.*
+.env
+*.log
+*.DS_Store
+*.swp

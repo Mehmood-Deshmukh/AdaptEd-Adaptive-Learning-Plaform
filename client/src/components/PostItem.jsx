@@ -92,14 +92,26 @@ const PostItem = ({ post, handleVote }) => {
 					<img
 						src={
 							post.author?.profileImage ||
-							`https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(post.author?.name || "Anonymous")}`
+							`https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(
+								post.author?.name || "Anonymous"
+							)}`
 						}
 						alt={post.author?.name || "Anonymous"}
-						className="w-12 h-12 rounded-full mr-4"
+						onClick={() =>
+							navigate(`/public-profile/${post.author?._id}`)
+						}
+						className="w-12 h-12 rounded-full mr-4 cursor-pointer"
 					/>
 					<div className="flex-1">
 						<div className="flex items-center space-x-2">
-							<span className="font-medium text-black">
+							<span
+								className="font-medium text-black cursor-pointer"
+								onClick={() =>
+									navigate(
+										`/public-profile/${post.author?._id}`
+									)
+								}
+							>
 								{post.author?.name || "Anonymous"}
 							</span>
 							<span className="text-gray-500 text-sm">in</span>
