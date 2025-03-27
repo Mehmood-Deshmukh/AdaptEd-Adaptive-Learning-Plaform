@@ -31,15 +31,17 @@ const CreatePost = () => {
             form.append("title", formData.title);
             form.append("description", formData.description);
             form.append("author", "67db126420c33211e0b1d722")
-            for (let i = 0; i < formData.files.length; i++) {
-                form.append("attachments", formData.files[i]);
-            }
+            form.append("avatar", formData.files[0]);
+            form.append("type", "user");
 
-            const response = await fetch("http://localhost:3000/api/post/create", {
+            const response = await fetch("http://localhost:3000/api/avatar/delete", {
                 method: "POST",
-                body: form,
+                body: JSON.stringify({
+                    type: "user",
+                }
+                ),
                 headers: { 
-                    "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2RiMTI2NDIwYzMzMjExZTBiMWQ3MjIiLCJpYXQiOjE3NDI0NTk0NTQsImV4cCI6MTc0MjQ2MzA1NH0.ppRZSTVJ7VWkVwM284vcXwX58scFE34sEh945c8FlUA`,
+                    "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2QwYWE4ZmY3OTQ0OGY0MjBlYTU1NGEiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MzEwODc0OCwiZXhwIjoxNzQzMTEyMzQ4fQ.M45i6r4G17qop3jy0TfMKj3wTN9sGJsNkTJq19STakI`,
                 }
             });
             
