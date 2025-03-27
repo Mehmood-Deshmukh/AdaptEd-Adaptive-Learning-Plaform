@@ -21,20 +21,23 @@ import {
   Bookmark,
   Star,
   File,
+  Users,
+  Trophy,
 } from "lucide-react";
 import Sidebar from "../components/Sidebar";
 import useAuthContext from "../hooks/useAuthContext";
 import {Toast} from "primereact/toast";
+import LeaderboardModal from "../components/LeaderboardModal";
+import StyleTag from "../components/StyleTag";
 
-
-
-// Main App Component
 const RoadmapGenerator = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [roadmaps, setRoadmaps] = useState([]);
   const [selectedRoadmap, setSelectedRoadmap] = useState(null);
   const [topic, setTopic] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
+  const [leaderboardData, setLeaderboardData] = useState([]);
 
   const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -42,12 +45,35 @@ const RoadmapGenerator = () => {
   const { user } = state;
   const toast = useRef(null);
 
-  // Get token from localStorage
   const getToken = () => {
     return localStorage.getItem("token");
   };
 
-  // Fetch all roadmaps
+  const fetchLeaderboard = async (roadmapId) => {
+    try {
+      setIsLoading(true);
+      const response = await fetch(`${BASE_URL}/api/roadmap/leaderboard/${roadmapId}`, {
+        headers: {
+          Authorization: `Bearer ${getToken()}`,
+        },
+      });
+  
+      if (!response.ok) throw new Error("Failed to fetch leaderboard");
+  
+      const data = await response.json();
+      setLeaderboardData(data);
+      setIsLoading(false);
+    } catch (error) {
+      toast.current.show({
+        severity: "error",
+        summary: "Error",
+        detail: "Failed to load leaderboard data. Please try again.",
+        life: 3000,
+      });
+      setIsLoading(false);
+    }
+  };
+
   const fetchRoadmaps = async () => {
     try {
       setIsLoading(true);
@@ -61,18 +87,16 @@ const RoadmapGenerator = () => {
   
       const data = await response.json();
   
-      // Ensure first checkpoint is always in progress and others are not started
-      // But don't override server data if a proper status is already set
+
       const updatedRoadmaps = data.map((roadmap) => {
         if (roadmap.checkpoints && roadmap.checkpoints.length > 0) {
-          // First, check if checkpoint 1 is already completed
+    
           const checkpoint1 = roadmap.checkpoints.find(cp => cp.order === 1);
           const isCheckpoint1Completed = checkpoint1 && checkpoint1.status === "completed";
           
           roadmap.checkpoints = roadmap.checkpoints.map((checkpoint) => {
-            // First checkpoint (order 1) should be in progress if not already completed
             if (checkpoint.order === 1 && checkpoint.status !== "completed" && checkpoint.status != "in_progress"){
-              // Send update to backend to ensure server state matches
+
               fetch(`${BASE_URL}/api/roadmap/update-checkpoint-status`, {
                 method: "POST",
                 headers: {
@@ -88,9 +112,9 @@ const RoadmapGenerator = () => {
               
               return { ...checkpoint, status: "in_progress" };
             }
-            // For second checkpoint, if first is completed, it should be in progress
+     
             else if (checkpoint.order === 2 && isCheckpoint1Completed && checkpoint.status === "not_started" && checkpoint.status != "in_progress") {
-              // Send update to backend to ensure server state matches
+   
               fetch(`${BASE_URL}/api/roadmap/update-checkpoint-status`, {
                 method: "POST",
                 headers: {
@@ -106,14 +130,13 @@ const RoadmapGenerator = () => {
               
               return { ...checkpoint, status: "in_progress" };
             }
-            // For other checkpoints, check previous checkpoint status
             else if (checkpoint.order > 1) {
               const prevCheckpoint = roadmap.checkpoints.find(
                 (cp) => cp.order === checkpoint.order - 1
               );
               
               if (prevCheckpoint && prevCheckpoint.status === "completed" && checkpoint.status === "not_started" && checkpoint.status != "in_progress") {
-                // Send update to backend to ensure server state matches
+        
                 fetch(`${BASE_URL}/api/roadmap/update-checkpoint-status`, {
                   method: "POST",
                   headers: {
@@ -148,8 +171,8 @@ const RoadmapGenerator = () => {
       setIsLoading(false);
     }
   };
-  
-  // Generate roadmap
+
+
   const generateRoadmap = async () => {
     if (!topic.trim()) {
       toast.current.show({
@@ -178,13 +201,15 @@ const RoadmapGenerator = () => {
   
       const data = await response.json();
       let updatedData = { ...data };
+      
+      const successMessage = data.isExisting 
+        ? "You've joined an existing roadmap for this topic!" 
+        : "Roadmap generated successfully!";
   
-      // Ensure first checkpoint is in progress in the newly generated roadmap
       if (data.checkpoints && data.checkpoints.length > 0) {
         const firstCheckpoint = data.checkpoints.find(cp => cp.order === 1);
         
         if (firstCheckpoint) {
-          // Send update to backend to ensure first checkpoint is in progress
           await fetch(`${BASE_URL}/api/roadmap/update-checkpoint-status`, {
             method: "POST",
             headers: {
@@ -198,7 +223,6 @@ const RoadmapGenerator = () => {
             }),
           });
           
-          // Update local data to reflect changes
           updatedData.checkpoints = data.checkpoints.map((checkpoint) => {
             if (checkpoint.order === 1) {
               return { ...checkpoint, status: "in_progress" };
@@ -209,7 +233,8 @@ const RoadmapGenerator = () => {
         }
       }
   
-      setRoadmaps([...roadmaps, updatedData]);
+  
+      setRoadmaps([ ...roadmaps, updatedData])
       setSelectedRoadmap(updatedData);
       setTopic("");
       setIsLoading(false);
@@ -217,10 +242,21 @@ const RoadmapGenerator = () => {
       toast.current.show({
         severity: "success",
         summary: "Success", 
-        detail: "Roadmap generated successfully!",
+        detail: successMessage,
         life: 3000,
       });
+      
+      if (data.isExisting && data.users && data.users.length > 1) {
+        toast.current.show({
+          severity: "info",
+          summary: "Learning Together", 
+          detail: `You're learning with ${data.users.length - 1} other students!`,
+          life: 5000,
+        });
+      }
+      
     } catch (error) {
+      console.log(error);
       toast.current.show({
         severity: "error",
         summary: "Error",
@@ -231,30 +267,32 @@ const RoadmapGenerator = () => {
     }
   };
 
-  // Check if a checkpoint is locked (can't be started yet)
+  const openLeaderboard = () => {
+    if (!selectedRoadmap) return;
+    
+    fetchLeaderboard(selectedRoadmap._id);
+    setShowLeaderboard(true);
+  };
+
   const isCheckpointLocked = (checkpoints, currentCheckpoint) => {
-    // If it's the first checkpoint, it's never locked
+
     if (currentCheckpoint.order === 1) return false;
 
-    // Find the previous checkpoint
+
     const previousCheckpoint = checkpoints.find(
       (cp) => cp.order === currentCheckpoint.order - 1
     );
 
-    // If previous checkpoint isn't completed, this one is locked
     return previousCheckpoint && previousCheckpoint.status !== "completed";
   };
 
-  // Update checkpoint status
   const updateCheckpointStatus = async (roadmapId, checkpointId, newStatus) => {
     try {
-      // Find the roadmap and the checkpoint
       const roadmap = roadmaps.find((r) => r._id === roadmapId);
       const checkpoint = roadmap.checkpoints.find(
         (cp) => cp._id === checkpointId
       );
 
-      // Check if checkpoint is locked
       if (
         isCheckpointLocked(roadmap.checkpoints, checkpoint) &&
         newStatus === "completed"
@@ -294,10 +332,8 @@ const RoadmapGenerator = () => {
       const data = await response.json();
       const updatedRoadmap = data; 
 
-      // Update local state
       const updatedRoadmaps = roadmaps.map((roadmap) => {
         if (roadmap._id === roadmapId) {
-          // Use the updated roadmap from the server instead of manually updating
           if (selectedRoadmap && selectedRoadmap._id === roadmapId) {
             setSelectedRoadmap(updatedRoadmap);
           }
@@ -326,7 +362,6 @@ const RoadmapGenerator = () => {
     }
   };
 
-  // Calculate progress percentage
   const calculateProgress = (checkpoints) => {
     if (!checkpoints || checkpoints.length === 0) return 0;
 
@@ -336,7 +371,6 @@ const RoadmapGenerator = () => {
     return Math.round((completedCount / checkpoints.length) * 100);
   };
 
-  // Get resource icon based on type
   const getResourceIcon = (type) => {
     switch (type?.toLowerCase()) {
       case "documentation":
@@ -354,7 +388,6 @@ const RoadmapGenerator = () => {
     }
   };
 
-  // Get status icon
   const getStatusIcon = (status, isLocked) => {
     if (isLocked) {
       return <Lock className="w-5 h-5 text-gray-500" />;
@@ -371,7 +404,6 @@ const RoadmapGenerator = () => {
     }
   };
 
-  // Get status color class
   const getStatusColor = (status, isLocked) => {
     if (isLocked) {
       return "bg-gray-200 text-gray-500 border-gray-300 opacity-70";
@@ -388,21 +420,16 @@ const RoadmapGenerator = () => {
     }
   };
 
-
-
-  // Fetch roadmaps on component mount
   useEffect(() => {
     fetchRoadmaps();
   }, []);
 
-  // Checkpoint component with accordion
   const CheckpointItem = ({ checkpoint, roadmapId, checkpoints }) => {
     const [isExpanded, setIsExpanded] = useState(false);
     const locked = isCheckpointLocked(checkpoints, checkpoint);
 
     const formatTimeDuration = (milliseconds) => {
       if (!milliseconds) return "0 min";
-
 
       const seconds = Math.floor(milliseconds / 1000);
       const minutes = Math.floor(seconds / 60);
@@ -430,9 +457,8 @@ const RoadmapGenerator = () => {
       return "0 min";
     };
 
-    // Display resources in a more structured way
     const ResourceItem = ({ resource }) => {
-      // For the new schema format
+
       if (
         resource.name &&
         resource.tags &&
@@ -486,7 +512,7 @@ const RoadmapGenerator = () => {
           </div>
         );
       }
-      // For the original format
+
       else {
         return (
           <div className="bg-white border border-gray-100 rounded-lg p-3 mb-2 shadow-sm hover:shadow-md transition-shadow duration-200">
@@ -640,8 +666,8 @@ const RoadmapGenerator = () => {
     <div className="flex h-screen bg-gray-50">
       <Sidebar user={user} />
       <Toast ref={toast} />
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 overflow-scroll">
+    
+      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 overflow-scroll">
         {isLoading && (
           <div className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-50">
             <div className="bg-white p-6 rounded-lg shadow-xl flex items-center space-x-4 animate-pulse">
@@ -651,8 +677,15 @@ const RoadmapGenerator = () => {
           </div>
         )}
 
+  
+        <LeaderboardModal 
+          isOpen={showLeaderboard}
+          onClose={() => setShowLeaderboard(false)}
+          leaderboardData={leaderboardData}
+          currentUserId={user?._id}
+        />
 
-        {/* Create Roadmap Modal */}
+       
         {showModal && (
           <div className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-40 animate-fadeIn">
             <div className="bg-white rounded-lg shadow-xl p-6 w-full max-w-md transform transition-all">
@@ -660,7 +693,7 @@ const RoadmapGenerator = () => {
                 Create New Roadmap
               </h2>
               <p className="text-gray-600 mb-4">
-                Enter a topic to generate a comprehensive learning roadmap
+                Enter a topic to generate a comprehensive learning roadmap. If a roadmap for this topic already exists, you'll join it!
               </p>
 
               <div className="relative">
@@ -713,7 +746,7 @@ const RoadmapGenerator = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            {/* Sidebar - Roadmap List */}
+         
             <div className="lg:col-span-1">
               <div className="bg-white rounded-lg shadow-md p-4 mb-4">
                 <h2 className="text-lg font-semibold mb-3 text-gray-800 flex items-center">
@@ -744,6 +777,13 @@ const RoadmapGenerator = () => {
                           {roadmap.totalProgress}%
                         </span>
                       </div>
+                      
+                      {roadmap.users && roadmap.users.length > 1 && (
+                        <div className="mt-2 flex items-center text-xs  text-blue-600 ">
+                          <Users className="w-3 h-3 mr-1" />
+                          Learning with {roadmap.users.length - 1} others
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -757,7 +797,6 @@ const RoadmapGenerator = () => {
               </button>
             </div>
 
-            {/* Main Content - Roadmap Details */}
             <div className="lg:col-span-3">
               {selectedRoadmap ? (
                 <div className="animate-fadeIn">
@@ -770,6 +809,19 @@ const RoadmapGenerator = () => {
                         <p className="text-gray-600">
                           {selectedRoadmap.description}
                         </p>
+                        
+                        {selectedRoadmap.users && selectedRoadmap.users.length > 1 && (
+                          <div className="mt-3">
+                            <button
+                              onClick={openLeaderboard}
+                              className="flex items-center cursor-pointer text-sm px-4 py-2 bg-blue-50 text-blue-700 rounded-full hover:bg-blue-100 transition-colors"
+                            >
+                              <Users className="w-4 h-4 mr-2" />
+                              Learning with {selectedRoadmap.users.length - 1} others
+                              <Trophy className="w-4 h-4 ml-2" />
+                            </button>
+                          </div>
+                        )}
                       </div>
                       <div className="flex flex-col items-center">
                         <div className="relative w-20 h-20">
@@ -838,7 +890,6 @@ const RoadmapGenerator = () => {
                     </div>
                   </div>
 
-                  {/* Sort checkpoints by order */}
                   {[...selectedRoadmap.checkpoints]
                     .sort((a, b) => a.order - b.order)
                     .map((checkpoint) => (
@@ -870,39 +921,7 @@ const RoadmapGenerator = () => {
   );
 };
 
-// Add global styles for animations
-const styles = `
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  
-  @keyframes slideInRight {
-    from { transform: translateX(100%); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-  }
-  
-  .animate-fadeIn {
-    animation: fadeIn 0.3s ease-out;
-  }
-  
-  .animate-slideInRight {
-    animation: slideInRight 0.3s ease-out;
-  }
-  
-  .animate-pulse {
-    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-  
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
-  }
-`;
 
-const StyleTag = () => <style dangerouslySetInnerHTML={{ __html: styles }} />;
-
-// Combine components
 const Roadmap = () => (
   <>
     <StyleTag />

@@ -1,11 +1,20 @@
 const mongoose = require('mongoose');
 
 const roadmapSchema = new mongoose.Schema({
-    userId : {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
-    },
+    users: [{
+        userId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        },
+        progress: {
+            type: Number,
+            default: 0
+        },
+        joinedAt: {
+            type: Date,
+            default: Date.now
+        }
+    }],
     mainTopic: {
         type: String,
         required: true

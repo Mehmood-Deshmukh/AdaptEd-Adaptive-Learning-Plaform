@@ -120,7 +120,7 @@ const AllQuizzes = () => {
 	return (
 		<div className="bg-white flex min-h-screen h-[100vh]">
 			<Sidebar user={user} />
-			<div className="container flex-1 mx-auto px-4 py-8">
+			<div className="container flex-1 mx-auto px-4 py-8 overflow-y-auto">
 				<div className="flex justify-between items-center mb-8">
 					<h1 className="text-3xl font-bold text-gray-900">
 						Your Quiz History
