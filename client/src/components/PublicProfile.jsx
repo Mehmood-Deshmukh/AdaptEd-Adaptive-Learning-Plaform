@@ -133,44 +133,61 @@ const PublicProfile = () => {
 
 	const handleFollow = async () => {
 		try {
-			// deep copy of currentUser
 			const updatedUser = JSON.parse(JSON.stringify(currentUser));
-
+			
+			const updatedProfile = { ...profile };
+	
 			const endpoint = isFollowing
 				? `${import.meta.env.VITE_BACKEND_URL}/api/user/unfollow`
 				: `${import.meta.env.VITE_BACKEND_URL}/api/user/follow`;
-
+	
 			if (isFollowing) {
 				updatedUser.following = updatedUser.following.filter(
 					(id) => id !== userId
 				);
+				updatedProfile.followers = updatedProfile.followers.filter(
+					(id) => id !== currentUser._id
+				);
 			} else {
 				updatedUser.following.push(userId);
+				updatedProfile.followers.push(currentUser._id);
 			}
-
+	
 			setIsFollowing(!isFollowing);
-
+			setProfile(updatedProfile);
+	
 			dispatch({
 				type: "UPDATE_USER",
 				payload: updatedUser,
 			});
-
+	
 			await axios.post(
 				endpoint,
 				{ userId: userId },
 				{
 					headers: {
-						Authorization: `Bearer ${localStorage.getItem(
-							"token"
-						)}`,
+						Authorization: `Bearer ${localStorage.getItem("token")}`,
 					},
 				}
 			);
 		} catch (error) {
 			console.error("Error following/unfollowing:", error);
-
+	
 			setIsFollowing((prev) => !prev);
-
+	
+			const revertedProfile = { ...profile };
+			if (isFollowing) {
+				if (!revertedProfile.followers.includes(currentUser._id)) {
+					revertedProfile.followers.push(currentUser._id);
+				}
+			} else {
+				revertedProfile.followers = revertedProfile.followers.filter(
+					(id) => id !== currentUser._id
+				);
+			}
+	
+			setProfile(revertedProfile);
+	
 			const revertedUser = JSON.parse(JSON.stringify(currentUser));
 			if (isFollowing) {
 				if (!revertedUser.following.includes(userId)) {
@@ -181,7 +198,7 @@ const PublicProfile = () => {
 					(id) => id !== userId
 				);
 			}
-
+	
 			dispatch({
 				type: "UPDATE_USER",
 				payload: revertedUser,
@@ -220,7 +237,7 @@ const PublicProfile = () => {
 
 	const formattedQuizScore = profile.avg_quiz_score
 		? Number(profile.avg_quiz_score).toFixed(1)
-		: "N/A";
+		: "0";
 
 	return (
 		<div className="bg-white text-black min-h-screen flex h-[100vh]">
@@ -256,7 +273,7 @@ const PublicProfile = () => {
 										<p className="text-gray-600 flex items-center">
 											<CircleUser
 												size={16}
-												className="mr-1"
+												className="mr-12"
 											/>{" "}
 											Member since {memberSince}
 										</p>
@@ -393,7 +410,7 @@ const PublicProfile = () => {
 											{formattedQuizScore}
 										</span>
 										<span className="text-sm text-gray-500 self-end mb-1">
-											/5
+											/10
 										</span>
 									</div>
 								</div>
@@ -420,7 +437,7 @@ const PublicProfile = () => {
 												strokeWidth="3"
 												strokeDasharray={`${
 													(profile.avg_quiz_score /
-														5) *
+														10) *
 													100
 												} 100`}
 												strokeDashoffset="25"
