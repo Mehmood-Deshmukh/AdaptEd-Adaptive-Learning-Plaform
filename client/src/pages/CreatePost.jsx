@@ -33,16 +33,13 @@ const CreatePost = () => {
 			form.append("communityId", "67dc69c3d04f63b7827db73b");
 
 			const response = await fetch(
-				"http://localhost:3000/api/avatar/delete", {
+				"http://localhost:3000/api/avatar/upload", {
 					method: "POST",
 					headers: {
-						"Content-Type": "application/json",
+						// "Content-Type": "application/json",
 						Authorization: `Bearer ${localStorage.getItem("token")}`,
 					},
-					body: JSON.stringify({
-						type: "community",
-						communityId: "67dc69c3d04f63b7827db73b",
-					}),
+					body: form,
 				}
 			);
 
