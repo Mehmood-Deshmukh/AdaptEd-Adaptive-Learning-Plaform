@@ -273,7 +273,7 @@ const PublicProfile = () => {
 										<p className="text-gray-600 flex items-center">
 											<CircleUser
 												size={16}
-												className="mr-12"
+												className="mr-1"
 											/>{" "}
 											Member since {memberSince}
 										</p>

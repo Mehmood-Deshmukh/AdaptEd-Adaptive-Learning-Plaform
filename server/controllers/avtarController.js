@@ -56,7 +56,7 @@ async function uploadAvatar(req, res) {
             });
         }
 
-        
+
         res.status(200).json({
             message: "Avatar uploaded successfully",
             data: null,
@@ -76,9 +76,17 @@ async function getAvatar(req, res) {
     try {
         const { id } = req.params;
         const type = req.query.type;
-        const avtar = await Avtar.findOne({
-            userId: id
-        });
+        let avtar = null;
+
+        if (type === "user") {
+            avtar = await Avtar.findOne({
+                userId: id
+            });
+        } else if (type === "community") {
+            avtar = await Avtar.findOne({
+                communityId: id
+            });
+        }
 
 
         if (!avtar) {
@@ -120,10 +128,21 @@ async function deleteAvatar(req, res) {
         const userId = req.userId;
         const { type, communityId } = req.body;
 
-        console.log(userId, type);
-        const avtar = await Avtar.findOne({
-            [type === 'user' ? 'userId' : 'communityId']: userId,
-        });
+        console.log(userId, type, communityId);
+
+        const id = type === 'user' ? userId : communityId;
+        let avtar = null;
+
+        if (type === "user") {
+            avtar = await Avtar.findOne({
+                userId: id
+            });
+        } else if (type === "community") {
+            avtar = await Avtar.findOne({
+                communityId: id
+            });
+        }
+
         if (!avtar) {
             return res.status(404).json({
                 success: false,
@@ -133,7 +152,7 @@ async function deleteAvatar(req, res) {
         }
 
         if (type === 'community') {
-            const community = await Community.findById({ communityId });
+            const community = await Community.findById(communityId);
             if (!community) {
                 return res.status(404).json({
                     success: false,
