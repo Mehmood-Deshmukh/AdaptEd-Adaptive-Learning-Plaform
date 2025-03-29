@@ -21,7 +21,7 @@ const Home = () => {
 	const [timeOfDay, setTimeOfDay] = useState("");
 	const [showSurvey, setShowSurvey] = useState(!user?.isAssessmentComplete);
 	const [learningProfile, setLearningProfile] = useState(null);
-
+	
 	useEffect(() => {
 		const hour = new Date().getHours();
 		if (hour < 12) setTimeOfDay("morning");
@@ -41,7 +41,6 @@ const Home = () => {
 			localStorage.setItem("learningProfile", JSON.stringify(results));
 		}
 	};
-
 	return (
 		<div className="flex h-screen bg-gray-50">
 			<Sidebar user={user} />

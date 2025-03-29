@@ -29,6 +29,9 @@ const Quiz = () => {
     { name: 'Software Engineering', code: 'software-eng' },
     { name: 'Cloud Computing', code: 'cloud' },
     { name: 'Mobile Development', code: 'mobile' },
+    { name: 'Computer Organisation ', code: 'co'},
+    { name: 'Theory of Computation ', code: 'toc'},
+    { name: 'Git', code: 'git'}
   ];
 
   const difficultyLevels = [
