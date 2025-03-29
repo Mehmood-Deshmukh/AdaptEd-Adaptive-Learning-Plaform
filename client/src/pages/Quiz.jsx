@@ -15,7 +15,7 @@ const Quiz = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { state } = useAuthContext();
   const { user } = state;
-  // Computer science related tags for selection
+
   const csTagsOptions = [
     { name: 'Algorithms', code: 'algorithms' },
     { name: 'Data Structures', code: 'data-structures' },
@@ -31,7 +31,6 @@ const Quiz = () => {
     { name: 'Mobile Development', code: 'mobile' },
   ];
 
-  // Difficulty levels for dropdown
   const difficultyLevels = [
     { name: 'Easy', code: 'easy' },
     { name: 'Intermediate', code: 'intermediate' },

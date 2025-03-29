@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const roadmapSchema = require('../models/roadmapModel');
 const checkpointSchema = require('../models/checkpointModel');
 const resourceSchema = require('../models/resourceModel');
-const feedbackSchema = require('../models/feedbackModel'); // Add this line
+const feedbackSchema = require('../models/feedbackModel'); 
 const generateRoadmap = require('../utils/roadmapGeneration');
 const { achievementEmitter } = require('../services/achievementService');
 const { xpEmitter } = require('../services/xpService');
@@ -600,7 +600,7 @@ const roadmapController = {
                                 else if (difficulty === 'intermediate') resourceEngagement.byDifficulty.intermediate++;
                                 else if (difficulty === 'advanced') resourceEngagement.byDifficulty.advanced++;
                                 
-                                // Track by topic
+                     
                                 if (resource.topics && resource.topics.length > 0) {
                                     resource.topics.forEach(topic => {
                                         if (!resourceEngagement.byTopic[topic]) {
@@ -621,7 +621,6 @@ const roadmapController = {
                 const averageTimePerCheckpoint = completedCheckpoints > 0 ? totalTimeTaken / completedCheckpoints : 0;
                 const consistencyScore = lastSevenDays.filter(day => day > 0).length / 7 * 100;
                 
-                // Determine preferred learning style based on resource engagement
                 let preferredLearningStyle = "Balanced";
                 const resourceTypes = [
                     { type: "Visual", count: resourceEngagement.video },
@@ -637,7 +636,6 @@ const roadmapController = {
                     preferredLearningStyle = maxResourceType.type;
                 }
                 
-                // Determine preferred study time
                 const studyTimes = [
                     { time: "Morning", count: studyHabits.morningStudy },
                     { time: "Afternoon", count: studyHabits.afternoonStudy },
@@ -650,13 +648,11 @@ const roadmapController = {
                     
                 const preferredStudyTime = maxStudyTime.count > 0 ? maxStudyTime.time : "Varied";
                 
-                // Determine favorite topics based on resource engagement
                 const favoriteTopics = Object.entries(resourceEngagement.byTopic)
                     .sort((a, b) => b[1] - a[1])
                     .slice(0, 3)
                     .map(entry => entry[0]);
                 
-                // Determine difficulty preference
                 let difficultyPreference = "Balanced";
                 const difficulties = Object.entries(resourceEngagement.byDifficulty);
                 const maxDifficulty = difficulties.reduce((prev, current) => 
@@ -698,7 +694,6 @@ const roadmapController = {
             
             const filteredLeaderboard = leaderboardData.filter(entry => entry !== null);
             
-            // Sort leaderboard to get top performers
             const sortedLeaderboard = [...filteredLeaderboard].sort((a, b) => {
                 if (b.progressPercentage !== a.progressPercentage) {
                     return b.progressPercentage - a.progressPercentage;
@@ -709,7 +704,6 @@ const roadmapController = {
                 return a.timeSpent - b.timeSpent;
             });
             
-            // Get current user's data and position
             const currentUserIndex = sortedLeaderboard.findIndex(entry => entry.userId === userId);
             const currentUserData = currentUserIndex >= 0 ? sortedLeaderboard[currentUserIndex] : null;
             
@@ -717,10 +711,8 @@ const roadmapController = {
                 return res.status(404).json({ message: "User not found in this roadmap" });
             }
             
-            // Get top 3 performers (or fewer if not enough users)
             const topPerformers = sortedLeaderboard.slice(0, Math.min(3, sortedLeaderboard.length));
             
-            // Calculate averages across all users
             const averages = {
                 progressPercentage: Math.round(sortedLeaderboard.reduce((sum, entry) => sum + entry.progressPercentage, 0) / sortedLeaderboard.length),
                 timePerCheckpoint: sortedLeaderboard.reduce((sum, entry) => sum + entry.averageTimePerCheckpoint, 0) / sortedLeaderboard.length,
@@ -735,7 +727,6 @@ const roadmapController = {
                 streak: Math.round(sortedLeaderboard.reduce((sum, entry) => sum + entry.streak, 0) / sortedLeaderboard.length)
             };
             
-            // Calculate topic popularity across all users
             const allTopics = {};
             sortedLeaderboard.forEach(entry => {
                 Object.entries(entry.resourceEngagement.byTopic).forEach(([topic, count]) => {
@@ -751,7 +742,6 @@ const roadmapController = {
                 .slice(0, 5)
                 .map(entry => entry[0]);
             
-            // Generate insights
             const insights = {
                 userRank: currentUserIndex + 1,
                 totalParticipants: sortedLeaderboard.length,
@@ -822,12 +812,10 @@ const roadmapController = {
                 recommendations: []
             };
             
-            // Generate custom insights and recommendations based on the data
             const generateInsights = () => {
                 const insightsList = [];
                 const recommendationsList = [];
                 
-                // Compare progress and speed
                 if (currentUserData.progressPercentage < averages.progressPercentage) {
                     insightsList.push("Your progress is below the average for this roadmap");
                     
@@ -841,13 +829,11 @@ const roadmapController = {
                     insightsList.push("Your progress is comparable to top performers - keep it up!");
                 }
                 
-                // Resource engagement insights
                 if (currentUserData.resourceEngagement.total < topPerformers[0].resourceEngagement.total * 0.7) {
                     insightsList.push("Top performers engage with more resources than you do");
                     recommendationsList.push("Try to explore more of the provided learning materials in each checkpoint");
                 }
                 
-                // Resource type preference insights
                 const topPerformerFavoriteType = Object.entries(topPerformers[0].resourceEngagement)
                     .filter(([key, _]) => ['video', 'article', 'exercise', 'quiz', 'documentation'].includes(key))
                     .sort((a, b) => b[1] - a[1])[0];
@@ -863,12 +849,10 @@ const roadmapController = {
                     recommendationsList.push(`Try incorporating more ${topPerformerFavoriteType[0]} resources to diversify your learning approach`);
                 }
                 
-                // Learning style insights
                 if (insights.learningStyleComparison.yourStyle !== insights.learningStyleComparison.topPerformerStyles[0]) {
                     insightsList.push(`Your learning style (${insights.learningStyleComparison.yourStyle}) differs from top performers (${insights.learningStyleComparison.topPerformerStyles[0]})`);
                 }
                 
-                // Difficulty preference insights
                 if (insights.difficultyPreference.yourPreference !== insights.difficultyPreference.topPerformerPreference) {
                     insightsList.push(`You prefer ${insights.difficultyPreference.yourPreference.toLowerCase()} content, while top performers favor ${insights.difficultyPreference.topPerformerPreference.toLowerCase()} resources`);
                     
@@ -878,32 +862,27 @@ const roadmapController = {
                     }
                 }
                 
-                // Study time insights
                 if (insights.studyPatterns.yourPattern !== insights.studyPatterns.topPerformerPatterns[0] &&
                     insights.studyPatterns.topPerformerPatterns[0] !== "Varied") {
                     insightsList.push(`Top performers tend to study during the ${insights.studyPatterns.topPerformerPatterns[0].toLowerCase()}, while you prefer ${insights.studyPatterns.yourPattern.toLowerCase()} sessions`);
                     recommendationsList.push(`Try studying during ${insights.studyPatterns.topPerformerPatterns[0].toLowerCase()} hours when possible to align with top performers' habits`);
                 }
                 
-                // Continuing from where the code left off
-                // Consistency insights
+   
                 if (insights.consistencyComparison.yourConsistency < insights.consistencyComparison.topPerformerConsistency * 0.7) {
                     insightsList.push(`Your study consistency (${insights.consistencyComparison.yourConsistency}%) is lower than top performers (${insights.consistencyComparison.topPerformerConsistency}%)`);
                     recommendationsList.push("Increase your learning consistency by studying at least a little bit every day");
                 }
                 
-                // Streak insights
                 if (insights.streakComparison.yourStreak < insights.streakComparison.topPerformerStreak * 0.5) {
                     insightsList.push(`Your current streak (${insights.streakComparison.yourStreak} days) is shorter than top performers' (${insights.streakComparison.topPerformerStreak} days)`);
                     recommendationsList.push("Build and maintain a daily learning habit to improve your streak and retention");
                 }
                 
-                // If we have in-progress checkpoints
                 if (currentUserData.inProgressCheckpoints > 0) {
                     recommendationsList.push("Focus on completing your in-progress checkpoints before starting new ones");
                 }
                 
-                // Resource diversity recommendation
                 if (currentUserData.resourceEngagement.total > 0) {
                     const resourceTypes = ['video', 'article', 'exercise', 'quiz', 'documentation'];
                     const leastUsedType = resourceTypes.reduce((min, type) => {
@@ -916,14 +895,12 @@ const roadmapController = {
                     }
                 }
                 
-                // Weekday/weekend balance
                 if (typeof currentUserData.weekdayWeekendRatio === "string" && 
                     currentUserData.weekdayWeekendRatio === "Weekdays only" &&
                     typeof topPerformers[0].weekdayWeekendRatio !== "string") {
                     recommendationsList.push("Consider dedicating some weekend time to learning, as top performers balance weekday and weekend study");
                 }
                 
-                // Topic exploration
                 const topicDifferences = insights.topics.mostPopular.filter(
                     topic => !insights.topics.yourFavorites.includes(topic)
                 );
@@ -933,7 +910,6 @@ const roadmapController = {
                     recommendationsList.push(`Explore resources related to ${topicDifferences[0]} to align with trending topics`);
                 }
                 
-                // Checkpoint-specific recommendations
                 if (currentUserData.completedCheckpointIds.length < topPerformers[0].completedCheckpointIds.length) {
                     const nextCheckpoint = roadmap.checkpoints
                         .filter(cp => !currentUserData.completedCheckpointIds.includes(cp._id.toString()))
@@ -950,12 +926,10 @@ const roadmapController = {
                 };
             };
             
-            // Generate the insights and recommendations
             const personalized = generateInsights();
             insights.topPerformerInsights = personalized.insights;
             insights.recommendations = personalized.recommendations;
             
-            // Ensure we always have at least one insight and recommendation
             if (insights.topPerformerInsights.length === 0) {
                 if (sortedLeaderboard.length === 1) {
                     insights.topPerformerInsights.push("You're the first person on this roadmap! Keep setting the pace for others to follow.");
@@ -968,7 +942,6 @@ const roadmapController = {
                 insights.recommendations.push("Continue with your current approach - you're on the right track!");
             }
             
-            // Format time values for display
             const formatTimeDuration = (milliseconds) => {
                 if (!milliseconds) return "0 min";
                 const minutes = Math.floor(milliseconds / 60000);
@@ -982,7 +955,6 @@ const roadmapController = {
                 }
             };
             
-            // Condense the leaderboard data to only include what's needed for UI display
             const condensedLeaderboard = sortedLeaderboard.map(entry => ({
                 userId: entry.userId,
                 name: entry.name,
@@ -997,7 +969,6 @@ const roadmapController = {
                 preferredLearningStyle: entry.preferredLearningStyle
             }));
             
-            // Return insights along with the condensed leaderboard data
             res.status(200).json({
                 insights,
                 leaderboard: condensedLeaderboard,

@@ -26,6 +26,8 @@ import {
   BarChart,
   FastForward,
   Rocket,
+  BookOpen,
+  ArrowRight,
 } from "lucide-react";
 import Sidebar from "../components/Sidebar";
 import useAuthContext from "../hooks/useAuthContext";
@@ -823,6 +825,31 @@ const RoadmapGenerator = () => {
                     </div>
                   </button>
                 )}
+
+                <div className="mt-4 space-y-3">
+                  {checkpoint?.whatNext && (
+                    <div className="bg-gray-50 p-3 rounded-lg border border-gray-400">
+                      <h4 className="font-medium text-black flex items-center mb-2">
+                        <ArrowRight className="w-4 h-4 mr-2" /> What Next:
+                      </h4>
+                      <p className="text-black text-sm">
+                        {checkpoint.whatNext}
+                      </p>
+                    </div>
+                  )}
+
+                  {checkpoint?.whatYouWillLearn && (
+                    <div className="bg-gray-50 p-3 rounded-lg border border-gray-400">
+                      <h4 className="font-medium text-black flex items-center mb-2">
+                        <BookOpen className="w-4 h-4 mr-2" /> What You Will
+                        Learn:
+                      </h4>
+                      <p className="text-black text-sm">
+                        {checkpoint.whatYouWillLearn.join(", ")}
+                      </p>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
