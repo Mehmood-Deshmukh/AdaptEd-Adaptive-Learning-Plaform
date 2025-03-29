@@ -77,7 +77,7 @@ avatarSchema.statics.uploadAvatar = async function (avatar, type, id) {
         });
 
         await _avatar.save();
-        resolve({ gridFsId: file._id, fileName });
+        resolve({ gridFsId: file?._id, fileName });
       } catch (error) {
         console.error("Error saving avatar document:", error);
         reject(error);
