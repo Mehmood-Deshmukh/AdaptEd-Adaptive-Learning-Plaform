@@ -240,8 +240,17 @@ const PublicProfile = () => {
 		: "0";
 
 	return (
+		<>
+		
+		{loading && (
+				<div className="flex items-center justify-center h-screen">
+				<div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-black"></div>
+			</div>
+			
+		)}
 		<div className="bg-white text-black min-h-screen flex h-[100vh]">
 			<Sidebar user={currentUser} />
+			
 			<div className="flex-1 overflow-y-auto h-full py-4">
 				<div className="max-w-6xl mx-auto shadow-lg rounded-2xl">
 					<div className="w-full h-48 bg-black rounded-t-2xl relative">
@@ -597,6 +606,7 @@ const PublicProfile = () => {
 				</div>
 			</div>
 		</div>
+		</>
 	);
 };
 
