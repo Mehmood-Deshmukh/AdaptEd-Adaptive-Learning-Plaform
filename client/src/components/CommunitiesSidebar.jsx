@@ -8,7 +8,7 @@ const CommunitiesSidebar = ({ communities, handleJoinCommunity }) => {
 	const { state } = useAuthContext();
 	const { user } = state;
 	return (
-		<div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+		<div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hidden sm:block">
 			<h2 className="text-xl font-bold text-black mb-5">
 				Communities to Join
 			</h2>

@@ -88,7 +88,7 @@ const PostItem = ({ post, handleVote }) => {
 	return (
 		<>
 			<div className="bg-white p-6 rounded-xl shadow-sm mb-6 border border-gray-200 hover:shadow-md transition">
-				<div className="flex items-start">
+				<div className="flex items-start flex-wrap">
 					<img
 						src={
 							post.author?.profileImage ||
@@ -160,7 +160,7 @@ const PostItem = ({ post, handleVote }) => {
 
 				{renderImageGrid(post.attachments, handleImageClick)}
 
-				<div className="flex items-center mt-6 space-x-8">
+				<div className="flex items-center flex-wrap mt-6 space-x-8">
 					<div className="flex items-center space-x-2">
 						<button
 							onClick={() => handleVote(post._id, "upvote")}
