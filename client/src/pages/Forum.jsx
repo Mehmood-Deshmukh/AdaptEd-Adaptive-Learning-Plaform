@@ -16,137 +16,62 @@ const Forum = () => {
 	const [loading, setLoading] = useState(true);
 	const [posts, setPosts] = useState([]);
 	const [communities, setCommunities] = useState([]);
-	const [createCommunityModalOpen, setCreateCommunityModalOpen ] = useState(false);
+	const [createCommunityModalOpen, setCreateCommunityModalOpen] = useState(false);
+
+	// Pagination
+	const [page, setPage] = useState(1);
+	const [hasMore, setHasMore] = useState(true);
 
 	const handlePostVote = async (postId, type) => {
-		if (type == "upvote") {
-			if (
-				posts
-					.find((post) => post._id === postId)
-					.upvotes.includes(user?._id)
-			) {
-				return;
-			}
+		if (!user) return;
 
-			// remove downvote if already downvoted
-			if (
-				posts
-					.find((post) => post._id === postId)
-					.downvotes.includes(user?._id)
-			) {
-				setPosts((prevPosts) =>
-					prevPosts.map((post) =>
-						post._id === postId
-							? {
-									...post,
-									downvotes: post.downvotes.filter(
-										(id) => id !== user?._id
-									),
-							  }
-							: post
-					)
-				);
-			}
+		const updatedPosts = posts.map((post) => {
+			if (post._id === postId) {
+				const hasUpvoted = post.upvotes.includes(user?._id);
+				const hasDownvoted = post.downvotes.includes(user?._id);
 
-			// add upvote
-			setPosts((prevPosts) =>
-				prevPosts.map((post) =>
-					post._id === postId
-						? {
-								...post,
-								upvotes: [...post.upvotes, user?._id],
-						  }
-						: post
-				)
-			);
-
-			try {
-				const response = await fetch(
-					`${import.meta.env.VITE_BACKEND_URL}/api/post/upvote`,
-					{
-						method: "POST",
-						headers: {
-							"Content-Type": "application/json",
-							Authorization: `Bearer ${localStorage.getItem(
-								"token"
-							)}`,
-						},
-						body: JSON.stringify({ postId, userId: user?._id }),
-					}
-				);
-				const data = await response.json();
-				if (data.success) {
-					console.log("Post upvoted successfully");
+				if (type === "upvote") {
+					return {
+						...post,
+						upvotes: hasUpvoted
+							? post.upvotes.filter((id) => id !== user?._id)
+							: [...post.upvotes, user?._id],
+						downvotes: hasDownvoted
+							? post.downvotes.filter((id) => id !== user?._id)
+							: post.downvotes
+					};
 				} else {
-					console.log("Error upvoting post");
+					return {
+						...post,
+						downvotes: hasDownvoted
+							? post.downvotes.filter((id) => id !== user?._id)
+							: [...post.downvotes, user?._id],
+						upvotes: hasUpvoted
+							? post.upvotes.filter((id) => id !== user?._id)
+							: post.upvotes
+					};
 				}
-			} catch (e) {
-				console.error("Error upvoting post:", e);
 			}
-		} else {
-			if (
-				posts
-					.find((post) => post._id === postId)
-					.downvotes.includes(user?._id)
-			) {
-				return;
-			}
+			return post;
+		});
 
-			// remove upvote if already upvoted
-			if (
-				posts
-					.find((post) => post._id === postId)
-					.upvotes.includes(user?._id)
-			) {
-				setPosts((prevPosts) =>
-					prevPosts.map((post) =>
-						post._id === postId
-							? {
-									...post,
-									upvotes: post.upvotes.filter(
-										(id) => id !== user?._id
-									),
-							  }
-							: post
-					)
-				);
-			}
+		setPosts(updatedPosts);
 
-			// add downvote
-			setPosts((prevPosts) =>
-				prevPosts.map((post) =>
-					post._id === postId
-						? {
-								...post,
-								downvotes: [...post.downvotes, user?._id],
-						  }
-						: post
-				)
+		try {
+			const endpoint = type === "upvote" ? "upvote" : "downvote";
+			await fetch(
+				`${import.meta.env.VITE_BACKEND_URL}/api/post/${endpoint}`,
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${localStorage.getItem("token")}`,
+					},
+					body: JSON.stringify({ postId, userId: user?._id }),
+				}
 			);
-
-			try {
-				const response = await fetch(
-					`${import.meta.env.VITE_BACKEND_URL}/api/post/downvote`,
-					{
-						method: "POST",
-						headers: {
-							"Content-Type": "application/json",
-							Authorization: `Bearer ${localStorage.getItem(
-								"token"
-							)}`,
-						},
-						body: JSON.stringify({ postId, userId: user?._id }),
-					}
-				);
-				const data = await response.json();
-				if (data.success) {
-					console.log("Post downvoted successfully");
-				} else {
-					console.log("Error downvoting post");
-				}
-			} catch (e) {
-				console.error("Error downvoting post:", e);
-			}
+		} catch (e) {
+			console.error(`Error ${type}voting post:`, e);
 		}
 	};
 
@@ -154,25 +79,25 @@ const Forum = () => {
 		setLoading(true);
 		try {
 			const response = await fetch(
-				`${import.meta.env.VITE_BACKEND_URL}/api/post/?page=1&limit=5`,
+				`${import.meta.env.VITE_BACKEND_URL}/api/post/?page=${page}&limit=5`,
 				{
 					headers: {
-						Authorization: `Bearer ${localStorage.getItem(
-							"token"
-						)}`,
+						Authorization: `Bearer ${localStorage.getItem("token")}`,
 					},
 				}
 			);
 			const data = await response.json();
 
 			if (data.success && data.data.length > 0) {
-				setPosts(data.data);
+				setPosts((prev) => [...prev, ...data.data]);
+				setHasMore(data.data.length === 5); // If less than 5 posts, no more pages
 			} else {
-				setPosts(placeholderPosts);
+				setHasMore(false);
 			}
 		} catch (e) {
 			console.error("Error fetching posts:", e);
 			setPosts(placeholderPosts);
+			setHasMore(false);
 		} finally {
 			setLoading(false);
 		}
@@ -181,14 +106,10 @@ const Forum = () => {
 	const fetchCommunities = async () => {
 		try {
 			const response = await fetch(
-				`${
-					import.meta.env.VITE_BACKEND_URL
-				}/api/community/?page=1&limit=5`,
+				`${import.meta.env.VITE_BACKEND_URL}/api/community/?page=1&limit=5`,
 				{
 					headers: {
-						Authorization: `Bearer ${localStorage.getItem(
-							"token"
-						)}`,
+						Authorization: `Bearer ${localStorage.getItem("token")}`,
 					},
 				}
 			);
@@ -204,97 +125,15 @@ const Forum = () => {
 		}
 	};
 
-	const handleJoinCommunity = async (communityId) => {
-		try {
-			const joinStatus = communities.find(
-				(community) =>
-					community.id === communityId ||
-					community._id === communityId
-			).joined;
-
-			setCommunities(
-				communities.map((community) =>
-					community.id === communityId ||
-					community._id === communityId
-						? {
-								...community,
-								joined: !community.joined,
-								membersCount: community.joined
-									? community.membersCount - 1
-									: community.membersCount + 1,
-						  }
-						: community
-				)
-			);
-
-			if (!joinStatus) {
-				// join the community if not already joined
-				const response = await fetch(
-					`${
-						import.meta.env.VITE_BACKEND_URL
-					}/api/user/join-community`,
-					{
-						method: "POST",
-						headers: {
-							"Content-Type": "application/json",
-							Authorization: `Bearer ${localStorage.getItem(
-								"token"
-							)}`,
-						},
-						body: JSON.stringify({ communityId }),
-					}
-				);
-				const data = await response.json();
-				if (data.success) {
-					console.log("Successfully joined community");
-					const newUser = {
-						...user,
-						communities: [...user.communities, communityId],
-					};
-					dispatch({ type: "UPDATE_USER", payload: newUser });
-				} else {
-					console.log("Error joining community");
-				}
-			}
-
-			// leave the community if already joined
-			else {
-				const response = await fetch(
-					`${
-						import.meta.env.VITE_BACKEND_URL
-					}/api/user/leave-community`,
-					{
-						method: "POST",
-						headers: {
-							"Content-Type": "application/json",
-							Authorization: `Bearer ${localStorage.getItem(
-								"token"
-							)}`,
-						},
-						body: JSON.stringify({ communityId }),
-					}
-				);
-				const data = await response.json();
-				if (data.success) {
-					console.log("Successfully left community");
-					const newUser = {
-						...user,
-						communities: user.communities.filter(
-							(id) => id !== communityId
-						),
-					};
-					dispatch({ type: "UPDATE_USER", payload: newUser });
-				} else {
-					console.log("Error leaving community");
-				}
-			}
-		} catch (e) {
-			console.error("Error joining community:", e);
-		}
+	const handleLoadMore = () => {
+		setPage((prevPage) => prevPage + 1);
 	};
 
 	useEffect(() => {
 		fetchPosts();
+	}, [page]);
+
+	useEffect(() => {
 		fetchCommunities();
 	}, []);
 
@@ -316,7 +155,7 @@ const Forum = () => {
 
 					<div className="flex pt-6 gap-6">
 						<div className="flex-1">
-							{loading ? (
+							{loading && page === 1 ? (
 								<PostSkeleton />
 							) : posts.length === 0 ? (
 								<div className="bg-white p-6 rounded-xl shadow-sm mb-6 border border-gray-200 text-center">
@@ -325,22 +164,34 @@ const Forum = () => {
 									</p>
 								</div>
 							) : (
-								posts.map((post) => (
-									<PostItem
-										key={post._id}
-										post={post}
-										user={user}
-										handleVote={handlePostVote}
-									/>
-								))
+								<>
+									{posts.map((post) => (
+										<PostItem
+											key={post._id}
+											post={post}
+											user={user}
+											handleVote={handlePostVote}
+										/>
+									))}
+									{hasMore && (
+										<div className="text-center mt-6">
+											<button
+												onClick={handleLoadMore}
+												className="bg-black mb-5 text-white px-4 py-2 rounded-lg shadow hover:bg-gray-600 transition"
+												disabled={loading}
+											>
+												{loading ? "Loading..." : "Load More"}
+											</button>
+										</div>
+									)}
+								</>
 							)}
 						</div>
 
-						<div className="w-80">
+						<div className="w-80 hidden sm:block">
 							<CommunitiesSidebar
 								communities={communities}
-								handleJoinCommunity={handleJoinCommunity}
-								user={state.user}
+								user={user}
 							/>
 							<TrendingTopics />
 						</div>
