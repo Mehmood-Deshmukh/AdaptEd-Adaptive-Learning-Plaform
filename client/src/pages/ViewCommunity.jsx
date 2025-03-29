@@ -336,7 +336,10 @@ const CommunityPage = () => {
                     )}
 
                     <CreatePostModal
+                      posts= {posts}
+                      setPosts={setPosts}
                       community={{
+                        
                         _id: community._id,
                         name: community.name,
                         membersCount: community.membersCount,
@@ -414,6 +417,8 @@ const CommunityPage = () => {
                     </p>
                     <div className="w-fit mx-auto">
                       <CreatePostModal
+                       posts= {posts}
+                       setPosts={setPosts}
                         community={{
                           _id: community._id,
                           name: community.name,

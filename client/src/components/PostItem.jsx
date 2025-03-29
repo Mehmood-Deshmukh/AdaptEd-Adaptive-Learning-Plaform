@@ -13,7 +13,7 @@ import { useState } from "react";
 import PreviewImage from "./PreviewImage";
 export const renderImageGrid = (attachments, onImageClick) => {
 	if (!attachments || attachments.length === 0) return null;
-
+	
 	const images = attachments.map((attachment) =>
 		typeof attachment === "string" && attachment.startsWith("http")
 			? attachment
@@ -78,7 +78,7 @@ const PostItem = ({ post, handleVote }) => {
 		setPreviewIndex(index);
 		setPreviewOpen(true);
 	};
-
+	
 	const images =
 		post.attachments?.map((attachment) =>
 			typeof attachment === "string" && attachment.startsWith("http")
