@@ -4,8 +4,11 @@ const resourcesSchema = require('./resourceModel');
 const questionsSchema = require('./questionModel');
 const {MongoClient} = require('mongodb');
 const userModel = require('./userModel');
-const DB_URI = 'mongodb://localhost:27017';
-const DB_NAME = 'inspiron25';
+const axios = require('axios'); // Need to install this package
+const dotenv = require('dotenv');
+dotenv.config();
+const DB_URI = process.env.DB_URI;
+const DB_NAME = process.env.DB_NAME;
 
 const requestSchema = new Schema({
   type: {
@@ -31,6 +34,16 @@ const requestSchema = new Schema({
     type: String,
     default: ''
   },
+  confidenceScore: {
+    type: Number,
+    min: 0,
+    max: 100,
+    default: 0
+  },
+  confidenceReason: {
+    type: String,
+    default: ''
+  },
   createdAt: {
     type: Date,
     default: Date.now
@@ -45,7 +58,22 @@ const requestSchema = new Schema({
 
 
 requestSchema.statics.createRequest = async function(requestData) {
-  return await this.create(requestData);
+  const request = await this.create(requestData);
+  
+  // After creating the request, generate and update the confidence score
+  try {
+    const confidenceData = await generateConfidenceScore(request);
+    if (confidenceData && confidenceData.score !== undefined) {
+      request.confidenceScore = confidenceData.score;
+      request.confidenceReason = confidenceData.reason || '';
+      await request.save();
+    }
+  } catch (error) {
+    console.error('Error generating confidence score:', error);
+    // Continue even if confidence score generation fails
+  }
+  
+  return request;
 };
 
 
@@ -72,7 +100,6 @@ requestSchema.statics.approveRequest = async function(requestId) {
   const database = client.db(DB_NAME);
   
   if (request.type === 'Resource') {
-
     const resource  = await resourcesSchema.createResource(request.payload);
     const collection = database.collection('resourcesFromCommunity');
     const result = await collection.insertOne(resource);
@@ -101,5 +128,29 @@ requestSchema.statics.rejectRequest = async function(requestId, feedback) {
     { new: true }
   );
 };
+
+// Function to generate confidence score using Flask backend
+async function generateConfidenceScore(request) {
+  try {
+    const FLASK_BACKEND_URL = process.env.FLASK_BASE_URL;
+    
+    const response = await axios.post(`${FLASK_BACKEND_URL}/api/generate-confidence-score`, {
+      requestType: request.type,
+      payload: request.payload,
+      userId: request.requestedBy
+    });
+    
+    if (response.data && response.data.success) {
+      return {
+        score: response.data.confidenceScore,
+        reason: response.data.confidenceReason
+      };
+    }
+    throw new Error('Invalid response from AI service');
+  } catch (error) {
+    console.error('Error calling Flask backend for confidence score:', error);
+    throw error;
+  }
+}
 
 module.exports = mongoose.model('Request', requestSchema);

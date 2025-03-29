@@ -91,7 +91,7 @@ const userController = {
 			const token = jwt.sign(
 				{ userId: updatedUser._id, role: updatedUser.role },
 				process.env.JWT_SECRET,
-				{ expiresIn: "1h" }
+				{ expiresIn: "1d" }
 			);
 
 			res.status(200).json({
