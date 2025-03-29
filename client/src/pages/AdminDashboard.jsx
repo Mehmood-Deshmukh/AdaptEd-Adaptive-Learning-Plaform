@@ -709,7 +709,7 @@ const AdminDashboard = () => {
 
         {/* Selected request details modal */}
         {selectedRequest && (
-  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+  <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
     <div className="bg-white rounded-lg shadow-xl w-full max-w-3xl max-h-[90vh] overflow-hidden">
       <div className="p-6 flex justify-between items-start border-b">
         <div>
