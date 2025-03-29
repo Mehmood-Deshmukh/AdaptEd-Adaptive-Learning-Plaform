@@ -30,6 +30,14 @@ const resourcesSchema = new Schema({
         type: String,
         required: true
     },
+    reasoning : {
+        type: String,
+        required: true
+    },
+    rank : {
+        type: Number,
+        required: true
+    },
 });
 
 resourcesSchema.statics.createResource = async function(resource){

@@ -18,17 +18,16 @@ logger = logging.getLogger(__name__)
 roadmap_bp = Blueprint('roadmap', __name__)
 
 def extract_minutes(time_str):
-    """Extract minutes from reading time string"""
+
     if not time_str:
-        return 10  # Default value if reading time is not provided
+        return 10
     
     match = re.search(r'(\d+)', time_str)
     if match:
         return int(match.group(1))
-    return 10  # Default value if no number found
+    return 10 
 
 def load_resources(topic):
-    """Load resources from appropriate JSON file based on topic"""
     topic_file_mapping = {
         "python": "python.json",
         "javascript": "javascript.json", 
@@ -39,7 +38,6 @@ def load_resources(topic):
         "java": "java.json",
     }
     
-    # Find the best matching file for the topic
     file_to_load = None
     for key, filename in topic_file_mapping.items():
         if key in topic.lower():
@@ -47,34 +45,27 @@ def load_resources(topic):
             break
     
     if not file_to_load:
-        file_to_load = "python.json"  # Default to python if no specific match
+        file_to_load = "python.json" 
         
     try:
-        # Assuming resource files are in a data directory
         with open(f"./{file_to_load}", "r") as f:
             return json.load(f)
     except Exception as e:
         logger.error(f"Error loading resource file: {str(e)}")
         return []
 def llm_rank_resources(resources: List[Dict[str, Any]], topic: str) -> List[Dict[str, Any]]:
-    """
-    Use LLM to rank resources based on complexity and relevance to the topic
-    """
     try:
         llm = get_llm()
         
-        # First, prepare resources in a format suitable for LLM analysis
         simplified_resources = []
         for i, resource in enumerate(resources):
-            # Extract key information
             title = resource.get('title', '')
             url = resource.get('url', '')
             reading_time = resource.get('reading_time', '')
             tags = resource.get('tags', [])
             
-            # Extract text from content
             content_text = ""
-            for item in resource.get('content', [])[:10]:  # Limit to first 10 content items for brevity
+            for item in resource.get('content', [])[:10]:  
                 if item.get('type') in ['h1', 'h2', 'p']:
                     content_text += item.get('content', '') + " "
             
@@ -84,10 +75,9 @@ def llm_rank_resources(resources: List[Dict[str, Any]], topic: str) -> List[Dict
                 "url": url,
                 "reading_time": reading_time,
                 "tags": tags,
-                "content_preview": content_text[:300]  # First 300 chars of content
+                "content_preview": content_text[:300]  
             })
         
-        # Create a prompt template for LLM ranking
         ranking_prompt = PromptTemplate(
             template="""
             You are an expert educational content curator specializing in {topic}.
@@ -111,7 +101,7 @@ def llm_rank_resources(resources: List[Dict[str, Any]], topic: str) -> List[Dict
               {{
                 "id": resource_id,
                 "complexity_score": score (1-100),
-                "reasoning": "brief explanation of score",
+                "reasoning": "very long explanation of score atleast 5 lines i.e 100 words",
                 "difficulty_level": "beginner|intermediate|advanced",
                 "estimated_prerequisites": "none|basic|intermediate|advanced"
                 "description": "Brief description of the content"
@@ -130,37 +120,33 @@ def llm_rank_resources(resources: List[Dict[str, Any]], topic: str) -> List[Dict
             "resources": json.dumps(simplified_resources, indent=2)
         })
         
-        # Parse the LLM's response
         text = result.get("text", "")
         
-        # Extract JSON array from the response
         json_match = re.search(r'\[[\s\S]*\]', text)
         if not json_match:
             raise ValueError("LLM did not return a valid JSON array")
         
         llm_rankings = json.loads(json_match.group(0))
         
-        # Sort resources based on LLM-assigned complexity scores
         llm_rankings.sort(key=lambda x: x.get('complexity_score', 50))
+
         
-        # Create final ranked resources
         ranked_resources = []
         for i, ranking in enumerate(llm_rankings):
             resource_id = ranking.get('id')
             if resource_id < len(resources):
                 resource = resources[resource_id]
                 
-                # Convert to ResourceMetadata format
                 formatted_resource = {
                     "name": resource.get("title", ""),
                     "url": resource.get("url", ""),
-                    "type": "article",  # Default to article for these resources
+                    "type": "article", 
                     "tags": resource.get("tags", []),
-                    "topics": [topic],  # Set the topic
+                    "topics": [topic], 
                     "difficulty": ranking.get("difficulty_level", "beginner"),
                     "description": ranking.get("description", ""),
-                    "rank": i + 1,  # New rank based on LLM complexity score
-                    "llm_reasoning": ranking.get("reasoning", ""),
+                    "rank": i + 1,  
+                    "reasoning": ranking.get("reasoning", ""),
                     "llm_complexity_score": ranking.get("complexity_score", 50),
                     "llm_prerequisites": ranking.get("estimated_prerequisites", "none")
                 }
@@ -171,25 +157,20 @@ def llm_rank_resources(resources: List[Dict[str, Any]], topic: str) -> List[Dict
         
     except Exception as e:
         logger.error(f"Error in LLM ranking: {str(e)}")
-        # Fall back to rule-based ranking if LLM fails
+        
         logger.info("Falling back to rule-based ranking")
         return rule_based_rank_resources(resources, topic)
     
 def rule_based_rank_resources(resources: List[Dict[str, Any]], topic: str) -> List[Dict[str, Any]]:
-    """
-    Rank resources based on complexity and reading time using rule-based approach
-    This serves as a fallback if the LLM-based ranking fails
-    """
-    # Calculate complexity scores for each resource
+
     scored_resources = []
     
     for i, resource in enumerate(resources):
-        # Initialize base score
         complexity_score = 0
         
         # Factor 1: Reading time (shorter = easier)
         reading_time = extract_minutes(resource.get('reading_time', '10 min read'))
-        complexity_score += reading_time * 2  # Weight reading time
+        complexity_score += reading_time * 2  
         
         # Factor 2: Check for basic/introduction keywords in title and content
         title = resource.get('title', '').lower()
@@ -197,7 +178,7 @@ def rule_based_rank_resources(resources: List[Dict[str, Any]], topic: str) -> Li
         basic_keywords = ['basics', 'introduction', 'beginner', 'getting started', 'under 5 mins', '101']
         advanced_keywords = ['advanced', 'expert', 'mastering', 'deep dive', 'complex', 'architecture']
         
-        # Check title for complexity indicators
+ 
         for keyword in basic_keywords:
             if keyword in title:
                 complexity_score -= 20  # Reduce score for basic content
@@ -230,31 +211,30 @@ def rule_based_rank_resources(resources: List[Dict[str, Any]], topic: str) -> Li
     # Sort by complexity score
     scored_resources.sort(key=lambda x: x['score'])
     
-    # Assign final ranks
+
     ranked_resources = []
     for i, item in enumerate(scored_resources):
         resource = item['resource']
         
-        # Convert to ResourceMetadata format
         formatted_resource = {
             "name": resource.get("title", ""),
             "url": resource.get("url", ""),
-            "type": "article",  # Default to article for these resources
+            "type": "article",  
             "tags": resource.get("tags", []),
-            "topics": [topic],  # Set the topic
+            "topics": [topic],  
             "difficulty": "beginner" if i < len(scored_resources) / 3 else 
                         "advanced" if i > 2 * len(scored_resources) / 3 else 
                         "intermediate",
             "description": " ".join([item.get("content", "") for item in resource.get("content", [])[:3] 
                                    if item.get("type") == "p"])[:200] + "...",
-            "rank": i + 1  # New rank based on complexity score
+            "rank": i + 1 ,
+            "reasoning": "Based on reading time, content structure, relevance to topic, and complexity keywords."
         }
         
         ranked_resources.append(formatted_resource)
     
     return ranked_resources
 
-# Use LLM-based ranking by default, with rule-based as fallback
 def rank_resources(resources: List[Dict[str, Any]], topic: str) -> List[Dict[str, Any]]:
     try:
         return llm_rank_resources(resources, topic)
@@ -272,27 +252,22 @@ def roadmap_endpoint_v2():
             
         topic = data.get('topic')
         summary = data.get('summary', '')
-        ranking_method = data.get('ranking_method', 'llm')  # Allow client to choose ranking method
+        ranking_method = data.get('ranking_method', 'llm')  
         
-        # Sanitize the topic
         sanitized_topic = sanitize_input(topic)
         
-        # Load resources
         raw_resources = load_resources(sanitized_topic)
         
-        # Rank resources based on specified method
+        
         if ranking_method == 'rule_based':
             ranked_resources = rule_based_rank_resources(raw_resources, sanitized_topic)
             ranking_algo_name = "rule_based_v1"
         else:
-            # Default to LLM-based ranking
             ranked_resources = llm_rank_resources(raw_resources, sanitized_topic)
             ranking_algo_name = "llm_based_v1"
         
-        # Get LLM
         llm = get_llm()
         
-        # Custom roadmap generation with ranked resources
         roadmap_prompt = PromptTemplate(
             template="""
             Generate a learning roadmap with exactly 5 checkpoints for {topic}. 
@@ -303,7 +278,8 @@ def roadmap_endpoint_v2():
             - List EXACTLY 3-4 high-quality learning resources, no more and no less.
             - While Listing resources, include easier resources first and progressively more complex ones later.
             - The resources are already ranked based on complexity. Use resources with lower ranks for early checkpoints 
-              and higher ranks for later checkpoints.
+              and higher ranks for later checkpoint
+            - Each resource MUST include the 'reasoning' field from the input data explaining why it was ranked this way."
             - Make sure to add nice description to each resource based on the content and title, dont mention any names in the resource descriptions
             - Include the resource's title, URL, and a brief description (2-3 lines) of the content.
             - Dont mention this in the resource description : "some name" and then "follow"
@@ -332,6 +308,7 @@ def roadmap_endpoint_v2():
             "resources": json.dumps(ranked_resources),
             "summary": summary
         })
+
         
         try:
             text = result.get("text", "")
@@ -342,6 +319,7 @@ def roadmap_endpoint_v2():
                 text = text.strip()
             
             roadmap_data = json.loads(text)
+
             
             roadmap_data["metadata"] = {
                 "generated_at": datetime.now().isoformat(),
@@ -350,8 +328,7 @@ def roadmap_endpoint_v2():
             }
             
             if (not roadmap_data.get("mainTopic") or 
-                not roadmap_data.get("checkpoints") or 
-                len(roadmap_data.get("checkpoints", [])) != 5):
+                not roadmap_data.get("checkpoints") ):
                 raise ValueError("Unexpected roadmap format received.")
             
             return jsonify(roadmap_data), 200
