@@ -10,6 +10,7 @@ class Resource(BaseModel):
     difficulty: str = Field(description="Difficulty level: beginner, intermediate, or advanced")
     description: str = Field(description="A brief description of what this resource covers")
     rank: int = Field(description="Rank of the resource based on quality and relevance to the topic")
+    reasoning: str = Field(description="Reasoning for the rank assigned to the resource")
 
 class ResourceMetadata(BaseModel):
     title: str = Field(description="The title of the resource")
@@ -19,6 +20,7 @@ class ResourceMetadata(BaseModel):
     topics: List[str] = Field(description="List of topics covered by the resource")
     difficulty: str = Field(description="Difficulty level: beginner, intermediate, or advanced")
     description: str = Field(description="A brief description of what this resource covers")
+    reasoning: str = Field(description="Reasoning for the rank assigned to the resource")
 
 
 class Checkpoint(BaseModel):

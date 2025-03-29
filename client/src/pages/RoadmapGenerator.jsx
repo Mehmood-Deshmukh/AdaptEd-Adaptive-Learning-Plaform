@@ -615,67 +615,97 @@ const RoadmapGenerator = () => {
         resource.topics
       ) {
         return (
-          <div className="bg-white border border-gray-100 rounded-lg p-4 mb-3 shadow-sm hover:shadow-md transition-shadow duration-200">
-            <div className="flex justify-between items-start mb-3">
-              <h4 className="font-medium text-lg text-gray-800 flex items-center">
+          <div className="bg-white border border-gray-200 rounded-lg p-6 mb-4 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="flex justify-between items-start mb-4">
+              <h4 className="font-semibold text-lg text-gray-900 flex items-center gap-2">
                 {getResourceIcon(resource.type)}
                 {resource.name}
               </h4>
-              <span className="px-3 py-1 bg-gray-500 text-white text-xs rounded-full font-medium">
-                {resource.difficulty}
-              </span>
-            </div>
-
-            <p className="text-gray-600 text-sm mb-3">{resource.description}</p>
-
-            <div className="flex flex-wrap gap-2 mb-3">
-              {resource.tags?.map((tag, idx) => (
-                <span
-                  key={idx}
-                  className="bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-xs font-medium inline-flex items-center"
-                >
-                  <Tag className="w-3 h-3 mr-1" /> {tag}
+              <div className="flex items-center gap-3">
+                <span className="px-3 py-1 bg-gray-800 text-white text-xs rounded-full font-medium">
+                  {resource.difficulty}
                 </span>
-              ))}
+              </div>
             </div>
-
-            <div className="flex flex-wrap gap-2 mb-3">
-              {resource.topics?.map((topic, idx) => (
-                <span
-                  key={idx}
-                  className="bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-xs font-medium inline-flex items-center"
-                >
-                  <Bookmark className="w-3 h-3 mr-1" /> {topic}
-                </span>
-              ))}
+    
+            <p className="text-gray-700 text-sm mb-4">{resource.description}</p>
+            
+            {/* Reasoning & Rank Section */}
+            {(resource?.reasoning || resource?.rank) && (
+              <div className="mb-4 p-3 bg-gray-50 rounded-lg border border-gray-100">
+                {resource?.reasoning && (
+                  <div className="mb-2">
+                    <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Reasoning</span>
+                    <p className="text-gray-800 mt-1 text-sm">{resource.reasoning}</p>
+                  </div>
+                )}
+                {resource?.rank && (
+                  <div className="flex items-center">
+                    <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider mr-2">Rank</span>
+                    <div className="flex items-center">
+                      <span className="text-lg font-bold text-gray-900">{resource.rank}</span>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+    
+            <div className="space-y-3">
+              {resource.tags?.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                  {resource.tags.map((tag, idx) => (
+                    <span
+                      key={idx}
+                      className="bg-gray-100 text-gray-800 px-2.5 py-1 rounded-full text-xs font-medium inline-flex items-center"
+                    >
+                      <Tag className="w-3 h-3 mr-1.5 text-gray-500" /> {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+              
+              {resource.topics?.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                  {resource.topics.map((topic, idx) => (
+                    <span
+                      key={idx}
+                      className="bg-gray-100 text-gray-800 px-2.5 py-1 rounded-full text-xs font-medium inline-flex items-center"
+                    >
+                      <Bookmark className="w-3 h-3 mr-1.5 text-gray-500" /> {topic}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
-
-            <a
-              href={resource.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 text-black hover:underline font-medium text-sm inline-flex items-center"
-            >
-              Open Resource <ExternalLink className="w-3 h-3 ml-1" />
-            </a>
+    
+            <div className="mt-4 pt-3 border-t border-gray-100">
+              <a
+                href={resource.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-900 hover:text-black font-medium text-sm inline-flex items-center transition-colors duration-200"
+              >
+                Open Resource <ExternalLink className="w-3.5 h-3.5 ml-1.5" />
+              </a>
+            </div>
           </div>
         );
       } else {
         return (
-          <div className="bg-white border border-gray-100 rounded-lg p-3 mb-2 shadow-sm hover:shadow-md transition-shadow duration-200">
+          <div className="bg-white border border-gray-200 rounded-lg p-4 mb-3 shadow-sm hover:shadow-md transition-shadow duration-300">
             <div className="flex items-center justify-between">
               <a
                 href={resource.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-black hover:text-gray-800 hover:underline flex items-center flex-1"
+                className="text-gray-900 hover:text-black hover:underline flex items-center flex-1 font-medium"
                 onClick={(e) => e.stopPropagation()}
               >
                 {getResourceIcon(resource?.type)}
-                <span className="font-medium">{resource.name}</span>
-                <ExternalLink className="w-3 h-3 ml-1" />
+                <span className="ml-2">{resource.name}</span>
+                <ExternalLink className="w-3 h-3 ml-1.5" />
               </a>
-              <span className="ml-2 text-xs px-2 py-1 bg-gray-200 rounded-full text-gray-700 font-medium">
+              <span className="ml-2 text-xs px-2.5 py-1 bg-gray-100 rounded-full text-gray-700 font-medium">
                 {resource?.type || "Resource"}
               </span>
             </div>
