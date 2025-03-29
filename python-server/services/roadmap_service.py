@@ -251,3 +251,6 @@ def generate_roadmap(
     except Exception as e:
         logger.error(f"Error generating roadmap: {str(e)}")
         return {"error": f"Failed to generate roadmap: {str(e)}"}
+    
+
+

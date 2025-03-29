@@ -83,7 +83,6 @@ checkpointSchema.statics.getCheckpoints = async function(checkpointIds) {
 }
 
 checkpointSchema.methods.getUserProgress = function(userId) {
-    // Find user progress, handling both populated and non-populated userId
     const userProgress = this.userProgress.find(progress => {
         const progressUserId = progress.userId._id ? progress.userId._id.toString() : progress.userId.toString();
         return progressUserId === userId.toString();
