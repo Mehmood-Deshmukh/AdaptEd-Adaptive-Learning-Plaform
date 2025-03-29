@@ -21,7 +21,7 @@ const Recommendations = () => {
         );
 
         const data = await response.json();
-        setRecommendations(data);
+        if(response.ok) setRecommendations(data);
 
         console.log("Recommendations:", data);
       } catch (error) {
