@@ -23,6 +23,9 @@ import {
   File,
   Users,
   Trophy,
+  BarChart,
+  FastForward,
+  Rocket,
 } from "lucide-react";
 import Sidebar from "../components/Sidebar";
 import useAuthContext from "../hooks/useAuthContext";
@@ -31,6 +34,7 @@ import LeaderboardModal from "../components/LeaderboardModal";
 import StyleTag from "../components/StyleTag";
 import FeedbackModal from "../components/FeedbackModal";
 import CheckpointFeedbackSummary from "../components/CheckpointFeedbackSummary";
+import LeaderboardInsights from "../components/LeaderboardInsigths";
 
 const RoadmapGenerator = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -43,6 +47,8 @@ const RoadmapGenerator = () => {
   const [showFeedbackModal, setShowFeedbackModal] = useState(false);
   const [selectedCheckpoint, setSelectedCheckpoint] = useState(null);
   const [roadmapInsights, setRoadmapInsights] = useState(null);
+  const [leaderboardDataProp, setLeaderboardDataProp] = useState([]);
+  const [currentUserPosition, setCurrentUserPosition] = useState(null);
 
   const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -88,30 +94,41 @@ const RoadmapGenerator = () => {
       const response = await fetch(
         `${BASE_URL}/api/roadmap/leaderboard-insights/${roadmapId}`,
         {
+          method: "GET",
           headers: {
             Authorization: `Bearer ${getToken()}`,
+            "Content-Type": "application/json",
           },
         }
       );
 
-      if (!response.ok) throw new Error("Failed to fetch leaderboard insights");
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(
+          errorData.message || "Failed to fetch leaderboard insights"
+        );
+      }
 
       const data = await response.json();
 
+      // Store all the data properly for use in components
       setRoadmapInsights(data.insights);
-
-      setIsLoading(false);
+      setLeaderboardDataProp(data.leaderboard);
+      setCurrentUserPosition(data.currentUserPosition);
     } catch (error) {
+      console.error("Leaderboard insights error:", error);
       toast.current.show({
         severity: "error",
         summary: "Error",
-        detail: "Failed to load leaderboard insights. Please try again.",
+        detail:
+          error.message ||
+          "Failed to load leaderboard insights. Please try again.",
         life: 3000,
       });
+    } finally {
       setIsLoading(false);
     }
   };
-
   const fetchRoadmaps = async () => {
     try {
       setIsLoading(true);
@@ -995,185 +1012,6 @@ const RoadmapGenerator = () => {
                           {selectedRoadmap.description}
                         </p>
 
-                        <div className="max-w-3xl mx-auto bg-gray-50 p-6 rounded-xl">
-                          <h3 className="text-2xl font-bold text-center text-gray-800 mb-6">
-                            Your Learning Performance Insights
-                          </h3>
-
-                          <div className="bg-white rounded-lg shadow-sm p-4 mb-6 flex">
-                            <div className="text-4xl text-yellow-500 mr-4 flex items-center justify-center">
-                              🏆
-                            </div>
-                            <div className="flex-1">
-                              <h4 className="font-semibold text-lg text-gray-700 mb-2">
-                                Your Ranking
-                              </h4>
-                              <p className="text-gray-600">
-                                You are ranked{" "}
-                                <span className="font-bold">
-                                  {roadmapInsights?.userRank}
-                                </span>{" "}
-                                out of {roadmapInsights?.totalParticipants}{" "}
-                                learners
-                              </p>
-                              <div className="h-2 bg-gray-200 rounded-full my-3 overflow-hidden">
-                                <div
-                                  className="h-full bg-green-500 rounded-full"
-                                  style={{
-                                    width: `${roadmapInsights?.progressComparison.percentilRank}%`,
-                                  }}
-                                  title={`${roadmapInsights?.progressComparison.percentilRank}th percentile`}
-                                ></div>
-                              </div>
-                              <p className="text-sm text-gray-500">
-                                You're in the top{" "}
-                                {100 -
-                                  roadmapInsights?.progressComparison
-                                    .percentilRank}
-                                %
-                              </p>
-                            </div>
-                          </div>
-
-                          <div className="bg-white rounded-lg shadow-sm p-4 mb-6 flex">
-                            <div className="text-4xl text-blue-500 mr-4 flex items-center justify-center">
-                              📊
-                            </div>
-                            <div className="flex-1">
-                              <h4 className="font-semibold text-lg text-gray-700 mb-2">
-                                Progress Comparison
-                              </h4>
-                              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                                <div>
-                                  <span className="block text-sm text-gray-500">
-                                    Your Progress:
-                                  </span>
-                                  <span className="font-semibold text-lg">
-                                    {
-                                      roadmapInsights?.progressComparison
-                                        .userProgress
-                                    }
-                                    %
-                                  </span>
-                                </div>
-                                <div>
-                                  <span className="block text-sm text-gray-500">
-                                    Average Progress:
-                                  </span>
-                                  <span className="font-semibold text-lg">
-                                    {
-                                      roadmapInsights?.progressComparison
-                                        .averageProgress
-                                    }
-                                    %
-                                  </span>
-                                </div>
-                                <div>
-                                  <span className="block text-sm text-gray-500">
-                                    Top Performer:
-                                  </span>
-                                  <span className="font-semibold text-lg">
-                                    {
-                                      roadmapInsights?.progressComparison
-                                        .topPerformerProgress
-                                    }
-                                    %
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="bg-white rounded-lg shadow-sm p-4 mb-6 flex">
-                            <div className="text-4xl text-indigo-500 mr-4 flex items-center justify-center">
-                              ⏱️
-                            </div>
-                            <div className="flex-1">
-                              <h4 className="font-semibold text-lg text-gray-700 mb-2">
-                                Time Efficiency
-                              </h4>
-                              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                                <div>
-                                  <span className="block text-sm text-gray-500">
-                                    Your Average Time:
-                                  </span>
-                                  <span className="font-semibold text-lg">
-
-
-                                    {formatTimeDuration(
-                                      roadmapInsights?.timeComparison
-                                        .userAverageTime
-                                    )}
-                                  
-                                  </span>
-                                </div>
-                                <div>
-                                  <span className="block text-sm text-gray-500">
-                                    Leader's Average Time:
-                                  </span>
-                                  <span className="font-semibold text-lg">
-                                  {formatTimeDuration(
-                                      roadmapInsights?.timeComparison
-                                        .leaderAverageTime
-                                    )}{" "}
-                                  </span>
-                                </div>
-                                <div>
-                                  <span className="block text-sm text-gray-500">
-                                    Overall Average:
-                                  </span>
-                                  <span className="font-semibold text-lg">
-                                  {formatTimeDuration(
-                                      roadmapInsights?.timeComparison
-                                        .averageTimeAllUsers
-                                    )}{" "}
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          {roadmapInsights?.topPerformerInsights.length > 0 && (
-                            <div className="bg-white rounded-lg shadow-sm p-4 mb-6 flex">
-                              <div className="text-4xl text-blue-600 mr-4 flex items-center justify-center">
-                                💡
-                              </div>
-                              <div className="flex-1">
-                                <h4 className="font-semibold text-lg text-gray-700 mb-2">
-                                  What Top Performers Are Doing Differently
-                                </h4>
-                                <ul className="list-disc pl-5 space-y-1 text-gray-600">
-                                  {roadmapInsights?.topPerformerInsights.map(
-                                    (insight, index) => (
-                                      <li key={index}>{insight}</li>
-                                    )
-                                  )}
-                                </ul>
-                              </div>
-                            </div>
-                          )}
-
-                          {roadmapInsights?.recommendations.length > 0 && (
-                            <div className="bg-white rounded-lg shadow-sm p-4 mb-6 flex">
-                              <div className="text-4xl text-green-600 mr-4 flex items-center justify-center">
-                                🚀
-                              </div>
-                              <div className="flex-1">
-                                <h4 className="font-semibold text-lg text-gray-700 mb-2">
-                                  Recommendations For You
-                                </h4>
-                                <ul className="list-disc pl-5 space-y-1 text-gray-600">
-                                  {roadmapInsights?.recommendations.map(
-                                    (recommendation, index) => (
-                                      <li key={index}>{recommendation}</li>
-                                    )
-                                  )}
-                                </ul>
-                              </div>
-                            </div>
-                          )}
-                        </div>
-
                         {selectedRoadmap.users &&
                           selectedRoadmap.users.length > 1 && (
                             <div className="mt-3">
@@ -1225,12 +1063,18 @@ const RoadmapGenerator = () => {
                             </span>
                           </div>
                         </div>
-                        <p className="text-sm text-gray-600 mt-2">
+                        <p className="text-sm text-center text-gray-600 mt-2">
                           Overall Progress
                         </p>
                       </div>
                     </div>
                   </div>
+
+                  <LeaderboardInsights
+                    roadmapInsights={roadmapInsights}
+                    leaderboard={leaderboardData}
+                    currentUserPosition={currentUserPosition}
+                  />
 
                   <div className="space-y-2 mb-6">
                     <div className="flex items-center justify-between">
