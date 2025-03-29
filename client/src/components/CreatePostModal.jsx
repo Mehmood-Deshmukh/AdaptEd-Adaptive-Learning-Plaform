@@ -22,7 +22,7 @@ const CreatePostModal = ({ posts, setPosts, community = null }) => {
 		description: "",
 		tags: [],
 		attachments: [],
-		communityId: null,
+		communityId: community?._id,
 	});
 	const [currentTag, setCurrentTag] = useState("");
 	const [previewUrls, setPreviewUrls] = useState([]);
@@ -239,6 +239,7 @@ const CreatePostModal = ({ posts, setPosts, community = null }) => {
 
 			if(data.success) {
 				setPosts([data.data, ...posts]);
+				
 				toast.current.show({
 					severity: "success",
 					summary: "Success",
