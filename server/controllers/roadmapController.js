@@ -20,6 +20,8 @@ const roadmapController = {
                 return res.status(404).json({ message: "User not found" });
             }
 
+            let roadmapUserId = null;
+            let roadmapUser = null;
             const existingRoadmap = await roadmapSchema.findOne({
                 mainTopic: { $regex: new RegExp(topic, 'i') }
             }).populate({
@@ -30,7 +32,14 @@ const roadmapController = {
                 },
             });
 
-            if (existingRoadmap) {
+            if(existingRoadmap){
+                roadmapUserId = existingRoadmap.users[0].userId;
+                roadmapUser = await userModel.findById(roadmapUserId);
+            }
+
+        
+            if (existingRoadmap && roadmapUser && roadmapUser.clusterId === user.clusterId) {
+
                 const userAlreadyJoined = existingRoadmap.users.some(u => 
                     u.userId.toString() === req.userId
                 );
@@ -364,7 +373,7 @@ const roadmapController = {
             const responseData = {
                 ...updatedRoadmap.toObject(),
                 checkpoints: processedCheckpoints,
-                totalProgress: userProgress 
+                totalProgress: userProgress === NaN ? 0 : userProgress
             };
             
             res.status(200).json(responseData);
