@@ -2,7 +2,8 @@ import React from "react";
 
 const TrendingTopics = () => {
 	return (
-		<div className="bg-white p-6 rounded-xl shadow-sm mt-6 border border-gray-200">
+		<div className="hidden sm:block">
+					<div className="bg-white p-6 rounded-xl shadow-sm mt-6 border border-gray-200">
 			<h2 className="text-xl font-bold text-black mb-5">
 				Trending Topics
 			</h2>
@@ -21,6 +22,9 @@ const TrendingTopics = () => {
 				</div>
 			</div>
 		</div>
+		</div>
+
+
 	);
 };
 

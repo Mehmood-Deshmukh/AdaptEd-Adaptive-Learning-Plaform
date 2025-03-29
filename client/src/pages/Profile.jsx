@@ -276,11 +276,11 @@ const ProfilePage = () => {
 		<div className="h-[100vh] bg-gray-50 flex ">
 			<Toast ref={toast} />
 			<Sidebar user={user} />
-			<div className="max-w-6xl mx-auto my-4 overflow-scroll">
+			<div className="max-w-6xl mx-auto  overflow-scroll">
 				{/* Profile Card */}
 				<div className="bg-white shadow-xl rounded-xl overflow-hidden border border-gray-100">
 					{/* Header with Avatar */}
-					<div className="bg-black text-white p-8 relative">
+					<div className="bg-black text-white p-10 relative">
 						<div className="flex flex-col md:flex-row items-start md:items-center justify-between">
 							<div className="flex items-center gap-6">
 								<div className="relative">
