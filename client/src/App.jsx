@@ -15,12 +15,13 @@ import ViewPost from './pages/ViewPost'
 import ViewCommunity from './pages/ViewCommunity'
 import AllQuizzes from './pages/Quizzes'
 import PublicProfile from './components/PublicProfile'
+import TeacherDashboard from './pages/TeacherDashboard'
 
 function App() {
   const { state } = useAuthContext()
   const { isAuthenticated, Loading } = state;
   
-
+  console.log(state?.user?.role === 'teacher');
   if (Loading) {
     console.log('loading');
     return (
@@ -50,6 +51,8 @@ function App() {
         <Route path='/post/:id' element={isAuthenticated ? <ViewPost /> : <Navigate to="/login" />} />
         <Route path='/community/:id' element={isAuthenticated ? <ViewCommunity /> : <Navigate to="/login" />} />
         <Route path='/quizzes' element={isAuthenticated ? <AllQuizzes /> : <Navigate to="/login" />} />
+        <Route path='/teacher' element={!isAuthenticated ? <Navigate to="/login" /> : state?.user?.role === 'teacher' ? <TeacherDashboard /> : <Navigate to="/" />} />
+
         <Route path='/public-profile/:userId' element={<PublicProfile />} />
         {/* <Route path='/quiz/:quizId' element={isAuthenticated ? <QuizReview /> : <Navigate to="/login" />} /> */}
       
