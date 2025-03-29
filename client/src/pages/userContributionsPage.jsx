@@ -331,7 +331,7 @@ const UserContributionsPage = () => {
   );
 
   return (
-    <div className="flex h-full bg-white text-black">
+    <div className="flex h-[100vh] bg-white text-black">
       <Toast ref={toast} />
       <Sidebar user={user} />
       
