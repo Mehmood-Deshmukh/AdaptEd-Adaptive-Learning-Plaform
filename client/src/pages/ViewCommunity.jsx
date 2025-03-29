@@ -9,7 +9,7 @@ import { TagIcon, Calendar, Users, Share2, MessageSquare } from "lucide-react";
 import CreatePostModal from "../components/CreatePostModal";
 import ChatRoom from "../components/Chatroom";
 
-const CommunityPage = () => {
+const CommunityPage = ({ description }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { state, dispatch } = useAuthContext();
@@ -21,7 +21,7 @@ const CommunityPage = () => {
   const [isMember, setIsMember] = useState(false);
   const [error, setError] = useState(null);
   const [isChatOpen, setIsChatOpen] = useState(false);
-
+  const [showFull, setShowFull] = useState(false);
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   const formatDate = (dateString) => {
@@ -34,7 +34,10 @@ const CommunityPage = () => {
       return "Invalid date";
     }
   };
-
+  const truncate = function (str) {
+    if (!str) return "No description available"
+    return str.length > 10 ? str.substring(0, 200) + "..." : str;
+  }
   const fetchCommunityData = async () => {
     setLoading(true);
     try {
@@ -325,26 +328,25 @@ const CommunityPage = () => {
                     {community.createdBy === user._id ? null : (
                       <button
                         onClick={handleJoinCommunity}
-                        className={`px-4 py-2 rounded-md transition-colors ${
-                          isMember
+                        className={`px-4 py-2 rounded-md transition-colors ${isMember
                             ? "bg-gray-200 text-black hover:bg-gray-300"
                             : "bg-black text-white hover:bg-gray-800"
-                        }`}
+                          }`}
                       >
                         {isMember ? "Leave Community" : "Join Community"}
                       </button>
                     )}
-    {user.communities.includes(community._id) && <CreatePostModal
-                      posts= {posts}
+                    {user.communities.includes(community._id) && <CreatePostModal
+                      posts={posts}
                       setPosts={setPosts}
                       community={{
-                        
+
                         _id: community._id,
                         name: community.name,
                         membersCount: community.membersCount,
                       }}
                     />}
-                    
+
 
                     <button
                       onClick={() => setIsChatOpen(true)}
@@ -358,7 +360,25 @@ const CommunityPage = () => {
                 </div>
 
                 <p className="mt-3 text-gray-600">
-                  {community.description || "No description available"}
+                  {showFull ? community.description : truncate(community.description)}
+
+
+                  {community.description && community.description.length > 200 &&
+                    <button
+
+                      onClick={() => setShowFull(!showFull)}
+                      className="ml-2 text-blue-500 underline"
+
+
+
+                    >
+                      {showFull ? "Read less" : "Read more"}
+
+                    </button>
+
+                  }
+
+
                 </p>
 
                 <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-gray-500">
@@ -417,8 +437,8 @@ const CommunityPage = () => {
                     </p>
                     <div className="w-fit mx-auto">
                       <CreatePostModal
-                       posts= {posts}
-                       setPosts={setPosts}
+                        posts={posts}
+                        setPosts={setPosts}
                         community={{
                           _id: community._id,
                           name: community.name,
@@ -448,8 +468,26 @@ const CommunityPage = () => {
                 <h3 className="text-lg font-bold text-black mb-3">
                   About Community
                 </h3>
-                <p className="text-gray-600 text-sm mb-3">
-                  {community.description || "No description available"}
+                <p className="mt-3 text-gray-600">
+                  {showFull ? community.description : truncate(community.description)}
+
+
+                  {community.description && community.description.length > 200 &&
+                    <button
+
+                      onClick={() => setShowFull(!showFull)}
+                      className="ml-2 text-blue-500 underline"
+
+
+
+                    >
+                      {showFull ? "Read less" : "Read more"}
+
+                    </button>
+
+                  }
+
+
                 </p>
 
                 <div className="flex items-center text-sm text-gray-500 mb-2">
@@ -481,7 +519,7 @@ const CommunityPage = () => {
         </div>
       </div>
 
-	  {community && (
+      {community && (
         <ChatRoom
           communityId={community._id}
           communityName={community.name}
