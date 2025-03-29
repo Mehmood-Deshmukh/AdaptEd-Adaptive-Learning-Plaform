@@ -87,6 +87,9 @@ const Login = () => {
             });
             if (data.data.role === "admin") {
               navigate("/admin");
+            }
+            else if (data.data.role === "teacher") {
+              navigate("/teacher");
             } else {
               navigate("/");
             }
@@ -99,7 +102,11 @@ const Login = () => {
           });
           if (data.data.role === "admin") {
             navigate("/admin");
-          } else {
+          }
+          else if (data.data.role === "teacher") {
+            navigate("/teacher");
+          }
+           else {
             navigate("/");
           }
         }

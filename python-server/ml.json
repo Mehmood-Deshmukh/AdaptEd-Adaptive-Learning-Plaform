@@ -1,0 +1,2820 @@
+[
+  {
+    "url": "https://isonusingh.medium.com/an-introduction-to-machine-learning-how-to-get-started-f2f8dc838aeb",
+    "title": "An Introduction to Machine Learning: How to Get Started",
+    "author": "Press",
+    "published_date": null,
+    "reading_time": "4 min read",
+    "tags": [
+      "Machine Learning",
+      "Python",
+      "Scikit Learn"
+    ],
+    "content": [
+      {
+        "type": "h1",
+        "content": "An Introduction to Machine Learning: How to Get Started"
+      },
+      {
+        "type": "p",
+        "content": "Sonu Singh"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "Listen"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "Machine learning is a subfield of artificial intelligence that involves the development of algorithms and models that allow computers to learn and make predictions or decisions based on data. It is a rapidly growing field that has already had a profound impact on many industries, from finance to healthcare to retail. Whether you’re a software engineer, data scientist, or simply someone interested in technology, understanding machine learning is becoming increasingly important."
+      },
+      {
+        "type": "p",
+        "content": "In this article, we’ll provide a beginner-friendly introduction to machine learning, including what it is, the different types of algorithms, and what you need to know to get started."
+      },
+      {
+        "type": "h1",
+        "content": "What is Machine Learning?"
+      },
+      {
+        "type": "p",
+        "content": "Machine learning is a method of teaching computers to learn from data, without being explicitly programmed. There are three main types of machine learning algorithms: supervised learning, unsupervised learning, and reinforcement learning."
+      },
+      {
+        "type": "p",
+        "content": "In supervised learning, the algorithm is trained on labeled data, and its goal is to make predictions based on that data. For example, a supervised learning algorithm might be trained on a dataset of images of handwritten digits, and its goal would be to recognize the digit in new, unlabeled images."
+      },
+      {
+        "type": "p",
+        "content": "In unsupervised learning, the algorithm is trained on unlabeled data, and its goal is to discover patterns and structure in the data. For example, an unsupervised learning algorithm might be trained on a dataset of customer data, and its goal would be to identify segments of customers with similar behaviors."
+      },
+      {
+        "type": "p",
+        "content": "Reinforcement learning involves training an algorithm to make decisions in an environment by receiving rewards or penalties for its actions. For example, a reinforcement learning algorithm might be trained to play a video game, where it receives points for performing well and loses points for making mistakes."
+      },
+      {
+        "type": "h1",
+        "content": "Prerequisites for Machine Learning"
+      },
+      {
+        "type": "p",
+        "content": "Getting started with machine learning requires a solid foundation in mathematics and statistics, as well as some programming experience. Specifically, you should have a basic understanding of linear algebra, calculus, probability, and statistics."
+      },
+      {
+        "type": "p",
+        "content": "In terms of programming, a strong knowledge of Python is highly recommended, as it is one of the most popular programming languages for machine learning. Other languages such as R and Julia are also commonly used, but Python has a large and active community of data scientists and machine learning practitioners, and it provides many useful libraries and frameworks for machine learning."
+      },
+      {
+        "type": "h1",
+        "content": "Tools and Frameworks"
+      },
+      {
+        "type": "p",
+        "content": "There are many tools and frameworks available for machine learning, but some of the most popular include Python, TensorFlow, PyTorch, and Scikit-learn."
+      },
+      {
+        "type": "p",
+        "content": "Python is a general-purpose programming language that is widely used in scientific computing and data analysis. It provides many libraries and frameworks for machine learning, including NumPy, Pandas, and Matplotlib."
+      },
+      {
+        "type": "p",
+        "content": "TensorFlow is an open-source machine learning framework developed by Google. It provides a high-level API for building and training machine learning models, as well as a low-level API for more advanced users."
+      },
+      {
+        "type": "p",
+        "content": "PyTorch is another open-source machine learning framework that is popular for its simplicity and flexibility. It is especially well suited for building deep learning models."
+      },
+      {
+        "type": "p",
+        "content": "Scikit-learn is a machine learning library for Python that provides simple and efficient tools for data mining and data analysis. It is a great choice for beginners, as it provides a high-level API and many useful algorithms for common tasks."
+      },
+      {
+        "type": "h1",
+        "content": "Getting Your Hands Dirty"
+      },
+      {
+        "type": "p",
+        "content": "Now that you have a basic understanding of machine learning and the tools available, it’s time to get your hands dirty and build your first machine learning model. Here’s a simple example of how you can use scikit-learn to build a machine learning model:"
+      },
+      {
+        "type": "pre",
+        "content": "import numpy as npimport matplotlib.pyplot as pltfrom sklearn import datasetsfrom sklearn.linear_model import LogisticRegression# Load the iris datasetiris = datasets.load_iris()X = iris.data[:, :2]  # We only take the first two features for simplicityy = iris.target# Train a logistic regression modellogistic_regression = LogisticRegression()logistic_regression.fit(X, y)# Plot the decision boundaryx_min, x_max = X[:, 0].min() - .5, X[:, 0].max() + .5y_min, y_max = X[:, 1].min() - .5, X[:, 1].max() + .5h = .02  # step size in the meshxx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))Z = logistic_regression.predict(np.c_[xx.ravel(), yy.ravel()])# Put the result into a color plotZ = Z.reshape(xx.shape)plt.figure(1, figsize=(4, 3))plt.pcolormesh(xx, yy, Z, cmap=plt.cm.Paired)# Plot also the training pointsplt.scatter(X[:, 0], X[:, 1], c=y, edgecolors='k', cmap=plt.cm.Paired)plt.xlabel('Sepal length')plt.ylabel('Sepal width')plt.xlim(xx.min(), xx.max())plt.ylim(yy.min(), yy.max())plt.xticks(())plt.yticks(())plt.show()"
+      },
+      {
+        "type": "p",
+        "content": "In this example, we use the load_iris function from the sklearn.datasets module to load the iris dataset, which contains measurements of the sepal length and width, as well as the petal length and width, for 150 iris flowers from three different species."
+      },
+      {
+        "type": "p",
+        "content": "We then use the LogisticRegression class from the sklearn.linear_model module to train a logistic regression model on the first two features (sepal length and width) of the iris dataset."
+      },
+      {
+        "type": "p",
+        "content": "Finally, we plot the decision boundary of the model using a colormap, and we also plot the training points. The resulting plot shows how the logistic regression model has divided the two-dimensional feature space into regions, with each region corresponding to a different species of iris flower."
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T01:48:35.284359"
+  },
+  {
+    "url": "https://afafathar.medium.com/machine-learning-concepts-you-need-know-to-get-start-with-ml-3cc981d25ad8",
+    "title": "Machine Learning: Starter",
+    "author": "Press",
+    "published_date": null,
+    "reading_time": "5 min read",
+    "tags": [
+      "Machine Learning",
+      "Visualization",
+      "Supervised Learning",
+      "Unsupervised Learning",
+      "Reinforcement Learning"
+    ],
+    "content": [
+      {
+        "type": "h1",
+        "content": "Machine Learning: Starter"
+      },
+      {
+        "type": "p",
+        "content": "Afaf Athar"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "Listen"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "A Quick History of Machine Learning!"
+      },
+      {
+        "type": "p",
+        "content": "What is Machine Learning?"
+      },
+      {
+        "type": "p",
+        "content": "What is Machine Learning in simple words?"
+      },
+      {
+        "type": "p",
+        "content": "When you combine computer programming skills with Statistics, the result is a field of study known as Machine Learning."
+      },
+      {
+        "type": "p",
+        "content": "When Do We Use Machine Learning?"
+      },
+      {
+        "type": "p",
+        "content": "Machine learning is shown to improve and bring change in a variety of areas. It doesn’t matter what industry it is, from farming to spaceflight."
+      },
+      {
+        "type": "p",
+        "content": "ML Use-cases:"
+      },
+      {
+        "type": "p",
+        "content": "How does Machine Learning work?"
+      },
+      {
+        "type": "p",
+        "content": "Steps In Machine Learning"
+      },
+      {
+        "type": "p",
+        "content": "There are four steps:"
+      },
+      {
+        "type": "p",
+        "content": "What are the different types of machine learning?"
+      },
+      {
+        "type": "p",
+        "content": "There are three major types of machine learning:"
+      },
+      {
+        "type": "p",
+        "content": "What are different types of Supervised machine learning?"
+      },
+      {
+        "type": "p",
+        "content": "There are two different types of Supervised Machine Learning Algorithms:"
+      },
+      {
+        "type": "p",
+        "content": "What are the different types of Unsupervised machine learning?"
+      },
+      {
+        "type": "p",
+        "content": "There are three different types of Unsupervised Machine Learning Algorithms:"
+      },
+      {
+        "type": "p",
+        "content": "What are different types of Reinforcement learning?"
+      },
+      {
+        "type": "p",
+        "content": "Some of the algorithms used for reinforcement learning are:"
+      },
+      {
+        "type": "p",
+        "content": "The preceding is an overview of the fundamentals of Machine Learning that should be understood before going deeper. I’ll continue to write articles that will gradually teach us about the many ideas of machine learning."
+      },
+      {
+        "type": "p",
+        "content": "Hope this helps :) Follow if you like my posts. Let’s connect on LinkedIn."
+      },
+      {
+        "type": "p",
+        "content": "Happy learning 😃"
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T01:48:37.467221"
+  },
+  {
+    "url": "https://lekhuyen.medium.com/introduction-to-machine-learning-78e8c5d708e6",
+    "title": "An Introduction to Machine Learning",
+    "author": "Alex Knight",
+    "published_date": null,
+    "reading_time": "10 min read",
+    "tags": [
+      "Machine Learning",
+      "Algorithms",
+      "Unsupervised Learning",
+      "Reinforcement Learning",
+      "Supervised Learning"
+    ],
+    "content": [
+      {
+        "type": "h1",
+        "content": "An Introduction to Machine Learning"
+      },
+      {
+        "type": "p",
+        "content": "Khuyen Le"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "Listen"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "As you know, the applications of Machine learning appear everywhere in our life. For example, when you search for something in Google, based on Machine learning algorithms, it recommends to you the most performance results related to your keywords. Facebook, Youtube, and Amazon also use recommendation systems for suggesting the users their products. Apple develops Machine learning algorithms for face and fingerprint recognition to activate your devices without using your password, … Thanks to Machine learning, our lives have become much more convenient."
+      },
+      {
+        "type": "p",
+        "content": "In this article, we will study various types of Machine learning algorithms and their use cases. The blog outline consists of four parts:"
+      },
+      {
+        "type": "p",
+        "content": "3. Types of Machine learning algorithms."
+      },
+      {
+        "type": "p",
+        "content": "4. Use cases of Machine learning."
+      },
+      {
+        "type": "p",
+        "content": "Let’s start!"
+      },
+      {
+        "type": "h1",
+        "content": "I. What is Machine Learning?"
+      },
+      {
+        "type": "p",
+        "content": "In 1959, Arthur Samuel defined: “Machine Learning is the field of study that gives the computer the ability to learn without explicitly programmed”."
+      },
+      {
+        "type": "p",
+        "content": "In 1997, Tome Michel gave another definition of Machine learning which is more technical: “A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P if its performance at tasks in T, as measured by P, improves with experience E”."
+      },
+      {
+        "type": "h1",
+        "content": "II. Why use Machine learning?"
+      },
+      {
+        "type": "p",
+        "content": "To see the importance of Machine learning, let's consider an example of spam email recognition. For this problem, you first have to examine what a spam email looks like. You remark that it may contain many errors and links, or some words like “bank card”, “free”, and “congratulation”, … After analyzing all possible characteristics, you have to write a program to detect them repeatedly for all emails. Therefore, your code will be very long and complicated to maintain. By contrast, the Machine learning technique studies automatically what characteristics are contained in a spam email, and the code becomes much shorter and simpler to maintain. Furthermore, machine learning algorithms give us better results compared to the traditional ones."
+      },
+      {
+        "type": "p",
+        "content": "In summary, there are some reasons why we should use Machine learning algorithms instead of traditional methods:"
+      },
+      {
+        "type": "p",
+        "content": "Please notice that, for building a Machine Learning model, the number of data in the training set must be large enough so that the model can learn correctly. Sometimes, we have to feed the model with thousands of data to get high accuracy. The more varied the data, the higher accuracy of the model. That is why the data is so important for Machine Learning and the Data Science domain."
+      },
+      {
+        "type": "p",
+        "content": "Andrew Ng: “It’s not who has the best algorithms that win. It’s who has the best data”."
+      },
+      {
+        "type": "p",
+        "content": "According to Forbes, data scientists spend around 80% of their time preparing and managing the data for analysis."
+      },
+      {
+        "type": "h1",
+        "content": "III. Types of Machine Learning Algorithms:"
+      },
+      {
+        "type": "p",
+        "content": "Machine Learning algorithms are classified into 3 principal types:"
+      },
+      {
+        "type": "h2",
+        "content": "1. Supervised learning"
+      },
+      {
+        "type": "p",
+        "content": "Supervised learning is the most popular algorithm for performing Machine Learning operations. The data, in this case, is labeled. A supervised learning algorithm identifies the features explicitly and carries out prediction or classification accordingly."
+      },
+      {
+        "type": "p",
+        "content": "a. Classification"
+      },
+      {
+        "type": "p",
+        "content": "Supervised learning algorithms are applied for the problem of classification when the variables are discrete."
+      },
+      {
+        "type": "p",
+        "content": "Let’s consider some simple examples of this problem:"
+      },
+      {
+        "type": "p",
+        "content": "Example 1: Spam email detection"
+      },
+      {
+        "type": "p",
+        "content": "We aim to build a Machine Learning model for classifying emails as spam or not spam, based on the number of errors and the number of links in emails. This method is figured out by the following figure. If the number of links and errors in an email is large, then this email will be classified as spam. Otherwise, this email is classified into the non-spam group. We can simply assume that the machine learning model for separating these groups is a straight line."
+      },
+      {
+        "type": "p",
+        "content": "Once the model is determined, it can be applied for predicting any new email. If the number of errors and links of an email belongs to the lower region of the straight line, then it will be classified as a non-spam email, and vice versa."
+      },
+      {
+        "type": "p",
+        "content": "Let's consider another example of building a Machine learning model for detecting some image objects like fruits."
+      },
+      {
+        "type": "p",
+        "content": "Example 2: Fruit detection"
+      },
+      {
+        "type": "p",
+        "content": "Given two types of fruits: apples and bananas with their annotations. To build a machine learning model to classify these fruits, the machine will first extract some features like color, length, and width corresponding to each object. Then, the model is trained on the training set. It learns what features are associated with each label."
+      },
+      {
+        "type": "p",
+        "content": "After training for the model, we can apply this model for predicting a new sample on the test set which does not have a label."
+      },
+      {
+        "type": "p",
+        "content": "b. Regression"
+      },
+      {
+        "type": "p",
+        "content": "In the case when the variables are continuous and the target values are not finite, the Machine Learning algorithms can be applied to the regression problem."
+      },
+      {
+        "type": "p",
+        "content": "Example: House price prediction"
+      },
+      {
+        "type": "p",
+        "content": "Given a dataset of prices of some houses in Toulouse, which is figured out in the following figure."
+      },
+      {
+        "type": "p",
+        "content": "We are supposing that the relationship between the house prices and the squares is linear. We aim to build a linear model f(x) = ax+ b that best fits the data. The parameters a and b are estimated so that the following cost function is minimized:"
+      },
+      {
+        "type": "p",
+        "content": "where n denotes the observation number, y_i and f(x_i) denote the true and the predicted value corresponding to the feature x_i, respectively. Once the model is built, it can be applied to predict the price of a new house that did not appear in the given training data."
+      },
+      {
+        "type": "p",
+        "content": "Some supervised learning algorithms are used popularly as Linear regression, Logistic regression, Support vector machine, Random forest, Gradient Boosting, and Artificial neural networks. These algorithms are applied for solving various problems such as image classification, fraud detection, score prediction, …"
+      },
+      {
+        "type": "h2",
+        "content": "2. Unsupervised learning"
+      },
+      {
+        "type": "p",
+        "content": "Unsupervised learning algorithms are applied in cases where the data is not labeled. This type of algorithm aims to identify the data based on their structures, densities, similar segments, and features, …."
+      },
+      {
+        "type": "p",
+        "content": "Example: Given some groups of fruits without annotations. We aim to build a machine learning model that can classify these fruits based on their colors and their shapes. All fruits which have similar color and shapes will be classified into the same group. This type of algorithm is called clustering (or cluster analysis), and it is also a popular technique in Unsupervised learning."
+      },
+      {
+        "type": "p",
+        "content": "There are also some other unsupervised learning algorithms such as Principle component analysis, Anomaly detection, and Autoencoders, …"
+      },
+      {
+        "type": "p",
+        "content": "Unsupervised learning algorithms are used widely for solving some problems as:"
+      },
+      {
+        "type": "h2",
+        "content": "3. Reinforcement learning"
+      },
+      {
+        "type": "p",
+        "content": "Reinforcement learning is a machine learning algorithm that allows the machine to learn through interactions with the environment and using feedback from its own actions and experiences."
+      },
+      {
+        "type": "p",
+        "content": "Some elements of Reinforcement learning:"
+      },
+      {
+        "type": "p",
+        "content": "The following figure describes briefly how the Reinforcement learning algorithm works. An agent takes actions in an environment, which is interpreted into a reward and the state, then fed back into the agent. This procedure is repeated until the cumulative reward of the agent is maximized."
+      },
+      {
+        "type": "p",
+        "content": "Reinforcement learning is different from Supervised learning. While supervised learning is learning from the training set and its decision is made from the initial input data, the decisions of Reinforcement learning are made sequentially, depending on the input of the current state."
+      },
+      {
+        "type": "p",
+        "content": "Reinforcement learning is also different from Unsupervised learning. Unsupervised learning aims to find the similarities or differences between input data, the goal of Reinforcement learning is finding a suitable action model at which the cumulative reward of the agent is maximized."
+      },
+      {
+        "type": "p",
+        "content": "Reinforcement learning is applied widely in many domains such as robotic manipulation, natural language processing, self-driving cars, industrial automation, gaming, and news recommendation, …"
+      },
+      {
+        "type": "h1",
+        "content": "4. Machine learning use cases"
+      },
+      {
+        "type": "p",
+        "content": "Healthcare"
+      },
+      {
+        "type": "p",
+        "content": "Education"
+      },
+      {
+        "type": "p",
+        "content": "Environment"
+      },
+      {
+        "type": "p",
+        "content": "Transport"
+      },
+      {
+        "type": "p",
+        "content": "Besides, the applications of machine learning in many other domains such as banking, production and business activities, politics, etc"
+      },
+      {
+        "type": "p",
+        "content": "In conclusion, this blog provides a brief introduction to machine learning algorithms and highlights their diverse range of applications in different domains. In the upcoming blogs, we will delve into different machine learning and deep learning models."
+      },
+      {
+        "type": "p",
+        "content": "Thanks for your reading!"
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T01:48:39.825887"
+  },
+  {
+    "url": "https://adnanaman.medium.com/machine-learning-fundamentals-08a952e5a8f2",
+    "title": "Machine Learning Fundamentals",
+    "author": "Press",
+    "published_date": null,
+    "reading_time": "15 min read",
+    "tags": [],
+    "content": [
+      {
+        "type": "h1",
+        "content": "Machine Learning Fundamentals"
+      },
+      {
+        "type": "p",
+        "content": "M Adnan A"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "Listen"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "blockquote",
+        "content": "Data Science is like being a detective, but instead of magnifying glasses and trench coats, you’re armed with statistics, code, and way too many Excel sheets. Machine Learning (ML) is the part where you train algorithms to do the thinking for you, kind of like teaching a pet to fetch, but instead of tennis balls, it’s fetching insights and predictions from piles of data."
+      },
+      {
+        "type": "p",
+        "content": "Data Science is like being a detective, but instead of magnifying glasses and trench coats, you’re armed with statistics, code, and way too many Excel sheets. Machine Learning (ML) is the part where you train algorithms to do the thinking for you, kind of like teaching a pet to fetch, but instead of tennis balls, it’s fetching insights and predictions from piles of data."
+      },
+      {
+        "type": "p",
+        "content": "Machine Learning is categorized into three major types:"
+      },
+      {
+        "type": "h1",
+        "content": "Data Preprocessing"
+      },
+      {
+        "type": "p",
+        "content": "Before training any machine learning model, we must preprocess the data. This involves:"
+      },
+      {
+        "type": "h2",
+        "content": "Key Points:"
+      },
+      {
+        "type": "h2",
+        "content": "Real-World Applications:"
+      },
+      {
+        "type": "pre",
+        "content": "import pandas as pdfrom sklearn.preprocessing import StandardScaler, OneHotEncoderfrom sklearn.impute import SimpleImputer# Sample datasetdata = {'Age': [25, None, 30, 45], 'Gender': ['Male', 'Female', 'Male', 'Female'], 'Income': [50000, 55000, None, 70000]}df = pd.DataFrame(data)# Handling missing valuesimputer = SimpleImputer(strategy='mean')df['Age'] = imputer.fit_transform(df[['Age']])# Feature scalingscaler = StandardScaler()df[['Income']] = scaler.fit_transform(df[['Income']])# Encoding categorical variablesencoder = OneHotEncoder(sparse_output=False)df_encoded = pd.DataFrame(encoder.fit_transform(df[['Gender']]), columns=encoder.get_feature_names_out())# Final processed DataFramedf_final = pd.concat([df[['Age', 'Income']], df_encoded], axis=1)print(df_final)"
+      },
+      {
+        "type": "h2",
+        "content": "Summary:"
+      },
+      {
+        "type": "p",
+        "content": "Data preprocessing is essential to ensure that machine learning models work optimally. It ensures that your data is in the right format for training."
+      },
+      {
+        "type": "h1",
+        "content": "Supervised vs. Unsupervised Learning"
+      },
+      {
+        "type": "h2",
+        "content": "Supervised Learning:"
+      },
+      {
+        "type": "h2",
+        "content": "Unsupervised Learning:"
+      },
+      {
+        "type": "h2",
+        "content": "Key Points:"
+      },
+      {
+        "type": "h2",
+        "content": "Real-World Applications:"
+      },
+      {
+        "type": "h2",
+        "content": "Python example Supervised Learning:"
+      },
+      {
+        "type": "pre",
+        "content": "from sklearn.linear_model import LinearRegressionfrom sklearn.model_selection import train_test_split# Sample data for house pricesX = [[1200], [1500], [1700], [2000]]  # Size of the housey = [300000, 350000, 400000, 500000]  # Price# Split into train and test setsX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)# Train a linear regression modelmodel = LinearRegression()model.fit(X_train, y_train)# Predicty_pred = model.predict(X_test)print(f\"Predicted house prices: {y_pred}\")"
+      },
+      {
+        "type": "h2",
+        "content": "Summary:"
+      },
+      {
+        "type": "p",
+        "content": "Supervised learning works with labelled data, while unsupervised learning finds hidden patterns without labels. Both are used extensively in real-world scenarios like e-commerce, stock market prediction, and customer segmentation."
+      },
+      {
+        "type": "h1",
+        "content": "Linear Regression"
+      },
+      {
+        "type": "p",
+        "content": "Linear Regression is the humble workhorse of machine learning — it’s like the “vanilla ice cream” of algorithms: simple, dependable, and goes with everything. It assumes that the relationship between your input features (independent variables) and your output (dependent variable) is nice and linear — like predicting house prices based on square footage. Just imagine it drawing a neat little straight line through your data, nodding and saying, “Yep, that’s about right.”"
+      },
+      {
+        "type": "h1",
+        "content": "Key Points:"
+      },
+      {
+        "type": "h1",
+        "content": "Real-World Applications:"
+      },
+      {
+        "type": "pre",
+        "content": "from sklearn.linear_model import LinearRegressionimport numpy as np# Example: House prices predictionX = np.array([[1500], [1800], [2400], [3000]])  # Size of housey = np.array([250000, 300000, 400000, 500000])  # Price of house# Train linear regression modelmodel = LinearRegression()model.fit(X, y)# Predictionsize_new = np.array([[2000]])  # New house sizepredicted_price = model.predict(size_new)print(f\"Predicted price for 2000 sq.ft house: {predicted_price}\")"
+      },
+      {
+        "type": "h2",
+        "content": "Summary:"
+      },
+      {
+        "type": "p",
+        "content": "Linear regression is the reliable, no-nonsense algorithm you call on when you believe your data behaves in a nice, orderly fashion. Whether you’re predicting stock prices, sales, or house prices, it’s there to give you a clean, simple solution — just don’t ask it to handle anything too messy or non-linear."
+      },
+      {
+        "type": "h1",
+        "content": "Logistic Regression"
+      },
+      {
+        "type": "p",
+        "content": "Logistic Regression is like the more serious sibling of linear regression. While linear regression is off drawing straight lines and predicting prices, logistic regression is busy making decisions. It’s the “yes/no” or “0/1” kind of deal. It’s perfect for those moments in life where you just need a simple answer — like predicting whether or not a customer is going to buy something. Instead of lines, this one uses a sigmoid function to curve things up and turn your data into tidy little probabilities. It’s basically the algorithm that helps your model decide, “Should I buy those shoes or not?”"
+      },
+      {
+        "type": "h1",
+        "content": "Key Points:"
+      },
+      {
+        "type": "h1",
+        "content": "Real-World Applications:"
+      },
+      {
+        "type": "pre",
+        "content": "from sklearn.linear_model import LogisticRegressionfrom sklearn.metrics import confusion_matrix# Example: Predict if a user buys a product based on their age and incomeX = [[25, 50000], [35, 60000], [45, 65000], [20, 40000]]y = [0, 1, 1, 0]  # 0: No Purchase, 1: Purchase# Train logistic regressionmodel = LogisticRegression()model.fit(X, y)# Predictiony_pred = model.predict(X)print(f\"Predictions: {y_pred}\")# Confusion Matrixcm = confusion_matrix(y, y_pred)print(f\"Confusion Matrix: \\n{cm}\")"
+      },
+      {
+        "type": "h2",
+        "content": "Summary:"
+      },
+      {
+        "type": "p",
+        "content": "Logistic regression is a widely used algorithm for classification tasks with categorical outcomes. It is used in domains like healthcare, marketing, and finance."
+      },
+      {
+        "type": "h1",
+        "content": "K-Nearest Neighbors (KNN)"
+      },
+      {
+        "type": "p",
+        "content": "K-Nearest Neighbors (KNN) is like that friendly neighbor who’s always there to help — except it doesn’t make decisions on its own. Instead, it looks around at the closest data points (its “neighbors”) and says, “Let’s see what everyone else is doing.” It’s used for both classification and regression, and its approach is simple: find the k-nearest points, and then decide based on what they’re up to. It’s basically the “go with the crowd” algorithm."
+      },
+      {
+        "type": "h1",
+        "content": "Key Points:"
+      },
+      {
+        "type": "h1",
+        "content": "Real-World Applications:"
+      },
+      {
+        "type": "pre",
+        "content": "from sklearn.neighbors import KNeighborsClassifier# Example: Predict if a person will purchase a product based on age and incomeX = [[25, 50000], [35, 60000], [45, 65000], [20, 40000]]y = [0, 1, 1, 0]  # 0: No Purchase, 1: Purchase# Train KNNknn = KNeighborsClassifier(n_neighbors=3)knn.fit(X, y)# Predictiony_pred = knn.predict(X)print(f\"Predictions: {y_pred}\")"
+      },
+      {
+        "type": "h2",
+        "content": "Summary:"
+      },
+      {
+        "type": "p",
+        "content": "KNN is the laid-back, crowd-following algorithm. It waits until the last minute to make predictions, then asks the closest data points what they’re doing and follows their lead. Whether it’s recommending products based on what similar customers have bought or predicting diseases based on patient similarities, KNN is your friendly neighborhood decision-maker — just remember, it works best when the dataset is small and intimate!"
+      },
+      {
+        "type": "h1",
+        "content": "Decision Trees and Random Forests"
+      },
+      {
+        "type": "p",
+        "content": "Decision Tree is like a flowchart that keeps asking “yes” or “no” questions until it reaches a decision. It splits the data at each node based on feature values (e.g., income, age, etc.), and by the time it gets to the bottom (the leaves), it has made its prediction. But Random Forests? They’re the overachieving cousin. Instead of relying on one tree that might get things wrong, they plant a whole forest of decision trees and average out their results, reducing overfitting and improving accuracy. It’s like asking multiple experts for advice rather than trusting just one."
+      },
+      {
+        "type": "h1",
+        "content": "Key Points:"
+      },
+      {
+        "type": "p",
+        "content": "Decision Trees:"
+      },
+      {
+        "type": "p",
+        "content": "Random Forests:"
+      },
+      {
+        "type": "h1",
+        "content": "Real-World Applications:"
+      },
+      {
+        "type": "pre",
+        "content": "from sklearn.ensemble import RandomForestClassifier# Example: Predict if a customer will purchase based on age and incomeX = [[25, 50000], [35, 60000], [45, 65000], [20, 40000]]y = [0, 1, 1, 0]  # 0: No Purchase, 1: Purchase# Train random forestrf = RandomForestClassifier(n_estimators=10)rf.fit(X, y)# Predictiony_pred = rf.predict(X)print(f\"Predictions: {y_pred}\")"
+      },
+      {
+        "type": "h2",
+        "content": "Summary:"
+      },
+      {
+        "type": "p",
+        "content": "A decision tree is like a series of if-then statements, splitting the data to make a prediction. However, it tends to overfit, especially if you give it too much freedom. Random forests come to the rescue by building multiple decision trees and averaging their predictions, which leads to more stable and accurate results. Whether you’re predicting loan defaults in banking or diagnosing diseases in healthcare, these models can help make better decisions!"
+      },
+      {
+        "type": "h1",
+        "content": "Support Vector Machines (SVM)"
+      },
+      {
+        "type": "p",
+        "content": "Support Vector Machines (SVM) are like the bodyguards of machine learning models — they don’t just separate data into classes, they make sure there’s maximum space (or margin) between the classes. Whether you’re classifying emails as spam or recognizing images, SVM finds the boundary that best separates the data into categories. It’s like drawing a line in the sand — but with a mathematical flair!"
+      },
+      {
+        "type": "h1",
+        "content": "Key Points:"
+      },
+      {
+        "type": "h1",
+        "content": "Real-World Applications:"
+      },
+      {
+        "type": "pre",
+        "content": "from sklearn.svm import SVC# Example: Predict if a customer will purchase based on age and incomeX = [[25, 50000], [35, 60000], [45, 65000], [20, 40000]]y = [0, 1, 1, 0]  # 0: No Purchase, 1: Purchase# Train SVMsvm = SVC(kernel='linear')svm.fit(X, y)# Predictiony_pred = svm.predict(X)print(f\"Predictions: {y_pred}\")"
+      },
+      {
+        "type": "h2",
+        "content": "Summary:"
+      },
+      {
+        "type": "p",
+        "content": "Support Vector Machines are like ultra-precise boundary creators — they draw the best possible line (or hyperplane) to separate your data into classes, and they do it by maximizing the margin between classes. They’re great for high-dimensional data, which is why they’re popular in text and image classification tasks. Whether you’re filtering spam or tagging images, SVMs offer a powerful way to make those decisions!"
+      },
+      {
+        "type": "h1",
+        "content": "K-Means Clustering"
+      },
+      {
+        "type": "p",
+        "content": "K-Means is like a matchmaking service for data points — it divides them into k groups (or clusters) based on how similar they are to one another. Think of it as organizing people at a party based on shared interests (or in this case, minimizing the distance between them and their group’s “centroid”)."
+      },
+      {
+        "type": "h1",
+        "content": "Key Points:"
+      },
+      {
+        "type": "h1",
+        "content": "Real-World Applications:"
+      },
+      {
+        "type": "pre",
+        "content": "from sklearn.cluster import KMeansimport numpy as np# Sample data (Customer spending patterns)X = np.array([[10, 20], [15, 30], [30, 45], [70, 85], [85, 100]])# Define K-Means with 2 clusterskmeans = KMeans(n_clusters=2)kmeans.fit(X)# Predict the cluster for new data pointsclusters = kmeans.predict(X)centroids = kmeans.cluster_centers_print(f\"Cluster assignments: {clusters}\")print(f\"Centroids: {centroids}\")"
+      },
+      {
+        "type": "h2",
+        "content": "Summary:"
+      },
+      {
+        "type": "p",
+        "content": "K-Means Clustering groups data into clusters based on similarity, making it ideal for tasks like customer segmentation and market analysis. It’s like finding the “tribe” each data point belongs to, based on how close they are to their centroid!"
+      },
+      {
+        "type": "h1",
+        "content": "Principal Component Analysis (PCA)"
+      },
+      {
+        "type": "p",
+        "content": "PCA is like a magic wand that shrinks the complexity of your data while keeping the most important bits. It transforms your features into fewer, new features (called principal components) that capture the most variation in the data. It’s perfect for when your data has too many dimensions and needs a little trimming."
+      },
+      {
+        "type": "h1",
+        "content": "Key Points:"
+      },
+      {
+        "type": "h1",
+        "content": "Real-World Applications:"
+      },
+      {
+        "type": "pre",
+        "content": "from sklearn.decomposition import PCAimport numpy as np# Sample data (4 features, 5 data points)X = np.array([[2, 3, 5, 7], [1, 2, 4, 8], [6, 7, 8, 5], [4, 6, 9, 10], [10, 12, 15, 16]])# Apply PCA to reduce to 2 componentspca = PCA(n_components=2)X_pca = pca.fit_transform(X)print(f\"Original Data: \\n{X}\")print(f\"Reduced Data: \\n{X_pca}\")"
+      },
+      {
+        "type": "h2",
+        "content": "Summary:"
+      },
+      {
+        "type": "p",
+        "content": "PCA is a powerful technique for simplifying your data while preserving its most important information. It’s used for dimensionality reduction in machine learning models, finance, and even image compression, making your complex data easier to handle!"
+      },
+      {
+        "type": "blockquote",
+        "content": "These two unsupervised learning techniques, K-Means and PCA, both play key roles in organizing and reducing data complexity, whether it’s grouping data or simplifying it for further analysis!"
+      },
+      {
+        "type": "p",
+        "content": "These two unsupervised learning techniques, K-Means and PCA, both play key roles in organizing and reducing data complexity, whether it’s grouping data or simplifying it for further analysis!"
+      },
+      {
+        "type": "h1",
+        "content": "Recommender Systems"
+      },
+      {
+        "type": "p",
+        "content": "Recommender systems are the invisible matchmakers of the internet, tirelessly working behind the scenes to suggest the next movie, song, or product you might like. They personalize your experience by learning what you enjoy and showing you more of it, either by comparing your preferences to other users (collaborative filtering) or analyzing the items you’ve already shown interest in (content-based filtering)."
+      },
+      {
+        "type": "h1",
+        "content": "Key Points:"
+      },
+      {
+        "type": "h1",
+        "content": "Real-World Applications:"
+      },
+      {
+        "type": "pre",
+        "content": "import numpy as npfrom sklearn.metrics.pairwise import cosine_similarity# User-Item matrix (rows are users, columns are items, values are ratings)user_item_matrix = np.array([    [5, 4, 0, 0],    [3, 0, 3, 0],    [4, 4, 4, 0],    [0, 0, 5, 4]])# Compute similarity between usersuser_similarity = cosine_similarity(user_item_matrix)# Find the most similar users for user 0similar_users = np.argsort(-user_similarity[0])[1:]print(f\"Most similar users to user 0: {similar_users}\")"
+      },
+      {
+        "type": "h2",
+        "content": "Summary:"
+      },
+      {
+        "type": "p",
+        "content": "Recommender systems make your online experience smoother by understanding your preferences and offering personalized suggestions. From shopping on Amazon to binge-watching on Netflix, they’ve become essential tools for increasing engagement and satisfaction."
+      },
+      {
+        "type": "h1",
+        "content": "Natural Language Processing (NLP)"
+      },
+      {
+        "type": "p",
+        "content": "NLP is like teaching computers how to speak human (well, almost). It involves programming algorithms to understand, interpret, and even generate human language in a way that makes sense. NLP bridges the gap between human communication and machine understanding, allowing computers to process text or speech data."
+      },
+      {
+        "type": "h1",
+        "content": "Key Points:"
+      },
+      {
+        "type": "h1",
+        "content": "Real-World Applications:"
+      },
+      {
+        "type": "pre",
+        "content": "from sklearn.feature_extraction.text import CountVectorizer# Sample corpus of documentscorpus = [    \"I love machine learning\",    \"NLP is fascinating\",    \"Machine learning and NLP are related fields\"]# Convert the text into a bag-of-words representationvectorizer = CountVectorizer()X = vectorizer.fit_transform(corpus)# Display the vocabulary and the bag-of-words matrixprint(f\"Vocabulary: {vectorizer.vocabulary_}\")print(f\"Bag-of-Words Matrix:\\n{X.toarray()}\")"
+      },
+      {
+        "type": "h2",
+        "content": "Summary:"
+      },
+      {
+        "type": "p",
+        "content": "NLP allows machines to process, understand, and respond to human language. From chatbots to sentiment analysis, it’s applied in various fields to make human-computer interaction more natural and efficient."
+      },
+      {
+        "type": "p",
+        "content": "Here’s a quick summary of the topics we’ve covered so far:"
+      },
+      {
+        "type": "p",
+        "content": "2. Data Preprocessing:"
+      },
+      {
+        "type": "p",
+        "content": "3. Linear Regression:"
+      },
+      {
+        "type": "p",
+        "content": "4. Logistic Regression:"
+      },
+      {
+        "type": "p",
+        "content": "5. K-Nearest Neighbors (KNN):"
+      },
+      {
+        "type": "p",
+        "content": "6. Decision Trees and Random Forests:"
+      },
+      {
+        "type": "p",
+        "content": "7. Support Vector Machines (SVM):"
+      },
+      {
+        "type": "p",
+        "content": "8. K-Means Clustering:"
+      },
+      {
+        "type": "p",
+        "content": "9. Principal Component Analysis (PCA):"
+      },
+      {
+        "type": "p",
+        "content": "10. Recommender Systems:"
+      },
+      {
+        "type": "p",
+        "content": "11. Natural Language Processing (NLP):"
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T01:48:41.986816"
+  },
+  {
+    "url": "https://roddelaporte.medium.com/machine-learning-algorithms-overview-4cc50151d964",
+    "title": "Machine Learning Algorithms Overview",
+    "author": "Press",
+    "published_date": null,
+    "reading_time": "5 min read",
+    "tags": [
+      "Machine Learning",
+      "Algorithms",
+      "Python Programming"
+    ],
+    "content": [
+      {
+        "type": "h1",
+        "content": "Machine Learning Algorithms Overview"
+      },
+      {
+        "type": "p",
+        "content": "Rodrigo Muñoz Delaporte"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "Listen"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "Index:"
+      },
+      {
+        "type": "h1",
+        "content": "Introduction"
+      },
+      {
+        "type": "p",
+        "content": "Machine learning is a field of study that involves developing algorithms that can learn from data and make predictions or identify patterns in the data. There are three main types of machine learning: supervised learning, unsupervised learning, and reinforcement learning. Each type of learning involves different types of algorithms and techniques."
+      },
+      {
+        "type": "p",
+        "content": "Here’s a brief overview of each type of machine learning and some examples of the algorithms you might use:"
+      },
+      {
+        "type": "h1",
+        "content": "Supervised Learning:"
+      },
+      {
+        "type": "p",
+        "content": "This type of machine learning involves training a model on labeled data (data that has a known output). The goal is to develop a model that can predict the output for new, unlabeled data. Examples of supervised learning algorithms include:"
+      },
+      {
+        "type": "pre",
+        "content": "# Linear regression examplefrom sklearn.linear_model import LinearRegressionfrom sklearn.model_selection import train_test_splitfrom sklearn.metrics import mean_squared_errorimport pandas as pd# Load datadata = pd.read_csv('data.csv')# Split data into training and testing setsX_train, X_test, y_train, y_test = train_test_split(data[['input_variable']],                                                     data[['output_variable']],                                                     test_size=0.2, random_state=42)# Train modelmodel = LinearRegression()model.fit(X_train, y_train)# Make predictions on test datay_pred = model.predict(X_test)# Calculate mean squared errormse = mean_squared_error(y_test, y_pred)print('Mean squared error:', mse)"
+      },
+      {
+        "type": "pre",
+        "content": "# Decision Tree examplefrom sklearn.tree import DecisionTreeClassifierfrom sklearn.datasets import load_irisfrom sklearn.model_selection import train_test_splitfrom sklearn.metrics import accuracy_score# Load datasetiris = load_iris()X_train, X_test, y_train, y_test = train_test_split(iris.data, iris.target, test_size=0.2, random_state=42)# Train modelmodel = DecisionTreeClassifier()model.fit(X_train, y_train)# Make predictions on test datay_pred = model.predict(X_test)# Calculate accuracyaccuracy = accuracy_score(y_test, y_pred)print('Accuracy:', accuracy)"
+      },
+      {
+        "type": "pre",
+        "content": "# Random Forest examplefrom sklearn.ensemble import RandomForestClassifierfrom sklearn.datasets import load_irisfrom sklearn.model_selection import train_test_splitfrom sklearn.metrics import accuracy_score# Load datasetiris = load_iris()X_train, X_test, y_train, y_test = train_test_split(iris.data, iris.target, test_size=0.2, random_state=42)# Train modelmodel = RandomForestClassifier(n_estimators=100)model.fit(X_train, y_train)# Make predictions on test datay_pred = model.predict(X_test)# Calculate accuracyaccuracy = accuracy_score(y_test, y_pred)print('Accuracy:', accuracy)"
+      },
+      {
+        "type": "h1",
+        "content": "Unsupervised Learning:"
+      },
+      {
+        "type": "p",
+        "content": "This type of machine learning involves training a model on unlabeled data and identifying patterns or relationships in the data. Examples of unsupervised learning algorithms include:"
+      },
+      {
+        "type": "pre",
+        "content": "# K-Mean clustering examplefrom sklearn.cluster import KMeansfrom sklearn.datasets import make_blobsimport matplotlib.pyplot as plt# Generate sample dataX, y = make_blobs(n_samples=1000, centers=3, random_state=42)# Train modelmodel = KMeans(n_clusters=3)model.fit(X)# Visualize clustersplt.scatter(X[:, 0], X[:, 1], c=model.labels_)plt.show()"
+      },
+      {
+        "type": "pre",
+        "content": "# Example of Principal Component Analysis (PCA)from sklearn.decomposition import PCAfrom sklearn.datasets import load_iris# Load datasetiris = load_iris()# Apply PCApca = PCA(n_components=2)X_pca = pca.fit_transform(iris.data)# Visualize the transformed dataimport matplotlib.pyplot as pltplt.scatter(X_pca[:, 0], X_pca[:, 1], c=iris.target)plt.xlabel('Principal Component 1')plt.ylabel('Principal Component 2')plt.show()"
+      },
+      {
+        "type": "h1",
+        "content": "Reinforcement Learning:"
+      },
+      {
+        "type": "p",
+        "content": "This type of machine learning involves training a model to make decisions based on rewards or punishments received from the environment. Examples of reinforcement learning algorithms include:"
+      },
+      {
+        "type": "pre",
+        "content": "# Example of Q-Learningimport gymenv = gym.make('FrozenLake-v0')# Define Q-TableQ = np.zeros([env.observation_space.n, env.action_space.n])# Set hyperparametersalpha = 0.8gamma = 0.95epsilon = 0.1# Train agentfor i in range(10000):    state = env.reset()    done = False    while not done:        if np.random.rand() < epsilon:            action = env.action_space.sample()        else:            action = np.argmax(Q[state, :])        next_state, reward, done, info = env.step(action)        Q[state, action] = (1 - alpha) * Q[state, action] + alpha * (reward + gamma * np.max(Q[next_state, :]))        state = next_state# Test agenttotal_reward = 0state = env.reset()done = Falsewhile not done:    action = np.argmax(Q[state, :])    next_state, reward, done, info = env.step(action)    total_reward += reward    state = next_stateprint('Total reward:', total_reward)"
+      },
+      {
+        "type": "pre",
+        "content": "# Example of Deep Reinforcement Learningimport gymimport tensorflow as tffrom tensorflow.keras.models import Sequentialfrom tensorflow.keras.layers import Dense# Create the environmentenv = gym.make('CartPole-v1')# Define the Deep Q-Network (DQN) modelmodel = Sequential()model.add(Dense(24, input_dim=env.observation_space.shape[0], activation='relu'))model.add(Dense(24, activation='relu'))model.add(Dense(env.action_space.n, activation='linear'))model.compile(loss='mse', optimizer=tf.keras.optimizers.Adam(learning_rate=0.001))# Train the DQN modelfor episode in range(100):    state = env.reset()    done = False    while not done:        action = model.predict(state.reshape(1, -1))        action = np.argmax(action)        next_state, reward, done, _ = env.step(action)        target = reward + 0.99 * np.max(model.predict(next_state.reshape(1, -1)))        target_f = model.predict(state.reshape(1, -1))        target_f[0][action] = target        model.fit(state.reshape(1, -1), target_f, epochs=1, verbose=0)        state = next_state# Test the trained modeltotal_reward = 0state = env.reset()done = Falsewhile not done:    action = np.argmax(model.predict(state.reshape(1, -1)))    state, reward, done, _ = env.step(action)    total_reward += rewardprint('Total reward:', total_reward)"
+      },
+      {
+        "type": "h1",
+        "content": "Conclusion:"
+      },
+      {
+        "type": "p",
+        "content": "These are just a few examples of the many machine learning algorithms available in Python. To get started, I would recommend exploring the scikit-learn library, which provides a wide range of algorithms and tools for machine learning. You can also find many online courses and tutorials that can help you learn more about machine learning in Python."
+      },
+      {
+        "type": "p",
+        "content": "If you want to find the code from this article, and more, you can always fork my Repo at:"
+      },
+      {
+        "type": "h2",
+        "content": "GitHub - romdelaporte/python-interview"
+      },
+      {
+        "type": "h3",
+        "content": "Contribute to romdelaporte/python-interview development by creating an account on GitHub."
+      },
+      {
+        "type": "p",
+        "content": "github.com"
+      },
+      {
+        "type": "p",
+        "content": "Happy coding ;)"
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T01:48:44.096122"
+  },
+  {
+    "url": "https://hbijarani.medium.com/machine-learning-a-short-introduction-82bdf5e03cb1",
+    "title": "Unknown Title",
+    "author": "Press",
+    "published_date": null,
+    "reading_time": "3 min read",
+    "tags": [
+      "Machine Learning",
+      "Computer",
+      "AI",
+      "ML",
+      "Introduction To Ml"
+    ],
+    "content": [
+      {
+        "type": "p",
+        "content": "Hamadullah Bijarani"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "Listen"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "Machine Learning: a short introduction"
+      },
+      {
+        "type": "p",
+        "content": "The computer is the most revolutionary invention of the 20th century. The modern world would become unimaginable in its current form if there was not a device such as a computer. But a computer can not as of yet think or process without any human help. Such a computer is possible and would be called Artificial General Intelligence or AGI. Computer got such important in our world not because they can do Mathematical operations quickly, but due to the fact that we can automate many things which previously needed human intervention. A computer can now not only predict stock market prices and process searches and news feed but can also detect human faces which is not a big thing for humans but it is pretty tricky for a computer to do. It is also helping humans automate the work in many other different and diverse fields mainly due to AI."
+      },
+      {
+        "type": "p",
+        "content": "Artificial Intelligence is mainly done by using a method called machine learning. Machine learning algorithms build a model based on sample data, known as training data, in order to make predictions or decisions without being explicitly programmed to do so. A Machine Learning (from now on referred to as ML) model takes input in the form of data, on which it is optimized on the requirements it's human operator wants. But before deploying an ML model commercially, it is trained on relevant data. That data is purified before feeding to the model. After training the model, it is tested if it is giving correct predictions of human inputs. If it works as expected, then it will be deployed commercially. Otherwise, it is retrained with suitable parameter adjustments."
+      },
+      {
+        "type": "p",
+        "content": "Machine learning approaches are traditionally divided into three categories, which correspond to learning paradigms, depending on the nature of the input available to the learning model:"
+      },
+      {
+        "type": "p",
+        "content": "Typically, machine learning models require a high quantity of reliable data in order for the models to perform accurate predictions. When training a machine learning model, machine learning engineers need to target and collect a large and representative sample of data. Data from the training set can be as varied as a corpus of text, a collection of images, sensor data, and data collected from individual users of a service. The more data the model parses, the better it can become at performing a task or making a decision."
+      },
+      {
+        "type": "p",
+        "content": "To summarize:"
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T01:48:46.216191"
+  },
+  {
+    "url": "https://medium.datadriveninvestor.com/beginning-with-machine-learning-56b076aace1e",
+    "title": "Beginning with Machine Learning",
+    "author": "17 Following",
+    "published_date": null,
+    "reading_time": "4 min read",
+    "tags": [
+      "Machine Learning",
+      "Beginners Guide",
+      "Artificial Intelligence",
+      "Deep Learning",
+      "Machine Learning Ai"
+    ],
+    "content": [
+      {
+        "type": "h1",
+        "content": "Beginning with Machine Learning"
+      },
+      {
+        "type": "p",
+        "content": "Apoorva Dave"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "DataDrivenInvestor"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "3"
+      },
+      {
+        "type": "p",
+        "content": "Listen"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "This question pops into almost everyone’s head who so ever wants to play with this new technology. I myself wondered as to from where should I begin, what should I cover and how can I learn quickly!"
+      },
+      {
+        "type": "p",
+        "content": "I am not here to give you a list of articles from where you can read or explore. But I will help you through it. To have a basic understanding of almost every important concept so that you can dig into that as well. Let’s get started!"
+      },
+      {
+        "type": "p",
+        "content": "The above list of topics will be covered in almost 5 articles to help you start with ML."
+      },
+      {
+        "type": "p",
+        "content": "What is Machine Learning?"
+      },
+      {
+        "type": "p",
+        "content": "In ML you learn from data, as simple as that. We don’t have to write any custom code specific to the problem. Instead, we feed data to algorithms and it builds its own logic based on the data."
+      },
+      {
+        "type": "p",
+        "content": "Consider you want to identify which fruit is an apple and which is not. You cannot go on writing specific dimensions, color or size of your apple. As each apple might look similar but they don’t have exact same dimensions. This is one of the most basic use cases of ML. Here we will provide the algorithm with all types of apples that is a set of features of different types of apples. Our algorithm learns these features and classifies a fruit as an apple or not an apple!"
+      },
+      {
+        "type": "p",
+        "content": "Types of Machine Learning"
+      },
+      {
+        "type": "p",
+        "content": "Before jumping on to classification and regression algorithms, I will list out a set of terms which will help us have a better understanding."
+      },
+      {
+        "type": "p",
+        "content": "There are numerous articles on ML which are better. But here it is an effort to consolidate all the important stuff as I also learn and develop my ML skills. Personally, I prefer using Python and Scikit-Learn. There are other languages and libraries like R, Keras, Tensorflow which we might explore as we go further."
+      },
+      {
+        "type": "p",
+        "content": "I will keep on writing articles for the above topics and share it with you."
+      },
+      {
+        "type": "p",
+        "content": "This is my first medium article. Improvements and feedbacks on the articles are always welcome. :)"
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T01:48:49.872288"
+  },
+  {
+    "url": "https://rberry19.medium.com/machine-learning-essentials-1-of-3-31460f08f63a",
+    "title": "Machine Learning Essentials (1 of 3)",
+    "author": "info@artificiallydigital.com",
+    "published_date": null,
+    "reading_time": "3 min read",
+    "tags": [],
+    "content": [
+      {
+        "type": "h1",
+        "content": "Machine Learning Essentials (1 of 3)"
+      },
+      {
+        "type": "p",
+        "content": "Ronald Berry"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "Listen"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "“Machine learning is the last invention that humanity will ever need to make.” — Nick Bostrom"
+      },
+      {
+        "type": "h1",
+        "content": "Introduction"
+      },
+      {
+        "type": "p",
+        "content": "In our rapidly evolving world, the prevalence of “Machine Learning” has soared to unprecedented heights. Machine Learning (ML) is a subfield of Artificial Intelligence (AI) that focuses on the development of algorithms and models that enable computer systems to learn and make predictions or decisions from data."
+      },
+      {
+        "type": "p",
+        "content": "In the broader context of AI, ML is the subset that deals with the idea of machines acquiring knowledge, improving their performance, and adapting to new situations based on past experiences. From personalized recommendations on streaming platforms to self-driving cars, Machine Learning (ML) plays a pivotal role in our lives, often behind the scenes. According to a recent study by McKinsey Global Institute, machine learning could boost global GDP by up to $13 trillion by 2030."
+      },
+      {
+        "type": "p",
+        "content": "From powering personalized recommendations on streaming platforms to propelling self-driving cars, Machine Learning (ML) quietly shapes our daily experiences. But for many, the inner workings of ML remain a mystery."
+      },
+      {
+        "type": "p",
+        "content": "With homage to Underdog, “have no fear, Artificially Digital is here.” In this beginner-friendly 3-part series, we’ll embark on a captivating journey to explore the enchanting realm of Machine Learning, decode its inner workings, and unveil its profound impact on the future."
+      },
+      {
+        "type": "p",
+        "content": "Let’s begin."
+      },
+      {
+        "type": "h1",
+        "content": "Understanding Machine Learning"
+      },
+      {
+        "type": "h2",
+        "content": "Types of Machine Learning"
+      },
+      {
+        "type": "p",
+        "content": "Imagine you’re teaching a computer to recognize handwriting. How does it learn to distinguish between your neat cursive and messy print? That’s where Machine Learning comes in, and it comes in three flavors: Supervised, Unsupervised, and Reinforcement Learning. Each type has its unique way of training algorithms to make sense of data."
+      },
+      {
+        "type": "p",
+        "content": "Today, AI continues to evolve rapidly (see Moore’s Law for reference). AI holds immense potential to transform industries, shape economies, and address complex global challenges."
+      },
+      {
+        "type": "h2",
+        "content": "Machine Learning Key Terminologies"
+      },
+      {
+        "type": "p",
+        "content": "Before diving deeper into the world of Machine Learning, it’s essential to understand the lingo. Think of it as learning the alphabet before reading a book. Terms like data, algorithm, training, model, and prediction are the building blocks of our Machine Learning vocabulary."
+      },
+      {
+        "type": "h1",
+        "content": "Conclusion"
+      },
+      {
+        "type": "p",
+        "content": "In conclusion, Machine Learning is a powerful tool that is revolutionizing how we analyze and understand data. As we navigate this exciting field, it’s essential to keep learning, stay ethical, and embrace the limitless possibilities that Machine Learning offers for a brighter, smarter future. Stay tuned for more articles to deepen your understanding of this incredible technology!"
+      },
+      {
+        "type": "p",
+        "content": "In part 2 of our series, Machine Learning Essentials, we’ll discuss the Machine Learning process."
+      },
+      {
+        "type": "h1",
+        "content": "About the Authors"
+      },
+      {
+        "type": "p",
+        "content": "Ronald (Ron) Berry is a Co-Founder of Artificially Digital. Ron has extensive global experience and success in the B2B and B2C digital transformation spaces in a variety of global industries ranging in size from startups to the Fortune 100."
+      },
+      {
+        "type": "p",
+        "content": "Dr. Shams Syed is a Co-Founder of Artificially Digital. Dr. Syed has extensive experience in software development, particularly in the artificial intelligence (AI) space for several innovative startups. Dr. Syed is renowned for his research, contributions, and publications in essential programming techniques, machine learning, computer vision, algorithm optimizations, and natural language processing. Dr. Syed holds a PhD in computer science from University of South Carolina."
+      },
+      {
+        "type": "p",
+        "content": "Contact info@artificiallydigital.com for more information.formation."
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T01:48:51.981035"
+  },
+  {
+    "url": "https://medium.datadriveninvestor.com/beginning-with-machine-learning-56b076aace1e",
+    "title": "Beginning with Machine Learning",
+    "author": "17 Following",
+    "published_date": null,
+    "reading_time": "4 min read",
+    "tags": [
+      "Machine Learning",
+      "Beginners Guide",
+      "Artificial Intelligence",
+      "Deep Learning",
+      "Machine Learning Ai"
+    ],
+    "content": [
+      {
+        "type": "h1",
+        "content": "Beginning with Machine Learning"
+      },
+      {
+        "type": "p",
+        "content": "Apoorva Dave"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "DataDrivenInvestor"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "3"
+      },
+      {
+        "type": "p",
+        "content": "Listen"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "This question pops into almost everyone’s head who so ever wants to play with this new technology. I myself wondered as to from where should I begin, what should I cover and how can I learn quickly!"
+      },
+      {
+        "type": "p",
+        "content": "I am not here to give you a list of articles from where you can read or explore. But I will help you through it. To have a basic understanding of almost every important concept so that you can dig into that as well. Let’s get started!"
+      },
+      {
+        "type": "p",
+        "content": "The above list of topics will be covered in almost 5 articles to help you start with ML."
+      },
+      {
+        "type": "p",
+        "content": "What is Machine Learning?"
+      },
+      {
+        "type": "p",
+        "content": "In ML you learn from data, as simple as that. We don’t have to write any custom code specific to the problem. Instead, we feed data to algorithms and it builds its own logic based on the data."
+      },
+      {
+        "type": "p",
+        "content": "Consider you want to identify which fruit is an apple and which is not. You cannot go on writing specific dimensions, color or size of your apple. As each apple might look similar but they don’t have exact same dimensions. This is one of the most basic use cases of ML. Here we will provide the algorithm with all types of apples that is a set of features of different types of apples. Our algorithm learns these features and classifies a fruit as an apple or not an apple!"
+      },
+      {
+        "type": "p",
+        "content": "Types of Machine Learning"
+      },
+      {
+        "type": "p",
+        "content": "Before jumping on to classification and regression algorithms, I will list out a set of terms which will help us have a better understanding."
+      },
+      {
+        "type": "p",
+        "content": "There are numerous articles on ML which are better. But here it is an effort to consolidate all the important stuff as I also learn and develop my ML skills. Personally, I prefer using Python and Scikit-Learn. There are other languages and libraries like R, Keras, Tensorflow which we might explore as we go further."
+      },
+      {
+        "type": "p",
+        "content": "I will keep on writing articles for the above topics and share it with you."
+      },
+      {
+        "type": "p",
+        "content": "This is my first medium article. Improvements and feedbacks on the articles are always welcome. :)"
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T01:48:55.286870"
+  },
+  {
+    "url": "https://amankardam.medium.com/12-must-read-data-science-case-studies-dfd54a2133e9",
+    "title": "12 Must-Read Data Science Case Studies",
+    "author": "94 Following",
+    "published_date": null,
+    "reading_time": "6 min read",
+    "tags": [],
+    "content": [
+      {
+        "type": "p",
+        "content": "Member-only story"
+      },
+      {
+        "type": "h2",
+        "content": "DATA SCIENCE"
+      },
+      {
+        "type": "h1",
+        "content": "12 Must-Read Data Science Case Studies"
+      },
+      {
+        "type": "h2",
+        "content": "Master foundational machine learning algorithms and build your ML expertise with these basics."
+      },
+      {
+        "type": "p",
+        "content": "Aman Kardam"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "Level Up Coding"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "When I first got into data science, I quickly realized that understanding theory alone wasn’t enough. The real insights — the ones that deepen your understanding and help you develop practical skills — often come from studying real-world case studies. Case studies reveal how data science solves business problems, the challenges data scientists face, and the creative ways they handle data to get results."
+      },
+      {
+        "type": "p",
+        "content": "I’ve compiled a list of 12 fascinating data science case studies across various industries. These cases cover everything from retail to healthcare, and each one has something unique to teach. Let’s dive in!"
+      },
+      {
+        "type": "h1",
+        "content": "1. Target: Predicting Pregnancy"
+      },
+      {
+        "type": "p",
+        "content": "Imagine being able to predict a customer’s life events before they happen. That’s exactly what Target did when they used data science to predict pregnancies based on shopping behavior."
+      },
+      {
+        "type": "h2",
+        "content": "Key Takeaways:"
+      },
+      {
+        "type": "p",
+        "content": "What you can learn: Behavioral data can reveal surprising insights, but ethics and privacy are critical in predictive analytics."
+      },
+      {
+        "type": "h1",
+        "content": "2. Netflix: Recommendation System"
+      },
+      {
+        "type": "p",
+        "content": "Netflix’s recommendation system is a classic case study in data science. By analyzing user behavior and preferences, Netflix aims to keep users engaged for as long as possible."
+      },
+      {
+        "type": "h2",
+        "content": "Key Takeaways:"
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T01:49:00.682772"
+  },
+  {
+    "url": "https://python.plainenglish.io/how-i-built-my-first-machine-learning-model-from-scratch-11fa857a5d42",
+    "title": "How I Built My First Machine Learning Model from Scratch",
+    "author": "94 Following",
+    "published_date": null,
+    "reading_time": "5 min read",
+    "tags": [],
+    "content": [
+      {
+        "type": "p",
+        "content": "Member-only story"
+      },
+      {
+        "type": "h2",
+        "content": "CODE SMARTER, NOT HARDER"
+      },
+      {
+        "type": "h1",
+        "content": "How I Built My First Machine Learning Model from Scratch"
+      },
+      {
+        "type": "h2",
+        "content": "A step-by-step journey from data to predictions"
+      },
+      {
+        "type": "p",
+        "content": "Aman Kardam"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "Python in Plain English"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "Building my first machine learning model felt like a milestone in my coding journey. At first, the whole idea of “machine learning” seemed intimidating — math, algorithms, and complex jargon everywhere. But once I broke it down into smaller steps, it became manageable and surprisingly fun!"
+      },
+      {
+        "type": "p",
+        "content": "Today, I’m sharing my experience of how I built my first machine learning model from scratch. If you’re new to machine learning and wondering where to start, this guide will walk you through the entire process — from understanding the problem to building, training, and testing a model."
+      },
+      {
+        "type": "h1",
+        "content": "Step 1: Understanding the Problem"
+      },
+      {
+        "type": "p",
+        "content": "I wanted to start with something simple and relatable, so I chose a predictive model: predicting house prices based on features like size, number of bedrooms, and location."
+      },
+      {
+        "type": "p",
+        "content": "Why this problem?"
+      },
+      {
+        "type": "p",
+        "content": "I decided to use Python because of its beginner-friendly syntax and the wealth of machine learning libraries like scikit-learn."
+      },
+      {
+        "type": "h1",
+        "content": "Step 2: Gathering and Exploring the Data"
+      },
+      {
+        "type": "h2",
+        "content": "Finding a Dataset"
+      },
+      {
+        "type": "p",
+        "content": "I found a simple housing dataset online (you can grab one from Kaggle or the UCI Machine Learning Repository). My dataset included:"
+      },
+      {
+        "type": "h2",
+        "content": "Exploring the Data"
+      },
+      {
+        "type": "p",
+        "content": "I used pandas to load and explore the dataset."
+      },
+      {
+        "type": "pre",
+        "content": "import pandas as pd# Load the datasetdata = pd.read_csv(\"house_prices.csv\")# Check the first few rowsprint(data.head())# Get a summary of the dataset…"
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T01:49:03.925745"
+  },
+  {
+    "url": "https://ai.plainenglish.io/8-machine-learning-algorithms-that-changed-the-game-for-me-2dadb3832af3",
+    "title": "8 Machine Learning Algorithms That Changed the Game for Me",
+    "author": "94 Following",
+    "published_date": null,
+    "reading_time": "6 min read",
+    "tags": [],
+    "content": [
+      {
+        "type": "p",
+        "content": "Member-only story"
+      },
+      {
+        "type": "h2",
+        "content": "CODE SMARTER, NOT HARDER"
+      },
+      {
+        "type": "h1",
+        "content": "8 Machine Learning Algorithms That Changed the Game for Me"
+      },
+      {
+        "type": "h2",
+        "content": "The essential techniques every beginner should master"
+      },
+      {
+        "type": "p",
+        "content": "Aman Kardam"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "Artificial Intelligence in Plain English"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "When I first started learning machine learning, it felt like stepping into a jungle. Everywhere I looked, there were fancy terms like “supervised learning,” “decision trees,” and “gradient descent.” Honestly, I didn’t know where to start. But as I dove deeper and started experimenting, I realized that mastering just a handful of powerful algorithms could unlock so much potential."
+      },
+      {
+        "type": "p",
+        "content": "These algorithms changed the game for me — they helped me land projects, understand the “why” behind predictions, and even solve real-world problems. Today, I’m sharing 8 machine learning algorithms that made the biggest impact on my journey. Whether you’re just starting or brushing up, these are the must-knows."
+      },
+      {
+        "type": "h1",
+        "content": "1. Linear Regression"
+      },
+      {
+        "type": "p",
+        "content": "When I first got into machine learning, linear regression was the algorithm that made everything click. It’s simple, intuitive, and the foundation for so much more. Linear regression predicts a continuous value based on the relationship between variables."
+      },
+      {
+        "type": "h2",
+        "content": "Use Case: Predicting House Prices"
+      },
+      {
+        "type": "p",
+        "content": "Imagine you want to predict house prices based on square footage. Linear regression fits a straight line that best represents the relationship between square footage (input) and price (output)."
+      },
+      {
+        "type": "h1",
+        "content": "Code Example:"
+      },
+      {
+        "type": "pre",
+        "content": "from sklearn.linear_model import LinearRegressionimport numpy as np# Data: square footage vs. priceX = np.array([[1000], [1500], [2000], [2500]])y = np.array([300000, 450000, 500000, 600000])# Create and train the modelmodel = LinearRegression()model.fit(X, y)# Predict price for a 1800 sqft housepredicted_price = model.predict([[1800]])print(f\"Predicted price: ${predicted_price[0]:,.2f}\")"
+      },
+      {
+        "type": "h2",
+        "content": "Why It Changed the Game:"
+      },
+      {
+        "type": "p",
+        "content": "It helped me understand how models learn relationships from data. Plus, it’s incredibly versatile and interpretable."
+      },
+      {
+        "type": "h1",
+        "content": "2. Logistic Regression"
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T01:49:07.124784"
+  },
+  {
+    "url": "https://levelup.gitconnected.com/master-loss-functions-in-deep-learning-in-just-7-minutes-b4e5d24fdf51",
+    "title": "Master Loss Functions in Deep Learning in Just 7 Minutes",
+    "author": "94 Following",
+    "published_date": null,
+    "reading_time": "6 min read",
+    "tags": [],
+    "content": [
+      {
+        "type": "p",
+        "content": "Member-only story"
+      },
+      {
+        "type": "h2",
+        "content": "DEEP LEARNING TIPS & TRICKS"
+      },
+      {
+        "type": "h1",
+        "content": "Master Loss Functions in Deep Learning in Just 7 Minutes"
+      },
+      {
+        "type": "h2",
+        "content": "Boost Your Model’s Accuracy with Easy-to-Understand Insights"
+      },
+      {
+        "type": "p",
+        "content": "Aman Kardam"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "Level Up Coding"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "When I first started working with deep learning, loss functions were a mystery to me. I’d see terms like “mean squared error” or “cross-entropy loss” and feel completely lost (pun intended). But as I gained experience, I realized that understanding loss functions is critical. They are the compass that guides your model’s training, telling it how well it’s doing and how to improve. Choosing the right loss function can mean the difference between a model that excels and one that fails miserably."
+      },
+      {
+        "type": "p",
+        "content": "In this blog, I’ll break down everything you need to know about loss functions in deep learning. We’ll explore what they are, how they work, and when to use different types. By the end, you’ll not only understand loss functions but also feel confident picking the right one for your projects."
+      },
+      {
+        "type": "h1",
+        "content": "What Is a Loss Function?"
+      },
+      {
+        "type": "p",
+        "content": "A loss function is a mathematical function that measures how far off your model’s predictions are from the actual target values. It’s essentially the feedback mechanism that helps your model improve during training."
+      },
+      {
+        "type": "p",
+        "content": "Think of it like this: If your model is an archer, the loss function tells it how far each arrow lands from the bullseye. The smaller the loss, the closer the arrow is to the target, and the better your model is performing."
+      },
+      {
+        "type": "p",
+        "content": "In deep learning, the optimizer uses the loss function to adjust the model’s weights through backpropagation and gradient descent. This iterative process minimizes the loss and improves the model’s performance."
+      },
+      {
+        "type": "h1",
+        "content": "Why Are Loss Functions Important?"
+      },
+      {
+        "type": "p",
+        "content": "Here’s a quick story to illustrate the importance of choosing the right loss function:I once built a classification model to predict if an email was spam or not. I naively used mean squared error (MSE) as the loss function because it sounded familiar. The model struggled to classify emails correctly, and I couldn’t figure out why. Then I learned that cross-entropy loss is the go-to for classification tasks because it works better with probabilities. Switching to the right…"
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T01:49:11.460624"
+  },
+  {
+    "url": "https://levelup.gitconnected.com/how-to-make-stunning-data-visualizations-with-pythons-matplotlib-8d97deff7a58",
+    "title": "How to Make Stunning Data Visualizations with Python’s Matplotlib",
+    "author": "94 Following",
+    "published_date": null,
+    "reading_time": "6 min read",
+    "tags": [],
+    "content": [
+      {
+        "type": "p",
+        "content": "Member-only story"
+      },
+      {
+        "type": "h1",
+        "content": "How to Make Stunning Data Visualizations with Python’s Matplotlib"
+      },
+      {
+        "type": "h2",
+        "content": "Impress your audience with beautiful, customized plots!"
+      },
+      {
+        "type": "p",
+        "content": "Aman Kardam"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "Level Up Coding"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "1"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "When I first started working with data, I was blown away by the power of visuals. Numbers in tables can only go so far in telling a story, but a simple graph? That’s a game-changer. The problem was, I had no idea how to make great visualizations — until I discovered Matplotlib, Python’s incredibly versatile plotting library."
+      },
+      {
+        "type": "p",
+        "content": "At first, it felt overwhelming with all its options and customizations. But once I got the hang of it, I realized how simple (and fun) it could be to create stunning visualizations that bring data to life."
+      },
+      {
+        "type": "p",
+        "content": "In this guide, I’ll walk you through everything you need to know about Matplotlib, from setting it up to creating beautiful plots. If you’ve ever felt lost with data visualization, don’t worry — I’ve got you covered!"
+      },
+      {
+        "type": "h1",
+        "content": "What is Matplotlib?"
+      },
+      {
+        "type": "p",
+        "content": "Matplotlib is Python’s go-to library for creating charts and graphs. It’s incredibly flexible, meaning you can make everything from simple line plots to complex 3D visualizations. It’s often paired with other libraries like NumPy or Pandas to handle data, but it can stand on its own."
+      },
+      {
+        "type": "p",
+        "content": "Why I love Matplotlib:"
+      },
+      {
+        "type": "h1",
+        "content": "Step 1: Setting Up Matplotlib"
+      },
+      {
+        "type": "p",
+        "content": "If you don’t already have Matplotlib installed, it’s easy to set up:"
+      },
+      {
+        "type": "pre",
+        "content": "pip install matplotlib"
+      },
+      {
+        "type": "p",
+        "content": "Once installed, you can import it in your Python script or Jupyter notebook:"
+      },
+      {
+        "type": "pre",
+        "content": "import matplotlib.pyplot as plt"
+      },
+      {
+        "type": "h1",
+        "content": "Step 2: Creating Your First Plot"
+      },
+      {
+        "type": "p",
+        "content": "Let’s start with a simple line plot."
+      },
+      {
+        "type": "h2",
+        "content": "Code Example: Basic Line Plot"
+      },
+      {
+        "type": "pre",
+        "content": "import matplotlib.pyplot as plt# Datax = [1, 2, 3, 4, 5]y = [2, 4, 6, 8, 10]# Create the plotplt.plot(x, y)# Add…"
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T01:49:15.929331"
+  },
+  {
+    "url": "https://levelup.gitconnected.com/decision-trees-explained-like-a-flowchart-for-machines-97d9ce3639d7",
+    "title": "Decision Trees Explained: Like a Flowchart for Machines",
+    "author": "94 Following",
+    "published_date": null,
+    "reading_time": "5 min read",
+    "tags": [],
+    "content": [
+      {
+        "type": "p",
+        "content": "Member-only story"
+      },
+      {
+        "type": "h2",
+        "content": "ML 101"
+      },
+      {
+        "type": "h1",
+        "content": "Decision Trees Explained: Like a Flowchart for Machines"
+      },
+      {
+        "type": "h2",
+        "content": "Imagine choosing ice cream flavors — decision trees help computers decide too!"
+      },
+      {
+        "type": "p",
+        "content": "Aman Kardam"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "Level Up Coding"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "If you’ve ever played 20 Questions, you’ve already encountered the basic idea of a decision tree: a series of yes-or-no questions that lead you to an answer. When I first started learning machine learning, decision trees felt like a revelation. They’re so intuitive — like flowcharts for machines!"
+      },
+      {
+        "type": "p",
+        "content": "But as simple as they seem, decision trees are incredibly powerful. From predicting whether someone will buy a product to diagnosing diseases, decision trees are at the core of many real-world applications. If you’ve ever wondered how they work, let me walk you through them in a way that feels as natural as following a flowchart."
+      },
+      {
+        "type": "p",
+        "content": "By the end of this guide, you’ll not only understand decision trees but also know how to build one in Python. Let’s get started!"
+      },
+      {
+        "type": "h1",
+        "content": "What is a Decision Tree?"
+      },
+      {
+        "type": "p",
+        "content": "A decision tree is a type of algorithm used for both classification and regression tasks in machine learning. It mimics the way humans make decisions, breaking down complex problems into smaller, more manageable chunks."
+      },
+      {
+        "type": "p",
+        "content": "Think of a decision tree as a flowchart where:"
+      },
+      {
+        "type": "p",
+        "content": "Here’s a simple example:"
+      },
+      {
+        "type": "p",
+        "content": "It’s straightforward, right? Now imagine applying this logic to bigger datasets with hundreds of variables. That’s where decision trees shine!"
+      },
+      {
+        "type": "h1",
+        "content": "How Does a Decision Tree Work?"
+      },
+      {
+        "type": "p",
+        "content": "A decision tree works by splitting the data into smaller groups based on certain conditions, step by step. At each step, it asks a question that splits the data in a way that minimizes uncertainty."
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T01:49:20.142101"
+  },
+  {
+    "url": "https://python.plainenglish.io/7-python-libraries-that-transformed-my-workflow-45c83326068c",
+    "title": "7 Python Libraries That Transformed My Workflow",
+    "author": "94 Following",
+    "published_date": null,
+    "reading_time": "5 min read",
+    "tags": [],
+    "content": [
+      {
+        "type": "p",
+        "content": "Member-only story"
+      },
+      {
+        "type": "h2",
+        "content": "CODE SMARTER, NOT HARDER"
+      },
+      {
+        "type": "h1",
+        "content": "7 Python Libraries That Transformed My Workflow"
+      },
+      {
+        "type": "h2",
+        "content": "Why these tools are a game-changer for developers"
+      },
+      {
+        "type": "p",
+        "content": "Aman Kardam"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "Python in Plain English"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "When I first started using Python, I stuck to the basics: loops, functions, and maybe a little file handling. But as my projects became more complex, I realized I needed tools to save time, boost efficiency, and tackle challenging tasks. That’s when I discovered the power of Python libraries."
+      },
+      {
+        "type": "p",
+        "content": "Over the years, I’ve tried countless libraries, but there are seven that completely changed the way I work. These libraries didn’t just make my code cleaner — they transformed how I approach projects, automate tasks, and solve problems. Whether you’re just starting out or looking to level up your Python skills, these libraries will help you work smarter, not harder."
+      },
+      {
+        "type": "h1",
+        "content": "1. Pandas: My Go-To for Data Manipulation"
+      },
+      {
+        "type": "p",
+        "content": "When I started working with data, manually handling CSV files and raw data was a nightmare. Then I found Pandas, and it felt like magic. Pandas lets you load, clean, and manipulate data with just a few lines of code."
+      },
+      {
+        "type": "h2",
+        "content": "Why I Love It:"
+      },
+      {
+        "type": "h2",
+        "content": "Example: Loading and Analyzing a CSV"
+      },
+      {
+        "type": "pre",
+        "content": "import pandas as pd# Load datadata = pd.read_csv(\"sales_data.csv\")# Preview the first 5 rowsprint(data.head())# Filter rows where sales are above 1000high_sales = data[data['sales'] > 1000]print(high_sales)"
+      },
+      {
+        "type": "p",
+        "content": "Pandas has saved me hours of manual work, and I can’t imagine working with data without it."
+      },
+      {
+        "type": "h1",
+        "content": "2. NumPy: The Backbone of Numerical Computing"
+      },
+      {
+        "type": "p",
+        "content": "If Pandas is great for tabular data, NumPy is perfect for working with numbers. Whether I’m performing mathematical calculations, handling arrays, or working with multi-dimensional data, NumPy has been a lifesaver."
+      },
+      {
+        "type": "h2",
+        "content": "Why I Love It:"
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T01:49:23.324702"
+  },
+  {
+    "url": "https://amankardam.medium.com/10-common-mistakes-to-avoid-when-learning-machine-learning-3e5e99902f8a",
+    "title": "10 Common Mistakes to Avoid When Learning Machine Learning",
+    "author": "Press",
+    "published_date": null,
+    "reading_time": "11 min read",
+    "tags": [],
+    "content": [
+      {
+        "type": "p",
+        "content": "Member-only story"
+      },
+      {
+        "type": "h1",
+        "content": "10 Common Mistakes to Avoid When Learning Machine Learning"
+      },
+      {
+        "type": "h2",
+        "content": "Top 10 pitfalls in machine learning and learn how to sidestep them. Perfect for beginners and intermediate learners looking to level up their ML game!"
+      },
+      {
+        "type": "p",
+        "content": "Aman Kardam"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "You’re sitting at your computer, eyes bloodshot, hair disheveled, staring at a machine learning model that’s about as accurate as a blindfolded archer. Sound familiar? Don’t worry, my friend. We’ve all been there!"
+      },
+      {
+        "type": "p",
+        "content": "Did you know that according to a recent survey, a staggering 85% of machine learning projects fail to deliver? But fear not! Most of these failures stem from common, avoidable mistakes. That’s why I’m here to be your ML sherpa, guiding you through the treacherous terrain of pitfalls that can turn your machine learning dreams into a digital nightmare."
+      },
+      {
+        "type": "p",
+        "content": "In this post, we’re going to dive into the top 10 facepalm-worthy mistakes that almost every ML newbie (and even some veterans) make. We’ll break them down, laugh about them, and most importantly, learn how to avoid them. So grab your favorite caffeinated beverage, put on your learning hat, and let’s turn those “Oh no!” moments into “Aha!” breakthroughs!"
+      },
+      {
+        "type": "h1",
+        "content": "Mistake #1: Diving into Deep Learning Without Understanding the Basics"
+      },
+      {
+        "type": "p",
+        "content": "Imagine trying to run a marathon without ever learning to walk. Sounds ridiculous, right? Well, that’s exactly what you’re doing when you dive into deep learning without grasping the fundamentals of machine learning."
+      },
+      {
+        "type": "h2",
+        "content": "Real-world consequences"
+      },
+      {
+        "type": "p",
+        "content": "You might end up with a model that’s as useful as a chocolate teapot. It might work on your training data, but put it in the real world, and it’ll melt faster than you can say “overfitting.”"
+      },
+      {
+        "type": "h2",
+        "content": "How to fix it"
+      },
+      {
+        "type": "p",
+        "content": "Start with the basics! Learn about:"
+      },
+      {
+        "type": "p",
+        "content": "Here’s a simple example of linear regression to get you started:"
+      },
+      {
+        "type": "pre",
+        "content": "from sklearn.linear_model import LinearRegressionimport numpy as np#…"
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T01:49:25.421379"
+  },
+  {
+    "url": "https://python.plainenglish.io/mastering-the-art-of-model-optimization-1ef125f14866",
+    "title": "Mastering the Art of Model Optimization",
+    "author": "94 Following",
+    "published_date": null,
+    "reading_time": "7 min read",
+    "tags": [],
+    "content": [
+      {
+        "type": "p",
+        "content": "Member-only story"
+      },
+      {
+        "type": "h1",
+        "content": "Mastering the Art of Model Optimization"
+      },
+      {
+        "type": "h2",
+        "content": "A practical guide to training, retraining, and fine-tuning your machine learning models for peak performance."
+      },
+      {
+        "type": "p",
+        "content": "Aman Kardam"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "Python in Plain English"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "Model training, re-training, and fine-tuning are key concepts in machine learning that help build, improve, and adapt models. Whether you’re training a model from scratch, updating it with new data, or fine-tuning it for specific tasks, understanding these processes is crucial for building accurate, efficient, and adaptable machine learning models."
+      },
+      {
+        "type": "p",
+        "content": "In this comprehensive guide, I’ll walk you through the complete lifecycle of training models, from the basics to advanced techniques like re-training and fine-tuning. You’ll learn when and how to use each method, why they are essential, and how they fit into real-world machine learning workflows."
+      },
+      {
+        "type": "h1",
+        "content": "1. What is Model Training?"
+      },
+      {
+        "type": "h2",
+        "content": "The Model Training Process"
+      },
+      {
+        "type": "p",
+        "content": "Model training is the process of teaching a machine learning model to learn patterns from a dataset. It involves feeding data into a model, adjusting its internal parameters (like weights in neural networks), and iterating over the data until the model’s performance reaches a satisfactory level."
+      },
+      {
+        "type": "p",
+        "content": "The model learns by minimizing a loss function (which measures prediction errors) and updating its parameters using an optimizer (like stochastic gradient descent (SGD) or Adam)."
+      },
+      {
+        "type": "p",
+        "content": "Here’s a simplified process of how model training works:"
+      },
+      {
+        "type": "h1",
+        "content": "Important Concepts: Loss Functions…"
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T01:49:28.867073"
+  },
+  {
+    "url": "https://python.plainenglish.io/train-smarter-not-harder-save-time-resources-with-model-checkpoints-d4642a3fef10",
+    "title": "Train Smarter, Not Harder: Save Time & Resources with Model Checkpoints",
+    "author": "94 Following",
+    "published_date": null,
+    "reading_time": "6 min read",
+    "tags": [],
+    "content": [
+      {
+        "type": "p",
+        "content": "Member-only story"
+      },
+      {
+        "type": "h1",
+        "content": "Train Smarter, Not Harder: Save Time & Resources with Model Checkpoints"
+      },
+      {
+        "type": "h2",
+        "content": "Your Guide to Efficient Machine Learning Training with Saving, Checkpointing, and Early Stopping"
+      },
+      {
+        "type": "p",
+        "content": "Aman Kardam"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "Python in Plain English"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "When working on machine learning models, especially complex ones like deep neural networks, it’s crucial to save the model’s progress and handle long training processes efficiently. This ensures that your work isn’t lost, and you can resume training or use the model without starting from scratch. That’s where model saving, checkpointing, and early stopping come into play. These techniques are lifesavers when training large models or when you need to stop your model from overfitting."
+      },
+      {
+        "type": "p",
+        "content": "In this comprehensive guide, we’ll dive deep into these critical aspects of model training:"
+      },
+      {
+        "type": "h1",
+        "content": "What Is Model Saving and Why Is It Important?"
+      },
+      {
+        "type": "p",
+        "content": "When you train a machine learning model, especially deep learning models that take hours or even days to train, it’s important to save your model at various stages. Model saving refers to storing your model to disk so you can load it later for inference, further training, or sharing it with others."
+      },
+      {
+        "type": "p",
+        "content": "Why is this important?"
+      },
+      {
+        "type": "h1",
+        "content": "What Are Checkpoints?"
+      },
+      {
+        "type": "p",
+        "content": "Checkpoints are a way to save your model at regular intervals or when a specific event occurs, such as when the model improves on a validation set. This allows you to resume training from the last checkpoint if something goes wrong or to reload the best version of your model for testing."
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T01:49:32.138423"
+  },
+  {
+    "url": "https://ai.plainenglish.io/what-is-a-machine-learning-model-5-easy-to-understand-examples-99aefdaf6758",
+    "title": "What Is a Machine Learning Model? 5 Easy-to-Understand Examples",
+    "author": "94 Following",
+    "published_date": null,
+    "reading_time": "7 min read",
+    "tags": [],
+    "content": [
+      {
+        "type": "p",
+        "content": "Member-only story"
+      },
+      {
+        "type": "h1",
+        "content": "What Is a Machine Learning Model? 5 Easy-to-Understand Examples"
+      },
+      {
+        "type": "h2",
+        "content": "Imagine a model as a recipe — it’s how computers learn to ‘cook up’ answers!"
+      },
+      {
+        "type": "p",
+        "content": "Aman Kardam"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "Artificial Intelligence in Plain English"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "When I first started diving into machine learning, I remember feeling completely overwhelmed by terms like “model,” “training,” and “features.” But here’s the good news — machine learning models don’t have to be complicated! Think of a machine learning model as a set of instructions that helps a computer make decisions based on data. In simpler terms, it’s like teaching a computer to learn patterns and make predictions on its own."
+      },
+      {
+        "type": "p",
+        "content": "Today, I’m breaking down what a machine learning model is and sharing 5 easy-to-understand examples that will help you grasp the concept. Let’s get started!"
+      },
+      {
+        "type": "h1",
+        "content": "What Is a Machine Learning Model?"
+      },
+      {
+        "type": "p",
+        "content": "Imagine you want to teach a friend how to recognize different types of animals based on certain characteristics. You’d show them pictures and explain the features — “This one’s a dog because it has four legs and a wagging tail.” Eventually, your friend learns to identify a dog without your help."
+      },
+      {
+        "type": "p",
+        "content": "A machine learning model does something similar: it learns patterns from training data to make decisions or predictions. The training data is like the examples you show your friend. Once the model learns from this data, you can give it new examples, and it will try to predict the answer based on what it learned."
+      },
+      {
+        "type": "p",
+        "content": "In machine learning, there are two main types of models:"
+      },
+      {
+        "type": "p",
+        "content": "Let’s jump into 5 examples that will make machine learning models feel like second nature!"
+      },
+      {
+        "type": "h1",
+        "content": "1. Linear Regression: Predicting Housing Prices"
+      },
+      {
+        "type": "p",
+        "content": "Linear regression is one of the simplest types of machine learning models. It’s like drawing a straight line to find the best fit for a bunch of data points. Imagine you’re looking at housing prices and you want to predict the price of a house based on its size."
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T01:49:35.342808"
+  },
+  {
+    "url": "https://levelup.gitconnected.com/5-ways-youre-probably-misusing-ml-models-and-how-to-correct-them-9c951ce37021",
+    "title": "5 Ways You’re Probably Misusing ML Models (And How to Correct Them)",
+    "author": "94 Following",
+    "published_date": null,
+    "reading_time": "6 min read",
+    "tags": [],
+    "content": [
+      {
+        "type": "p",
+        "content": "Member-only story"
+      },
+      {
+        "type": "h1",
+        "content": "5 Ways You’re Probably Misusing ML Models (And How to Correct Them)"
+      },
+      {
+        "type": "h2",
+        "content": "Avoid common modeling mistakes that could be compromising your results"
+      },
+      {
+        "type": "p",
+        "content": "Aman Kardam"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "Level Up Coding"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "Machine Learning (ML) is a powerful tool, but it’s also easy to misuse, especially when you’re just getting started. I remember when I first started working with ML models; I made my fair share of mistakes. From incorrectly interpreting results to using the wrong data, these missteps taught me valuable lessons about how to get the most out of machine learning."
+      },
+      {
+        "type": "p",
+        "content": "Today, I’m sharing the five most common ways people misuse ML models and, more importantly, how to fix them. Let’s make sure your ML journey is smoother and more effective than mine was!"
+      },
+      {
+        "type": "h1",
+        "content": "1. Using the Wrong Model for Your Data"
+      },
+      {
+        "type": "p",
+        "content": "One of the biggest mistakes is using a model simply because it’s popular or powerful. Each ML model is designed for specific kinds of data and tasks, and picking the wrong model can lead to poor results or inaccurate predictions."
+      },
+      {
+        "type": "h2",
+        "content": "Why This Matters"
+      },
+      {
+        "type": "p",
+        "content": "ML models have different architectures and assumptions. For example:"
+      },
+      {
+        "type": "h2",
+        "content": "How to Correct It"
+      },
+      {
+        "type": "h2",
+        "content": "Practical Example"
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T01:49:39.779810"
+  },
+  {
+    "url": "https://python.plainenglish.io/from-prototype-to-production-10-steps-for-deploying-ml-models-like-a-pro-ef02e671f705",
+    "title": "From Prototype to Production: 10 Steps for Deploying ML Models Like a Pro",
+    "author": "94 Following",
+    "published_date": null,
+    "reading_time": "6 min read",
+    "tags": [],
+    "content": [
+      {
+        "type": "p",
+        "content": "Member-only story"
+      },
+      {
+        "type": "h1",
+        "content": "From Prototype to Production: 10 Steps for Deploying ML Models Like a Pro"
+      },
+      {
+        "type": "h2",
+        "content": "Secrets to Seamless ML Model Deployment and Avoid Common Pitfalls"
+      },
+      {
+        "type": "p",
+        "content": "Aman Kardam"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "Python in Plain English"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "Building a machine learning (ML) model that makes accurate predictions is just the beginning. If you’ve ever tried to get your model from a Jupyter Notebook to a live environment where real users can interact with it, you know there’s a huge leap involved. I remember the first time I attempted to deploy a model — it was way more challenging than I expected!"
+      },
+      {
+        "type": "p",
+        "content": "Over time, I learned a process that takes you from a working prototype to a production-ready model, and today, I’m going to share that process with you. Here are 10 essential steps to deploying your ML model like a pro."
+      },
+      {
+        "type": "h1",
+        "content": "1. Define Your Deployment Strategy"
+      },
+      {
+        "type": "h2",
+        "content": "Why It Matters:"
+      },
+      {
+        "type": "p",
+        "content": "Before jumping in, you need to decide how the model will be used. Will it make real-time predictions, like recommending products on an e-commerce site? Or will it work in batches, such as scoring millions of customer profiles overnight?"
+      },
+      {
+        "type": "h2",
+        "content": "Types of Deployment:"
+      },
+      {
+        "type": "h2",
+        "content": "My Experience:"
+      },
+      {
+        "type": "p",
+        "content": "My first deployment was for a batch process, which was much simpler than real-time. The deployment approach impacts everything — from data pipelines to infrastructure requirements."
+      },
+      {
+        "type": "h1",
+        "content": "2. Choose the Right Environment and Framework"
+      },
+      {
+        "type": "h2",
+        "content": "Why It Matters:"
+      },
+      {
+        "type": "p",
+        "content": "Each deployment environment has different tools, libraries, and resource requirements. Your choices will depend on where the model will run (cloud, on-premises, edge devices) and which languages your production team is comfortable with."
+      },
+      {
+        "type": "h2",
+        "content": "Options:"
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T01:49:42.948683"
+  },
+  {
+    "url": "https://ai.plainenglish.io/10-machine-learning-algorithms-explained-like-youre-five-01cf97af33b4",
+    "title": "10 Machine Learning Algorithms Explained Like You’re Five",
+    "author": "94 Following",
+    "published_date": null,
+    "reading_time": "6 min read",
+    "tags": [],
+    "content": [
+      {
+        "type": "p",
+        "content": "Member-only story"
+      },
+      {
+        "type": "h1",
+        "content": "10 Machine Learning Algorithms Explained Like You’re Five"
+      },
+      {
+        "type": "h2",
+        "content": "Simple explanations of popular ML algorithms, from linear regression to Gradient Boosting."
+      },
+      {
+        "type": "p",
+        "content": "Aman Kardam"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "Artificial Intelligence in Plain English"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "2"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "Machine learning can sound like rocket science at first, and believe me, I used to think that too! But over time, I realized that at the core, machine learning algorithms are just fancy ways of helping computers make decisions based on data. Imagine you’re trying to teach a kid how to make choices — machine learning is doing just that, but with a lot of data and some cool math. Here, I’m breaking down ten popular algorithms in the simplest terms possible so you can get a clear idea of what they do. Let’s jump in!"
+      },
+      {
+        "type": "h1",
+        "content": "1. Linear Regression: Drawing a Line Through Data Points"
+      },
+      {
+        "type": "p",
+        "content": "Imagine you’re at the park with a bag of candy, and you’re trying to figure out how many candies each kid will want based on their age. You start noticing that the older the kid, the more candy they want. So you try to draw a straight line that goes through the points representing kids’ ages and candies they’ve taken. Linear regression is exactly that — it’s about finding the best line that predicts one thing (like candies) based on another thing (like age)."
+      },
+      {
+        "type": "h2",
+        "content": "Code Example:"
+      },
+      {
+        "type": "pre",
+        "content": "from sklearn.linear_model import LinearRegression# Sample data: age and candies takenages = [[5], [6], [7], [8], [9]]candies = [1, 2, 3, 4, 5]# Modelmodel = LinearRegression()model.fit(ages, candies)# Prediction for a 10-year-oldprint(model.predict([[10]]))  # Output: around 6 candies"
+      },
+      {
+        "type": "h1",
+        "content": "2. Logistic Regression: Yes or No?"
+      },
+      {
+        "type": "p",
+        "content": "Think of a game where you try to guess if a kid will like chocolate based on their age. If they’re above a certain age, you say, “Yes, they’ll like it,” otherwise, “No, they won’t.” Logistic regression does something similar — it predicts probabilities for outcomes that are binary (yes/no, true/false, 1/0)."
+      },
+      {
+        "type": "h2",
+        "content": "Code Example:"
+      },
+      {
+        "type": "pre",
+        "content": "from sklearn.linear_model import LogisticRegression# Sample data: age and likes chocolate (1 if yes, 0 if no)ages = [[3], [6], [9], [12]]likes_chocolate = [0, 1, 1, 1]# Modelmodel = LogisticRegression()model.fit(ages…"
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T01:49:46.123724"
+  },
+  {
+    "url": "https://levelup.gitconnected.com/data-cleaning-101-8-fun-ways-to-get-data-ready-for-analysis-ac44ec6c121f",
+    "title": "Data Cleaning 101: 8 Fun Ways to Get Data Ready for Analysis",
+    "author": "94 Following",
+    "published_date": null,
+    "reading_time": "6 min read",
+    "tags": [],
+    "content": [
+      {
+        "type": "p",
+        "content": "Member-only story"
+      },
+      {
+        "type": "h2",
+        "content": "CODE SMARTER, NOT HARDER"
+      },
+      {
+        "type": "h1",
+        "content": "Data Cleaning 101: 8 Fun Ways to Get Data Ready for Analysis"
+      },
+      {
+        "type": "h2",
+        "content": "See how cleaning data is like tidying up your room before using it."
+      },
+      {
+        "type": "p",
+        "content": "Aman Kardam"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "Level Up Coding"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "Ever tried analyzing a messy dataset? It’s like trying to drive a car with a dirty windshield — you just can’t see what’s in front of you! Data cleaning might not sound glamorous, but it’s the secret to making your data analysis smooth, accurate, and even enjoyable. I’ve learned this the hard way, spending hours cleaning datasets only to discover little tricks along the way that make it so much easier. Today, I’m sharing 8 fun and efficient ways to get your data ready for analysis, so you can dive into the insights without getting lost in the mess."
+      },
+      {
+        "type": "h1",
+        "content": "1. Handle Missing Data Like a Pro"
+      },
+      {
+        "type": "p",
+        "content": "Missing values are common in almost every dataset, and they can mess up your analysis if not handled properly. When I first started, I tried filling in missing values without much thought — but there’s an art to it!"
+      },
+      {
+        "type": "h2",
+        "content": "How to Handle Missing Data:"
+      },
+      {
+        "type": "pre",
+        "content": "import pandas as pd# Sample datadata = {'Name': ['Alice', 'Bob', 'Charlie', None],        'Age': [25, None, 30, 22],        'Score': [85, 90, None, 70]}df = pd.DataFrame(data)print(df.isnull().sum())"
+      },
+      {
+        "type": "pre",
+        "content": "df.dropna(inplace=True)"
+      },
+      {
+        "type": "pre",
+        "content": "df['Age'].fillna(df['Age'].mean(), inplace=True)df['Score'].fillna(0, inplace=True)  # Filling with 0 if it makes sense"
+      },
+      {
+        "type": "p",
+        "content": "Handling missing data the right way lets you keep your dataset robust without losing valuable information. Trust me, it’s worth the extra care!"
+      },
+      {
+        "type": "h1",
+        "content": "2. Remove Duplicates for Clean Data"
+      },
+      {
+        "type": "p",
+        "content": "Duplicate data can sneak into your dataset without you even noticing. When I realized that duplicates were skewing my…"
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T01:49:50.420772"
+  },
+  {
+    "url": "https://levelup.gitconnected.com/how-to-choose-the-right-chart-type-for-your-data-in-12-easy-steps-1ad6f278e937",
+    "title": "How to Choose the Right Chart Type for Your Data in 12 Easy Steps",
+    "author": "94 Following",
+    "published_date": null,
+    "reading_time": "8 min read",
+    "tags": [],
+    "content": [
+      {
+        "type": "p",
+        "content": "Member-only story"
+      },
+      {
+        "type": "h2",
+        "content": "DATA VISUALIZATION TIPS & TRICKS"
+      },
+      {
+        "type": "h1",
+        "content": "How to Choose the Right Chart Type for Your Data in 12 Easy Steps"
+      },
+      {
+        "type": "h2",
+        "content": "Bar chart or scatter plot? Get it right every time with this simple guide!"
+      },
+      {
+        "type": "p",
+        "content": "Aman Kardam"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "Level Up Coding"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "Choosing the right chart type can make a world of difference in how effectively your data story is understood. In my experience, the wrong chart can confuse people or even misrepresent the data. Over the years, I’ve developed a set of easy steps to help decide the right chart type for any dataset, making data visualization clearer and more impactful."
+      },
+      {
+        "type": "p",
+        "content": "In this post, I’ll share 12 easy steps to choose the perfect chart type. Each step focuses on the purpose of the chart, the data you have, and the message you want to convey. Let’s dive in!"
+      },
+      {
+        "type": "h1",
+        "content": "1. Know Your Data Purpose"
+      },
+      {
+        "type": "p",
+        "content": "The very first step is to understand what you want your data to communicate. Are you trying to compare values, show a trend, highlight parts of a whole, or show relationships? Clarifying the purpose is crucial because each chart type is best suited to a specific type of data story."
+      },
+      {
+        "type": "h1",
+        "content": "2. Identify Your Data Variables"
+      },
+      {
+        "type": "p",
+        "content": "Consider the variables in your data and their types. Are they categorical, continuous, or ordinal? Charts like bar graphs work well with categorical data, while line charts are better for continuous data over time. Ask yourself:"
+      },
+      {
+        "type": "p",
+        "content": "Knowing your variables helps narrow down chart choices."
+      },
+      {
+        "type": "h1",
+        "content": "3. Bar Chart for Comparing Categories"
+      },
+      {
+        "type": "p",
+        "content": "When comparing categories (e.g., different regions, products, or departments), bar charts are often the best choice. They’re simple, easy to read, and highly effective at showing…"
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T01:49:54.706500"
+  }
+]

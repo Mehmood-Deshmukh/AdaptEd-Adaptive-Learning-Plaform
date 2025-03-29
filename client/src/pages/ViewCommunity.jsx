@@ -9,42 +9,44 @@ import { TagIcon, Calendar, Users, Share2, MessageSquare } from "lucide-react";
 import CreatePostModal from "../components/CreatePostModal";
 import ChatRoom from "../components/Chatroom";
 
-const CommunityPage = () => {
-	const { id } = useParams();
-	const navigate = useNavigate();
-	const { state, dispatch } = useAuthContext();
-	const { user } = state;
-	const [loading, setLoading] = useState(true);
-	const [community, setCommunity] = useState(null);
-	const [posts, setPosts] = useState([]);
-	const [startTime, setStartTime] = useState(null);
-	const [isMember, setIsMember] = useState(false);
-	const [error, setError] = useState(null);
-	const [isChatOpen, setIsChatOpen] = useState(false);
+const CommunityPage = ({ description }) => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const { state, dispatch } = useAuthContext();
+  const { user } = state;
+  const [loading, setLoading] = useState(true);
+  const [community, setCommunity] = useState(null);
+  const [posts, setPosts] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMember, setIsMember] = useState(false);
+  const [error, setError] = useState(null);
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [showFull, setShowFull] = useState(false);
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
-	const backendUrl = import.meta.env.VITE_BACKEND_URL;
-
-	const formatDate = (dateString) => {
-		if (!dateString) return "Unknown date";
-		try {
-			const options = { year: "numeric", month: "short", day: "numeric" };
-			return new Date(dateString).toLocaleDateString("en-US", options);
-		} catch (e) {
-			console.error("Date formatting error:", e);
-			return "Invalid date";
-		}
-	};
-
-	const fetchCommunityData = async () => {
-		setStartTime(Date.now());
-		setLoading(true);
-		try {
-			console.log("Fetching community data for ID:", id);
-			const response = await fetch(`${backendUrl}/api/community/${id}`, {
-				headers: {
-					Authorization: `Bearer ${localStorage.getItem("token")}`,
-				},
-			});
+  const formatDate = (dateString) => {
+    if (!dateString) return "Unknown date";
+    try {
+      const options = { year: "numeric", month: "short", day: "numeric" };
+      return new Date(dateString).toLocaleDateString("en-US", options);
+    } catch (e) {
+      console.error("Date formatting error:", e);
+      return "Invalid date";
+    }
+  };
+  const truncate = function (str) {
+    if (!str) return "No description available"
+    return str.length > 10 ? str.substring(0, 200) + "..." : str;
+  }
+  const fetchCommunityData = async () => {
+    setLoading(true);
+    try {
+      console.log("Fetching community data for ID:", id);
+      const response = await fetch(`${backendUrl}/api/community/${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
 
 			const data = await response.json();
 			console.log("API Response:", data);
@@ -397,26 +399,25 @@ const CommunityPage = () => {
                     {community.createdBy === user._id ? null : (
                       <button
                         onClick={handleJoinCommunity}
-                        className={`px-4 py-2 rounded-md transition-colors ${
-                          isMember
+                        className={`px-4 py-2 rounded-md transition-colors ${isMember
                             ? "bg-gray-200 text-black hover:bg-gray-300"
                             : "bg-black text-white hover:bg-gray-800"
-                        }`}
+                          }`}
                       >
                         {isMember ? "Leave Community" : "Join Community"}
                       </button>
                     )}
-    {user.communities.includes(community._id) && <CreatePostModal
-                      posts= {posts}
+                    {user.communities.includes(community._id) && <CreatePostModal
+                      posts={posts}
                       setPosts={setPosts}
                       community={{
-                        
+
                         _id: community._id,
                         name: community.name,
                         membersCount: community.membersCount,
                       }}
                     />}
-                    
+
 
 										<button
 											onClick={() => setIsChatOpen(true)}
@@ -428,10 +429,27 @@ const CommunityPage = () => {
 									</div>
 								</div>
 
-								<p className="mt-3 text-gray-600">
-									{community.description ||
-										"No description available"}
-								</p>
+                <p className="mt-3 text-gray-600">
+                  {showFull ? community.description : truncate(community.description)}
+
+
+                  {community.description && community.description.length > 200 &&
+                    <button
+
+                      onClick={() => setShowFull(!showFull)}
+                      className="ml-2 text-blue-500 underline"
+
+
+
+                    >
+                      {showFull ? "Read less" : "Read more"}
+
+                    </button>
+
+                  }
+
+
+                </p>
 
 								<div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-gray-500">
 									{community.domain && (
@@ -494,55 +512,69 @@ const CommunityPage = () => {
 								{/* <div className="border-t border-gray-700 pt-2"></div> */}
 							</div>
 
-							{!Array.isArray(posts) || posts.length === 0 ? (
-								<>
-									<div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
-										<h3 className="text-xl font-medium text-gray-700 text-center">
-											No posts yet
-										</h3>
-										<p className="mt-2 text-gray-500 mb-3 text-center">
-											Be the first to post in this
-											community!
-										</p>
-										<div className="w-fit mx-auto">
-											<CreatePostModal
-												community={{
-													_id: community._id,
-													name: community.name,
-													membersCount:
-														community.membersCount,
-												}}
-											/>
-										</div>
-									</div>
-								</>
-							) : (
-								posts.map((post) => {
-									console.log("Rendering post:", post);
-									return (
-										<PostItem
-											key={
-												post._id ||
-												`post-${Math.random()}`
-											}
-											post={post}
-											user={user}
-											handleVote={handlePostVote}
-										/>
-									);
-								})
-							)}
-						</div>
+              {!Array.isArray(posts) || posts.length === 0 ? (
+                <>
+                  <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
+                    <h3 className="text-xl font-medium text-gray-700 text-center">
+                      No posts yet
+                    </h3>
+                    <p className="mt-2 text-gray-500 mb-3 text-center">
+                      Be the first to post in this community!
+                    </p>
+                    <div className="w-fit mx-auto">
+                      <CreatePostModal
+                        posts={posts}
+                        setPosts={setPosts}
+                        community={{
+                          _id: community._id,
+                          name: community.name,
+                          membersCount: community.membersCount,
+                        }}
+                      />
+                    </div>
+                  </div>
+                </>
+              ) : (
+                posts.map((post) => {
+                  console.log("Rendering post:", post);
+                  return (
+                    <PostItem
+                      key={post._id || `post-${Math.random()}`}
+                      post={post}
+                      user={user}
+                      handleVote={handlePostVote}
+                    />
+                  );
+                })
+              )}
+            </div>
 
-						<div className="w-80 hidden md:block">
-							<div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 mb-6">
-								<h3 className="text-lg font-bold text-black mb-3">
-									About Community
-								</h3>
-								<p className="text-gray-600 text-sm mb-3">
-									{community.description ||
-										"No description available"}
-								</p>
+            <div className="w-80 hidden md:block">
+              <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 mb-6">
+                <h3 className="text-lg font-bold text-black mb-3">
+                  About Community
+                </h3>
+                <p className="mt-3 text-gray-600">
+                  {showFull ? community.description : truncate(community.description)}
+
+
+                  {community.description && community.description.length > 200 &&
+                    <button
+
+                      onClick={() => setShowFull(!showFull)}
+                      className="ml-2 text-blue-500 underline"
+
+
+
+                    >
+                      {showFull ? "Read less" : "Read more"}
+
+                    </button>
+
+                  }
+
+
+                </p>
 
 								<div className="flex items-center text-sm text-gray-500 mb-2">
 									<Calendar size={16} className="mr-2" />
@@ -580,16 +612,17 @@ const CommunityPage = () => {
 				</div>
 			</div>
 
-			{community && (
-				<ChatRoom
-					communityId={community._id}
-					communityName={community.name}
-					isOpen={isChatOpen}
-					onClose={handleChatToggle}
-				/>
-			)}
-		</div>
-	);
+      {community && (
+        <ChatRoom
+          communityId={community._id}
+          communityName={community.name}
+          isOpen={isChatOpen}
+          onClose={handleChatToggle}
+        />
+      )}
+
+    </div>
+  );
 };
 
 export default CommunityPage;

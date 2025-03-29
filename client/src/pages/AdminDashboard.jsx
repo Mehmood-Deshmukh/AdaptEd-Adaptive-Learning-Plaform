@@ -709,84 +709,138 @@ const AdminDashboard = () => {
 
         {/* Selected request details modal */}
         {selectedRequest && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-            <div className="bg-white rounded-lg shadow-xl w-full max-w-3xl max-h-[90vh] overflow-hidden">
-              <div className="p-6 flex justify-between items-start border-b">
-                <div>
-                  <h2 className="text-xl font-bold flex items-center">
-                    {getTypeIcon(selectedRequest.type)}
-                    <span className="ml-2">{selectedRequest.type} Request</span>
-                  </h2>
-                  <p className="text-gray-500 mt-1">
-                    From:{" "}
-                    {selectedRequest.requestedBy
-                      ? selectedRequest.requestedBy.name
-                      : "Unknown User"}
-                  </p>
-                </div>
-                <button
-                  onClick={() => {
-                    setSelectedRequest(null);
-                    setFeedback("");
-                    setError(null);
-                  }}
-                  className="text-gray-500 hover:text-black cursor-pointer"
-                >
-                  <XCircle className="w-6 h-6" />
-                </button>
+  <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+    <div className="bg-white rounded-lg shadow-xl w-full max-w-3xl max-h-[90vh] overflow-hidden">
+      <div className="p-6 flex justify-between items-start border-b">
+        <div>
+          <h2 className="text-xl font-bold flex items-center">
+            {getTypeIcon(selectedRequest.type)}
+            <span className="ml-2">{selectedRequest.type} Request</span>
+          </h2>
+          <p className="text-gray-500 mt-1">
+            From:{" "}
+            {selectedRequest.requestedBy
+              ? selectedRequest.requestedBy.name
+              : "Unknown User"}
+          </p>
+          <p className="text-gray-500 text-sm">
+            Submitted on: {new Date(selectedRequest.createdAt).toLocaleString()}
+          </p>
+        </div>
+        <button
+          onClick={() => {
+            setSelectedRequest(null);
+            setFeedback("");
+            setError(null);
+          }}
+          className="text-gray-500 hover:text-black cursor-pointer"
+        >
+          <XCircle className="w-6 h-6" />
+        </button>
+      </div>
+
+      <div className="p-6 overflow-y-auto max-h-[60vh]">
+        {/* AI Confidence Score Section */}
+        {selectedRequest.confidenceScore !== undefined && (
+          <div className="mb-6 bg-gray-50 p-4 rounded-md border border-gray-200">
+            <h3 className="font-medium text-lg mb-2 flex items-center">
+              <span>AI Confidence Score</span>
+              <span className="ml-2 text-xs bg-gray-200 px-2 py-1 rounded-full">AI Generated</span>
+            </h3>
+            
+            <div className="flex items-center mb-2">
+              <div className="w-full bg-gray-200 rounded-full h-4 mr-4">
+                <div 
+                  className={`h-4 rounded-full ${
+                    selectedRequest.confidenceScore >= 70 ? 'bg-green-500' : 
+                    selectedRequest.confidenceScore >= 40 ? 'bg-yellow-500' : 'bg-red-500'
+                  }`}
+                  style={{ width: `${selectedRequest.confidenceScore}%` }}
+                ></div>
               </div>
-
-              <div className="p-6 overflow-y-auto max-h-[60vh]">
-                <div className="mb-6">
-                  <h3 className="font-medium text-lg mb-3">Request Details</h3>
-                  {selectedRequest.type === "Quiz" ? (
-                    renderQuizPayload(selectedRequest.payload)
-                  ) : selectedRequest.type === "Resource" ? (
-                    renderResourcePayload(selectedRequest.payload)
-                  ) : (
-                    <div className="bg-gray-50 p-4 rounded-md">
-                      <pre className="whitespace-pre-wrap text-sm">
-                        {JSON.stringify(selectedRequest.payload, null, 2)}
-                      </pre>
-                    </div>
-                  )}
-                </div>
-
-                {selectedRequest.status === "pending" && (
-                  <div className="mb-6">
-                    <h3 className="font-medium text-lg mb-2">
-                      Feedback (Required for Rejection)
-                    </h3>
-                    <textarea
-                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
-                      rows="4"
-                      placeholder="Provide feedback to the user..."
-                      value={feedback}
-                      onChange={(e) => setFeedback(e.target.value)}
-                    ></textarea>
-                  </div>
-                )}
-
-                {selectedRequest.status === "pending" && (
-                  <div className="flex justify-end gap-4">
-                    <button
-                      onClick={() => handleReject(selectedRequest._id)}
-                      className="px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-black font-medium transition-colors"
-                    >
-                      Reject
-                    </button>
-                    <button
-                      onClick={() => handleApprove(selectedRequest._id)}
-                      className="px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800 font-medium transition-colors"
-                    >
-                      Approve
-                    </button>
-                  </div>
-                )}
+              <span className={`font-bold ${
+                selectedRequest.confidenceScore >= 70 ? 'text-green-600' : 
+                selectedRequest.confidenceScore >= 40 ? 'text-yellow-600' : 'text-red-600'
+              }`}>
+                {selectedRequest.confidenceScore}%
+              </span>
+            </div>
+            
+            {selectedRequest.confidenceReason && (
+              <div className="mt-2 text-sm text-gray-700">
+                <p className="font-medium mb-1">Analysis:</p>
+                <p>{selectedRequest.confidenceReason}</p>
               </div>
+            )}
+            
+            <p className="text-xs text-gray-500 mt-3">
+              Last updated: {new Date(selectedRequest.updatedAt).toLocaleString()}
+            </p>
+          </div>
+        )}
+
+        <div className="mb-6">
+          <h3 className="font-medium text-lg mb-3">Request Details</h3>
+          {selectedRequest.type === "Quiz" ? (
+            renderQuizPayload(selectedRequest.payload)
+          ) : selectedRequest.type === "Resource" ? (
+            renderResourcePayload(selectedRequest.payload)
+          ) : (
+            <div className="bg-gray-50 p-4 rounded-md">
+              <pre className="whitespace-pre-wrap text-sm">
+                {JSON.stringify(selectedRequest.payload, null, 2)}
+              </pre>
+            </div>
+          )}
+        </div>
+
+        {selectedRequest.status === "pending" && (
+          <div className="mb-6">
+            <h3 className="font-medium text-lg mb-2">
+              Feedback (Required for Rejection)
+            </h3>
+            <textarea
+              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+              rows="4"
+              placeholder="Provide feedback to the user..."
+              value={feedback}
+              onChange={(e) => setFeedback(e.target.value)}
+            ></textarea>
+          </div>
+        )}
+
+        {selectedRequest.status !== "pending" && selectedRequest.feedback && (
+          <div className="mb-6">
+            <h3 className="font-medium text-lg mb-2">Feedback</h3>
+            <div className="bg-gray-50 p-4 rounded-md">
+              <p>{selectedRequest.feedback}</p>
             </div>
           </div>
         )}
+
+        {selectedRequest.status === "pending" && (
+          <div className="flex justify-end gap-4">
+            <button
+              onClick={() => handleReject(selectedRequest._id)}
+              className="px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-black font-medium transition-colors"
+              disabled={!feedback.trim()}
+            >
+              Reject
+            </button>
+            <button
+              onClick={() => handleApprove(selectedRequest._id)}
+              className={`px-4 py-2 text-white rounded-md font-medium transition-colors ${
+                selectedRequest.confidenceScore >= 70 ? 'bg-green-600 hover:bg-green-700' : 'bg-black hover:bg-gray-800'
+              }`}
+            >
+              Approve
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+)}
       </main>
     </div>
   );

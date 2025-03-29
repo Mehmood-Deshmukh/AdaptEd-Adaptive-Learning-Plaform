@@ -15,7 +15,7 @@ const Quiz = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { state } = useAuthContext();
   const { user } = state;
-  // Computer science related tags for selection
+
   const csTagsOptions = [
     { name: 'Algorithms', code: 'algorithms' },
     { name: 'Data Structures', code: 'data-structures' },
@@ -29,9 +29,11 @@ const Quiz = () => {
     { name: 'Software Engineering', code: 'software-eng' },
     { name: 'Cloud Computing', code: 'cloud' },
     { name: 'Mobile Development', code: 'mobile' },
+    { name: 'Computer Organisation ', code: 'co'},
+    { name: 'Theory of Computation ', code: 'toc'},
+    { name: 'Git', code: 'git'}
   ];
 
-  // Difficulty levels for dropdown
   const difficultyLevels = [
     { name: 'Easy', code: 'easy' },
     { name: 'Intermediate', code: 'intermediate' },
@@ -55,7 +57,7 @@ const Quiz = () => {
           'Authorization': `Bearer ${localStorage.getItem("token")}`
         },
         body: JSON.stringify({
-          title: `Quiz on ${topic}`,
+          title: `${topic}`,
           topic: topic,
           domain: "Computer Science",
           difficulty: difficulty,

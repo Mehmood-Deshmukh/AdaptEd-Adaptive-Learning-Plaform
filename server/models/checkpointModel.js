@@ -28,7 +28,7 @@ const checkpointProgressSchema = new Schema({
     isFeedbackCompleted: {
         type: Boolean,
         default: false
-    }
+    },
 });
 
 const checkpointSchema = new Schema({
@@ -51,7 +51,15 @@ const checkpointSchema = new Schema({
     totalHoursNeeded: {
         type: Number
     },
-    userProgress: [checkpointProgressSchema]
+    userProgress: [checkpointProgressSchema],
+    whatNext : {
+        type: String,
+        default: null
+    },
+    whatYouWillLearn : {
+        type: [String],
+        default: null
+    },
 });
 
 checkpointSchema.statics.createCheckpoint = async function(checkpoint) {
@@ -83,7 +91,6 @@ checkpointSchema.statics.getCheckpoints = async function(checkpointIds) {
 }
 
 checkpointSchema.methods.getUserProgress = function(userId) {
-    // Find user progress, handling both populated and non-populated userId
     const userProgress = this.userProgress.find(progress => {
         const progressUserId = progress.userId._id ? progress.userId._id.toString() : progress.userId.toString();
         return progressUserId === userId.toString();

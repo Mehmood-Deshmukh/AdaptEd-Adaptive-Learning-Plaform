@@ -9,6 +9,7 @@ class Resource(BaseModel):
     topics: List[str] = Field(description="List of topics covered by the resource")
     difficulty: str = Field(description="Difficulty level: beginner, intermediate, or advanced")
     description: str = Field(description="A brief description of what this resource covers")
+    rank: int = Field(description="Rank of the resource based on quality and relevance to the topic")
 
 class ResourceMetadata(BaseModel):
     title: str = Field(description="The title of the resource")
@@ -19,11 +20,14 @@ class ResourceMetadata(BaseModel):
     difficulty: str = Field(description="Difficulty level: beginner, intermediate, or advanced")
     description: str = Field(description="A brief description of what this resource covers")
 
+
 class Checkpoint(BaseModel):
     title: str = Field(description="Clear, specific title for the checkpoint")
     description: str = Field(description="Detailed description of at least 2 lines")
     resources: List[Resource] = Field(description="3-4 high-quality learning resources")
     totalHoursNeeded: float = Field(description="Total hours needed for this checkpoint")
+    whatYouWillLearn: List[str] = Field(description="List of skills or concepts learned in this checkpoint")
+    whatNext: str = Field(description="Description of what quiz or challenge to do after this checkpoint and before the next one")
 
 class Roadmap(BaseModel):
     mainTopic: str = Field(description="Main learning topic")

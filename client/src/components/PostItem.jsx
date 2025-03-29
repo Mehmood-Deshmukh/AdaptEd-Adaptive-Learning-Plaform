@@ -203,10 +203,17 @@ const PostItem = ({ post, handleVote }) => {
 						<span>{formatNumber(post.comments)} Comments</span>
 					</button>
 
-					<button className="flex items-center space-x-2 text-black hover:bg-gray-100 py-1.5 px-3 rounded-md transition">
-						<Share2 size={20} />
-						<span>Share</span>
-					</button>
+					<button
+									  onClick={() => {
+										const url = window.location.href;
+										navigator.clipboard.writeText(url);
+										alert("Community link copied to clipboard!");
+									  }}
+									  className="flex items-center text-l text-gray-700 hover:text-black transition-colors"
+									>
+									  <Share2 size={16} className="mr-2" />
+									  <span>Share </span>
+									</button>
 				</div>
 			</div>
 			{previewOpen && images.length > 0 && (

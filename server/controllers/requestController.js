@@ -126,5 +126,4 @@ const requestController = {
   },
 };
 
-
 module.exports = requestController;

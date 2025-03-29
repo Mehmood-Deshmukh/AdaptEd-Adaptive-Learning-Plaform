@@ -22,6 +22,7 @@ import { Dialog } from 'primereact/dialog';
 import Sidebar from "../components/Sidebar";
 import useAuthContext from '../hooks/useAuthContext';
 import { Toast } from 'primereact/toast';
+import { Link } from 'react-router-dom';
 
 const UserContributionsPage = () => {
   const [activeTab, setActiveTab] = useState('myContributions');
@@ -331,11 +332,13 @@ const UserContributionsPage = () => {
   );
 
   return (
-    <div className="flex h-full bg-white text-black">
+    <div className="flex h-[100vh] bg-white text-black">
       <Toast ref={toast} />
       <Sidebar user={user} />
-      
-      {/* Feedback Modal */}
+
+      {user?.xps > 5000 ? (
+        <div>
+          {/* Feedback Modal */}
       <Dialog 
         header={feedbackModal.title} 
         visible={feedbackModal.visible} 
@@ -904,6 +907,30 @@ const UserContributionsPage = () => {
         )}
       </main>
     </div>
+        </div>
+      ) : (
+
+        <div className="h-screen w-screen flex justify-center items-center relative">
+  {/* Background image */}
+  <div 
+    className="absolute inset-0 bg-cover object-contain bg-center bg-no-repeat"
+    style={{ backgroundImage: "url('/contribution.jpeg')" }}
+  />
+
+  {/* Blur overlay */}
+  <div className="absolute inset-0 backdrop-blur-lg" />
+
+  {/* Content */}
+  <div className="relative z-10 bg-white bg-opacity-80 p-10 rounded-lg shadow-lg text-center">
+    <p className="text-lg font-bold mb-3">You need more XP to access this section.</p>
+    <p className="text-blue-800 underline">
+      <Link to="/">Go back to Dashboard</Link>
+    </p>
+  </div>
+</div>
+      )}
+      
+      
       
     </div>
   );
