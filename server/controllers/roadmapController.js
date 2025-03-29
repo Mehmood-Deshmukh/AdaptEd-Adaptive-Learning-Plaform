@@ -481,7 +481,181 @@ const roadmapController = {
             console.log(error);
             res.status(500).json({ message: error.message });
         }
+    },
+    // Add this function to your roadmapController.js file
+
+getLeaderboardInsights: async (req, res) => {
+    try {
+        const { roadmapId } = req.params;
+        const userId = req.userId; // Current user
+        
+        // Get the roadmap with populated data
+        const roadmap = await roadmapSchema.findById(roadmapId)
+            .populate({
+                path: 'users.userId',
+                select: 'name email level xps'
+            })
+            .populate({
+                path: 'checkpoints',
+                populate: {
+                    path: 'resources',
+                    model: 'Resource'
+                }
+            });
+        
+        if (!roadmap) {
+            return res.status(404).json({ message: "Roadmap not found" });
+        }
+        
+        // Get complete leaderboard data first
+        const userIds = roadmap.users.map(user => user.userId._id);
+        
+        const leaderboardData = await Promise.all(userIds.map(async (uid) => {
+            const user = await userModel.findById(uid);
+            if (!user) return null;
+            
+            const totalCheckpoints = roadmap.checkpoints.length;
+            let completedCheckpoints = 0;
+            let totalTimeTaken = 0;
+            let completedCheckpointIds = [];
+            
+            for (const checkpoint of roadmap.checkpoints) {
+                const userProgress = checkpoint.getUserProgress(uid);
+                if (userProgress.status === 'completed') {
+                    completedCheckpoints++;
+                    completedCheckpointIds.push(checkpoint._id.toString());
+                    totalTimeTaken += userProgress.totalTimeTaken || 0;
+                }
+            }
+            
+            const progressPercentage = Math.round((completedCheckpoints / totalCheckpoints) * 100);
+            
+            return {
+                userId: uid,
+                name: user.name,
+                level: user.level,
+                xps: user.xps,
+                completedCheckpoints,
+                completedCheckpointIds,
+                totalCheckpoints,
+                progressPercentage,
+                timeSpent: totalTimeTaken,
+                averageTimePerCheckpoint: completedCheckpoints > 0 ? totalTimeTaken / completedCheckpoints : 0
+            };
+        }));
+        
+        const filteredLeaderboard = leaderboardData.filter(entry => entry !== null);
+        
+        // Sort leaderboard to get top performers
+        const sortedLeaderboard = [...filteredLeaderboard].sort((a, b) => {
+            if (b.progressPercentage !== a.progressPercentage) {
+                return b.progressPercentage - a.progressPercentage;
+            }
+            if (b.completedCheckpoints !== a.completedCheckpoints) {
+                return b.completedCheckpoints - a.completedCheckpoints;
+            }
+            return a.timeSpent - b.timeSpent;
+        });
+        
+        // Get current user's data and position
+        const currentUserIndex = sortedLeaderboard.findIndex(entry => entry.userId.toString() === userId);
+        const currentUserData = currentUserIndex >= 0 ? sortedLeaderboard[currentUserIndex] : null;
+        
+        if (!currentUserData) {
+            return res.status(404).json({ message: "User not found in this roadmap" });
+        }
+        
+        // Get top 3 performers
+        const topPerformers = sortedLeaderboard.slice(0, 3);
+        
+        // Generate insights
+        const insights = {
+            userRank: currentUserIndex + 1,
+            totalParticipants: sortedLeaderboard.length,
+            progressComparison: {
+                userProgress: currentUserData.progressPercentage,
+                averageProgress: Math.round(sortedLeaderboard.reduce((sum, entry) => sum + entry.progressPercentage, 0) / sortedLeaderboard.length),
+                topPerformerProgress: topPerformers[0].progressPercentage,
+                percentilRank: Math.round(((sortedLeaderboard.length - currentUserIndex) / sortedLeaderboard.length) * 100)
+            },
+            timeComparison: {
+                userAverageTime: Math.round(currentUserData.averageTimePerCheckpoint / 60), // in minutes
+                leaderAverageTime: Math.round(topPerformers[0].averageTimePerCheckpoint / 60), // in minutes
+                averageTimeAllUsers: Math.round(sortedLeaderboard.reduce((sum, entry) => 
+                    sum + (entry.averageTimePerCheckpoint), 0) / sortedLeaderboard.length / 60) // in minutes
+            },
+            topPerformerInsights: [],
+            recommendations: []
+        };
+        
+        // Generate specific insights about what top performers are doing differently
+        const topPerformerCheckpoints = new Set();
+        topPerformers.forEach(performer => {
+            performer.completedCheckpointIds.forEach(id => topPerformerCheckpoints.add(id));
+        });
+        
+        const userCompletedCheckpoints = new Set(currentUserData.completedCheckpointIds);
+        const userInProgressCheckpoints = new Set();
+        
+        // Find checkpoints user hasn't completed but top performers have
+        const checkpointGaps = [];
+        for (const checkpoint of roadmap.checkpoints) {
+            const checkpointId = checkpoint._id.toString();
+            const userProgress = checkpoint.getUserProgress(userId);
+            
+            if (userProgress.status === 'in_progress') {
+                userInProgressCheckpoints.add(checkpointId);
+            }
+            
+            if (topPerformerCheckpoints.has(checkpointId) && !userCompletedCheckpoints.has(checkpointId)) {
+                checkpointGaps.push({
+                    id: checkpointId,
+                    title: checkpoint.title,
+                    order: checkpoint.order
+                });
+            }
+        }
+        
+        // Add insights about top performers
+        if (topPerformers[0].timeSpent < currentUserData.timeSpent && 
+            topPerformers[0].completedCheckpoints > currentUserData.completedCheckpoints) {
+            insights.topPerformerInsights.push("Top performers are completing checkpoints more efficiently, spending less time per checkpoint");
+        }
+        
+        if (checkpointGaps.length > 0) {
+            insights.topPerformerInsights.push(`Top performers have completed ${checkpointGaps.length} checkpoints that you haven't completed yet`);
+        }
+        
+        // Generate recommendations
+        if (userInProgressCheckpoints.size > 0) {
+            insights.recommendations.push("Focus on completing your in-progress checkpoints before moving to new ones");
+        }
+        
+        if (insights.timeComparison.userAverageTime > insights.timeComparison.leaderAverageTime * 1.5) {
+            insights.recommendations.push("Try to be more focused during learning sessions to reduce time per checkpoint");
+        }
+        
+        if (checkpointGaps.length > 0) {
+            const nextCheckpoint = checkpointGaps.sort((a, b) => a.order - b.order)[0];
+            insights.recommendations.push(`Consider completing '${nextCheckpoint.title}' next, as most top performers have completed it`);
+        }
+        
+        if (currentUserData.progressPercentage < insights.progressComparison.averageProgress) {
+            insights.recommendations.push("You're currently progressing slower than average. Try to dedicate more consistent time to this roadmap");
+        }
+        
+        // Return insights along with the leaderboard data
+        res.status(200).json({
+            insights,
+            leaderboard: sortedLeaderboard,
+            currentUserPosition: currentUserIndex + 1
+        });
+        
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: error.message });
     }
+}
 };
 
 module.exports = roadmapController;
