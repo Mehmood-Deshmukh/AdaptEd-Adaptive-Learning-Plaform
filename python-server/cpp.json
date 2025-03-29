@@ -1,0 +1,3318 @@
+[
+  {
+    "url": "https://codingmadesimple.medium.com/getting-started-with-c-a-beginners-guide-3f6d4b2a872a",
+    "title": "Getting Started with C++: A Beginner’s Guide",
+    "author": "Press",
+    "published_date": null,
+    "reading_time": "4 min read",
+    "tags": [
+      "C Plus Plus Language",
+      "C Plus Plus Training",
+      "Programming",
+      "Programming Languages",
+      "Programmer"
+    ],
+    "content": [
+      {
+        "type": "h1",
+        "content": "Getting Started with C++: A Beginner’s Guide"
+      },
+      {
+        "type": "p",
+        "content": "Coding Made Simple"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "Listen"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "Today, I want to introduce you to the wonderful world of C++. Learning C++ opens up a whole new realm of possibilities and opportunities for your coding journey. So, let’s embark on this exciting adventure together!"
+      },
+      {
+        "type": "h1",
+        "content": "Why Learn C++?"
+      },
+      {
+        "type": "p",
+        "content": "You might be wondering, “Why should I learn C++ when I’m already comfortable with Python?” Well, here are a few compelling reasons:"
+      },
+      {
+        "type": "h1",
+        "content": "Getting Started with C++"
+      },
+      {
+        "type": "h1",
+        "content": "1. Setting up your Development Environment"
+      },
+      {
+        "type": "p",
+        "content": "To get started with C++, you’ll need a development environment. Here’s what you can do:"
+      },
+      {
+        "type": "h1",
+        "content": "2. Writing Your First C++ Program"
+      },
+      {
+        "type": "p",
+        "content": "Let’s write a simple “Hello, World!” program in C++ to get a feel for the language. Follow these steps:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>int main() {    std::cout << \"Hello, World!\" << std::endl;    return 0;}"
+      },
+      {
+        "type": "h1",
+        "content": "3. Understanding Basic Syntax and Concepts"
+      },
+      {
+        "type": "p",
+        "content": "Now that you’ve written your first C++ program, let’s explore some basic syntax and concepts:"
+      },
+      {
+        "type": "h1",
+        "content": "Next Steps"
+      },
+      {
+        "type": "p",
+        "content": "Congratulations on taking your first steps into the world of C++! Here are a few suggestions to continue your learning journey:"
+      },
+      {
+        "type": "p",
+        "content": "Remember, learning a new programming language takes time and practice. Embrace the journey, be patient with yourself, and enjoy the process of expanding your coding repertoire."
+      },
+      {
+        "type": "p",
+        "content": "I hope this beginner’s guide has ignited your curiosity about C++. Now, grab your favorite compiler, unleash your creativity, and start coding in C++!"
+      },
+      {
+        "type": "blockquote",
+        "content": "Ready to take your C++ skills to the next level? Check out “The Ultimate C++ Series” course by Mosh!"
+      },
+      {
+        "type": "p",
+        "content": "Ready to take your C++ skills to the next level? Check out “The Ultimate C++ Series” course by Mosh!"
+      },
+      {
+        "type": "p",
+        "content": "This comprehensive course will guide you through the ins and outs of C++ programming, from beginner to advanced concepts."
+      },
+      {
+        "type": "p",
+        "content": "In this course, you’ll:"
+      },
+      {
+        "type": "p",
+        "content": "Mosh’s teaching style is engaging and easy to follow, making complex concepts approachable for learners of all levels. With practical examples and hands-on exercises, you’ll build a strong foundation in C++ and gain confidence in your coding abilities."
+      },
+      {
+        "type": "p",
+        "content": "Don’t miss out on the opportunity to level up your C++ skills. Enroll in “The Ultimate C++ Series” course by Mosh today and unlock your full potential as a C++ programmer!"
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T02:10:51.826096"
+  },
+  {
+    "url": "https://iammalikkhalil.medium.com/a-beginners-guide-to-c-programming-from-basics-to-core-concepts-67d43f873f85",
+    "title": "A Beginner’s Guide to C++ Programming: From Basics to Core Concepts",
+    "author": "Press",
+    "published_date": null,
+    "reading_time": "14 min read",
+    "tags": [
+      "C Programming",
+      "Learn Cpp",
+      "Programming Languages",
+      "Cpp Programming",
+      "Programming Fundament"
+    ],
+    "content": [
+      {
+        "type": "h1",
+        "content": "A Beginner’s Guide to C++ Programming: From Basics to Core Concepts"
+      },
+      {
+        "type": "p",
+        "content": "Muhammad Khalil"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "Listen"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "h1",
+        "content": "1. C++ Introduction"
+      },
+      {
+        "type": "p",
+        "content": "C++ is a general-purpose programming language that was created by Bjarne Stroustrup in the 1980s as an extension of the C language. It is used for a wide range of applications, from operating systems to video games and high-performance applications. C++ combines the performance benefits of low-level programming with the flexibility of high-level programming."
+      },
+      {
+        "type": "h1",
+        "content": "2. Getting Started with C++"
+      },
+      {
+        "type": "h2",
+        "content": "Setting Up Your Environment"
+      },
+      {
+        "type": "p",
+        "content": "To write and run C++ code, you need:"
+      },
+      {
+        "type": "h1",
+        "content": "3. Your First C++ Program"
+      },
+      {
+        "type": "p",
+        "content": "Let’s start with a simple program, known as “Hello, World!” This is the first program people usually write to understand the basic structure of a C++ program."
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream> // Includes the library for input and outputint main() {    std::cout << \"Hello, World!\"; // Outputs \"Hello, World!\" to the screen    return 0; // Signals successful completion of the program}"
+      },
+      {
+        "type": "h2",
+        "content": "Explanation of Each Part:"
+      },
+      {
+        "type": "p",
+        "content": "Here’s a more detailed and beginner-friendly guide on C++ data types, operators, loops, and arrays. I’ll include examples, explanations of each concept, and code snippets to illustrate how each element works."
+      },
+      {
+        "type": "h1",
+        "content": "Using namespace std;"
+      },
+      {
+        "type": "p",
+        "content": "In C++, many elements from the standard library (like cout, cin, etc.) are part of the std namespace. By default, to use them, we need to prefix them with std::, as in std::cout. However, by adding using namespace std; at the beginning of our code, we can simplify this by removing the need for the std:: prefix."
+      },
+      {
+        "type": "p",
+        "content": "Example:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    cout << \"Hello, World!\";    return 0;}"
+      },
+      {
+        "type": "h1",
+        "content": "4. C++ Syntax and Statements"
+      },
+      {
+        "type": "p",
+        "content": "In C++, each line of code that performs an action is called a statement. Each statement ends with a semicolon (;). Code blocks, which are groups of statements that should be executed together, are enclosed in curly braces {}."
+      },
+      {
+        "type": "p",
+        "content": "Example:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>int main() {    int x = 10; // Statement 1    int y = 5;  // Statement 2    std::cout << \"Sum: \" << x + y; // Statement 3    return 0; // Statement 4}"
+      },
+      {
+        "type": "p",
+        "content": "Each line is a separate statement. Without a semicolon, C++ will give you an error."
+      },
+      {
+        "type": "h1",
+        "content": "5. C++ Output"
+      },
+      {
+        "type": "p",
+        "content": "In C++, we use std::cout to print things to the screen. The << symbol is called the insertion operator, which \"inserts\" the data into the output stream."
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>int main() {    std::cout << \"Welcome to C++!\"; // Output: Welcome to C++!    return 0;}"
+      },
+      {
+        "type": "h2",
+        "content": "Adding Line Breaks"
+      },
+      {
+        "type": "p",
+        "content": "We can use \\n inside a string to create a new line."
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>int main() {    std::cout << \"Welcome to C++!\\n\";    std::cout << \"Let's learn step-by-step!\";    return 0;}"
+      },
+      {
+        "type": "h1",
+        "content": "6. C++ Variables"
+      },
+      {
+        "type": "p",
+        "content": "A variable is a name that refers to a memory location where data can be stored. Variables must be declared with a data type, which specifies the type of data they will hold."
+      },
+      {
+        "type": "h2",
+        "content": "Declaring Variables"
+      },
+      {
+        "type": "p",
+        "content": "To declare a variable, write the type followed by the variable name:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>int main() {    int age = 21; // Declares an integer variable called \"age\" and assigns it a value of 21    double height = 5.9; // Declares a double variable called \"height\" and assigns it 5.9    return 0;}"
+      },
+      {
+        "type": "h1",
+        "content": "7. C++ User Input"
+      },
+      {
+        "type": "p",
+        "content": "To get input from the user, we use std::cin. This uses the extraction operator (>>) to store user input into a variable."
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>int main() {    int age;    std::cout << \"Enter your age: \";    std::cin >> age; // Stores the user input in the variable 'age'    std::cout << \"You entered: \" << age;    return 0;}"
+      },
+      {
+        "type": "p",
+        "content": "Here’s a more detailed and beginner-friendly guide on C++ data types, operators, loops, and arrays. I’ll include examples, explanations of each concept, and code snippets to illustrate how each element works."
+      },
+      {
+        "type": "h1",
+        "content": "8. C++ Data Types"
+      },
+      {
+        "type": "p",
+        "content": "Data types specify what kind of data a variable can hold. Each data type has a specific size and range. Here’s a breakdown of common C++ data types:"
+      },
+      {
+        "type": "h2",
+        "content": "Examples:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    int age = 25;    float price = 19.99;    double distance = 123.456;    char grade = 'A';    bool isOpen = true;    string name = \"Alice\";    long population = 9000000000;    short temperature = 30;    cout << \"Age: \" << age << endl;    cout << \"Price: \" << price << endl;    cout << \"Distance: \" << distance << endl;    cout << \"Grade: \" << grade << endl;    cout << \"Is Open: \" << isOpen << endl;    cout << \"Name: \" << name << endl;    cout << \"Population: \" << population << endl;    cout << \"Temperature: \" << temperature << endl;    return 0;}"
+      },
+      {
+        "type": "h1",
+        "content": "9. C++ Operators"
+      },
+      {
+        "type": "p",
+        "content": "Operators are symbols that perform specific operations on variables and values. Here are the different types of operators in C++:"
+      },
+      {
+        "type": "h2",
+        "content": "1. Arithmetic Operators"
+      },
+      {
+        "type": "p",
+        "content": "These operators are used to perform basic arithmetic calculations."
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    int a = 10, b = 3;    cout << \"Addition: \" << a + b << endl;    cout << \"Subtraction: \" << a - b << endl;    cout << \"Multiplication: \" << a * b << endl;    cout << \"Division: \" << a / b << endl;    cout << \"Modulus: \" << a % b << endl;    return 0;}"
+      },
+      {
+        "type": "h2",
+        "content": "2. Assignment Operators"
+      },
+      {
+        "type": "p",
+        "content": "These operators assign values to variables."
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    int a = 10;    a += 5; // Equivalent to a = a + 5    cout << \"After += 5: \" << a << endl;    return 0;}"
+      },
+      {
+        "type": "h2",
+        "content": "3. Comparison Operators"
+      },
+      {
+        "type": "p",
+        "content": "These operators compare two values and return a boolean result (true or false)."
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    int a = 10, b = 5;    cout << (a > b) << endl; // Outputs 1 (true)    cout << (a == b) << endl; // Outputs 0 (false)    return 0;}"
+      },
+      {
+        "type": "h2",
+        "content": "4. Logical Operators"
+      },
+      {
+        "type": "p",
+        "content": "These operators are used to combine multiple conditions."
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    int a = 10;    cout << (a > 5 && a < 15) << endl; // Outputs 1 (true)    cout << (a > 5 || a < 15) << endl; // Outputs 1 (true)    cout << !(a > 5) << endl; // Outputs 0 (false)    return 0;}"
+      },
+      {
+        "type": "h1",
+        "content": "10. C++ Control Structures"
+      },
+      {
+        "type": "p",
+        "content": "Control structures allow you to control the flow of the program based on conditions."
+      },
+      {
+        "type": "h2",
+        "content": "If Statement"
+      },
+      {
+        "type": "p",
+        "content": "The if statement executes a block of code if a condition is true."
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>int main() {    int age = 18;    if (age >= 18) {        std::cout << \"You are an adult.\";    }    return 0;}"
+      },
+      {
+        "type": "p",
+        "content": "Explanation:"
+      },
+      {
+        "type": "h2",
+        "content": "Else Statement"
+      },
+      {
+        "type": "p",
+        "content": "The else statement executes a block of code if the condition in the if statement is false."
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>int main() {    int age = 16;    if (age >= 18) {        std::cout << \"You are an adult.\";    } else {        std::cout << \"You are a minor.\";    }    return 0;}"
+      },
+      {
+        "type": "p",
+        "content": "Explanation:"
+      },
+      {
+        "type": "h2",
+        "content": "Else If Statement"
+      },
+      {
+        "type": "p",
+        "content": "else if checks additional conditions if the first if condition is false."
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>int main() {    int grade = 85;    if (grade >= 90) {        std::cout << \"You got an A!\";    } else if (grade >= 80) {        std::cout << \"You got a B!\";    } else {        std::cout << \"You got a lower grade.\";    }    return 0;}"
+      },
+      {
+        "type": "p",
+        "content": "Explanation:"
+      },
+      {
+        "type": "h1",
+        "content": "Switch Statement in C++"
+      },
+      {
+        "type": "p",
+        "content": "The switch statement is used to perform different actions based on the value of a variable. It provides a more readable way to compare a variable against a set of constant values rather than using multiple if-else statements."
+      },
+      {
+        "type": "h2",
+        "content": "Syntax:"
+      },
+      {
+        "type": "pre",
+        "content": "switch(expression) {    case constant1:        // code to execute if expression == constant1        break;    case constant2:        // code to execute if expression == constant2        break;    // Add as many cases as needed    default:        // code to execute if expression does not match any case}"
+      },
+      {
+        "type": "p",
+        "content": "Explanation of the Syntax:"
+      },
+      {
+        "type": "h2",
+        "content": "Example:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    int day = 3;    switch(day) {        case 1:            cout << \"Monday\";            break;        case 2:            cout << \"Tuesday\";            break;        case 3:            cout << \"Wednesday\";            break;        case 4:            cout << \"Thursday\";            break;        case 5:            cout << \"Friday\";            break;        case 6:            cout << \"Saturday\";            break;        case 7:            cout << \"Sunday\";            break;        default:            cout << \"Invalid day\";    }    return 0;}"
+      },
+      {
+        "type": "h2",
+        "content": "Detailed Explanation:"
+      },
+      {
+        "type": "p",
+        "content": "Using switch is beneficial when you have many constant values to compare. It improves code readability and often performs better than multiple if-else statements, particularly with numerous conditions."
+      },
+      {
+        "type": "h1",
+        "content": "11. C++ Loops"
+      },
+      {
+        "type": "p",
+        "content": "Loops allow us to repeat a block of code multiple times. C++ has three main types of loops."
+      },
+      {
+        "type": "h2",
+        "content": "1. for Loop"
+      },
+      {
+        "type": "p",
+        "content": "The for loop is used when you know exactly how many times you want to repeat a block of code."
+      },
+      {
+        "type": "p",
+        "content": "Syntax:"
+      },
+      {
+        "type": "pre",
+        "content": "for (initialization; condition; update) {    // Code to execute in each iteration}"
+      },
+      {
+        "type": "p",
+        "content": "Example:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    for (int i = 1; i <= 5; i++) {        cout << \"Iteration: \" << i << endl;    }    return 0;}"
+      },
+      {
+        "type": "h2",
+        "content": "2. while Loop"
+      },
+      {
+        "type": "p",
+        "content": "The while loop repeats a block of code as long as a specified condition is true."
+      },
+      {
+        "type": "p",
+        "content": "Syntax:"
+      },
+      {
+        "type": "pre",
+        "content": "while (condition) {    // Code to execute while condition is true}"
+      },
+      {
+        "type": "p",
+        "content": "Example:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    int i = 1;    while (i <= 5) {        cout << \"Iteration: \" << i << endl;        i++;    }    return 0;}"
+      },
+      {
+        "type": "h2",
+        "content": "3. do...while Loop"
+      },
+      {
+        "type": "p",
+        "content": "The do...while loop is similar to the while loop, but it ensures the code block runs at least once."
+      },
+      {
+        "type": "p",
+        "content": "Syntax:"
+      },
+      {
+        "type": "pre",
+        "content": "do {    // Code to execute} while (condition);"
+      },
+      {
+        "type": "p",
+        "content": "Example:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    int i = 1;    do {        cout << \"Iteration: \" << i << endl;        i++;    } while (i <= 5);    return 0;}"
+      },
+      {
+        "type": "h1",
+        "content": "Break and Continue"
+      },
+      {
+        "type": "p",
+        "content": "In C++, break and continue are used within loops (like for, while, and do...while) to control the flow of the program."
+      },
+      {
+        "type": "h2",
+        "content": "1. Break Statement"
+      },
+      {
+        "type": "p",
+        "content": "The break statement is used to exit a loop prematurely, stopping all iterations regardless of the loop's condition. This is useful when you want to stop a loop once a specific condition is met."
+      },
+      {
+        "type": "p",
+        "content": "Example:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    for (int i = 1; i <= 10; i++) {        if (i == 5) {            break; // Exit the loop when i is 5        }        cout << \"i = \" << i << endl;    }    return 0;}"
+      },
+      {
+        "type": "p",
+        "content": "Explanation: In this example, the loop prints values of i from 1 to 10. However, when i equals 5, the break statement causes the loop to terminate, so only values 1 through 4 are printed."
+      },
+      {
+        "type": "h2",
+        "content": "2. Continue Statement"
+      },
+      {
+        "type": "p",
+        "content": "The continue statement skips the current iteration of the loop and moves to the next iteration."
+      },
+      {
+        "type": "p",
+        "content": "Example:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    for (int i = 1; i <= 10; i++) {        if (i == 5) {            continue; // Skip this iteration when i is 5        }        cout << \"i = \" << i << endl;    }    return 0;}"
+      },
+      {
+        "type": "p",
+        "content": "Explanation: In this example, when i equals 5, continue skips the rest of the code in that loop iteration, so 5 is not printed. The loop continues to the next value after 5."
+      },
+      {
+        "type": "h1",
+        "content": "12. C++ Arrays"
+      },
+      {
+        "type": "p",
+        "content": "An array is a collection of elements of the same data type stored in contiguous memory locations. Arrays are useful when you want to store multiple values of the same type."
+      },
+      {
+        "type": "h2",
+        "content": "Declaring and Initializing an Array"
+      },
+      {
+        "type": "p",
+        "content": "To declare an array, you specify the data type, the array name, and the size in square brackets []."
+      },
+      {
+        "type": "p",
+        "content": "Example:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    int numbers[5] = {10, 20, 30, 40, 50}; // Array of 5 integers    cout << \"First element: \" << numbers[0] << endl;    return 0;}"
+      },
+      {
+        "type": "h2",
+        "content": "Accessing Array Elements"
+      },
+      {
+        "type": "p",
+        "content": "Array elements are accessed using their index, starting from 0."
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    int numbers[5] = {10, 20, 30, 40, 50};    for (int i = 0; i < 5; i++) {        cout << \"Element at index \" << i << \": \" << numbers[i] << endl;    }    return 0;}"
+      },
+      {
+        "type": "h2",
+        "content": "Modifying Array Elements"
+      },
+      {
+        "type": "p",
+        "content": "You can modify array elements by accessing them directly using their index."
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    int numbers[5] = {10, 20, 30, 40, 50};    numbers[2] = 100; // Modify the third element    cout << \"Modified element at index 2: \" << numbers[2] << endl;    return 0;}"
+      },
+      {
+        "type": "p",
+        "content": "Arrays are fundamental structures in C++ for storing multiple values efficiently."
+      },
+      {
+        "type": "h1",
+        "content": "13. C++ Structures"
+      },
+      {
+        "type": "p",
+        "content": "A structure in C++ is a user-defined data type that allows grouping of variables of different types under a single name. Structures are helpful for organizing related data, such as information about a person or an object."
+      },
+      {
+        "type": "h2",
+        "content": "Declaring a Structure"
+      },
+      {
+        "type": "p",
+        "content": "To declare a structure, use the struct keyword, followed by the structure name and the variables within curly braces {}."
+      },
+      {
+        "type": "p",
+        "content": "Example:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;struct Person {    string name;    int age;    float height;};int main() {    Person person1;    person1.name = \"Alice\";    person1.age = 25;    person1.height = 5.7;    cout << \"Name: \" << person1.name << endl;    cout << \"Age: \" << person1.age << endl;    cout << \"Height: \" << person1.height << endl;return 0;}"
+      },
+      {
+        "type": "p",
+        "content": "Explanation:"
+      },
+      {
+        "type": "h1",
+        "content": "14. C++ Enums"
+      },
+      {
+        "type": "p",
+        "content": "An enum (short for “enumeration”) is a user-defined data type consisting of named integral constants. Enums are useful when you have a set of related constants, such as days of the week or months of the year."
+      },
+      {
+        "type": "h2",
+        "content": "Declaring an Enum"
+      },
+      {
+        "type": "p",
+        "content": "To declare an enum, use the enum keyword followed by the name and the values within curly braces {}."
+      },
+      {
+        "type": "p",
+        "content": "Example:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;enum Day { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday };int main() {    Day today = Wednesday;    if (today == Wednesday) {        cout << \"Today is Wednesday!\" << endl;    }    return 0;}"
+      },
+      {
+        "type": "p",
+        "content": "Explanation:"
+      },
+      {
+        "type": "p",
+        "content": "Note: Enum values start from 0 by default, so Monday is 0, Tuesday is 1, and so on."
+      },
+      {
+        "type": "h1",
+        "content": "15. C++ References"
+      },
+      {
+        "type": "p",
+        "content": "A reference in C++ is an alias for another variable. When you create a reference, it acts as a nickname for the original variable, allowing you to access and modify the original variable directly."
+      },
+      {
+        "type": "h2",
+        "content": "Declaring a Reference"
+      },
+      {
+        "type": "p",
+        "content": "To create a reference, use the & symbol."
+      },
+      {
+        "type": "p",
+        "content": "Example:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    int x = 10;    int &ref = x; // ref is a reference to x    cout << \"Original x: \" << x << endl;    ref = 20; // Changing ref also changes x    cout << \"Modified x: \" << x << endl;    return 0;}"
+      },
+      {
+        "type": "p",
+        "content": "Explanation:"
+      },
+      {
+        "type": "h1",
+        "content": "16. C++ Pointers"
+      },
+      {
+        "type": "p",
+        "content": "A pointer in C++ is a variable that stores the memory address of another variable. Pointers are powerful and commonly used for memory management and data structures."
+      },
+      {
+        "type": "h2",
+        "content": "Declaring a Pointer"
+      },
+      {
+        "type": "p",
+        "content": "To declare a pointer, use the * symbol."
+      },
+      {
+        "type": "p",
+        "content": "Example:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    int x = 10;    int *ptr = &x; // ptr is a pointer to x    cout << \"Value of x: \" << x << endl;    cout << \"Address of x: \" << ptr << endl;    cout << \"Value at pointer address: \" << *ptr << endl;    return 0;}"
+      },
+      {
+        "type": "p",
+        "content": "Explanation:"
+      },
+      {
+        "type": "h2",
+        "content": "Pointers vs. References"
+      },
+      {
+        "type": "h2",
+        "content": "Example of Modifying a Variable through a Pointer"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    int x = 10;    int *ptr = &x;    cout << \"Original x: \" << x << endl;    *ptr = 20; // Modifying x through the pointer    cout << \"Modified x: \" << x << endl;    return 0;}"
+      },
+      {
+        "type": "p",
+        "content": "Explanation:"
+      },
+      {
+        "type": "h1",
+        "content": "Conclusion"
+      },
+      {
+        "type": "p",
+        "content": "This guide has introduced the foundational elements of C++ programming, from setting up your environment to understanding data types, control structures, loops, arrays, and more advanced topics like structures, enums, references, and pointers. Mastering these basics is the first step in your journey to becoming proficient in C++."
+      },
+      {
+        "type": "p",
+        "content": "Continue practicing these concepts with various examples and problems. Over time, you’ll gain confidence and be able to tackle more complex C++ projects. Remember, programming is all about problem-solving, so don’t hesitate to experiment and try out new ideas as you learn."
+      },
+      {
+        "type": "p",
+        "content": "Happy coding, and welcome to the world of C++!"
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T02:10:54.027163"
+  },
+  {
+    "url": "https://iammalikkhalil.medium.com/a-beginners-guide-to-c-programming-from-basics-to-core-concepts-67d43f873f85",
+    "title": "A Beginner’s Guide to C++ Programming: From Basics to Core Concepts",
+    "author": "Press",
+    "published_date": null,
+    "reading_time": "14 min read",
+    "tags": [
+      "C Programming",
+      "Learn Cpp",
+      "Programming Languages",
+      "Cpp Programming",
+      "Programming Fundament"
+    ],
+    "content": [
+      {
+        "type": "h1",
+        "content": "A Beginner’s Guide to C++ Programming: From Basics to Core Concepts"
+      },
+      {
+        "type": "p",
+        "content": "Muhammad Khalil"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "Listen"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "h1",
+        "content": "1. C++ Introduction"
+      },
+      {
+        "type": "p",
+        "content": "C++ is a general-purpose programming language that was created by Bjarne Stroustrup in the 1980s as an extension of the C language. It is used for a wide range of applications, from operating systems to video games and high-performance applications. C++ combines the performance benefits of low-level programming with the flexibility of high-level programming."
+      },
+      {
+        "type": "h1",
+        "content": "2. Getting Started with C++"
+      },
+      {
+        "type": "h2",
+        "content": "Setting Up Your Environment"
+      },
+      {
+        "type": "p",
+        "content": "To write and run C++ code, you need:"
+      },
+      {
+        "type": "h1",
+        "content": "3. Your First C++ Program"
+      },
+      {
+        "type": "p",
+        "content": "Let’s start with a simple program, known as “Hello, World!” This is the first program people usually write to understand the basic structure of a C++ program."
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream> // Includes the library for input and outputint main() {    std::cout << \"Hello, World!\"; // Outputs \"Hello, World!\" to the screen    return 0; // Signals successful completion of the program}"
+      },
+      {
+        "type": "h2",
+        "content": "Explanation of Each Part:"
+      },
+      {
+        "type": "p",
+        "content": "Here’s a more detailed and beginner-friendly guide on C++ data types, operators, loops, and arrays. I’ll include examples, explanations of each concept, and code snippets to illustrate how each element works."
+      },
+      {
+        "type": "h1",
+        "content": "Using namespace std;"
+      },
+      {
+        "type": "p",
+        "content": "In C++, many elements from the standard library (like cout, cin, etc.) are part of the std namespace. By default, to use them, we need to prefix them with std::, as in std::cout. However, by adding using namespace std; at the beginning of our code, we can simplify this by removing the need for the std:: prefix."
+      },
+      {
+        "type": "p",
+        "content": "Example:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    cout << \"Hello, World!\";    return 0;}"
+      },
+      {
+        "type": "h1",
+        "content": "4. C++ Syntax and Statements"
+      },
+      {
+        "type": "p",
+        "content": "In C++, each line of code that performs an action is called a statement. Each statement ends with a semicolon (;). Code blocks, which are groups of statements that should be executed together, are enclosed in curly braces {}."
+      },
+      {
+        "type": "p",
+        "content": "Example:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>int main() {    int x = 10; // Statement 1    int y = 5;  // Statement 2    std::cout << \"Sum: \" << x + y; // Statement 3    return 0; // Statement 4}"
+      },
+      {
+        "type": "p",
+        "content": "Each line is a separate statement. Without a semicolon, C++ will give you an error."
+      },
+      {
+        "type": "h1",
+        "content": "5. C++ Output"
+      },
+      {
+        "type": "p",
+        "content": "In C++, we use std::cout to print things to the screen. The << symbol is called the insertion operator, which \"inserts\" the data into the output stream."
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>int main() {    std::cout << \"Welcome to C++!\"; // Output: Welcome to C++!    return 0;}"
+      },
+      {
+        "type": "h2",
+        "content": "Adding Line Breaks"
+      },
+      {
+        "type": "p",
+        "content": "We can use \\n inside a string to create a new line."
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>int main() {    std::cout << \"Welcome to C++!\\n\";    std::cout << \"Let's learn step-by-step!\";    return 0;}"
+      },
+      {
+        "type": "h1",
+        "content": "6. C++ Variables"
+      },
+      {
+        "type": "p",
+        "content": "A variable is a name that refers to a memory location where data can be stored. Variables must be declared with a data type, which specifies the type of data they will hold."
+      },
+      {
+        "type": "h2",
+        "content": "Declaring Variables"
+      },
+      {
+        "type": "p",
+        "content": "To declare a variable, write the type followed by the variable name:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>int main() {    int age = 21; // Declares an integer variable called \"age\" and assigns it a value of 21    double height = 5.9; // Declares a double variable called \"height\" and assigns it 5.9    return 0;}"
+      },
+      {
+        "type": "h1",
+        "content": "7. C++ User Input"
+      },
+      {
+        "type": "p",
+        "content": "To get input from the user, we use std::cin. This uses the extraction operator (>>) to store user input into a variable."
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>int main() {    int age;    std::cout << \"Enter your age: \";    std::cin >> age; // Stores the user input in the variable 'age'    std::cout << \"You entered: \" << age;    return 0;}"
+      },
+      {
+        "type": "p",
+        "content": "Here’s a more detailed and beginner-friendly guide on C++ data types, operators, loops, and arrays. I’ll include examples, explanations of each concept, and code snippets to illustrate how each element works."
+      },
+      {
+        "type": "h1",
+        "content": "8. C++ Data Types"
+      },
+      {
+        "type": "p",
+        "content": "Data types specify what kind of data a variable can hold. Each data type has a specific size and range. Here’s a breakdown of common C++ data types:"
+      },
+      {
+        "type": "h2",
+        "content": "Examples:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    int age = 25;    float price = 19.99;    double distance = 123.456;    char grade = 'A';    bool isOpen = true;    string name = \"Alice\";    long population = 9000000000;    short temperature = 30;    cout << \"Age: \" << age << endl;    cout << \"Price: \" << price << endl;    cout << \"Distance: \" << distance << endl;    cout << \"Grade: \" << grade << endl;    cout << \"Is Open: \" << isOpen << endl;    cout << \"Name: \" << name << endl;    cout << \"Population: \" << population << endl;    cout << \"Temperature: \" << temperature << endl;    return 0;}"
+      },
+      {
+        "type": "h1",
+        "content": "9. C++ Operators"
+      },
+      {
+        "type": "p",
+        "content": "Operators are symbols that perform specific operations on variables and values. Here are the different types of operators in C++:"
+      },
+      {
+        "type": "h2",
+        "content": "1. Arithmetic Operators"
+      },
+      {
+        "type": "p",
+        "content": "These operators are used to perform basic arithmetic calculations."
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    int a = 10, b = 3;    cout << \"Addition: \" << a + b << endl;    cout << \"Subtraction: \" << a - b << endl;    cout << \"Multiplication: \" << a * b << endl;    cout << \"Division: \" << a / b << endl;    cout << \"Modulus: \" << a % b << endl;    return 0;}"
+      },
+      {
+        "type": "h2",
+        "content": "2. Assignment Operators"
+      },
+      {
+        "type": "p",
+        "content": "These operators assign values to variables."
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    int a = 10;    a += 5; // Equivalent to a = a + 5    cout << \"After += 5: \" << a << endl;    return 0;}"
+      },
+      {
+        "type": "h2",
+        "content": "3. Comparison Operators"
+      },
+      {
+        "type": "p",
+        "content": "These operators compare two values and return a boolean result (true or false)."
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    int a = 10, b = 5;    cout << (a > b) << endl; // Outputs 1 (true)    cout << (a == b) << endl; // Outputs 0 (false)    return 0;}"
+      },
+      {
+        "type": "h2",
+        "content": "4. Logical Operators"
+      },
+      {
+        "type": "p",
+        "content": "These operators are used to combine multiple conditions."
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    int a = 10;    cout << (a > 5 && a < 15) << endl; // Outputs 1 (true)    cout << (a > 5 || a < 15) << endl; // Outputs 1 (true)    cout << !(a > 5) << endl; // Outputs 0 (false)    return 0;}"
+      },
+      {
+        "type": "h1",
+        "content": "10. C++ Control Structures"
+      },
+      {
+        "type": "p",
+        "content": "Control structures allow you to control the flow of the program based on conditions."
+      },
+      {
+        "type": "h2",
+        "content": "If Statement"
+      },
+      {
+        "type": "p",
+        "content": "The if statement executes a block of code if a condition is true."
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>int main() {    int age = 18;    if (age >= 18) {        std::cout << \"You are an adult.\";    }    return 0;}"
+      },
+      {
+        "type": "p",
+        "content": "Explanation:"
+      },
+      {
+        "type": "h2",
+        "content": "Else Statement"
+      },
+      {
+        "type": "p",
+        "content": "The else statement executes a block of code if the condition in the if statement is false."
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>int main() {    int age = 16;    if (age >= 18) {        std::cout << \"You are an adult.\";    } else {        std::cout << \"You are a minor.\";    }    return 0;}"
+      },
+      {
+        "type": "p",
+        "content": "Explanation:"
+      },
+      {
+        "type": "h2",
+        "content": "Else If Statement"
+      },
+      {
+        "type": "p",
+        "content": "else if checks additional conditions if the first if condition is false."
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>int main() {    int grade = 85;    if (grade >= 90) {        std::cout << \"You got an A!\";    } else if (grade >= 80) {        std::cout << \"You got a B!\";    } else {        std::cout << \"You got a lower grade.\";    }    return 0;}"
+      },
+      {
+        "type": "p",
+        "content": "Explanation:"
+      },
+      {
+        "type": "h1",
+        "content": "Switch Statement in C++"
+      },
+      {
+        "type": "p",
+        "content": "The switch statement is used to perform different actions based on the value of a variable. It provides a more readable way to compare a variable against a set of constant values rather than using multiple if-else statements."
+      },
+      {
+        "type": "h2",
+        "content": "Syntax:"
+      },
+      {
+        "type": "pre",
+        "content": "switch(expression) {    case constant1:        // code to execute if expression == constant1        break;    case constant2:        // code to execute if expression == constant2        break;    // Add as many cases as needed    default:        // code to execute if expression does not match any case}"
+      },
+      {
+        "type": "p",
+        "content": "Explanation of the Syntax:"
+      },
+      {
+        "type": "h2",
+        "content": "Example:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    int day = 3;    switch(day) {        case 1:            cout << \"Monday\";            break;        case 2:            cout << \"Tuesday\";            break;        case 3:            cout << \"Wednesday\";            break;        case 4:            cout << \"Thursday\";            break;        case 5:            cout << \"Friday\";            break;        case 6:            cout << \"Saturday\";            break;        case 7:            cout << \"Sunday\";            break;        default:            cout << \"Invalid day\";    }    return 0;}"
+      },
+      {
+        "type": "h2",
+        "content": "Detailed Explanation:"
+      },
+      {
+        "type": "p",
+        "content": "Using switch is beneficial when you have many constant values to compare. It improves code readability and often performs better than multiple if-else statements, particularly with numerous conditions."
+      },
+      {
+        "type": "h1",
+        "content": "11. C++ Loops"
+      },
+      {
+        "type": "p",
+        "content": "Loops allow us to repeat a block of code multiple times. C++ has three main types of loops."
+      },
+      {
+        "type": "h2",
+        "content": "1. for Loop"
+      },
+      {
+        "type": "p",
+        "content": "The for loop is used when you know exactly how many times you want to repeat a block of code."
+      },
+      {
+        "type": "p",
+        "content": "Syntax:"
+      },
+      {
+        "type": "pre",
+        "content": "for (initialization; condition; update) {    // Code to execute in each iteration}"
+      },
+      {
+        "type": "p",
+        "content": "Example:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    for (int i = 1; i <= 5; i++) {        cout << \"Iteration: \" << i << endl;    }    return 0;}"
+      },
+      {
+        "type": "h2",
+        "content": "2. while Loop"
+      },
+      {
+        "type": "p",
+        "content": "The while loop repeats a block of code as long as a specified condition is true."
+      },
+      {
+        "type": "p",
+        "content": "Syntax:"
+      },
+      {
+        "type": "pre",
+        "content": "while (condition) {    // Code to execute while condition is true}"
+      },
+      {
+        "type": "p",
+        "content": "Example:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    int i = 1;    while (i <= 5) {        cout << \"Iteration: \" << i << endl;        i++;    }    return 0;}"
+      },
+      {
+        "type": "h2",
+        "content": "3. do...while Loop"
+      },
+      {
+        "type": "p",
+        "content": "The do...while loop is similar to the while loop, but it ensures the code block runs at least once."
+      },
+      {
+        "type": "p",
+        "content": "Syntax:"
+      },
+      {
+        "type": "pre",
+        "content": "do {    // Code to execute} while (condition);"
+      },
+      {
+        "type": "p",
+        "content": "Example:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    int i = 1;    do {        cout << \"Iteration: \" << i << endl;        i++;    } while (i <= 5);    return 0;}"
+      },
+      {
+        "type": "h1",
+        "content": "Break and Continue"
+      },
+      {
+        "type": "p",
+        "content": "In C++, break and continue are used within loops (like for, while, and do...while) to control the flow of the program."
+      },
+      {
+        "type": "h2",
+        "content": "1. Break Statement"
+      },
+      {
+        "type": "p",
+        "content": "The break statement is used to exit a loop prematurely, stopping all iterations regardless of the loop's condition. This is useful when you want to stop a loop once a specific condition is met."
+      },
+      {
+        "type": "p",
+        "content": "Example:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    for (int i = 1; i <= 10; i++) {        if (i == 5) {            break; // Exit the loop when i is 5        }        cout << \"i = \" << i << endl;    }    return 0;}"
+      },
+      {
+        "type": "p",
+        "content": "Explanation: In this example, the loop prints values of i from 1 to 10. However, when i equals 5, the break statement causes the loop to terminate, so only values 1 through 4 are printed."
+      },
+      {
+        "type": "h2",
+        "content": "2. Continue Statement"
+      },
+      {
+        "type": "p",
+        "content": "The continue statement skips the current iteration of the loop and moves to the next iteration."
+      },
+      {
+        "type": "p",
+        "content": "Example:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    for (int i = 1; i <= 10; i++) {        if (i == 5) {            continue; // Skip this iteration when i is 5        }        cout << \"i = \" << i << endl;    }    return 0;}"
+      },
+      {
+        "type": "p",
+        "content": "Explanation: In this example, when i equals 5, continue skips the rest of the code in that loop iteration, so 5 is not printed. The loop continues to the next value after 5."
+      },
+      {
+        "type": "h1",
+        "content": "12. C++ Arrays"
+      },
+      {
+        "type": "p",
+        "content": "An array is a collection of elements of the same data type stored in contiguous memory locations. Arrays are useful when you want to store multiple values of the same type."
+      },
+      {
+        "type": "h2",
+        "content": "Declaring and Initializing an Array"
+      },
+      {
+        "type": "p",
+        "content": "To declare an array, you specify the data type, the array name, and the size in square brackets []."
+      },
+      {
+        "type": "p",
+        "content": "Example:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    int numbers[5] = {10, 20, 30, 40, 50}; // Array of 5 integers    cout << \"First element: \" << numbers[0] << endl;    return 0;}"
+      },
+      {
+        "type": "h2",
+        "content": "Accessing Array Elements"
+      },
+      {
+        "type": "p",
+        "content": "Array elements are accessed using their index, starting from 0."
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    int numbers[5] = {10, 20, 30, 40, 50};    for (int i = 0; i < 5; i++) {        cout << \"Element at index \" << i << \": \" << numbers[i] << endl;    }    return 0;}"
+      },
+      {
+        "type": "h2",
+        "content": "Modifying Array Elements"
+      },
+      {
+        "type": "p",
+        "content": "You can modify array elements by accessing them directly using their index."
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    int numbers[5] = {10, 20, 30, 40, 50};    numbers[2] = 100; // Modify the third element    cout << \"Modified element at index 2: \" << numbers[2] << endl;    return 0;}"
+      },
+      {
+        "type": "p",
+        "content": "Arrays are fundamental structures in C++ for storing multiple values efficiently."
+      },
+      {
+        "type": "h1",
+        "content": "13. C++ Structures"
+      },
+      {
+        "type": "p",
+        "content": "A structure in C++ is a user-defined data type that allows grouping of variables of different types under a single name. Structures are helpful for organizing related data, such as information about a person or an object."
+      },
+      {
+        "type": "h2",
+        "content": "Declaring a Structure"
+      },
+      {
+        "type": "p",
+        "content": "To declare a structure, use the struct keyword, followed by the structure name and the variables within curly braces {}."
+      },
+      {
+        "type": "p",
+        "content": "Example:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;struct Person {    string name;    int age;    float height;};int main() {    Person person1;    person1.name = \"Alice\";    person1.age = 25;    person1.height = 5.7;    cout << \"Name: \" << person1.name << endl;    cout << \"Age: \" << person1.age << endl;    cout << \"Height: \" << person1.height << endl;return 0;}"
+      },
+      {
+        "type": "p",
+        "content": "Explanation:"
+      },
+      {
+        "type": "h1",
+        "content": "14. C++ Enums"
+      },
+      {
+        "type": "p",
+        "content": "An enum (short for “enumeration”) is a user-defined data type consisting of named integral constants. Enums are useful when you have a set of related constants, such as days of the week or months of the year."
+      },
+      {
+        "type": "h2",
+        "content": "Declaring an Enum"
+      },
+      {
+        "type": "p",
+        "content": "To declare an enum, use the enum keyword followed by the name and the values within curly braces {}."
+      },
+      {
+        "type": "p",
+        "content": "Example:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;enum Day { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday };int main() {    Day today = Wednesday;    if (today == Wednesday) {        cout << \"Today is Wednesday!\" << endl;    }    return 0;}"
+      },
+      {
+        "type": "p",
+        "content": "Explanation:"
+      },
+      {
+        "type": "p",
+        "content": "Note: Enum values start from 0 by default, so Monday is 0, Tuesday is 1, and so on."
+      },
+      {
+        "type": "h1",
+        "content": "15. C++ References"
+      },
+      {
+        "type": "p",
+        "content": "A reference in C++ is an alias for another variable. When you create a reference, it acts as a nickname for the original variable, allowing you to access and modify the original variable directly."
+      },
+      {
+        "type": "h2",
+        "content": "Declaring a Reference"
+      },
+      {
+        "type": "p",
+        "content": "To create a reference, use the & symbol."
+      },
+      {
+        "type": "p",
+        "content": "Example:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    int x = 10;    int &ref = x; // ref is a reference to x    cout << \"Original x: \" << x << endl;    ref = 20; // Changing ref also changes x    cout << \"Modified x: \" << x << endl;    return 0;}"
+      },
+      {
+        "type": "p",
+        "content": "Explanation:"
+      },
+      {
+        "type": "h1",
+        "content": "16. C++ Pointers"
+      },
+      {
+        "type": "p",
+        "content": "A pointer in C++ is a variable that stores the memory address of another variable. Pointers are powerful and commonly used for memory management and data structures."
+      },
+      {
+        "type": "h2",
+        "content": "Declaring a Pointer"
+      },
+      {
+        "type": "p",
+        "content": "To declare a pointer, use the * symbol."
+      },
+      {
+        "type": "p",
+        "content": "Example:"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    int x = 10;    int *ptr = &x; // ptr is a pointer to x    cout << \"Value of x: \" << x << endl;    cout << \"Address of x: \" << ptr << endl;    cout << \"Value at pointer address: \" << *ptr << endl;    return 0;}"
+      },
+      {
+        "type": "p",
+        "content": "Explanation:"
+      },
+      {
+        "type": "h2",
+        "content": "Pointers vs. References"
+      },
+      {
+        "type": "h2",
+        "content": "Example of Modifying a Variable through a Pointer"
+      },
+      {
+        "type": "pre",
+        "content": "#include <iostream>using namespace std;int main() {    int x = 10;    int *ptr = &x;    cout << \"Original x: \" << x << endl;    *ptr = 20; // Modifying x through the pointer    cout << \"Modified x: \" << x << endl;    return 0;}"
+      },
+      {
+        "type": "p",
+        "content": "Explanation:"
+      },
+      {
+        "type": "h1",
+        "content": "Conclusion"
+      },
+      {
+        "type": "p",
+        "content": "This guide has introduced the foundational elements of C++ programming, from setting up your environment to understanding data types, control structures, loops, arrays, and more advanced topics like structures, enums, references, and pointers. Mastering these basics is the first step in your journey to becoming proficient in C++."
+      },
+      {
+        "type": "p",
+        "content": "Continue practicing these concepts with various examples and problems. Over time, you’ll gain confidence and be able to tackle more complex C++ projects. Remember, programming is all about problem-solving, so don’t hesitate to experiment and try out new ideas as you learn."
+      },
+      {
+        "type": "p",
+        "content": "Happy coding, and welcome to the world of C++!"
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T02:10:56.190038"
+  },
+  {
+    "url": "https://cplusplus.medium.com/",
+    "title": "Unknown Title",
+    "author": "Press",
+    "published_date": null,
+    "reading_time": "Unknown",
+    "tags": [],
+    "content": [],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T02:10:59.600446"
+  },
+  {
+    "url": "https://www.classcentral.com/course/youtube-c-tutorials-92205",
+    "title": "C++ Tutorials",
+    "author": "Unknown Author",
+    "published_date": "2025-03-10",
+    "reading_time": "Unknown",
+    "tags": [],
+    "content": [],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T02:11:03.915980"
+  },
+  {
+    "url": "https://techdecodetutorials.com/category/c/cpptutorials/",
+    "title": "C++ Tutorials",
+    "author": "Unknown Author",
+    "published_date": "2022-07-04T10:48:26+05:30",
+    "reading_time": "Unknown",
+    "tags": [
+      "run c++ on visual studio code",
+      "run c++ vscode",
+      "run c++ vscode windows 11",
+      "run c++ windows 11",
+      "c++",
+      "install c++ compiler in windows 11",
+      "install MinGW C/C++ Compiler in Windows 11",
+      "Install MinGw Compiler",
+      "mingw windows 11",
+      "TechDecodeTutorials",
+      "Tutorial",
+      "Windows 11",
+      "install c compiler mac",
+      "install c compiler on mac m1",
+      "install C++ Compiler in Mac OS",
+      "install c++ mac m1",
+      "Mac os",
+      "MinGW Compiler",
+      "mingw on mac m1",
+      "mingw64 on mac m1",
+      "TechDecodeTutorials",
+      "Tutorial",
+      "c++",
+      "download turbo c++",
+      "install turbo c windows 11",
+      "Install Turbo C++ in Windows 11",
+      "Programming",
+      "TechDecodeTutorials",
+      "turbo c for windows 11",
+      "Turbo C++",
+      "turbo c++ windows 11",
+      "C++ in Mac",
+      "c++ visual studio code macOS",
+      "c++ vscode mac",
+      "install",
+      "mac",
+      "run c++ in visual studio code mac",
+      "run c++ vscode mac",
+      "TechDecodeTutorials",
+      "Tutorial",
+      "c++",
+      "mingw",
+      "run c in vscode",
+      "run c++ on visual studio code",
+      "run c++ vscode",
+      "visual studio code",
+      "c++",
+      "install c in windows 10",
+      "install C++",
+      "install c++ on windows 10",
+      "install mingw",
+      "install mingw windows 10",
+      "mingw",
+      "run c++ on windows 10"
+    ],
+    "content": [],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T02:11:07.890389"
+  },
+  {
+    "url": "https://hackr.io/tutorials/learn-c-plus-plus",
+    "title": "C++ Tutorials and Courses",
+    "author": "",
+    "published_date": null,
+    "reading_time": "Unknown",
+    "tags": [],
+    "content": [],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T02:11:12.451886"
+  },
+  {
+    "url": "https://www.softwaretestinghelp.com/cpp-tutorials/",
+    "error": "403 Client Error: Forbidden for url: https://www.softwaretestinghelp.com/cpp-tutorials/",
+    "scraped_at": "2025-03-30T02:11:14.992877"
+  },
+  {
+    "url": "https://medium.com/basics-of-c",
+    "error": "'NoneType' object is not callable",
+    "scraped_at": "2025-03-30T02:11:17.866831"
+  },
+  {
+    "url": "https://medium.com/@the_infinity/master-c-like-a-pro-the-ultimate-guide-for-beginners-and-experts-alike-5e6aa5ebf7da",
+    "title": "Master C++ like a pro: The ultimate guide for beginners and experts alike!",
+    "author": "Mastodon",
+    "published_date": null,
+    "reading_time": "3 min read",
+    "tags": [
+      "Tutorial",
+      "Programming",
+      "Cpp",
+      "Software",
+      "Engineering"
+    ],
+    "content": [
+      {
+        "type": "h1",
+        "content": "Master C++ like a pro: The ultimate guide for beginners and experts alike!"
+      },
+      {
+        "type": "p",
+        "content": "Rishabh Agarwal"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "Listen"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "C++ is unlike any other programming language out there. It’s one of the oldest and most popular languages, but it’s also notoriously difficult to learn — especially for beginners. But here’s the thing: if you can master C++, you can conquer any programming challenge thrown your way."
+      },
+      {
+        "type": "p",
+        "content": "C++ is the backbone of many of today’s most popular software applications, from operating systems to advanced video games. So if you want to become a top-tier programmer and take your coding skills to the next level, learning C++ is a must."
+      },
+      {
+        "type": "p",
+        "content": "Despite the abundance of C++ resources available on the internet, the way in which this information is presented can be difficult for beginners to digest due to a lack of structure."
+      },
+      {
+        "type": "p",
+        "content": "All this has motivated me to create a C++ series that aims to provide a clear and concise understanding of the language for those just starting out. By utilizing a structured approach to teaching, I hope to simplify the learning process and make it more accessible for aspiring C++ developers."
+      },
+      {
+        "type": "h1",
+        "content": "In C++ : Series Breakdown"
+      },
+      {
+        "type": "p",
+        "content": "The C++ series is structured into three main sections that build upon each other to provide a comprehensive understanding of the language."
+      },
+      {
+        "type": "p",
+        "content": "The first section is focused on Basic C++ features, covering topics such as data types, operators, control structures, and functions."
+      },
+      {
+        "type": "p",
+        "content": "The second section is focused on Object-Oriented Programming in C++, including classes, inheritance, polymorphism, and other key OOP concepts."
+      },
+      {
+        "type": "p",
+        "content": "Finally, in the third section, the series dives into Advanced features in C++, including templates, exceptions, namespaces, and other important topics."
+      },
+      {
+        "type": "p",
+        "content": "By following this structured approach, learners can gradually build up their knowledge and skills in C++, moving from fundamental topics to more complex concepts. The series is evolving actively and the first part is already published for readers to enjoy and learn."
+      },
+      {
+        "type": "h1",
+        "content": "In C++ : Basic C++ Features"
+      },
+      {
+        "type": "p",
+        "content": "Following stories have been published for the first part of the “in C++” series."
+      },
+      {
+        "type": "p",
+        "content": "All of the stories above talks about the concerned topics at great length providing coding examples and ideas behind design decision of languages."
+      },
+      {
+        "type": "h1",
+        "content": "In C++ : OOPS in C++"
+      },
+      {
+        "type": "p",
+        "content": "Following stories have so far been published in the second part of the “in C++” series."
+      },
+      {
+        "type": "p",
+        "content": "More stories are in the pipeline for this section and are expected to come really soon. Both of these stories are intended for programmers with some expertise with programming in C++ and provide good introduction to OOPS in C++."
+      },
+      {
+        "type": "p",
+        "content": "Whether you’re a seasoned pro or just starting out, this series carries something for everyone. With topics ranging from basics to advanced, my “in C++” series is the perfect resource for anyone looking to become a true C++ ninja. So why wait? Start reading today and follow so you not miss on upcoming articles."
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T02:11:20.334799"
+  },
+  {
+    "url": "https://medium.com/@qianxinyue0805/the-ultimate-c-self-learning-roadmap-with-detailed-materials-and-interview-tips-42c3be89ea3f",
+    "title": "The Ultimate C++ Self-Learning Roadmap (with Detailed Materials and Interview Tips!)",
+    "author": "",
+    "published_date": null,
+    "reading_time": "8 min read",
+    "tags": [
+      "Cpp",
+      "Programming",
+      "Self Learning",
+      "Interview"
+    ],
+    "content": [
+      {
+        "type": "h1",
+        "content": "The Ultimate C++ Self-Learning Roadmap (with Detailed Materials and Interview Tips!)"
+      },
+      {
+        "type": "p",
+        "content": "Qian Xinyue"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "Listen"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "A while ago when I was job searching, I came across this opportunity where I needed to learn C++ by myself and take part in a technical interview in two weeks. The guy gave me a list of interview questions I needed to prepare, which I find very useful as a roadmap to learning C++. So I really want to share this with everyone, with a complete list of all links I consulted during the self-learning process. Hope it solves your headache of not knowing where to start."
+      },
+      {
+        "type": "p",
+        "content": "The first three questions are very hardcore and require a lot of background information of C++. I have listed everything (that I think) needed for understanding these questions. So it might seem a bit overwhelming at first. But just follow through all the links and you can have a thorough understanding of C++."
+      },
+      {
+        "type": "p",
+        "content": "Just a bit more introduction about myself: I previously learned C and Python but does not have much computing background. So this is definitely a guide suitable for complete beginners. And I nailed the first round C++ interview but didn’t succeed in the following rounds, oops…"
+      },
+      {
+        "type": "h1",
+        "content": "Question 1: Memory Management in C++, what is memory leak and how to prevent it?"
+      },
+      {
+        "type": "p",
+        "content": "Yea… It is a bit overwhelming to start from this question when you’ve only coded very simple HackerRank problems like me. Don’t worry! First let’s go through a few concepts you need to be familiar with before learning memory management in C++:"
+      },
+      {
+        "type": "h2",
+        "content": "Pointers"
+      },
+      {
+        "type": "h3",
+        "content": "In earlier chapters, variables have been explained as locations in the computer's memory which can be accessed by their…"
+      },
+      {
+        "type": "p",
+        "content": "www.cplusplus.com"
+      },
+      {
+        "type": "h2",
+        "content": "Classes (I)"
+      },
+      {
+        "type": "h3",
+        "content": "Classes are an expanded concept of data structures: like data structures, they can contain data members, but they can…"
+      },
+      {
+        "type": "p",
+        "content": "www.cplusplus.com"
+      },
+      {
+        "type": "h2",
+        "content": "Introduction to Constructors in C++"
+      },
+      {
+        "type": "h3",
+        "content": "This article will go through basics of C++ constructors. A constructor is a special member function that initializes…"
+      },
+      {
+        "type": "p",
+        "content": "www.section.io"
+      },
+      {
+        "type": "h2",
+        "content": "C++ variables scope: Learn about local variables, global variables, etc : CodesDope"
+      },
+      {
+        "type": "h3",
+        "content": "Scope is a region of a program. Variable Scope is a region in a program where a variable is declared and used…"
+      },
+      {
+        "type": "p",
+        "content": "www.codesdope.com"
+      },
+      {
+        "type": "p",
+        "content": "Then le’s get down to memory management in C++. Generally, there are two main ways of memory allocation in C++. (In total there are four, if you would like to know more about them.) One is static memory allocation, where variables are allocated as you declare them using “int num;” command before the program executes. The other one is dynamic memory allocation, where memory is allocated and de-alloated during runtime using “new” and “delete” commands."
+      },
+      {
+        "type": "p",
+        "content": "The reason why we need dynamic memory allocation is for example, we want to input a number num and create num new variables. The variable num can be allocated in the static way because we know it for sure. But other variables we can only create them after we have received the input of num, that is during the execution of the program."
+      },
+      {
+        "type": "h2",
+        "content": "Static and Dynamic Memory Allocation in C - GeeksforGeeks"
+      },
+      {
+        "type": "h3",
+        "content": "Memory is divided into smaller addressable units called . Assume that these are small boxes as bytes. Each byte has its…"
+      },
+      {
+        "type": "p",
+        "content": "www.geeksforgeeks.org"
+      },
+      {
+        "type": "h2",
+        "content": "C++ Tutorial: Memory Allocation - 2020"
+      },
+      {
+        "type": "h3",
+        "content": "bogotobogo.com site search: Variables represent storage space in the computer's memory. Each variable presents a…"
+      },
+      {
+        "type": "p",
+        "content": "www.bogotobogo.com"
+      },
+      {
+        "type": "p",
+        "content": "Every variable created by “new” command needs to be de-allocated by “delete”. If not, the piece of memory will remain there even after the program ends. And it can be accessed by other programs. That’s probably why people call this situation memory leak."
+      },
+      {
+        "type": "h2",
+        "content": "Memory leak in C++ and How to avoid it? - GeeksforGeeks"
+      },
+      {
+        "type": "h3",
+        "content": "Memory leakage occurs in C++ when programmers allocates memory by using new keyword and forgets to deallocate the…"
+      },
+      {
+        "type": "p",
+        "content": "www.geeksforgeeks.org"
+      },
+      {
+        "type": "p",
+        "content": "And a few ways to avoid it:"
+      },
+      {
+        "type": "p",
+        "content": "RAII is also an important concept in C++. It generally means encapsulating each resource into a class. Here we can understand resource as dynamically allocated memory that we were just talking about, though it could refer to some other things. And encapsulate here means that we “new” the variable in the constructor and “delete” it in the destructor of the class. Because constructor and destructor are called whether or not exception happens, we can be guaranteed this way that any variable “new”ed in the constructor will be “deleted” eventually."
+      },
+      {
+        "type": "h2",
+        "content": "Resource Acquisition is Initialisation (RAII) Explained"
+      },
+      {
+        "type": "h3",
+        "content": "In the competition to make the worst acronym, RAII probably comes second after HATEOS. Nevertheless, it is an important…"
+      },
+      {
+        "type": "p",
+        "content": "www.tomdalling.com"
+      },
+      {
+        "type": "h1",
+        "content": "Question 2: Shared Pointer and Unique Pointer in C++. What are they? Why are they needed? What are the differences?"
+      },
+      {
+        "type": "p",
+        "content": "Unique pointers and shared pointers are different types of smart pointers. They are wrappers of raw pointers, and both come with a destructor to automatically free the memory they point to when they go out of scope. The main difference is that unique pointer allows exactly one owner of the underlying pointer, while shared pointer allows multiple owners by maintaining a reference count of all owners."
+      },
+      {
+        "type": "h2",
+        "content": "Smart Pointers in C++ and How to Use Them - GeeksforGeeks"
+      },
+      {
+        "type": "h3",
+        "content": "In this article, we will be discussing smart pointers in C++. What are Smart Pointers, why, and how to use them…"
+      },
+      {
+        "type": "p",
+        "content": "www.geeksforgeeks.org"
+      },
+      {
+        "type": "p",
+        "content": "Don’t panic if you don’t understand what I’m saying. I have some great materials here! (Something that can’t easily be found on the first page of Google search) The below slides are extremely helpful!!"
+      },
+      {
+        "type": "p",
+        "content": "https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1192/lectures/lecture15/15_RAII.pdf"
+      },
+      {
+        "type": "p",
+        "content": "And you may also need a recap on pointers vs references. Do understand the below material thoroughly. It’s important!!!"
+      },
+      {
+        "type": "h2",
+        "content": "C++ Pointers and References"
+      },
+      {
+        "type": "h3",
+        "content": "Pointers, References and Dynamic Memory Allocation Pointers, References and Dynamic Memory Allocation are the most…"
+      },
+      {
+        "type": "p",
+        "content": "www3.ntu.edu.sg"
+      },
+      {
+        "type": "p",
+        "content": "And below is the advanced part. You can skip this part if it’s too difficult, but understanding this can definitely bring your understanding of smart pointers to the next level!"
+      },
+      {
+        "type": "h2",
+        "content": "C++ Core Guidelines: Rules for Smart Pointers"
+      },
+      {
+        "type": "h3",
+        "content": "There were a lot of C++ experts who said that smart pointers were the most important feature of C++11. Today, I will…"
+      },
+      {
+        "type": "p",
+        "content": "www.modernescpp.com"
+      },
+      {
+        "type": "h2",
+        "content": "C++ Core Guidelines: Passing Smart Pointers"
+      },
+      {
+        "type": "h3",
+        "content": "Passing smart pointers is an important topic that is seldom addressed. This ends with the C++ core guidelines because…"
+      },
+      {
+        "type": "p",
+        "content": "www.modernescpp.com"
+      },
+      {
+        "type": "h1",
+        "content": "Question 3: Use of const in C++. Where are they used?"
+      },
+      {
+        "type": "p",
+        "content": "Const specifies that a variable value is constant and tells the compiler to prevent the programmer from modifying it. It can actually be used anywhere. We’ll take a look at most of them here."
+      },
+      {
+        "type": "h2",
+        "content": "C++ Constant Variables"
+      },
+      {
+        "type": "h3",
+        "content": "When you do not want others (or yourself) to override existing variable values, use the const keyword (this will…"
+      },
+      {
+        "type": "p",
+        "content": "www.w3schools.com"
+      },
+      {
+        "type": "p",
+        "content": "2. Const Pointers & References"
+      },
+      {
+        "type": "h2",
+        "content": "C++ const reference pointer"
+      },
+      {
+        "type": "h3",
+        "content": "First, briefly recall the nature of a constant: int main() { const int buffSize = 512; buffsize = 512; //X buffSize is…"
+      },
+      {
+        "type": "p",
+        "content": "programmer.ink"
+      },
+      {
+        "type": "p",
+        "content": "3. Const function reference parameter"
+      },
+      {
+        "type": "p",
+        "content": "In C++, it’s common operation to pass parameters by reference into a function. That says, we only pass the address of the parameter into the function, instead of copying the whole variable. (The latter obviously costs more memory.) To achieve this, we need to use pointers or references (mainly references, because its syntax is more straightforward)."
+      },
+      {
+        "type": "p",
+        "content": "But unlike copying the variable, now we have the address to the one and only copy of the original variable. To avoid modifying it accidentally in our function, we use “const” when passing it into the function."
+      },
+      {
+        "type": "p",
+        "content": "http://web.eecs.utk.edu/~bmaclenn/Classes/102-S10/handouts/100318.pdf"
+      },
+      {
+        "type": "p",
+        "content": "4. Const Member Functions"
+      },
+      {
+        "type": "p",
+        "content": "For objects declared as const, they can only call const member functions. This ensures that the const object is never modified. Let’s look at a few examples and try to figure out when something is const:"
+      },
+      {
+        "type": "h2",
+        "content": "12.12 - Const class objects and member functions"
+      },
+      {
+        "type": "h3",
+        "content": "In lesson 4.14 -- Const, constexpr, and symbolic constants, you learned that fundamental data types (int, double, char…"
+      },
+      {
+        "type": "p",
+        "content": "www.learncpp.com"
+      },
+      {
+        "type": "p",
+        "content": "The last part of the article mentions that we can overload a member function using the const keyword, which allows a different version of the function to be called for const and non-const objects. “Overloading” means declaring two functions in the same name. To understand how it works, we need to first get some understanding of OOP (Object Oriented Programming) basics:"
+      },
+      {
+        "type": "h2",
+        "content": "Object-oriented Programming (OOP) in C++"
+      },
+      {
+        "type": "h3",
+        "content": "Object-Oriented Programming (OOP) in C++ Suppose that you want to assemble your own PC, you go to a hardware store and…"
+      },
+      {
+        "type": "p",
+        "content": "www3.ntu.edu.sg"
+      },
+      {
+        "type": "p",
+        "content": "For the below material, it would be best if you could read the four links it included :)"
+      },
+      {
+        "type": "h2",
+        "content": "Function Overloading in C++ - GeeksforGeeks"
+      },
+      {
+        "type": "h3",
+        "content": "Function overloading is a feature of object oriented programming where two or more functions can have the same name but…"
+      },
+      {
+        "type": "p",
+        "content": "www.geeksforgeeks.org"
+      },
+      {
+        "type": "p",
+        "content": "Hang on if you find things very hard. We have 7 questions but we have already covered all the difficult parts so far!"
+      },
+      {
+        "type": "p",
+        "content": "5. Const Iterators"
+      },
+      {
+        "type": "p",
+        "content": "Actually I don’t think it’s the important part. But you can read it if you’re interested."
+      },
+      {
+        "type": "h2",
+        "content": "Introduction to Iterators in C++ - GeeksforGeeks"
+      },
+      {
+        "type": "h3",
+        "content": "An iterator is an object (like a pointer) that points to an element inside the container. We can use iterators to move…"
+      },
+      {
+        "type": "p",
+        "content": "www.geeksforgeeks.org"
+      },
+      {
+        "type": "h2",
+        "content": "Iterators in C++ STL - GeeksforGeeks"
+      },
+      {
+        "type": "h3",
+        "content": "Prerequisite : Introduction to Iterators Iterators are used to point at the memory addresses of STL containers. They…"
+      },
+      {
+        "type": "p",
+        "content": "www.geeksforgeeks.org"
+      },
+      {
+        "type": "h2",
+        "content": "Const vs Regular iterators in C++ with examples - GeeksforGeeks"
+      },
+      {
+        "type": "h3",
+        "content": "Prerequisite: Iterators in STL are objects similar to pointers which are used to iterate over a sequence and manipulate…"
+      },
+      {
+        "type": "p",
+        "content": "www.geeksforgeeks.org"
+      },
+      {
+        "type": "p",
+        "content": "6. Const Cast"
+      },
+      {
+        "type": "p",
+        "content": "Also not very important haha."
+      },
+      {
+        "type": "h2",
+        "content": "Const cast in C++"
+      },
+      {
+        "type": "h3",
+        "content": "Given the task is to show the working of const_cast in C++. const_cast is one of the type casting operators. It is used…"
+      },
+      {
+        "type": "p",
+        "content": "www.tutorialspoint.com"
+      },
+      {
+        "type": "h1",
+        "content": "Question 4: STL Vector. What happens during insertion and removal?"
+      },
+      {
+        "type": "p",
+        "content": "It’s a standard library in C++ that enables easy programming of array-like objects. This part is important but easy to understand."
+      },
+      {
+        "type": "h2",
+        "content": "Vector in C++ STL - GeeksforGeeks"
+      },
+      {
+        "type": "h3",
+        "content": "Vectors are same as dynamic arrays with the ability to resize itself automatically when an element is inserted or…"
+      },
+      {
+        "type": "p",
+        "content": "www.geeksforgeeks.org"
+      },
+      {
+        "type": "h1",
+        "content": "Question 5: Map vs Unordered-Map"
+      },
+      {
+        "type": "p",
+        "content": "Map in C++ is something like dict in Python."
+      },
+      {
+        "type": "h2",
+        "content": "Map in C++ Standard Template Library (STL) - GeeksforGeeks"
+      },
+      {
+        "type": "h3",
+        "content": "Maps are associative containers that store elements in a mapped fashion. Each element has a key value and a mapped…"
+      },
+      {
+        "type": "p",
+        "content": "www.geeksforgeeks.org"
+      },
+      {
+        "type": "h2",
+        "content": "unordered_map in C++ STL - GeeksforGeeks"
+      },
+      {
+        "type": "h3",
+        "content": "unordered_map is an associated container that stores elements formed by the combination of key-value and a mapped…"
+      },
+      {
+        "type": "p",
+        "content": "www.geeksforgeeks.org"
+      },
+      {
+        "type": "h2",
+        "content": "map vs unordered_map in C++ - GeeksforGeeks"
+      },
+      {
+        "type": "h3",
+        "content": "A Computer Science portal for geeks. It contains well written, well thought and well explained computer science and…"
+      },
+      {
+        "type": "p",
+        "content": "www.geeksforgeeks.org"
+      },
+      {
+        "type": "p",
+        "content": "Map is implemented by the Red-Black Tree data structure. It has quite complicated implementation of insertion/removal/rotating etc. But I don’t think it will go into details in a C++ interview."
+      },
+      {
+        "type": "h2",
+        "content": "Data Structures and Algorithms: Red-Black Trees"
+      },
+      {
+        "type": "h3",
+        "content": "Data Structures and Algorithms 8.2 Red-Black Trees A red-black tree is a binary search tree with one extra attribute…"
+      },
+      {
+        "type": "p",
+        "content": "www.cs.auckland.ac.nz"
+      },
+      {
+        "type": "p",
+        "content": "Unordered-Map is implemented by Hash Table."
+      },
+      {
+        "type": "p",
+        "content": "https://www.cs.auckland.ac.nz/software/AlgAnim/hash_tables.html"
+      },
+      {
+        "type": "h1",
+        "content": "Question 6: Difference in Pass-by-Reference and Pass-by-Value in a function"
+      },
+      {
+        "type": "p",
+        "content": "Doesn’t this look familiar? We have already covered that part in the pointers vs references part. In case you need a recap:"
+      },
+      {
+        "type": "h2",
+        "content": "Function pass by value vs. pass by reference"
+      },
+      {
+        "type": "h3",
+        "content": "I will call what you are passing in a to a function the actual parameters , and where you receive them, the parameters…"
+      },
+      {
+        "type": "p",
+        "content": "courses.washington.edu"
+      },
+      {
+        "type": "h1",
+        "content": "Question 7: How many types of constructors in C++?"
+      },
+      {
+        "type": "p",
+        "content": "There are default constructors, parameterized constructors and copy constructors. If you remember we have also covered information about constructors throughout our journey. Here’s an all-in-one explanation:"
+      },
+      {
+        "type": "h2",
+        "content": "C++ Constructors and Destructors | Studytonight"
+      },
+      {
+        "type": "h3",
+        "content": "Constructors are special class functions which performs initialization of every object. The Compiler calls the…"
+      },
+      {
+        "type": "p",
+        "content": "www.studytonight.com"
+      },
+      {
+        "type": "p",
+        "content": "Finally we have finished!! And here are a few books you can read for reference:"
+      },
+      {
+        "type": "p",
+        "content": "Do read them if you have time! I only read the first 5 chapters of the third book, and I already feel a boost in my understanding of C++. And that part of knowledge did help in my interview."
+      },
+      {
+        "type": "p",
+        "content": "And that’s all. Have fun with your study! :)"
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T02:11:23.838671"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=D93gQfKcDcs",
+    "title": "Unknown Title",
+    "author": "Unknown Author",
+    "published_date": null,
+    "reading_time": "Unknown",
+    "tags": [],
+    "content": [],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T02:11:26.523097"
+  },
+  {
+    "url": "https://www.reddit.com/r/cpp_questions/comments/id9a1b/good_tutorial_about_medium_projects_in_c_from/",
+    "title": "Good tutorial about medium projects in C++ from scratch",
+    "author": "Unknown Author",
+    "published_date": null,
+    "reading_time": "Unknown",
+    "tags": [],
+    "content": [],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T02:11:30.418770"
+  },
+  {
+    "url": "https://cplusplus.com/forum/beginner/159916/",
+    "title": "Unknown Title",
+    "author": "Unknown Author",
+    "published_date": null,
+    "reading_time": "Unknown",
+    "tags": [],
+    "content": [],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T02:11:33.893127"
+  },
+  {
+    "url": "https://cplusplus.com/forum/general/280548/",
+    "title": "Unknown Title",
+    "author": "Unknown Author",
+    "published_date": null,
+    "reading_time": "Unknown",
+    "tags": [],
+    "content": [],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T02:11:36.689937"
+  },
+  {
+    "url": "https://www.geeksforgeeks.org/pointers-and-references-in-cpp/",
+    "error": "404 Client Error: Not Found for url: https://www.geeksforgeeks.org/pointers-and-references-in-cpp/",
+    "scraped_at": "2025-03-30T02:11:39.108157"
+  },
+  {
+    "url": "https://www.geeksforgeeks.org/templates-cpp/",
+    "title": "Templates in C++ with Examples",
+    "author": "Unknown Author",
+    "published_date": null,
+    "reading_time": "10 min read",
+    "tags": [
+      "cpp-template"
+    ],
+    "content": [],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T02:11:41.374449"
+  },
+  {
+    "url": "https://www.geeksforgeeks.org/multithreading-in-cpp/",
+    "title": "Multithreading in C++",
+    "author": "Unknown Author",
+    "published_date": null,
+    "reading_time": "6 min read",
+    "tags": [
+      "cpp-multithreading"
+    ],
+    "content": [],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T02:11:43.588967"
+  },
+  {
+    "url": "https://www.geeksforgeeks.org/stack-vs-heap-memory-allocation/",
+    "error": "'NoneType' object is not callable",
+    "scraped_at": "2025-03-30T02:11:45.863390"
+  },
+  {
+    "url": "https://www.geeksforgeeks.org/lambda-expressions-in-cpp/",
+    "error": "404 Client Error: Not Found for url: https://www.geeksforgeeks.org/lambda-expressions-in-cpp/",
+    "scraped_at": "2025-03-30T02:11:48.735640"
+  },
+  {
+    "url": "https://www.geeksforgeeks.org/smart-pointers-cpp/",
+    "title": "Smart Pointers in C++",
+    "author": "Unknown Author",
+    "published_date": null,
+    "reading_time": "8 min read",
+    "tags": [
+      "cpp-pointer"
+    ],
+    "content": [],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T02:11:50.973885"
+  },
+  {
+    "url": "https://www.geeksforgeeks.org/the-c-standard-template-library-stl/",
+    "title": "C++ Standard Template Library (STL)",
+    "author": "Unknown Author",
+    "published_date": null,
+    "reading_time": "5 min read",
+    "tags": [
+      "STL",
+      "Tutorials"
+    ],
+    "content": [],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T02:11:53.142797"
+  },
+  {
+    "url": "https://www.geeksforgeeks.org/file-handling-c-classes/",
+    "title": "File Handling through C++ Classes",
+    "author": "Unknown Author",
+    "published_date": null,
+    "reading_time": "8 min read",
+    "tags": [
+      "cpp-file-handling"
+    ],
+    "content": [],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T02:11:55.358342"
+  },
+  {
+    "url": "https://www.geeksforgeeks.org/move-constructors-and-move-assignment-operators-in-cpp/",
+    "error": "404 Client Error: Not Found for url: https://www.geeksforgeeks.org/move-constructors-and-move-assignment-operators-in-cpp/",
+    "scraped_at": "2025-03-30T02:11:57.970900"
+  },
+  {
+    "url": "https://www.reddit.com/r/cpp/comments/7u8x16/c_and_the_culture_of_complexity/",
+    "title": "C++ and the Culture of Complexity",
+    "author": "Unknown Author",
+    "published_date": null,
+    "reading_time": "Unknown",
+    "tags": [],
+    "content": [],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T02:12:01.032638"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=3eH7JRgLnG8",
+    "title": "Unknown Title",
+    "author": "Unknown Author",
+    "published_date": null,
+    "reading_time": "Unknown",
+    "tags": [],
+    "content": [],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T02:12:03.823915"
+  },
+  {
+    "url": "https://www.educative.io/blog/modern-multithreading-and-concurrency-in-cpp",
+    "title": "A tutorial on modern multithreading and concurrency in C++",
+    "author": "Webinars",
+    "published_date": null,
+    "reading_time": "9 min read",
+    "tags": [],
+    "content": [],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T02:12:12.750529"
+  },
+  {
+    "url": "https://cppdepend.com/blog/7-tips-to-improve-the-c-algorithms-complexity-big-o/",
+    "title": "7 Tips to improve the C++ algorithms complexity (Big-O)",
+    "author": "support@codergears.com",
+    "published_date": "2024-07-01T10:38:07+00:00",
+    "reading_time": "Unknown",
+    "tags": [
+      "algorithm analysis",
+      "Big-O notation",
+      "C++ algorithms",
+      "c++ performance",
+      "caching",
+      "coding best practices",
+      "concurrency",
+      "data structures",
+      "divide and conquer",
+      "efficient algorithms",
+      "improving algorithm complexity",
+      "memoization",
+      "parallelism",
+      "Performance Optimization",
+      "precomputation",
+      "scalable code",
+      "searching optimization",
+      "sorting",
+      "space-time trade-offs",
+      "technical tips"
+    ],
+    "content": [],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T02:12:20.122186"
+  },
+  {
+    "url": "https://medium.com/@threehappyer/c-performance-optimization-avoiding-common-pitfalls-and-best-practices-guide-81eee8e51467",
+    "title": "Unknown Title",
+    "author": "",
+    "published_date": null,
+    "reading_time": "7 min read",
+    "tags": [
+      "Cpp",
+      "Mobile App Development",
+      "Mobile",
+      "AI",
+      "Development"
+    ],
+    "content": [
+      {
+        "type": "p",
+        "content": "happyer"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "1"
+      },
+      {
+        "type": "p",
+        "content": "Listen"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "C++ Performance Optimization: Avoiding Common Pitfalls and Best Practices Guide"
+      },
+      {
+        "type": "p",
+        "content": "1. PrefaceIn modern C++ programming practices, performance optimization is a crucial area. As the C++ language continues to evolve, it provides developers with an increasing array of tools and features to better control program performance. However, these powerful features also bring additional complexity, making performance optimization a task that requires careful consideration. While pursuing code efficiency, developers must be vigilant against traps that may lead to performance degradation."
+      },
+      {
+        "type": "p",
+        "content": "This article will delve into some common issues that C++ engineers may encounter while performing performance optimizations and provide corresponding solutions. We will start with the problem of abusing `std::shared_ptr` and discuss how to use smart pointers correctly to reduce performance overhead. Next, we will discuss the performance costs of type-erasure tools `std::function` and `std::any`, and how to use them only when necessary. The article will also cover improper use of `std::optional` and `std::string_view`, pitfalls of `std::async`, and misuse of `std::move`, among other issues."
+      },
+      {
+        "type": "p",
+        "content": "Additionally, we will discuss the impact of hidden copies and destruction on performance, the performance overhead of virtual functions, unnecessary copying caused by structured bindings, and the importance of tail recursion optimization. New features introduced in C++20, such as concepts and constraints, coroutines, `std::span`, and modules, will also be examined to ensure they are used appropriately and do not become a burden on performance."
+      },
+      {
+        "type": "p",
+        "content": "Through this article, we hope to help C++ developers better understand and address the challenges in performance optimization, thereby writing code that is both efficient and robust."
+      },
+      {
+        "type": "p",
+        "content": "2. Misusing std::shared_ptr"
+      },
+      {
+        "type": "p",
+        "content": "Problem Description:`std::shared_ptr` provides a convenient reference counting mechanism, but its construction, copying, and destruction all involve atomic operations, which can be costly in terms of performance."
+      },
+      {
+        "type": "p",
+        "content": "Solution:- Prefer `std::unique_ptr` whenever possible, and use `std::shared_ptr` only when shared ownership is truly needed.- Use `std::make_shared` to construct `std::shared_ptr` instances to reduce the number of memory allocations."
+      },
+      {
+        "type": "p",
+        "content": "Code Example:"
+      },
+      {
+        "type": "p",
+        "content": "3. Type Erasure: std::function and std::any"
+      },
+      {
+        "type": "p",
+        "content": "Problem Description:`std::function` and `std::any` provide flexible type-erasure capabilities, but they also come with performance costs."
+      },
+      {
+        "type": "p",
+        "content": "Solution:- Use `std::function` and `std::any` only when you need to store functions or objects of uncertain types.- Consider using templates and static polymorphism as an alternative to `std::function`."
+      },
+      {
+        "type": "p",
+        "content": "Code Example:"
+      },
+      {
+        "type": "p",
+        "content": "4. Improper Use of std::optional"
+      },
+      {
+        "type": "p",
+        "content": "Problem Description:`std::optional` can lead to performance issues, especially when the contained type has significant construction, copying, or moving costs."
+      },
+      {
+        "type": "p",
+        "content": "Solution:- Use `std::optional` only when you need to represent an optional value.- Consider returning an empty container or a special value to represent a “no value” situation."
+      },
+      {
+        "type": "p",
+        "content": "Code Example:"
+      },
+      {
+        "type": "p",
+        "content": "5. std::string_view Lifetime Issues"
+      },
+      {
+        "type": "p",
+        "content": "Problem Description:`std::string_view` does not own the string it refers to; if the original string is released or modified, `std::string_view` may refer to invalid memory."
+      },
+      {
+        "type": "p",
+        "content": "Solution:- Ensure the lifetime of `std::string_view` does not exceed that of the string it references.- Be particularly mindful of ownership and lifetime issues when using `std::string_view`."
+      },
+      {
+        "type": "p",
+        "content": "Code Example:"
+      },
+      {
+        "type": "p",
+        "content": "6. Pitfalls of std::async"
+      },
+      {
+        "type": "p",
+        "content": "Problem Description:`std::async` may lead to unexpected synchronous calls; if the returned `std::future` object is not saved, its destructor will wait for the asynchronous operation to complete, causing the code to execute synchronously."
+      },
+      {
+        "type": "p",
+        "content": "Solution:- Save the `std::future` object returned by `std::async` to ensure asynchronous execution."
+      },
+      {
+        "type": "p",
+        "content": "Code Example:"
+      },
+      {
+        "type": "p",
+        "content": "7. Misusing std::move"
+      },
+      {
+        "type": "p",
+        "content": "Problem Description:In some cases, misusing `std::move` is not only unhelpful but may also lead to performance degradation. Particularly in scenarios where (Named Return Value Optimization) NRVO might be triggered, using `std::move` can result in additional copy or move operations."
+      },
+      {
+        "type": "p",
+        "content": "Solution:- Use `std::move` only when you need to transfer ownership.- Avoid using `std::move` when returning local objects."
+      },
+      {
+        "type": "p",
+        "content": "Code Example:"
+      },
+      {
+        "type": "p",
+        "content": "8. Hidden Copies"
+      },
+      {
+        "type": "p",
+        "content": "Problem Description:Object copying in C++ can lead to performance issues, especially in the following scenarios:- Constructors not using initializer lists or not using `std::move`.- Range-based for loops not using references.- Lambda expressions capturing by value without using `std::move` or capturing by reference.- Implicit type conversions leading to unnecessary copies."
+      },
+      {
+        "type": "p",
+        "content": "Solution:- Use initializer lists and `std::move` to avoid unnecessary copies.- Use references in range-based for loops.- Use reference capture or `std::move` in lambda expressions."
+      },
+      {
+        "type": "p",
+        "content": "Code Example:"
+      },
+      {
+        "type": "p",
+        "content": "9. Hidden Destruction"
+      },
+      {
+        "type": "p",
+        "content": "Problem Description:Destruction of complex types can be very time-consuming. If an object’s destructor takes a long time to execute, it can inadvertently add to the function’s execution time."
+      },
+      {
+        "type": "p",
+        "content": "Solution:- Avoid creating and destroying complex objects on the hot path.- Use object pools to manage the lifecycle of complex objects."
+      },
+      {
+        "type": "p",
+        "content": "Code Example:"
+      },
+      {
+        "type": "p",
+        "content": "10. Virtual Functions"
+      },
+      {
+        "type": "p",
+        "content": "Problem Description:Virtual functions provide the ability for runtime polymorphism, but they come with additional performance overhead:- Extra addressing operations: the specific function address needs to be found through the virtual function table.- Disrupting the CPU pipeline: virtual function calls are indirect calls, which require branch prediction.- Hindering compiler inlining: in most cases, virtual functions cannot be inlined."
+      },
+      {
+        "type": "p",
+        "content": "Solution:- When polymorphism is not a necessity, consider using non-virtual member functions.- Use templates and static polymorphism (such as CRTP) to replace runtime polymorphism."
+      },
+      {
+        "type": "p",
+        "content": "Code Example:"
+      },
+      {
+        "type": "p",
+        "content": "11. Unnecessary Copies with Structured Bindings"
+      },
+      {
+        "type": "p",
+        "content": "Problem Description:C++17 introduced structured bindings, which allow you to conveniently unpack tuples or structures. However, if not careful, structured bindings can lead to unnecessary object copying."
+      },
+      {
+        "type": "p",
+        "content": "Solution:- Use references to avoid copying, for example, `auto& [x, y] = my_pair;`."
+      },
+      {
+        "type": "p",
+        "content": "Code Example:"
+      },
+      {
+        "type": "p",
+        "content": "12. Tail Recursion Optimization"
+      },
+      {
+        "type": "p",
+        "content": "Problem Description:Tail recursion optimization can reduce the stack space usage of recursive functions, but hidden operations in C++ (such as destruction) may hinder this optimization."
+      },
+      {
+        "type": "p",
+        "content": "Solution:- Use trivially destructible objects, such as `std::string_view`, to help the compiler implement tail recursion optimization."
+      },
+      {
+        "type": "p",
+        "content": "Code Example:"
+      },
+      {
+        "type": "p",
+        "content": "13. Misuse of Concepts and Constraints"
+      },
+      {
+        "type": "p",
+        "content": "Problem Description:C++20 introduced concepts and constraints, which provide a more powerful way to specify template parameter requirements. However, overly complex concepts and constraints can increase compilation time and make error messages difficult to understand."
+      },
+      {
+        "type": "p",
+        "content": "Solution:- Use concepts and constraints only when you need to clearly express interface requirements.- Avoid creating overly complex concepts; keep them simple and clear."
+      },
+      {
+        "type": "p",
+        "content": "Code Example:"
+      },
+      {
+        "type": "p",
+        "content": "14. Improper Use of Coroutines"
+      },
+      {
+        "type": "p",
+        "content": "Problem Description:C++20 introduced coroutines, which are a powerful tool for asynchronous programming. However, improper use of coroutines can lead to performance issues, such as excessive coroutine switching causing performance degradation."
+      },
+      {
+        "type": "p",
+        "content": "Solution:- Use coroutines in I/O-intensive or asynchronous operation scenarios.- Avoid frequent starting and suspending of coroutines in performance-critical code paths."
+      },
+      {
+        "type": "p",
+        "content": "Code Example:"
+      },
+      {
+        "type": "p",
+        "content": "15. Improper Use of std::span"
+      },
+      {
+        "type": "p",
+        "content": "Problem Description:`std::span` is a lightweight container view introduced in C++20, providing access to a contiguous region of an array or container. However, if the original data is released or modified, `std::span` may refer to invalid memory."
+      },
+      {
+        "type": "p",
+        "content": "Solution:- Ensure the lifetime of `std::span` does not exceed that of the data it references.- Be particularly mindful of ownership and lifetime issues when using `std::span`."
+      },
+      {
+        "type": "p",
+        "content": "Code Example:"
+      },
+      {
+        "type": "p",
+        "content": "16. Improper Use of Modules"
+      },
+      {
+        "type": "p",
+        "content": "Problem Description:C++20 introduced modules, intended to replace the traditional header and source file model, improving compilation efficiency. However, improper module partitioning can lead to increased compilation time, especially when there are complex dependencies between modules."
+      },
+      {
+        "type": "p",
+        "content": "Solution:- Reasonably partition modules to avoid over-segmentation.- Manage dependencies between modules well to reduce unnecessary imports."
+      },
+      {
+        "type": "p",
+        "content": "Code Example:"
+      },
+      {
+        "type": "p",
+        "content": "17. Developing any platform from Scratch with Codia AI CodeTo integrate Codia AI into your Figma to any platform such as frontend, mobile, and Mac development process, follow these instructions:Open the link: Codia AI Figma to code: HTML, CSS, React, Vue, iOS, Android, Flutter, ReactNative, Tailwind, Web, App"
+      },
+      {
+        "type": "p",
+        "content": "- Install the Codia AI Plugin: Search for and install the Codia AI Figma to Flutter plugin from the Figma plugin store.- Prepare Your Figma Design: Arrange your Figma design with clearly named layers and components to ensure the best code generation results.- Convert with Codia AI: Select your design or component in Figma and use Codia AI to instantly"
+      },
+      {
+        "type": "p",
+        "content": "generate any platform code."
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T02:12:23.152675"
+  },
+  {
+    "url": "https://medium.com/@qianxinyue0805/the-ultimate-c-self-learning-roadmap-with-detailed-materials-and-interview-tips-42c3be89ea3f",
+    "title": "The Ultimate C++ Self-Learning Roadmap (with Detailed Materials and Interview Tips!)",
+    "author": "",
+    "published_date": null,
+    "reading_time": "8 min read",
+    "tags": [
+      "Cpp",
+      "Programming",
+      "Self Learning",
+      "Interview"
+    ],
+    "content": [
+      {
+        "type": "h1",
+        "content": "The Ultimate C++ Self-Learning Roadmap (with Detailed Materials and Interview Tips!)"
+      },
+      {
+        "type": "p",
+        "content": "Qian Xinyue"
+      },
+      {
+        "type": "p",
+        "content": "Follow"
+      },
+      {
+        "type": "p",
+        "content": "--"
+      },
+      {
+        "type": "p",
+        "content": "Listen"
+      },
+      {
+        "type": "p",
+        "content": "Share"
+      },
+      {
+        "type": "p",
+        "content": "A while ago when I was job searching, I came across this opportunity where I needed to learn C++ by myself and take part in a technical interview in two weeks. The guy gave me a list of interview questions I needed to prepare, which I find very useful as a roadmap to learning C++. So I really want to share this with everyone, with a complete list of all links I consulted during the self-learning process. Hope it solves your headache of not knowing where to start."
+      },
+      {
+        "type": "p",
+        "content": "The first three questions are very hardcore and require a lot of background information of C++. I have listed everything (that I think) needed for understanding these questions. So it might seem a bit overwhelming at first. But just follow through all the links and you can have a thorough understanding of C++."
+      },
+      {
+        "type": "p",
+        "content": "Just a bit more introduction about myself: I previously learned C and Python but does not have much computing background. So this is definitely a guide suitable for complete beginners. And I nailed the first round C++ interview but didn’t succeed in the following rounds, oops…"
+      },
+      {
+        "type": "h1",
+        "content": "Question 1: Memory Management in C++, what is memory leak and how to prevent it?"
+      },
+      {
+        "type": "p",
+        "content": "Yea… It is a bit overwhelming to start from this question when you’ve only coded very simple HackerRank problems like me. Don’t worry! First let’s go through a few concepts you need to be familiar with before learning memory management in C++:"
+      },
+      {
+        "type": "h2",
+        "content": "Pointers"
+      },
+      {
+        "type": "h3",
+        "content": "In earlier chapters, variables have been explained as locations in the computer's memory which can be accessed by their…"
+      },
+      {
+        "type": "p",
+        "content": "www.cplusplus.com"
+      },
+      {
+        "type": "h2",
+        "content": "Classes (I)"
+      },
+      {
+        "type": "h3",
+        "content": "Classes are an expanded concept of data structures: like data structures, they can contain data members, but they can…"
+      },
+      {
+        "type": "p",
+        "content": "www.cplusplus.com"
+      },
+      {
+        "type": "h2",
+        "content": "Introduction to Constructors in C++"
+      },
+      {
+        "type": "h3",
+        "content": "This article will go through basics of C++ constructors. A constructor is a special member function that initializes…"
+      },
+      {
+        "type": "p",
+        "content": "www.section.io"
+      },
+      {
+        "type": "h2",
+        "content": "C++ variables scope: Learn about local variables, global variables, etc : CodesDope"
+      },
+      {
+        "type": "h3",
+        "content": "Scope is a region of a program. Variable Scope is a region in a program where a variable is declared and used…"
+      },
+      {
+        "type": "p",
+        "content": "www.codesdope.com"
+      },
+      {
+        "type": "p",
+        "content": "Then le’s get down to memory management in C++. Generally, there are two main ways of memory allocation in C++. (In total there are four, if you would like to know more about them.) One is static memory allocation, where variables are allocated as you declare them using “int num;” command before the program executes. The other one is dynamic memory allocation, where memory is allocated and de-alloated during runtime using “new” and “delete” commands."
+      },
+      {
+        "type": "p",
+        "content": "The reason why we need dynamic memory allocation is for example, we want to input a number num and create num new variables. The variable num can be allocated in the static way because we know it for sure. But other variables we can only create them after we have received the input of num, that is during the execution of the program."
+      },
+      {
+        "type": "h2",
+        "content": "Static and Dynamic Memory Allocation in C - GeeksforGeeks"
+      },
+      {
+        "type": "h3",
+        "content": "Memory is divided into smaller addressable units called . Assume that these are small boxes as bytes. Each byte has its…"
+      },
+      {
+        "type": "p",
+        "content": "www.geeksforgeeks.org"
+      },
+      {
+        "type": "h2",
+        "content": "C++ Tutorial: Memory Allocation - 2020"
+      },
+      {
+        "type": "h3",
+        "content": "bogotobogo.com site search: Variables represent storage space in the computer's memory. Each variable presents a…"
+      },
+      {
+        "type": "p",
+        "content": "www.bogotobogo.com"
+      },
+      {
+        "type": "p",
+        "content": "Every variable created by “new” command needs to be de-allocated by “delete”. If not, the piece of memory will remain there even after the program ends. And it can be accessed by other programs. That’s probably why people call this situation memory leak."
+      },
+      {
+        "type": "h2",
+        "content": "Memory leak in C++ and How to avoid it? - GeeksforGeeks"
+      },
+      {
+        "type": "h3",
+        "content": "Memory leakage occurs in C++ when programmers allocates memory by using new keyword and forgets to deallocate the…"
+      },
+      {
+        "type": "p",
+        "content": "www.geeksforgeeks.org"
+      },
+      {
+        "type": "p",
+        "content": "And a few ways to avoid it:"
+      },
+      {
+        "type": "p",
+        "content": "RAII is also an important concept in C++. It generally means encapsulating each resource into a class. Here we can understand resource as dynamically allocated memory that we were just talking about, though it could refer to some other things. And encapsulate here means that we “new” the variable in the constructor and “delete” it in the destructor of the class. Because constructor and destructor are called whether or not exception happens, we can be guaranteed this way that any variable “new”ed in the constructor will be “deleted” eventually."
+      },
+      {
+        "type": "h2",
+        "content": "Resource Acquisition is Initialisation (RAII) Explained"
+      },
+      {
+        "type": "h3",
+        "content": "In the competition to make the worst acronym, RAII probably comes second after HATEOS. Nevertheless, it is an important…"
+      },
+      {
+        "type": "p",
+        "content": "www.tomdalling.com"
+      },
+      {
+        "type": "h1",
+        "content": "Question 2: Shared Pointer and Unique Pointer in C++. What are they? Why are they needed? What are the differences?"
+      },
+      {
+        "type": "p",
+        "content": "Unique pointers and shared pointers are different types of smart pointers. They are wrappers of raw pointers, and both come with a destructor to automatically free the memory they point to when they go out of scope. The main difference is that unique pointer allows exactly one owner of the underlying pointer, while shared pointer allows multiple owners by maintaining a reference count of all owners."
+      },
+      {
+        "type": "h2",
+        "content": "Smart Pointers in C++ and How to Use Them - GeeksforGeeks"
+      },
+      {
+        "type": "h3",
+        "content": "In this article, we will be discussing smart pointers in C++. What are Smart Pointers, why, and how to use them…"
+      },
+      {
+        "type": "p",
+        "content": "www.geeksforgeeks.org"
+      },
+      {
+        "type": "p",
+        "content": "Don’t panic if you don’t understand what I’m saying. I have some great materials here! (Something that can’t easily be found on the first page of Google search) The below slides are extremely helpful!!"
+      },
+      {
+        "type": "p",
+        "content": "https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1192/lectures/lecture15/15_RAII.pdf"
+      },
+      {
+        "type": "p",
+        "content": "And you may also need a recap on pointers vs references. Do understand the below material thoroughly. It’s important!!!"
+      },
+      {
+        "type": "h2",
+        "content": "C++ Pointers and References"
+      },
+      {
+        "type": "h3",
+        "content": "Pointers, References and Dynamic Memory Allocation Pointers, References and Dynamic Memory Allocation are the most…"
+      },
+      {
+        "type": "p",
+        "content": "www3.ntu.edu.sg"
+      },
+      {
+        "type": "p",
+        "content": "And below is the advanced part. You can skip this part if it’s too difficult, but understanding this can definitely bring your understanding of smart pointers to the next level!"
+      },
+      {
+        "type": "h2",
+        "content": "C++ Core Guidelines: Rules for Smart Pointers"
+      },
+      {
+        "type": "h3",
+        "content": "There were a lot of C++ experts who said that smart pointers were the most important feature of C++11. Today, I will…"
+      },
+      {
+        "type": "p",
+        "content": "www.modernescpp.com"
+      },
+      {
+        "type": "h2",
+        "content": "C++ Core Guidelines: Passing Smart Pointers"
+      },
+      {
+        "type": "h3",
+        "content": "Passing smart pointers is an important topic that is seldom addressed. This ends with the C++ core guidelines because…"
+      },
+      {
+        "type": "p",
+        "content": "www.modernescpp.com"
+      },
+      {
+        "type": "h1",
+        "content": "Question 3: Use of const in C++. Where are they used?"
+      },
+      {
+        "type": "p",
+        "content": "Const specifies that a variable value is constant and tells the compiler to prevent the programmer from modifying it. It can actually be used anywhere. We’ll take a look at most of them here."
+      },
+      {
+        "type": "h2",
+        "content": "C++ Constant Variables"
+      },
+      {
+        "type": "h3",
+        "content": "When you do not want others (or yourself) to override existing variable values, use the const keyword (this will…"
+      },
+      {
+        "type": "p",
+        "content": "www.w3schools.com"
+      },
+      {
+        "type": "p",
+        "content": "2. Const Pointers & References"
+      },
+      {
+        "type": "h2",
+        "content": "C++ const reference pointer"
+      },
+      {
+        "type": "h3",
+        "content": "First, briefly recall the nature of a constant: int main() { const int buffSize = 512; buffsize = 512; //X buffSize is…"
+      },
+      {
+        "type": "p",
+        "content": "programmer.ink"
+      },
+      {
+        "type": "p",
+        "content": "3. Const function reference parameter"
+      },
+      {
+        "type": "p",
+        "content": "In C++, it’s common operation to pass parameters by reference into a function. That says, we only pass the address of the parameter into the function, instead of copying the whole variable. (The latter obviously costs more memory.) To achieve this, we need to use pointers or references (mainly references, because its syntax is more straightforward)."
+      },
+      {
+        "type": "p",
+        "content": "But unlike copying the variable, now we have the address to the one and only copy of the original variable. To avoid modifying it accidentally in our function, we use “const” when passing it into the function."
+      },
+      {
+        "type": "p",
+        "content": "http://web.eecs.utk.edu/~bmaclenn/Classes/102-S10/handouts/100318.pdf"
+      },
+      {
+        "type": "p",
+        "content": "4. Const Member Functions"
+      },
+      {
+        "type": "p",
+        "content": "For objects declared as const, they can only call const member functions. This ensures that the const object is never modified. Let’s look at a few examples and try to figure out when something is const:"
+      },
+      {
+        "type": "h2",
+        "content": "12.12 - Const class objects and member functions"
+      },
+      {
+        "type": "h3",
+        "content": "In lesson 4.14 -- Const, constexpr, and symbolic constants, you learned that fundamental data types (int, double, char…"
+      },
+      {
+        "type": "p",
+        "content": "www.learncpp.com"
+      },
+      {
+        "type": "p",
+        "content": "The last part of the article mentions that we can overload a member function using the const keyword, which allows a different version of the function to be called for const and non-const objects. “Overloading” means declaring two functions in the same name. To understand how it works, we need to first get some understanding of OOP (Object Oriented Programming) basics:"
+      },
+      {
+        "type": "h2",
+        "content": "Object-oriented Programming (OOP) in C++"
+      },
+      {
+        "type": "h3",
+        "content": "Object-Oriented Programming (OOP) in C++ Suppose that you want to assemble your own PC, you go to a hardware store and…"
+      },
+      {
+        "type": "p",
+        "content": "www3.ntu.edu.sg"
+      },
+      {
+        "type": "p",
+        "content": "For the below material, it would be best if you could read the four links it included :)"
+      },
+      {
+        "type": "h2",
+        "content": "Function Overloading in C++ - GeeksforGeeks"
+      },
+      {
+        "type": "h3",
+        "content": "Function overloading is a feature of object oriented programming where two or more functions can have the same name but…"
+      },
+      {
+        "type": "p",
+        "content": "www.geeksforgeeks.org"
+      },
+      {
+        "type": "p",
+        "content": "Hang on if you find things very hard. We have 7 questions but we have already covered all the difficult parts so far!"
+      },
+      {
+        "type": "p",
+        "content": "5. Const Iterators"
+      },
+      {
+        "type": "p",
+        "content": "Actually I don’t think it’s the important part. But you can read it if you’re interested."
+      },
+      {
+        "type": "h2",
+        "content": "Introduction to Iterators in C++ - GeeksforGeeks"
+      },
+      {
+        "type": "h3",
+        "content": "An iterator is an object (like a pointer) that points to an element inside the container. We can use iterators to move…"
+      },
+      {
+        "type": "p",
+        "content": "www.geeksforgeeks.org"
+      },
+      {
+        "type": "h2",
+        "content": "Iterators in C++ STL - GeeksforGeeks"
+      },
+      {
+        "type": "h3",
+        "content": "Prerequisite : Introduction to Iterators Iterators are used to point at the memory addresses of STL containers. They…"
+      },
+      {
+        "type": "p",
+        "content": "www.geeksforgeeks.org"
+      },
+      {
+        "type": "h2",
+        "content": "Const vs Regular iterators in C++ with examples - GeeksforGeeks"
+      },
+      {
+        "type": "h3",
+        "content": "Prerequisite: Iterators in STL are objects similar to pointers which are used to iterate over a sequence and manipulate…"
+      },
+      {
+        "type": "p",
+        "content": "www.geeksforgeeks.org"
+      },
+      {
+        "type": "p",
+        "content": "6. Const Cast"
+      },
+      {
+        "type": "p",
+        "content": "Also not very important haha."
+      },
+      {
+        "type": "h2",
+        "content": "Const cast in C++"
+      },
+      {
+        "type": "h3",
+        "content": "Given the task is to show the working of const_cast in C++. const_cast is one of the type casting operators. It is used…"
+      },
+      {
+        "type": "p",
+        "content": "www.tutorialspoint.com"
+      },
+      {
+        "type": "h1",
+        "content": "Question 4: STL Vector. What happens during insertion and removal?"
+      },
+      {
+        "type": "p",
+        "content": "It’s a standard library in C++ that enables easy programming of array-like objects. This part is important but easy to understand."
+      },
+      {
+        "type": "h2",
+        "content": "Vector in C++ STL - GeeksforGeeks"
+      },
+      {
+        "type": "h3",
+        "content": "Vectors are same as dynamic arrays with the ability to resize itself automatically when an element is inserted or…"
+      },
+      {
+        "type": "p",
+        "content": "www.geeksforgeeks.org"
+      },
+      {
+        "type": "h1",
+        "content": "Question 5: Map vs Unordered-Map"
+      },
+      {
+        "type": "p",
+        "content": "Map in C++ is something like dict in Python."
+      },
+      {
+        "type": "h2",
+        "content": "Map in C++ Standard Template Library (STL) - GeeksforGeeks"
+      },
+      {
+        "type": "h3",
+        "content": "Maps are associative containers that store elements in a mapped fashion. Each element has a key value and a mapped…"
+      },
+      {
+        "type": "p",
+        "content": "www.geeksforgeeks.org"
+      },
+      {
+        "type": "h2",
+        "content": "unordered_map in C++ STL - GeeksforGeeks"
+      },
+      {
+        "type": "h3",
+        "content": "unordered_map is an associated container that stores elements formed by the combination of key-value and a mapped…"
+      },
+      {
+        "type": "p",
+        "content": "www.geeksforgeeks.org"
+      },
+      {
+        "type": "h2",
+        "content": "map vs unordered_map in C++ - GeeksforGeeks"
+      },
+      {
+        "type": "h3",
+        "content": "A Computer Science portal for geeks. It contains well written, well thought and well explained computer science and…"
+      },
+      {
+        "type": "p",
+        "content": "www.geeksforgeeks.org"
+      },
+      {
+        "type": "p",
+        "content": "Map is implemented by the Red-Black Tree data structure. It has quite complicated implementation of insertion/removal/rotating etc. But I don’t think it will go into details in a C++ interview."
+      },
+      {
+        "type": "h2",
+        "content": "Data Structures and Algorithms: Red-Black Trees"
+      },
+      {
+        "type": "h3",
+        "content": "Data Structures and Algorithms 8.2 Red-Black Trees A red-black tree is a binary search tree with one extra attribute…"
+      },
+      {
+        "type": "p",
+        "content": "www.cs.auckland.ac.nz"
+      },
+      {
+        "type": "p",
+        "content": "Unordered-Map is implemented by Hash Table."
+      },
+      {
+        "type": "p",
+        "content": "https://www.cs.auckland.ac.nz/software/AlgAnim/hash_tables.html"
+      },
+      {
+        "type": "h1",
+        "content": "Question 6: Difference in Pass-by-Reference and Pass-by-Value in a function"
+      },
+      {
+        "type": "p",
+        "content": "Doesn’t this look familiar? We have already covered that part in the pointers vs references part. In case you need a recap:"
+      },
+      {
+        "type": "h2",
+        "content": "Function pass by value vs. pass by reference"
+      },
+      {
+        "type": "h3",
+        "content": "I will call what you are passing in a to a function the actual parameters , and where you receive them, the parameters…"
+      },
+      {
+        "type": "p",
+        "content": "courses.washington.edu"
+      },
+      {
+        "type": "h1",
+        "content": "Question 7: How many types of constructors in C++?"
+      },
+      {
+        "type": "p",
+        "content": "There are default constructors, parameterized constructors and copy constructors. If you remember we have also covered information about constructors throughout our journey. Here’s an all-in-one explanation:"
+      },
+      {
+        "type": "h2",
+        "content": "C++ Constructors and Destructors | Studytonight"
+      },
+      {
+        "type": "h3",
+        "content": "Constructors are special class functions which performs initialization of every object. The Compiler calls the…"
+      },
+      {
+        "type": "p",
+        "content": "www.studytonight.com"
+      },
+      {
+        "type": "p",
+        "content": "Finally we have finished!! And here are a few books you can read for reference:"
+      },
+      {
+        "type": "p",
+        "content": "Do read them if you have time! I only read the first 5 chapters of the third book, and I already feel a boost in my understanding of C++. And that part of knowledge did help in my interview."
+      },
+      {
+        "type": "p",
+        "content": "And that’s all. Have fun with your study! :)"
+      }
+    ],
+    "claps": "Unknown",
+    "scraped_at": "2025-03-30T02:12:26.030507"
+  }
+]

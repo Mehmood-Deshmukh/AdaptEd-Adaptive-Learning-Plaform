@@ -16,6 +16,7 @@ import ViewCommunity from './pages/ViewCommunity'
 import AllQuizzes from './pages/Quizzes'
 import PublicProfile from './components/PublicProfile'
 import TeacherDashboard from './pages/TeacherDashboard'
+import SubjectiveAnswers from './pages/SubjectiveAnswers'
 
 function App() {
   const { state } = useAuthContext()
@@ -54,6 +55,7 @@ function App() {
         <Route path='/teacher' element={!isAuthenticated ? <Navigate to="/login" /> : state?.user?.role === 'teacher' ? <TeacherDashboard /> : <Navigate to="/" />} />
 
         <Route path='/public-profile/:userId' element={<PublicProfile />} />
+        <Route path='/subjective-answers' element={isAuthenticated ? <SubjectiveAnswers /> : <Navigate to="/login" />} />
         {/* <Route path='/quiz/:quizId' element={isAuthenticated ? <QuizReview /> : <Navigate to="/login" />} /> */}
       
       </Routes>

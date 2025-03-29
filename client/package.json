@@ -10,9 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.0",
     "@supabase/supabase-js": "^2.49.1",
     "@tailwindcss/vite": "^4.0.9",
     "axios": "^1.8.4",
+    "canvas-confetti": "^1.9.3",
     "dompurify": "^3.2.4",
     "framer-motion": "^12.4.10",
     "highlight.js": "^11.11.1",
