@@ -117,8 +117,6 @@ def get_cluster_summary(cluster_data):
 def aggregate_cluster_data(cluster_labels, user_ids):
     cluster_data = {
         i: {
-            # if we want to add more parameters to the cluster data, we can add them here
-            # and then update the get_cluster_summary function to include them
             "learning_styles": {},
             "preferred_difficulty": {},
             "domain_interest": set(),
@@ -282,4 +280,3 @@ def cluster_summary():
         return jsonify({"error": "Cluster summary not found"}), 404
 
     return jsonify(summary)
-
