@@ -28,7 +28,7 @@ const checkpointProgressSchema = new Schema({
     isFeedbackCompleted: {
         type: Boolean,
         default: false
-    }
+    },
 });
 
 const checkpointSchema = new Schema({
@@ -51,7 +51,15 @@ const checkpointSchema = new Schema({
     totalHoursNeeded: {
         type: Number
     },
-    userProgress: [checkpointProgressSchema]
+    userProgress: [checkpointProgressSchema],
+    whatNext : {
+        type: String,
+        default: null
+    },
+    whatYouWillLearn : {
+        type: [String],
+        default: null
+    },
 });
 
 checkpointSchema.statics.createCheckpoint = async function(checkpoint) {

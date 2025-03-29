@@ -159,9 +159,16 @@ def generate_roadmap(
             - Have a clear, specific title.
             - Include a detailed, structured description (at least 2 lines).
             - List EXACTLY 3-4 high-quality learning resources, no more and no less.
+            - While Listing resources, include easier resources first and progressively more complex ones later.
+            - easier ones are like small tutorials,videos and more complex ones are like full courses.
+            - Rank the resources based on quality and relevance to the topic. it will be fine to have resources with non consecutive ranks in the same checkpoint.
+            - Dont restart the numbering of resources for each checkpoint.
+            - Try not to suggest resources like books or others that require a lot of time to complete. (Eg some book which takes 21 days to complete)
+            - Make sure the first checkpoint is the easiest and has resources which can be completed in a short time i.e within an hour.
             - The roadmap will be invalid if any checkpoint has fewer than 3 resources. 
             - Be progressively more complex.
-            
+            - For each checkpoint, add What You Will Learn and What Next sections.
+            - The What Next section should include a topic to do a Quiz and a challenge to complete before moving to the next checkpoint.
             The final roadmap MUST have EXACTLY 5 checkpoints, and each checkpoint MUST have AT LEAST 3 resources.
             
             {format_instructions}
@@ -239,9 +246,6 @@ def generate_roadmap(
                 len(roadmap_data.get("checkpoints", [])) != 5):
                 raise ValueError("Unexpected roadmap format received.")
             
-            for i, checkpoint in enumerate(roadmap_data["checkpoints"]):
-                if len(checkpoint.get("resources", [])) < 3:
-                    raise ValueError(f"Checkpoint {i+1} has fewer than 3 resources.")
             
             return roadmap_data
             

@@ -72,6 +72,7 @@ def generate_recommendations():
         logger.error(f"Error generating resources: {str(e)}")
         return jsonify({"error": f"Failed to generate resources: {str(e)}"}), 500
 
+
 @roadmap_bp.route('/api/generate-confidence-score', methods=['POST'])
 def generate_confidence_score():
     try:
