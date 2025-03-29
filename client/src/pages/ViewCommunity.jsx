@@ -334,8 +334,7 @@ const CommunityPage = () => {
                         {isMember ? "Leave Community" : "Join Community"}
                       </button>
                     )}
-
-                    <CreatePostModal
+    {user.communities.includes(community._id) && <CreatePostModal
                       posts= {posts}
                       setPosts={setPosts}
                       community={{
@@ -344,7 +343,8 @@ const CommunityPage = () => {
                         name: community.name,
                         membersCount: community.membersCount,
                       }}
-                    />
+                    />}
+                    
 
                     <button
                       onClick={() => setIsChatOpen(true)}
