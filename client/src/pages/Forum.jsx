@@ -16,7 +16,6 @@ const Forum = () => {
 	const [loading, setLoading] = useState(true);
 	const [posts, setPosts] = useState([]);
 	const [communities, setCommunities] = useState([]);
-	const [createCommunityModalOpen, setCreateCommunityModalOpen ] = useState(false);
 
 	const handlePostVote = async (postId, type) => {
 		if (type == "upvote") {
@@ -77,6 +76,30 @@ const Forum = () => {
 				const data = await response.json();
 				if (data.success) {
 					console.log("Post upvoted successfully");
+
+					const res = await fetch(
+						`${
+							import.meta.env.VITE_BACKEND_URL
+						}/api/engagement/record`,
+						{
+							method: "POST",
+							body: JSON.stringify({
+								userId: user._id,
+								action: "UPVOTE_POST",
+								postId: postId,
+								tags: posts.find((post) => post._id === postId)
+									.tags,
+							}),
+							headers: {
+								"Content-Type": "application/json",
+							},
+						}
+					);
+
+					if (res.ok) {
+						console.log("Engagement Recorded Successfully!");
+					}
+
 				} else {
 					console.log("Error upvoting post");
 				}
@@ -141,6 +164,25 @@ const Forum = () => {
 				const data = await response.json();
 				if (data.success) {
 					console.log("Post downvoted successfully");
+
+					const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/engagement/record`, {
+						method: "POST",
+						body: JSON.stringify({
+							userId: user._id,
+							action: "DOWNVOTE_POST",
+							postId: postId,
+							tags: posts.find((post) => post._id === postId)
+								.tags,
+						}),
+						headers: {
+							"Content-Type": "application/json",
+						},
+					});
+
+					if (res.ok) {
+						console.log("Engagement Recorded Successfully!");
+					}
+
 				} else {
 					console.log("Error downvoting post");
 				}
