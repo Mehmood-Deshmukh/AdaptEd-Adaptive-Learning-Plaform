@@ -27,7 +27,7 @@ const CommunitiesSidebar = ({ communities, handleJoinCommunity }) => {
 		)}
 
 
-		<div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+		<div className="bg-white p-6 rounded-xl hidden sm:block shadow-sm border border-gray-200">
 			<h2 className="text-xl font-bold text-black mb-5">
 				Communities to Join
 			</h2>
