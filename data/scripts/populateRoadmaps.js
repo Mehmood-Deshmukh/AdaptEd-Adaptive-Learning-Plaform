@@ -1,8 +1,11 @@
-const { MongoClient } = require('mongodb');
+const { MongoClient , ObjectId} = require('mongodb');
 const fs = require('fs');
+const dotenv = require('dotenv');
 
-const DB_URI = 'mongodb://localhost:27017';
-const DB_NAME = 'inspiron25';
+dotenv.config();
+
+const DB_URI = process.env.DB_URI;
+const DB_NAME = process.env.DB_NAME;
 
 const COLLECTION_NAME = 'roadmaps';
 
@@ -20,9 +23,9 @@ async function pushRoadmaps() {
 
         const transformedRoadmaps = roadmaps.map(roadmap => ({
             ...roadmap,
-            _id: roadmap._id.$oid,
-            userId: roadmap.userId.$oid,
-            checkpoints: roadmap.checkpoints.map(checkpoint => checkpoint.$oid),
+            _id: new ObjectId(roadmap._id.$oid),
+            userId: new ObjectId(roadmap.userId.$oid),
+            checkpoints: roadmap.checkpoints.map(checkpoint => new ObjectId(checkpoint.$oid)),
             createdAt: new Date(roadmap.createdAt.$date),
             updatedAt: new Date(roadmap.updatedAt.$date)
         }));

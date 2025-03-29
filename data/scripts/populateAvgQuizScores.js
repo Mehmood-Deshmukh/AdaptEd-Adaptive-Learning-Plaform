@@ -1,8 +1,11 @@
 const { MongoClient } = require("mongodb");
 const fs = require("fs");
+const dotenv = require("dotenv");
 
-const DB_URI = "mongodb://localhost:27017";
-const DB_NAME = "inspiron25";
+dotenv.config();
+
+const DB_URI = process.env.DB_URI;
+const DB_NAME = process.env.DB_NAME;
 
 const COLLECTION_NAME = "users";
 

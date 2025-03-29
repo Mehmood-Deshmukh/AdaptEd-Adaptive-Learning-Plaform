@@ -1,8 +1,11 @@
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 const fs = require('fs');
+const dotenv = require("dotenv")
 
-const DB_URI = 'mongodb://localhost:27017';
-const DB_NAME = 'inspiron25';
+dotenv.config();
+
+const DB_URI = process.env.DB_URI;
+const DB_NAME = process.env.DB_NAME;
 
 const COLLECTION_NAME = 'checkpoints';
 
@@ -20,8 +23,8 @@ async function pushCheckpoints() {
 
         const transformedCheckpoints = checkpoints.map(checkpoint => ({
             ...checkpoint,
-            _id: checkpoint._id.$oid,
-            resources: checkpoint.resources.map(resource => resource.$oid),
+            _id: new ObjectId(checkpoint._id.$oid),
+            resources: checkpoint.resources.map(resource => new ObjectId(resource.$oid)),
             completedAt: checkpoint.completedAt ? new Date(checkpoint.completedAt.$date) : null
         }));
 
