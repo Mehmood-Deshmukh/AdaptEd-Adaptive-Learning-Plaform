@@ -17,6 +17,7 @@ import AllQuizzes from './pages/Quizzes'
 import PublicProfile from './components/PublicProfile'
 import TeacherDashboard from './pages/TeacherDashboard'
 import SubjectiveAnswers from './pages/SubjectiveAnswers'
+import Challenge from './pages/Challenge'
 
 function App() {
   const { state } = useAuthContext()
@@ -56,6 +57,7 @@ function App() {
 
         <Route path='/public-profile/:userId' element={<PublicProfile />} />
         <Route path='/subjective-answers' element={isAuthenticated ? <SubjectiveAnswers /> : <Navigate to="/login" />} />
+        <Route path='/challenge' element={isAuthenticated ? <Challenge /> : <Navigate to="/login" />} />
         {/* <Route path='/quiz/:quizId' element={isAuthenticated ? <QuizReview /> : <Navigate to="/login" />} /> */}
       
       </Routes>

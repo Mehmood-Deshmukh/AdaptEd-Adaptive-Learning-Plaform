@@ -33,14 +33,18 @@ async function getCommunities(req, res) {
 		const page = parseInt(req.query.page) || 1;
 		const limit = parseInt(req.query.limit) || 10;
 		const skip = (page - 1) * limit;
+		const userId = req.userId;
 
-		const communities = await Community.find()
+		const user = await User.findById(userId);
+
+		const communities = await Community.find({
+			dominentCluster: user.clusterId
+		})
 			.sort({ createdAt: -1 })
 			.skip(skip)
 			.limit(limit)
 			.lean();
 
-		const user = await User.findById(req.userId);
 		if (!user) {
 			return res.status(404).json({
 				success: false,

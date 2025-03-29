@@ -280,4 +280,3 @@ def cluster_summary():
         return jsonify({"error": "Cluster summary not found"}), 404
 
     return jsonify(summary)
-

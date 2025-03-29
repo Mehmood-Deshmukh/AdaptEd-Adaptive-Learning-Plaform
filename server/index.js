@@ -17,6 +17,8 @@ const feedbackRoutes = require('./routes/feedbackRoutes');
 const xpRoutes = require('./routes/xpRoutes');
 const publicProfileRoutes = require('./routes/publicProfileRoutes');
 const avtarRoutes = require('./routes/avtarRoutes');
+const engagementRoutes = require("./routes/engagementRoutes");
+const challengeRoutes = require("./routes/challengeRoutes");
 
 const { initializeAchievements, setupEventListeners } = require('./services/achievementService');
 const { setupXpEventListeners } = require('./services/xpService');
@@ -46,6 +48,8 @@ app.use('/api/xp', xpRoutes);
 app.use('/api/feedback', feedbackRoutes);
 app.use('/api/publicprofile', publicProfileRoutes);
 app.use('/api/avatar', avtarRoutes);
+app.use("/api/engagement", engagementRoutes);
+app.use("/api/challenge", challengeRoutes);
 
 connectDB();
 
