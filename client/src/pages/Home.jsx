@@ -46,7 +46,7 @@ const Home = () => {
 		<div className="flex h-screen bg-gray-50">
 			<Sidebar user={user} />
 
-			<div className="flex-1 overflow-auto">
+			<div className="flex-1 overflow-auto mt-3">
 				<div className="p-6 max-w-6xl mx-auto">
 					<div className="bg-white rounded-lg shadow-sm p-6 mb-6">
 						<h1 className="text-2xl font-bold text-gray-900">

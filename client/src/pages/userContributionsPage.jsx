@@ -331,7 +331,7 @@ const UserContributionsPage = () => {
   );
 
   return (
-    <div className="flex h-[100vh] bg-white text-black">
+    <div className="flex h-full bg-white text-black">
       <Toast ref={toast} />
       <Sidebar user={user} />
       
@@ -346,7 +346,7 @@ const UserContributionsPage = () => {
         <p className="m-0">{feedbackModal.message}</p>
       </Dialog>
       
-      <div className='flex flex-col h-full w-6xl mx-auto overflow-y-auto'>
+      <div className='flex flex-col h-full w-6xl mt-8 mx-auto overflow-y-auto'>
       <header className="text-black">
         <div className="container mx-auto px-4 py-6">
           <h1 className="text-2xl font-bold">Contribute</h1>
@@ -355,7 +355,7 @@ const UserContributionsPage = () => {
       </header>
 
       {/* Main content */}
-      <main className="container mx-auto px-4 py-8 w-[70vw]">
+      <main className="container mx-auto px-4 py-8 w-full">
         {/* Tabs */}
         <div className="mb-8 border-b border-gray-200">
           <nav className="flex -mb-px">
@@ -392,11 +392,11 @@ const UserContributionsPage = () => {
         {/* My Contributions Tab */}
         {activeTab === 'myContributions' && (
           <div>
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-xl font-bold">Your Contributions</h2>
+            <div className="flex justify-between items-center gap-2 mb-6">
+              <h2 className="text-l font-bold">Your Contributions</h2>
               <button
                 onClick={() => setActiveTab('contribute')}
-                className="bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 flex items-center gap-2"
+                className="bg-black text-white  px-3 py-2 rounded-md hover:bg-gray-800 flex justify-between items-center gap-2"
               >
                 <PlusCircle className="w-4 h-4" />
                 New Contribution
@@ -441,7 +441,7 @@ const UserContributionsPage = () => {
                         <StatusBadge status={contribution.status} />
                       </div>
                       
-                      <h3 className="text-lg font-semibold mb-2 line-clamp-2">
+                      <h3 className="text-s font-semibold mb-2 line-clamp-2">
                         {contribution.type === 'Resource' 
                           ? contribution.payload.name 
                           : contribution.payload.question}
@@ -477,7 +477,7 @@ const UserContributionsPage = () => {
                           ))}
                       </div>
                       
-                      <div className="border-t border-gray-100 pt-3 flex items-center justify-between">
+                      <div className="border-t border-gray-100 pt-3 gap-3 flex items-center justify-between">
                         <span className="text-xs text-gray-500">
                           Submitted on {new Date(contribution.createdAt).toLocaleDateString()}
                         </span>
@@ -503,11 +503,11 @@ const UserContributionsPage = () => {
         {/* Contribute Tab */}
         {activeTab === 'contribute' && (
           <div>
-            <div className="mb-6">
+            <div className="mb-6 w-full">
               <h2 className="text-xl font-bold mb-4">Create New Contribution</h2>
               
               <div className="bg-gray-50 p-4 rounded-lg mb-6">
-                <div className="flex items-center gap-6">
+                <div className="flex items-center gap-3">
                   <button
                     className={`flex-1 py-3 flex justify-center items-center gap-2 rounded-md ${
                       formType === 'Resource'
@@ -530,17 +530,7 @@ const UserContributionsPage = () => {
                     <HelpCircle className="w-5 h-5" />
                     Question
                   </button>
-                  <button
-                    className={`flex-1 py-3 flex justify-center items-center gap-2 rounded-md ${
-                      formType === 'Project'
-                        ? 'bg-black text-white'
-                        : 'bg-white border border-gray-200 text-gray-700 hover:bg-gray-50'
-                    }`}
-                    onClick={() => setFormType('Project')}
-                  >
-                    <FileText className="w-5 h-5" />
-                   Project
-                  </button>
+                  
                   
                 </div>
                 <p className="text-sm text-gray-500 mt-2">
@@ -590,7 +580,7 @@ const UserContributionsPage = () => {
                       Resource Type
                     </label>
                     <div className="grid grid-cols-3 gap-3">
-                      {['article', 'video', 'course', 'documentation', 'book', 'tool'].map((type) => (
+                      {['article', 'video', 'course', 'document', 'book', 'tool'].map((type) => (
                         <button
                           key={type}
                           type="button"
@@ -612,7 +602,7 @@ const UserContributionsPage = () => {
                       Difficulty Level
                     </label>
                     <div className="flex gap-3">
-                      {['beginner', 'intermediate', 'advanced'].map((level) => (
+                      {['beginner', 'intermediate', 'advance'].map((level) => (
                         <button
                           key={level}
                           type="button"
@@ -909,182 +899,6 @@ const UserContributionsPage = () => {
                 </form>
               )}
 
-              {/* Project Form */}
-              {formType === 'Project' && (
-                <form onSubmit={handleQuestionProject} className="bg-white border border-gray-200 rounded-lg p-6">
-                  <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-medium mb-2" htmlFor="question-text">
-                      Project
-                    </label>
-                    <textarea
-                      id="question-text"
-                      value={questionForm.question}
-                      onChange={(e) => setQuestionForm({...questionForm, question: e.target.value})}
-                      className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
-                      rows="3"
-                      placeholder="Enter your question here"
-                      required
-                    ></textarea>
-                  </div>
-                  
-                  <div className="mb-4">
-  <label className="block text-gray-700 text-sm font-medium mb-2">
-    Options (minimum 2)
-  </label>
-  {questionForm.options.map((option, index) => (
-    <div key={index} className="flex items-center mb-2">
-      <div className="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full mr-2">
-        {String.fromCharCode(65 + index)}
-      </div>
-      <input
-        type="text"
-        value={option}
-        onChange={(e) => {
-          const newOptions = [...questionForm.options];
-          newOptions[index] = e.target.value;
-          setQuestionForm({...questionForm, options: newOptions});
-        }}
-        className="flex-1 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
-        placeholder={`Option ${index + 1}`}
-      />
-      <button
-        type="button"
-        onClick={() => {
-          if (questionForm.correctOption === String.fromCharCode(65 + index)) {
-            setQuestionForm({...questionForm, correctOption: ''});
-          }
-          const newOptions = [...questionForm.options];
-          newOptions[index] = '';
-          setQuestionForm({...questionForm, options: newOptions});
-        }}
-        className="ml-2 text-gray-400 hover:text-black"
-        title="Clear option"
-      >
-        <XCircle className="w-5 h-5" />
-      </button>
-    </div>
-  ))}
-</div>
-<div className="mb-4">
-  <label className="block text-gray-700 text-sm font-medium mb-2">
-    Correct Option
-  </label>
-  <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-    {questionForm.options.map((option, index) => {
-      const letterOption = String.fromCharCode(65 + index);
-      return (
-        <button
-          key={index}
-          type="button"
-          disabled={!option.trim()}
-          onClick={() => setQuestionForm({...questionForm, correctOption: letterOption})}
-          className={`py-2 px-3 text-sm border rounded-md ${
-            option.trim() === ''
-              ? 'bg-gray-100 text-gray-400 cursor-not-allowed border-gray-200'
-              : questionForm.correctOption === letterOption
-                ? 'bg-black text-white border-black'
-                : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
-          }`}
-        >
-          <div className="flex items-center justify-center gap-2">
-            <span>{letterOption}</span>
-            {questionForm.correctOption === letterOption && <Check className="w-4 h-4" />}
-          </div>
-        </button>
-      );
-    })}
-  </div>
-</div>
-                  
-                  <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-medium mb-2" htmlFor="explanation">
-                      Explanation
-                    </label>
-                    <textarea
-                      id="explanation"
-                      value={questionForm.explanation}
-                      onChange={(e) => setQuestionForm({...questionForm, explanation: e.target.value})}
-                      className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
-                      rows="3"
-                      placeholder="Explain why the correct answer is right"
-                      required
-                    ></textarea>
-                  </div>
-                  
-                  <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-medium mb-2" htmlFor="domain">
-                      Domain
-                    </label>
-                    <select
-                      id="domain"
-                      value={questionForm.domain}
-                      onChange={(e) => setQuestionForm({...questionForm, domain: e.target.value})}
-                      className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
-                      required
-                    >
-                      <option value="">Select a domain</option>
-                      <option value="frontend">Frontend Development</option>
-                      <option value="backend">Backend Development</option>
-                      <option value="database">Databases</option>
-                      <option value="devops">DevOps</option>
-                      <option value="mobile">Mobile Development</option>
-                      <option value="cloud">Cloud Computing</option>
-                      <option value="security">Security</option>
-                      <option value="algorithms">Algorithms & Data Structures</option>
-                      <option value="networking">Networking</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-                  
-                  <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-medium mb-2">
-                      Tags
-                    </label>
-                    <div className="flex flex-wrap items-center gap-2 p-2 border border-gray-300 rounded-md mb-2">
-                      {questionForm.tags.map((tag, index) => (
-                        <span 
-                          key={index}
-                          className="flex items-center gap-1 bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm"
-                        >
-                          <Tag className="w-3 h-3" />
-                          {tag}
-                          <button
-                            type="button"
-                            onClick={() => removeTag(tag, 'question-tag')}
-                            className="ml-1 text-gray-500 hover:text-black"
-                          >
-                            <XCircle className="w-4 h-4" />
-                          </button>
-                        </span>
-                      ))}
-                      <input
-                        type="text"
-                        value={questionTagInput}
-                        onChange={(e) => setQuestionTagInput(e.target.value)}
-                        onKeyDown={(e) => {
-                          if (e.key === 'Enter' || e.key === ',') {
-                            e.preventDefault();
-                            addTag(questionTagInput, 'question-tag');
-                          }
-                        }}
-                        className="flex-1 min-w-[120px] px-2 py-1 border-0 focus:outline-none"
-                        placeholder={questionForm.tags.length === 0 ? "Add tags (press Enter)" : ""}
-                      />
-                    </div>
-                    <p className="text-xs text-gray-500">Press Enter or comma after each tag</p>
-                  </div>
-                  
-                  <div className="flex justify-end">
-                    <button
-                      type="submit"
-                      className="bg-black text-white px-6 py-2 rounded-md hover:bg-gray-800 flex items-center gap-2"
-                    >
-                      <Check className="w-4 h-4" />
-                      Submit Question
-                    </button>
-                  </div>
-                </form>
-              )}
             </div>
           </div>
         )}

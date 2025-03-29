@@ -393,31 +393,30 @@ const CommunityPage = () => {
 										{community.name || "Unnamed Community"}
 									</h1>
 
-									<div className="flex gap-3">
-										{community.createdBy ===
-										user._id ? null : (
-											<button
-												onClick={handleJoinCommunity}
-												className={`px-4 py-2 rounded-md transition-colors ${
-													isMember
-														? "bg-gray-200 text-black hover:bg-gray-300"
-														: "bg-black text-white hover:bg-gray-800"
-												}`}
-											>
-												{isMember
-													? "Leave Community"
-													: "Join Community"}
-											</button>
-										)}
-
-										<CreatePostModal
-											community={{
-												_id: community._id,
-												name: community.name,
-												membersCount:
-													community.membersCount,
-											}}
-										/>
+                  <div className="flex gap-3">
+                    {community.createdBy === user._id ? null : (
+                      <button
+                        onClick={handleJoinCommunity}
+                        className={`px-4 py-2 rounded-md transition-colors ${
+                          isMember
+                            ? "bg-gray-200 text-black hover:bg-gray-300"
+                            : "bg-black text-white hover:bg-gray-800"
+                        }`}
+                      >
+                        {isMember ? "Leave Community" : "Join Community"}
+                      </button>
+                    )}
+    {user.communities.includes(community._id) && <CreatePostModal
+                      posts= {posts}
+                      setPosts={setPosts}
+                      community={{
+                        
+                        _id: community._id,
+                        name: community.name,
+                        membersCount: community.membersCount,
+                      }}
+                    />}
+                    
 
 										<button
 											onClick={() => setIsChatOpen(true)}

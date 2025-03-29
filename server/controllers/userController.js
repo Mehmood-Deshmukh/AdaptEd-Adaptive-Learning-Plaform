@@ -302,6 +302,7 @@ const userController = {
 	getRecommendations: async (req, res) => {
 		try {
 			const user = await userModel.findById(req.userId);
+			console.log(user);
 
 			const clusterSummaryResponse = await axios.get(
 				`${process.env.FLASK_BASE_URL}/clusters/cluster-summary?id=${user.clusterId}`

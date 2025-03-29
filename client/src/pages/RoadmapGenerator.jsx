@@ -23,14 +23,18 @@ import {
   File,
   Users,
   Trophy,
+  BarChart,
+  FastForward,
+  Rocket,
 } from "lucide-react";
 import Sidebar from "../components/Sidebar";
 import useAuthContext from "../hooks/useAuthContext";
-import {Toast} from "primereact/toast";
+import { Toast } from "primereact/toast";
 import LeaderboardModal from "../components/LeaderboardModal";
 import StyleTag from "../components/StyleTag";
 import FeedbackModal from "../components/FeedbackModal";
 import CheckpointFeedbackSummary from "../components/CheckpointFeedbackSummary";
+import LeaderboardInsights from "../components/LeaderboardInsigths";
 
 const RoadmapGenerator = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -42,6 +46,9 @@ const RoadmapGenerator = () => {
   const [leaderboardData, setLeaderboardData] = useState([]);
   const [showFeedbackModal, setShowFeedbackModal] = useState(false);
   const [selectedCheckpoint, setSelectedCheckpoint] = useState(null);
+  const [roadmapInsights, setRoadmapInsights] = useState(null);
+  const [leaderboardDataProp, setLeaderboardDataProp] = useState([]);
+  const [currentUserPosition, setCurrentUserPosition] = useState(null);
 
   const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -56,14 +63,17 @@ const RoadmapGenerator = () => {
   const fetchLeaderboard = async (roadmapId) => {
     try {
       setIsLoading(true);
-      const response = await fetch(`${BASE_URL}/api/roadmap/leaderboard/${roadmapId}`, {
-        headers: {
-          Authorization: `Bearer ${getToken()}`,
-        },
-      });
-  
+      const response = await fetch(
+        `${BASE_URL}/api/roadmap/leaderboard/${roadmapId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${getToken()}`,
+          },
+        }
+      );
+
       if (!response.ok) throw new Error("Failed to fetch leaderboard");
-  
+
       const data = await response.json();
       setLeaderboardData(data);
       setIsLoading(false);
@@ -78,6 +88,47 @@ const RoadmapGenerator = () => {
     }
   };
 
+  const fetchRoadmapInsights = async (roadmapId) => {
+    try {
+      setIsLoading(true);
+      const response = await fetch(
+        `${BASE_URL}/api/roadmap/leaderboard-insights/${roadmapId}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${getToken()}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(
+          errorData.message || "Failed to fetch leaderboard insights"
+        );
+      }
+
+      const data = await response.json();
+
+      // Store all the data properly for use in components
+      setRoadmapInsights(data.insights);
+      setLeaderboardDataProp(data.leaderboard);
+      setCurrentUserPosition(data.currentUserPosition);
+    } catch (error) {
+      console.error("Leaderboard insights error:", error);
+      toast.current.show({
+        severity: "error",
+        summary: "Error",
+        detail:
+          error.message ||
+          "Failed to load leaderboard insights. Please try again.",
+        life: 3000,
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
   const fetchRoadmaps = async () => {
     try {
       setIsLoading(true);
@@ -86,21 +137,23 @@ const RoadmapGenerator = () => {
           Authorization: `Bearer ${getToken()}`,
         },
       });
-  
+
       if (!response.ok) throw new Error("Failed to fetch roadmaps");
-  
+
       const data = await response.json();
-  
 
       const updatedRoadmaps = data.map((roadmap) => {
         if (roadmap.checkpoints && roadmap.checkpoints.length > 0) {
-    
-          const checkpoint1 = roadmap.checkpoints.find(cp => cp.order === 1);
-          const isCheckpoint1Completed = checkpoint1 && checkpoint1.status === "completed";
-          
-          roadmap.checkpoints = roadmap.checkpoints.map((checkpoint) => {
-            if (checkpoint.order === 1 && checkpoint.status !== "completed" && checkpoint.status != "in_progress"){
+          const checkpoint1 = roadmap.checkpoints.find((cp) => cp.order === 1);
+          const isCheckpoint1Completed =
+            checkpoint1 && checkpoint1.status === "completed";
 
+          roadmap.checkpoints = roadmap.checkpoints.map((checkpoint) => {
+            if (
+              checkpoint.order === 1 &&
+              checkpoint.status !== "completed" &&
+              checkpoint.status != "in_progress"
+            ) {
               fetch(`${BASE_URL}/api/roadmap/update-checkpoint-status`, {
                 method: "POST",
                 headers: {
@@ -112,13 +165,17 @@ const RoadmapGenerator = () => {
                   checkpointId: checkpoint._id,
                   status: "in_progress",
                 }),
-              }).catch(error => console.error("Error updating checkpoint status:", error));
-              
+              }).catch((error) =>
+                console.error("Error updating checkpoint status:", error)
+              );
+
               return { ...checkpoint, status: "in_progress" };
-            }
-     
-            else if (checkpoint.order === 2 && isCheckpoint1Completed && checkpoint.status === "not_started" && checkpoint.status != "in_progress") {
-   
+            } else if (
+              checkpoint.order === 2 &&
+              isCheckpoint1Completed &&
+              checkpoint.status === "not_started" &&
+              checkpoint.status != "in_progress"
+            ) {
               fetch(`${BASE_URL}/api/roadmap/update-checkpoint-status`, {
                 method: "POST",
                 headers: {
@@ -130,17 +187,22 @@ const RoadmapGenerator = () => {
                   checkpointId: checkpoint._id,
                   status: "in_progress",
                 }),
-              }).catch(error => console.error("Error updating checkpoint status:", error));
-              
+              }).catch((error) =>
+                console.error("Error updating checkpoint status:", error)
+              );
+
               return { ...checkpoint, status: "in_progress" };
-            }
-            else if (checkpoint.order > 1) {
+            } else if (checkpoint.order > 1) {
               const prevCheckpoint = roadmap.checkpoints.find(
                 (cp) => cp.order === checkpoint.order - 1
               );
-              
-              if (prevCheckpoint && prevCheckpoint.status === "completed" && checkpoint.status === "not_started" && checkpoint.status != "in_progress") {
-        
+
+              if (
+                prevCheckpoint &&
+                prevCheckpoint.status === "completed" &&
+                checkpoint.status === "not_started" &&
+                checkpoint.status != "in_progress"
+              ) {
                 fetch(`${BASE_URL}/api/roadmap/update-checkpoint-status`, {
                   method: "POST",
                   headers: {
@@ -152,8 +214,10 @@ const RoadmapGenerator = () => {
                     checkpointId: checkpoint._id,
                     status: "in_progress",
                   }),
-                }).catch(error => console.error("Error updating checkpoint status:", error));
-                
+                }).catch((error) =>
+                  console.error("Error updating checkpoint status:", error)
+                );
+
                 return { ...checkpoint, status: "in_progress" };
               }
             }
@@ -162,7 +226,7 @@ const RoadmapGenerator = () => {
         }
         return roadmap;
       });
-  
+
       setRoadmaps(updatedRoadmaps);
       setIsLoading(false);
     } catch (error) {
@@ -186,11 +250,11 @@ const RoadmapGenerator = () => {
       });
       return;
     }
-  
+
     try {
       setIsLoading(true);
       setShowModal(false);
-  
+
       const response = await fetch(`${BASE_URL}/api/roadmap/generate`, {
         method: "POST",
         headers: {
@@ -199,19 +263,19 @@ const RoadmapGenerator = () => {
         },
         body: JSON.stringify({ topic }),
       });
-  
+
       if (!response.ok) throw new Error("Failed to generate roadmap");
-  
+
       const data = await response.json();
       let updatedData = { ...data };
-      
-      const successMessage = data.isExisting 
-        ? "You've joined an existing roadmap for this topic!" 
+
+      const successMessage = data.isExisting
+        ? "You've joined an existing roadmap for this topic!"
         : "Roadmap generated successfully!";
-  
+
       if (data.checkpoints && data.checkpoints.length > 0) {
-        const firstCheckpoint = data.checkpoints.find(cp => cp.order === 1);
-        
+        const firstCheckpoint = data.checkpoints.find((cp) => cp.order === 1);
+
         if (firstCheckpoint) {
           await fetch(`${BASE_URL}/api/roadmap/update-checkpoint-status`, {
             method: "POST",
@@ -225,7 +289,7 @@ const RoadmapGenerator = () => {
               status: "in_progress",
             }),
           });
-          
+
           updatedData.checkpoints = data.checkpoints.map((checkpoint) => {
             if (checkpoint.order === 1) {
               return { ...checkpoint, status: "in_progress" };
@@ -235,29 +299,29 @@ const RoadmapGenerator = () => {
           });
         }
       }
-  
-  
-      setRoadmaps([ ...roadmaps, updatedData])
+
+      setRoadmaps([...roadmaps, updatedData]);
       setSelectedRoadmap(updatedData);
       setTopic("");
       setIsLoading(false);
-  
+
       toast.current.show({
         severity: "success",
-        summary: "Success", 
+        summary: "Success",
         detail: successMessage,
         life: 3000,
       });
-      
+
       if (data.isExisting && data.users && data.users.length > 1) {
         toast.current.show({
           severity: "info",
-          summary: "Learning Together", 
-          detail: `You're learning with ${data.users.length - 1} other students!`,
+          summary: "Learning Together",
+          detail: `You're learning with ${
+            data.users.length - 1
+          } other students!`,
           life: 5000,
         });
       }
-      
     } catch (error) {
       console.log(error);
       toast.current.show({
@@ -272,7 +336,7 @@ const RoadmapGenerator = () => {
 
   const openLeaderboard = () => {
     if (!selectedRoadmap) return;
-    
+
     fetchLeaderboard(selectedRoadmap._id);
     setShowLeaderboard(true);
   };
@@ -331,7 +395,7 @@ const RoadmapGenerator = () => {
       }
 
       const data = await response.json();
-      const updatedRoadmap = data; 
+      const updatedRoadmap = data;
 
       const updatedRoadmaps = roadmaps.map((roadmap) => {
         if (roadmap._id === roadmapId) {
@@ -351,7 +415,6 @@ const RoadmapGenerator = () => {
         detail: "Checkpoint status updated successfully",
         life: 3000,
       });
-        
     } catch (error) {
       toast.current.show({
         severity: "error",
@@ -422,39 +485,39 @@ const RoadmapGenerator = () => {
   };
 
   const handleFeedbackSubmitted = (roadmapId, checkpointId) => {
-
-    const roadmap = roadmaps.find(r => r._id === roadmapId);
+    const roadmap = roadmaps.find((r) => r._id === roadmapId);
     if (!roadmap) return;
-    
 
-    const updatedCheckpoints = roadmap.checkpoints.map(cp => {
+    const updatedCheckpoints = roadmap.checkpoints.map((cp) => {
       if (cp._id === checkpointId) {
-        const updatedUserProgress = cp.userProgress.map(up => {
+        const updatedUserProgress = cp.userProgress.map((up) => {
           if (up.userId === user._id) {
             return {
               ...up,
-              isFeedbackCompleted: true
+              isFeedbackCompleted: true,
             };
           }
           return up;
         });
-        
+
         return {
           ...cp,
           userProgress: updatedUserProgress,
-          isFeedbackCompleted: true
+          isFeedbackCompleted: true,
         };
       }
       return cp;
     });
-    
+
     const updatedRoadmap = {
       ...roadmap,
-      checkpoints: updatedCheckpoints
+      checkpoints: updatedCheckpoints,
     };
-    
-    setRoadmaps(roadmaps.map(r => r._id === roadmapId ? updatedRoadmap : r));
-    
+
+    setRoadmaps(
+      roadmaps.map((r) => (r._id === roadmapId ? updatedRoadmap : r))
+    );
+
     if (selectedRoadmap && selectedRoadmap._id === roadmapId) {
       setSelectedRoadmap(updatedRoadmap);
     }
@@ -463,6 +526,23 @@ const RoadmapGenerator = () => {
   useEffect(() => {
     fetchRoadmaps();
   }, []);
+
+  const formatTimeDuration = (milliseconds) => {
+    if (!milliseconds) return "0 min";
+
+    const seconds = Math.floor(milliseconds / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+
+    if (days > 0) {
+      return `${days}d ${hours % 24}h`;
+    } else if (hours > 0) {
+      return `${hours}h ${minutes % 60}m`;
+    } else {
+      return `${minutes}m`;
+    }
+  };
 
   const CheckpointItem = ({ checkpoint, roadmapId, checkpoints }) => {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -511,27 +591,13 @@ const RoadmapGenerator = () => {
       }
     };
 
-    const formatTimeDuration = (milliseconds) => {
-      if (!milliseconds) return "0 min";
-
-      const seconds = Math.floor(milliseconds / 1000);
-      const minutes = Math.floor(seconds / 60);
-      const hours = Math.floor(minutes / 60);
-      const days = Math.floor(hours / 24);
-
-      if (days > 0) {
-        return `${days}d ${hours % 24}h`;
-      } else if (hours > 0) {
-        return `${hours}h ${minutes % 60}m`;
-      } else {
-        return `${minutes}m`;
-      }
-    };
-
     const calculateTimeSpent = () => {
       if (checkpoint?.status === "completed" && checkpoint?.totalTimeTaken) {
         return formatTimeDuration(checkpoint.totalTimeTaken);
-      } else if (checkpoint?.status === "in_progress" && checkpoint?.startedAt) {
+      } else if (
+        checkpoint?.status === "in_progress" &&
+        checkpoint?.startedAt
+      ) {
         const currentTime = Date.now();
         const startTime = new Date(checkpoint.startedAt).getTime();
         return formatTimeDuration(currentTime - startTime);
@@ -704,24 +770,26 @@ const RoadmapGenerator = () => {
                   </div>
                 )}
 
-                {checkpoint.status === "completed" && isFeedbackCompleted && !isFeedbackLoading && (
-                  <div className="flex items-center text-sm text-gray-600">
-                    {feedbackData && feedbackData._id  && (
-                      <>
-                        <Star className="w-4 h-4 text-yellow-500 mr-1" />
-                        <span>
-                          You rated this checkpoint {feedbackData.rating}/5
-                        </span>
-                        <button
-                          onClick={handleOpenFeedbackModal}
-                          className="ml-2 text-blue-600 hover:underline"
-                        >
-                          Edit feedback
-                        </button>
-                      </>
-                    )}
-                  </div>
-                )}
+                {checkpoint.status === "completed" &&
+                  isFeedbackCompleted &&
+                  !isFeedbackLoading && (
+                    <div className="flex items-center text-sm text-gray-600">
+                      {feedbackData && feedbackData._id && (
+                        <>
+                          <Star className="w-4 h-4 text-yellow-500 mr-1" />
+                          <span>
+                            You rated this checkpoint {feedbackData.rating}/5
+                          </span>
+                          <button
+                            onClick={handleOpenFeedbackModal}
+                            className="ml-2 text-blue-600 hover:underline"
+                          >
+                            Edit feedback
+                          </button>
+                        </>
+                      )}
+                    </div>
+                  )}
 
                 {checkpoint.status !== "completed" && (
                   <button
@@ -777,9 +845,7 @@ const RoadmapGenerator = () => {
               </p>
             )}
 
-            
             <CheckpointFeedbackSummary checkpointId={checkpoint._id} />
-            
           </div>
         )}
       </div>
@@ -790,7 +856,7 @@ const RoadmapGenerator = () => {
     <div className="flex h-screen bg-gray-50">
       <Sidebar user={user} />
       <Toast ref={toast} />
-    
+
       <div className="w-[80vw] mx-auto px-4 sm:px-6 lg:px-8 py-8 overflow-scroll">
         {isLoading && (
           <div className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-50">
@@ -811,15 +877,14 @@ const RoadmapGenerator = () => {
             onFeedbackSubmitted={handleFeedbackSubmitted}
           />
         )}
-  
-        <LeaderboardModal 
+
+        <LeaderboardModal
           isOpen={showLeaderboard}
           onClose={() => setShowLeaderboard(false)}
           leaderboardData={leaderboardData}
           currentUserId={user?._id}
         />
 
-       
         {showModal && (
           <div className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-40 animate-fadeIn">
             <div className="bg-white rounded-lg shadow-xl p-6 w-full max-w-md transform transition-all">
@@ -827,7 +892,8 @@ const RoadmapGenerator = () => {
                 Create New Roadmap
               </h2>
               <p className="text-gray-600 mb-4">
-                Enter a topic to generate a comprehensive learning roadmap. If a roadmap for this topic already exists, you'll join it!
+                Enter a topic to generate a comprehensive learning roadmap. If a
+                roadmap for this topic already exists, you'll join it!
               </p>
 
               <div className="relative">
@@ -880,7 +946,6 @@ const RoadmapGenerator = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-         
             <div className="lg:col-span-1">
               <div className="bg-white rounded-lg shadow-md p-4 mb-4">
                 <h2 className="text-lg font-semibold mb-3 text-gray-800 flex items-center">
@@ -890,7 +955,10 @@ const RoadmapGenerator = () => {
                   {roadmaps.map((roadmap) => (
                     <div
                       key={roadmap._id}
-                      onClick={() => setSelectedRoadmap(roadmap)}
+                      onClick={() => {
+                        setSelectedRoadmap(roadmap);
+                        fetchRoadmapInsights(roadmap._id);
+                      }}
                       className={`p-3 rounded-lg cursor-pointer transition-all duration-200 hover:bg-gray-200 ${
                         selectedRoadmap && selectedRoadmap._id === roadmap._id
                           ? "bg-gray-200 border-l-4 border-black"
@@ -911,7 +979,7 @@ const RoadmapGenerator = () => {
                           {roadmap.totalProgress}%
                         </span>
                       </div>
-                      
+
                       {roadmap.users && roadmap.users.length > 1 && (
                         <div className="mt-2 flex items-center text-xs  text-blue-600 ">
                           <Users className="w-3 h-3 mr-1" />
@@ -943,19 +1011,22 @@ const RoadmapGenerator = () => {
                         <p className="text-gray-600">
                           {selectedRoadmap.description}
                         </p>
-                        
-                        {selectedRoadmap.users && selectedRoadmap.users.length > 1 && (
-                          <div className="mt-3">
-                            <button
-                              onClick={openLeaderboard}
-                              className="flex items-center cursor-pointer text-sm px-4 py-2 bg-blue-50 text-blue-700 rounded-full hover:bg-blue-100 transition-colors"
-                            >
-                              <Users className="w-4 h-4 mr-2" />
-                              Learning with {selectedRoadmap.users.length - 1} others
-                              <Trophy className="w-4 h-4 ml-2" />
-                            </button>
-                          </div>
-                        )}
+
+                        {selectedRoadmap.users &&
+                          selectedRoadmap.users.length > 1 && (
+                            <div className="mt-3">
+                              <button
+                                onClick={openLeaderboard}
+                                className="flex items-center cursor-pointer text-sm px-4 py-2 bg-blue-50 text-blue-700 rounded-full hover:bg-blue-100 transition-colors"
+                              >
+                                <Users className="w-4 h-4 mr-2" />
+                                Learning with {selectedRoadmap.users.length -
+                                  1}{" "}
+                                others
+                                <Trophy className="w-4 h-4 ml-2" />
+                              </button>
+                            </div>
+                          )}
                       </div>
                       <div className="flex flex-col items-center">
                         <div className="relative w-20 h-20">
@@ -992,12 +1063,18 @@ const RoadmapGenerator = () => {
                             </span>
                           </div>
                         </div>
-                        <p className="text-sm text-gray-600 mt-2">
+                        <p className="text-sm text-center text-gray-600 mt-2">
                           Overall Progress
                         </p>
                       </div>
                     </div>
                   </div>
+
+                  <LeaderboardInsights
+                    roadmapInsights={roadmapInsights}
+                    leaderboard={leaderboardData}
+                    currentUserPosition={currentUserPosition}
+                  />
 
                   <div className="space-y-2 mb-6">
                     <div className="flex items-center justify-between">
@@ -1054,7 +1131,6 @@ const RoadmapGenerator = () => {
     </div>
   );
 };
-
 
 const Roadmap = () => (
   <>

@@ -13,4 +13,5 @@ router.post('/feedback', authenticateUser, roadmapController.submitFeedback);
 router.get('/feedback/checkpoint/:checkpointId', authenticateUser, roadmapController.getCheckpointFeedback);
 router.get('/feedback/user/checkpoint/:checkpointId', authenticateUser, roadmapController.getUserFeedback);
 
+router.get('/leaderboard-insights/:roadmapId', authenticateUser, roadmapController.getLeaderboardInsights);
 module.exports = router;

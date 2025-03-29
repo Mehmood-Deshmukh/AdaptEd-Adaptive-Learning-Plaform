@@ -357,7 +357,7 @@ const Forum = () => {
 					/>
 
 					<div className="flex pt-6 gap-6">
-						<div className="flex-1">
+						<div className="flex-1 w-full">
 							{loading ? (
 								<PostSkeleton />
 							) : posts.length === 0 ? (
