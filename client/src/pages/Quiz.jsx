@@ -55,7 +55,7 @@ const Quiz = () => {
           'Authorization': `Bearer ${localStorage.getItem("token")}`
         },
         body: JSON.stringify({
-          title: `Quiz on ${topic}`,
+          title: `${topic}`,
           topic: topic,
           domain: "Computer Science",
           difficulty: difficulty,
