@@ -33,3 +33,31 @@ export const getAttachmentUrl = (attachmentId) => {
 	}/api/attachments/${attachmentId}`;
 };
 
+export const recordRoadmapTimespent = async (
+	userId,
+	roadmapId,
+	timeSpent,
+) => {
+	const response = await fetch(
+		`${import.meta.env.VITE_BACKEND_URL}/api/engagement/record`,
+		{
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${localStorage.getItem('token')}`,
+			},
+			body: JSON.stringify({
+				userId,
+				action: "ROADMAP_TIME_SPENT",
+				resourceId: roadmapId,
+				timeSpent,
+			}),
+		}
+	);
+
+	if (!response.ok) {
+		throw new Error("Failed to record roadmap time spent");
+	}else {
+		console.log("Roadmap time spent recorded successfully");
+	}
+}

@@ -12,12 +12,11 @@ const engagementSchema = new Schema({
         enum: [
             "VIEW_POST",
             "VIEW_ROADMAP",
-            "QUIZ_ATTEMPT",
+            "VIEW_COMMUNITY",
             "UPVOTE_POST",
             "DOWNVOTE_POST",
-            "COMMENT_POST",
             "COMPLETE_CHECKPOINT",
-            "CLICK_RECOMMENDATION"
+            "CLICK_RECOMMENDATION",
         ],
         required: true
     },

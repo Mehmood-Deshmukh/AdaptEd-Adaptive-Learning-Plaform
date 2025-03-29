@@ -69,52 +69,10 @@ export const renderImageGrid = (attachments, onImageClick) => {
 
 const PostItem = ({ post, handleVote }) => {
 	const navigate = useNavigate();
-	const [startTime, setStartTime] = useState();
 	const { state } = useAuthContext();
 	const { user } = state;
 	const [previewOpen, setPreviewOpen] = useState(false);
 	const [previewIndex, setPreviewIndex] = useState(0);
-
-	async function recordEngagement(postId) {
-		try{
-			const timeSpent = Math.floor((Date.now() - startTime) / 1000);
-			const response = await fetch(
-				`${import.meta.env.VITE_BACKEND_URL}/api/engagement/record`,
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify({
-						userId: user._id,
-						action: "VIEW_POST",
-						postId: postId,
-						timeSpent,
-					}),
-				}
-			)
-
-			if(response.ok) {
-				console.log("Engagement Recorded Successfully!");
-			}
-
-		}catch(e) {
-			console.log(e.message);
-		}
-	}
-
-	useEffect(() => {
-		if (post) {
-			const time = new Date(post.createdAt);
-			setStartTime(time);
-		}
-
-		return () => {
-			if (post) {
-				recordEngagement(post._id);
-			}
-		};
-	}, [post]);
 
 	const handleImageClick = (index) => {
 		setPreviewIndex(index);

@@ -112,7 +112,6 @@ const SearchModal = ({ onClose, onSelect, searchType = 'all' }) => {
                 onClick={() => handleEntityClick(entity)}
                 className="p-4 hover:bg-gray-50 cursor-pointer transition-colors border-b border-gray-100 last:border-b-0 flex items-center space-x-4"
             >
-                {/* Avatar/Icon */}
                 <div className="flex-shrink-0">
                     {isUser ? (
                         <UserCircle2 
@@ -131,7 +130,6 @@ const SearchModal = ({ onClose, onSelect, searchType = 'all' }) => {
                     )}
                 </div>
 
-                {/* Details */}
                 <div className="flex-grow">
                     <h3 className="text-lg font-medium text-black">
                         {entity.name}
@@ -143,7 +141,6 @@ const SearchModal = ({ onClose, onSelect, searchType = 'all' }) => {
                     </p>
                 </div>
 
-                {/* View Action */}
                 <div className="text-sm text-gray-400 flex items-center space-x-2">
                     <span className="text-xs uppercase tracking-wider">
                         View {entity.type}

@@ -17,7 +17,9 @@ const RoadmapDetails = ({ roadmap }) => {
         <div className="border rounded-md p-4 hover:bg-gray-50 transition-colors">
             <div 
                 className="flex justify-between items-center cursor-pointer"
-                onClick={() => setIsExpanded(!isExpanded)}
+                onClick={() => {
+                    setIsExpanded(!isExpanded)
+                }}
             >
                 <div className="flex items-center flex-grow">
                     <FiBook className="mr-3 text-gray-700" size={20} />

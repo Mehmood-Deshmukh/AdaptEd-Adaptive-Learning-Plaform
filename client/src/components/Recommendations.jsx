@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { BookOpen, Video, Book, Link } from "lucide-react";
+import useAuthContext from '../hooks/useAuthContext'
 
 const Recommendations = () => {
+	const { state } = useAuthContext();
+	const { user } = state;
 	const [recommendations, setRecommendations] = useState([]);
 
 	const getToken = () => {
@@ -117,6 +120,7 @@ const Recommendations = () => {
 												Authorization: `Bearer ${getToken()}`,
 											},
 											body: JSON.stringify({
+												userId: user._id,
 												action: "CLICK_RECOMMENDATION",
 												resourceId: resource._id,
 												tags: resource.tags,

@@ -19,6 +19,7 @@ const PostDisplay = () => {
 	const { id } = useParams();
 	const { state } = useAuthContext();
 	const { user } = state;
+	const [startTime, setStartTime] = useState(null);
 	const navigate = useNavigate();
 
 	const backendUrl = import.meta.env.VITE_BACKEND_URL;
@@ -75,6 +76,28 @@ const PostDisplay = () => {
 				const data = await response.json();
 				if (data.success) {
 					console.log("Post upvoted successfully");
+
+					const res = await fetch (`${import.meta.env.VITE_BACKEND_URL}/api/engagement/record`, {
+						method: "POST",
+						body: JSON.stringify({
+							communityId: post.community._id,
+							postId: postId,
+							userId: user._id,
+							action: "UPVOTE_POST"
+						}),
+						headers: {
+							"Authorization": `Bearer ${localStorage.getItem("token")}`,
+							"Content-Type": "application/json"
+						}
+					});
+
+					if (res.ok) {
+						console.log("engagement recorded successfully!");
+					}
+					else {
+						console.log("Failed to record engagement");
+					}
+
 				} else {
 					console.log("Error upvoting post");
 					setPost(post);
@@ -118,6 +141,29 @@ const PostDisplay = () => {
 				const data = await response.json();
 				if (data.success) {
 					console.log("Post downvoted successfully");
+
+					const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/engagement/record`, {
+						method: "POST",
+						body: JSON.stringify({
+							communityId: post.community._id,
+							postId: postId,
+							userId: user._id,
+							action: "DOWNVOTE_POST"
+						}),
+						headers: {
+							"Authorization": `Bearer ${localStorage.getItem("token")}`,
+							"Content-Type": "application/json"
+						}
+
+					});
+
+					if (res.ok) {
+						console.log("engagement recorded successfully!");
+					}
+					else {
+						console.log("Failed to record engagement");
+					}
+
 				} else {
 					console.log("Error downvoting post");
 					setPost(post);
@@ -181,6 +227,7 @@ const PostDisplay = () => {
 		const fetchPost = async () => {
 			try {
 				setLoading(true);
+				setStartTime(Date.now());
 				const response = await fetch(`${backendUrl}/api/post/${id}`);
 
 				if (!response.ok) {
@@ -198,6 +245,33 @@ const PostDisplay = () => {
 
 		fetchPost();
 	}, [id, backendUrl]);
+
+	async function handleBack() {
+		const timeSpent = Math.floor((Date.now() - startTime) / 1000);
+
+		const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/engagement/record`, {
+			method: "POST",
+			body: JSON.stringify({
+				communityId: post.community._id,
+				postId: id,
+				userId: user._id,
+				action: "VIEW_POST",
+				timeSpent: timeSpent
+			}),
+			headers: {
+				"Authorization" : `Bearer ${localStorage.getItem("token")}`,
+				"Content-Type": "application/json"
+			}
+		});
+
+		if (res.ok) {
+			console.log("engagement recorded successfully!");
+		}
+		else {
+			console.log("Failed to record engagement");
+		}
+		navigate("/forum");
+	}
 
 	const renderContent = () => {
 		if (loading) {
@@ -227,7 +301,7 @@ const PostDisplay = () => {
 		return (
 			<div className="max-w-6xl mx-auto my-8">
 				<button
-					onClick={() => navigate("/forum")}
+					onClick={handleBack}
 					className="mb-4 px-4 py-2 bg-black text-white rounded-md hover:bg-slate-700 transition cursor-pointer"
 				>
 					Back to Forum
