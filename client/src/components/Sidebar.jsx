@@ -135,7 +135,7 @@ const Sidebar = ({ user }) => {
               <div className="flex-1 overflow-y-auto">
                   <div className="p-4">
                       <NavItem icon={<Home />} text="Dashboard" path="/" />
-                      <NavItem icon={<BookMarked />} text="Generate Quiz" path="/quiz-generator" />
+                      <NavItem icon={<BookMarked />} text="Challenges" path="/challenge-selection" />
                       <NavItem icon={<Map />} text="Generate Roadmap" path="/roadmap-generator" />
                       <NavItem
                           icon={<Users />}

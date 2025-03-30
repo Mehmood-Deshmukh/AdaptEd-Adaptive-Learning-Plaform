@@ -18,6 +18,7 @@ import PublicProfile from './components/PublicProfile'
 import TeacherDashboard from './pages/TeacherDashboard'
 import SubjectiveAnswers from './pages/SubjectiveAnswers'
 import Challenge from './pages/Challenge'
+import ChallengeSelection from './pages/ChallengeSelection'
 
 function App() {
   const { state } = useAuthContext()
@@ -43,6 +44,7 @@ function App() {
         <Route path="/register" element={!isAuthenticated ? <Register /> : <Navigate to="/" />} />
         <Route path="/roadmap-generator" element={isAuthenticated ? <Roadmap /> : <Navigate to="/login" />} />
         <Route path="/quiz-generator" element={isAuthenticated ? <Quiz /> : <Navigate to="/login" />} />
+        <Route path="/challenge-selection" element={isAuthenticated ? <ChallengeSelection /> : <Navigate to="/login" />} />
         <Route path="/forum" element={isAuthenticated ? <Forum /> : <Navigate to="/login" />} />
         <Route path="*" element={<h1>Not Found</h1>} />
         <Route path='/create-post' element={<CreatePost />} />
