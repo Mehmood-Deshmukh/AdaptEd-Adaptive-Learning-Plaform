@@ -25,7 +25,7 @@ const CheckpointActionButtons = ({ topic }) => {
 				Take quiz on this checkpoint
 			</button>
 
-			<button className="flex items-center px-4 py-2 bg-white text-gray-800 border border-gray-200 rounded-lg shadow-md hover:bg-gray-50 transition-colors duration-300 font-medium text-sm">
+			<button onClick={() => navigate('/challenge?topic= ' + topic)} className="flex items-center px-4 py-2 bg-white text-gray-800 border border-gray-200 rounded-lg shadow-md hover:bg-gray-50 transition-colors duration-300 font-medium text-sm">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					className="w-4 h-4 mr-2 text-gray-600"
