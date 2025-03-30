@@ -21,7 +21,9 @@ const Forum = () => {
 
 	// Pagination
 	const [page, setPage] = useState(1);
+
 	const [hasMore, setHasMore] = useState(true);
+
 
 	const handlePostVote = async (postId, type) => {
 		if (!user) return;
