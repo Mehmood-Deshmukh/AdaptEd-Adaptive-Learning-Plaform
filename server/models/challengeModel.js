@@ -57,24 +57,46 @@ const challengeSchema = new Schema({
 const Challenge = mongoose.model('Challenge', challengeSchema);
 
 Challenge.createChallenge = async function (topic, language = 'javascript') {
-    const prompt = `You are a coding challenge generator, who is famous for creating coding challenges that blend real life scenarios with coding problems. create a coding challenge for the topic ${topic}. The challenge should hook the user to the problem and should not overcomplicate the problem. The challenge should be simple and easy to understand. The challenge should be a real life scenario that can be solved using coding. The challenge should be suitable for a beginner level coder.
-    MAKE SURE REQUIRED CODE OR DRIVER CODE DOESN'T REQUIRE ANY EXTERNAL LIBRARIES OR PACKAGES.
-    only return the json in following format and nothing else dont even generate markdown or any other format, the code should produce single line or word as output it should not be too hard to compare and evaluate:
-    "idealSolution" should be the ideal solution to the problem and should be in ${language}.
-    The driver code should be in ${language}. 
-    user should be expected to write a function and you should mention the name of the function in the description properly.
-    driver code should be the code which works with the function it should not contain the solution it should contain the code which will test the function. given that required function is prepended by the user.
-    For JavaScript, make sure to use console.log for output.
-    you dont need to include the function name in the driver code. for ex. 
-    function function_name() //user's code here SHOULD NOT BE IN DRIVER'S CODE
-    The output should be a single line or word. The json should be in following format:
-    {
-        "title": "string",
-        "description": "string",
-        "driverCode": "string",
-        "idealSolution": "string",
-        "expectedOutput": "string",
-    }`;
+    const prompt = `You are an expert coding challenge generator who creates precise, beginner-friendly challenges with standardized outputs. Your task is to create a coding challenge on ${topic}.
+
+STRICT OUTPUT FORMAT REQUIREMENTS:
+1. Return ONLY valid JSON with the following structure - no markdown, no explanations outside the JSON:
+{
+  "title": "Brief, engaging title",
+  "description": "Clear challenge description including explicit function name requirements and parameters",
+  "driverCode": "Code that tests the solution without including the solution itself",
+  "idealSolution": "Complete working solution code",
+  "expectedOutput": "Exact expected console output as a string"
+}
+
+CHALLENGE CONTENT REQUIREMENTS:
+- Create a real-life scenario that requires a single function to solve
+- Function difficulty must be BEGINNER LEVEL
+- The function name must be explicitly specified in the description
+- All code must be in ${language} only
+- NO external libraries or packages allowed
+- Solution must be fully self-contained
+- The expected output MUST be a single line or word for easy comparison
+
+LANGUAGE-SPECIFIC REQUIREMENTS:
+- For JavaScript: Use console.log() for output
+- For Python: Use print() for output
+- If imports are absolutely necessary, include them in BOTH driverCode and idealSolution
+
+DRIVER CODE GUIDELINES:
+- Include test case(s) that call the user's function
+- DO NOT include the function definition itself (user will write this part)
+- DO NOT include any imports that aren't explicitly needed
+- Include ONLY code needed to test the function
+
+EXAMPLE JSON STRUCTURE:
+{
+  "title": "Bakery Order Sorter",
+  "description": "The local bakery needs help sorting their orders by number. Write a function named 'sortBakeryOrders' that takes an array of order numbers and returns them sorted in ascending order.",
+  "driverCode": "const orderNumbers = [5, 3, 8, 2];\nconsole.log(sortBakeryOrders(orderNumbers).join(', '));",
+  "idealSolution": "function sortBakeryOrders(orders) {\n  return orders.sort((a, b) => a - b);\n}",
+  "expectedOutput": "2, 3, 5, 8"
+}`;
 
     const result = await model.generateContent(prompt, {
         temperature: 0.5,
