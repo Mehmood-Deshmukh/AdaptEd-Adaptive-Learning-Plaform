@@ -16,10 +16,11 @@ import { javascript } from "@codemirror/lang-javascript";
 import { oneDark } from "@codemirror/theme-one-dark";
 import Sidebar from "../components/Sidebar";
 import useAuthContext from "../hooks/useAuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const CodingChallengePlatform = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { state } = useAuthContext();
   const { user } = state;
 
@@ -37,6 +38,7 @@ const CodingChallengePlatform = () => {
     type: "",
     message: "",
   });
+  const [autoCreateFromQuery, setAutoCreateFromQuery] = useState(false);
 
   // Get the appropriate language extension based on selection
   const getLanguageExtension = () => {
@@ -47,6 +49,32 @@ const CodingChallengePlatform = () => {
         return javascript();
     }
   };
+
+  // Handle query parameters for topic
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const topicFromQuery = queryParams.get("topic");
+    
+    if (topicFromQuery) {
+      setChallengeTopic(topicFromQuery);
+      // If there's a topic in the URL, automatically switch to the create tab
+      setActiveTab("create");
+      // Set flag to auto-create challenge after component loads
+      setAutoCreateFromQuery(true);
+    }
+  }, [location.search]);
+
+  // Auto-create challenge from query param if flag is set
+  useEffect(() => {
+    const createChallengeFromQuery = async () => {
+      if (autoCreateFromQuery && challengeTopic && !isLoading) {
+        setAutoCreateFromQuery(false); // Reset flag to prevent infinite loop
+        await handleCreateChallengeFromTopic(challengeTopic);
+      }
+    };
+    
+    createChallengeFromQuery();
+  }, [autoCreateFromQuery, challengeTopic]);
 
   // Fetch challenges from the API
   const fetchChallenges = async () => {
@@ -82,10 +110,9 @@ const CodingChallengePlatform = () => {
     fetchChallenges();
   }, []);
 
-  const handleCreateChallenge = async (e) => {
-    e.preventDefault();
-
-    if (!challengeTopic.trim()) {
+  // Helper function to create challenge from topic - can be called programmatically
+  const handleCreateChallengeFromTopic = async (topic) => {
+    if (!topic.trim()) {
       showNotification("error", "Please enter a topic for the challenge");
       return;
     }
@@ -100,7 +127,7 @@ const CodingChallengePlatform = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ topic: challengeTopic }),
+          body: JSON.stringify({ topic }),
         }
       );
 
@@ -109,8 +136,25 @@ const CodingChallengePlatform = () => {
       if (response.ok) {
         showNotification("success", data.message);
         setChallengeTopic("");
-        // Refresh challenges list
-        fetchChallenges();
+        
+        // Fetch updated challenges
+        const challengesResponse = await fetch(
+          `${import.meta.env.VITE_BACKEND_URL}/api/challenge/`
+        );
+        
+        if (challengesResponse.ok) {
+          const challengesData = await challengesResponse.json();
+          console.log(challengesData.challenges);
+          setChallenges(challengesData.challenges);
+          
+          // Find and select the newly created challenge
+          const newChallenge = challengesData.challenges[0];
+          
+          // Switch to the submit tab to show the selected challenge
+          setActiveTab("submit");
+          setSelectedChallenge(newChallenge);
+          
+        }
       } else {
         showNotification(
           "error",
@@ -123,6 +167,11 @@ const CodingChallengePlatform = () => {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleCreateChallenge = async (e) => {
+    e.preventDefault();
+    await handleCreateChallengeFromTopic(challengeTopic);
   };
 
   const handleSubmitCode = async (e) => {
@@ -187,6 +236,15 @@ const CodingChallengePlatform = () => {
     navigate("/challenge-selection");
   };
 
+  // Clear query params when manually switching tabs
+  const handleTabChange = (tab) => {
+    if (tab === "submit" && location.search) {
+      // Remove query parameters but keep the current path
+      navigate(location.pathname, { replace: true });
+    }
+    setActiveTab(tab);
+  };
+
   return (
     <div className="min-h-screen h-screen flex bg-white text-black overflow-hidden">
       <Sidebar user={user} />
@@ -203,7 +261,7 @@ const CodingChallengePlatform = () => {
         <div className="flex justify-center pt-6 mb-6">
           <div className="bg-gray-100 rounded-full p-1 inline-flex shadow-md">
             <button
-              onClick={() => setActiveTab("submit")}
+              onClick={() => handleTabChange("submit")}
               className={`rounded-full px-6 py-2 font-medium text-sm transition-all duration-200 ${
                 activeTab === "submit"
                   ? "bg-black text-white shadow-sm"
@@ -216,7 +274,7 @@ const CodingChallengePlatform = () => {
               </div>
             </button>
             <button
-              onClick={() => setActiveTab("create")}
+              onClick={() => handleTabChange("create")}
               className={`rounded-full px-6 py-2 font-medium text-sm transition-all duration-200 ${
                 activeTab === "create"
                   ? "bg-black text-white shadow-sm"
