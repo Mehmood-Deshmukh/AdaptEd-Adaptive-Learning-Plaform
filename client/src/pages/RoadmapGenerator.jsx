@@ -37,6 +37,7 @@ import StyleTag from "../components/StyleTag";
 import FeedbackModal from "../components/FeedbackModal";
 import CheckpointFeedbackSummary from "../components/CheckpointFeedbackSummary";
 import LeaderboardInsights from "../components/LeaderboardInsigths";
+import CheckpointActionButtons from "../components/CheckpointButtons";
 
 const RoadmapGenerator = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -880,6 +881,8 @@ const RoadmapGenerator = () => {
                     </div>
                   )}
                 </div>
+
+				{checkpoint.status == "completed" && <CheckpointActionButtons topic={checkpoint?.title} />}
               </div>
             </div>
           </div>
