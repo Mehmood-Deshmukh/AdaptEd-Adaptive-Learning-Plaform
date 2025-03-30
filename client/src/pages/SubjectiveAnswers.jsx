@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { Lightbulb, Loader, PenLine, CheckCircle, RotateCcw, BarChart4, Award, AlertTriangle } from 'lucide-react';
+import { Lightbulb, Loader, PenLine, CheckCircle, RotateCcw, BarChart4, Award, AlertTriangle, ArrowLeft } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import Sidebar from '../components/Sidebar';
 import useAuthContext from '../hooks/useAuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 // Initialize the Google Generative AI with your API key
 const genAI = new GoogleGenerativeAI('AIzaSyB8UqNYSxTM9tgt2IJ3X_eeMb7J3SeYNok');
 
 function SubjectiveAnswers() {
+  const navigate = useNavigate();
   const [topic, setTopic] = useState('');
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
@@ -105,6 +107,10 @@ function SubjectiveAnswers() {
       throw error;
     }
   };
+
+  const handleBackButtonClick = () => {
+		navigate("/challenge-selection");
+	};
 
   const handleTopicSubmit = async (e) => {
     e.preventDefault();
@@ -582,6 +588,12 @@ function SubjectiveAnswers() {
   return (
     <div className="h-[100vh] bg-white text-black flex">
       <Sidebar user={user} />
+      <button
+				onClick={handleBackButtonClick}
+				className="flex items-center fixed z-1000 justify-center left-65 top-2 h-10 w-10 rounded-full bg-black text-white hover:bg-gray-600 cursor-pointer transition-colors mr-4"
+			>
+				<ArrowLeft size={18} />
+			</button>
       {content}
       {showMetricsModal && renderMetricsModal()}
       {renderCelebration()}
