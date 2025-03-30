@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import {
-	Code,
-	Play,
-	BookOpen,
-	ChevronDown,
-	Check,
-	X,
-	RefreshCw,
-	ArrowLeft,
+  Code,
+  Play,
+  BookOpen,
+  ChevronDown,
+  Check,
+  X,
+  RefreshCw,
+  ArrowLeft,
+  Plus,
+  FileCode,
 } from "lucide-react";
 import CodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
@@ -17,520 +19,520 @@ import useAuthContext from "../hooks/useAuthContext";
 import { useNavigate } from "react-router-dom";
 
 const CodingChallengePlatform = () => {
-	const navigate = useNavigate();
+  const navigate = useNavigate();
+  const { state } = useAuthContext();
+  const { user } = state;
 
-	const { state } = useAuthContext();
-	const { user } = state;
+  const [activeTab, setActiveTab] = useState("submit"); // 'create' or 'submit'
+  const [challengeTopic, setChallengeTopic] = useState("");
+  const [code, setCode] = useState("");
+  const [language, setLanguage] = useState("javascript");
+  const [challenges, setChallenges] = useState([]);
+  const [selectedChallenge, setSelectedChallenge] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingChallenges, setIsLoadingChallenges] = useState(false);
+  const [result, setResult] = useState(null);
+  const [notification, setNotification] = useState({
+    show: false,
+    type: "",
+    message: "",
+  });
 
-	const [activeTab, setActiveTab] = useState("submit"); // 'create' or 'submit'
-	const [challengeTopic, setChallengeTopic] = useState("");
-	const [code, setCode] = useState("");
-	const [language, setLanguage] = useState("javascript");
-	const [challenges, setChallenges] = useState([]);
-	const [selectedChallenge, setSelectedChallenge] = useState(null);
-	const [isLoading, setIsLoading] = useState(false);
-	const [isLoadingChallenges, setIsLoadingChallenges] = useState(false);
-	const [result, setResult] = useState(null);
-	const [notification, setNotification] = useState({
-		show: false,
-		type: "",
-		message: "",
-	});
+  // Get the appropriate language extension based on selection
+  const getLanguageExtension = () => {
+    switch (language) {
+      case "javascript":
+        return javascript();
+      default:
+        return javascript();
+    }
+  };
 
-	// Get the appropriate language extension based on selection
-	const getLanguageExtension = () => {
-		switch (language) {
-			case "javascript":
-				return javascript();
-			default:
-				return javascript();
-		}
-	};
+  // Fetch challenges from the API
+  const fetchChallenges = async () => {
+    setIsLoadingChallenges(true);
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/challenge`
+      );
+      if (!response.ok) {
+        throw new Error("Failed to fetch challenges");
+      }
+      const data = await response.json();
+      setChallenges(data.challenges);
+    } catch (error) {
+      console.error("Error fetching challenges:", error);
+      showNotification(
+        "error",
+        "Failed to load challenges. Please try again."
+      );
+    } finally {
+      setIsLoadingChallenges(false);
+    }
+  };
 
-	// Fetch challenges from the API
-	const fetchChallenges = async () => {
-		setIsLoadingChallenges(true);
-		try {
-			const response = await fetch(
-				`${import.meta.env.VITE_BACKEND_URL}/api/challenge`
-			);
-			if (!response.ok) {
-				throw new Error("Failed to fetch challenges");
-			}
-			const data = await response.json();
-			setChallenges(data.challenges);
-		} catch (error) {
-			console.error("Error fetching challenges:", error);
-			showNotification(
-				"error",
-				"Failed to load challenges. Please try again."
-			);
-		} finally {
-			setIsLoadingChallenges(false);
-		}
-	};
+  // Reset code when selecting a different challenge
+  useEffect(() => {
+    setCode("");
+    setResult(null);
+  }, [selectedChallenge]);
 
-	// Initial fetch of challenges
-	useEffect(() => {
-		fetchChallenges();
-	}, []);
+  // Initial fetch of challenges
+  useEffect(() => {
+    fetchChallenges();
+  }, []);
 
-	const handleCreateChallenge = async (e) => {
-		e.preventDefault();
+  const handleCreateChallenge = async (e) => {
+    e.preventDefault();
 
-		if (!challengeTopic.trim()) {
-			showNotification("error", "Please enter a topic for the challenge");
-			return;
-		}
+    if (!challengeTopic.trim()) {
+      showNotification("error", "Please enter a topic for the challenge");
+      return;
+    }
 
-		setIsLoading(true);
+    setIsLoading(true);
 
-		try {
-			const response = await fetch(
-				`${import.meta.env.VITE_BACKEND_URL}/api/challenge/create`,
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify({ topic: challengeTopic }),
-				}
-			);
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/challenge/create`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ topic: challengeTopic }),
+        }
+      );
 
-			const data = await response.json();
+      const data = await response.json();
 
-			if (response.ok) {
-				showNotification("success", data.message);
-				setChallengeTopic("");
-				// Refresh challenges list
-				fetchChallenges();
-			} else {
-				showNotification(
-					"error",
-					data.message || "Failed to create challenge"
-				);
-			}
-		} catch (error) {
-			showNotification("error", "Network error. Please try again later.");
-			console.error("Error creating challenge:", error);
-		} finally {
-			setIsLoading(false);
-		}
-	};
+      if (response.ok) {
+        showNotification("success", data.message);
+        setChallengeTopic("");
+        // Refresh challenges list
+        fetchChallenges();
+      } else {
+        showNotification(
+          "error",
+          data.message || "Failed to create challenge"
+        );
+      }
+    } catch (error) {
+      showNotification("error", "Network error. Please try again later.");
+      console.error("Error creating challenge:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-	const handleSubmitCode = async (e) => {
-		e.preventDefault();
+  const handleSubmitCode = async (e) => {
+    e.preventDefault();
 
-		if (!code.trim()) {
-			showNotification("error", "Please enter your code");
-			return;
-		}
+    if (!code.trim()) {
+      showNotification("error", "Please enter your code");
+      return;
+    }
 
-		if (!selectedChallenge) {
-			showNotification("error", "Please select a challenge");
-			return;
-		}
+    if (!selectedChallenge) {
+      showNotification("error", "Please select a challenge");
+      return;
+    }
 
-		setIsLoading(true);
-		setResult(null);
+    setIsLoading(true);
+    setResult(null);
 
-		try {
-			const response = await fetch(
-				`${import.meta.env.VITE_BACKEND_URL}/api/challenge/submit`,
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify({
-						code,
-						challengeId: selectedChallenge._id,
-						language,
-					}),
-				}
-			);
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/challenge/submit`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            code,
+            challengeId: selectedChallenge._id,
+            language,
+          }),
+        }
+      );
 
-			const data = await response.json();
+      const data = await response.json();
 
-			if (response.ok) {
-				setResult(data);
-				showNotification("success", "Code submitted successfully");
-			} else {
-				showNotification(
-					"error",
-					data.message || "Failed to submit code"
-				);
-			}
-		} catch (error) {
-			showNotification("error", "Network error. Please try again later.");
-			console.error("Error submitting code:", error);
-		} finally {
-			setIsLoading(false);
-		}
-	};
+      if (response.ok) {
+        setResult(data);
+        showNotification("success", "Code submitted successfully");
+      } else {
+        showNotification(
+          "error",
+          data.message || "Failed to submit code"
+        );
+      }
+    } catch (error) {
+      showNotification("error", "Network error. Please try again later.");
+      console.error("Error submitting code:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-	const showNotification = (type, message) => {
-		setNotification({ show: true, type, message });
-		setTimeout(() => {
-			setNotification({ show: false, type: "", message: "" });
-		}, 5000);
-	};
+  const showNotification = (type, message) => {
+    setNotification({ show: true, type, message });
+    setTimeout(() => {
+      setNotification({ show: false, type: "", message: "" });
+    }, 5000);
+  };
 
-	const handleBackButtonClick = () => {
-		navigate("/challenge-selection");
-	};
+  const handleBackButtonClick = () => {
+    navigate("/challenge-selection");
+  };
 
-	return (
-		<div className="min-h-screen h-[100vh] w-full flex bg-white text-gray-900">
-			<Sidebar user={user} />
-			<button
-				onClick={handleBackButtonClick}
-				className="flex items-center fixed z-1000 justify-center left-65 top-2 h-10 w-10 rounded-full bg-white text-black hover:bg-gray-300 cursor-pointer transition-colors mr-4"
-			>
-				<ArrowLeft size={18} />
-			</button>
+  return (
+    <div className="min-h-screen h-screen flex bg-white text-black overflow-hidden">
+      <Sidebar user={user} />
+      
+      <div className="flex-1 w-full max-w-full overflow-auto relative">
+        <button
+          onClick={handleBackButtonClick}
+          className="absolute z-50 top-4 left-4 h-10 w-10 flex items-center justify-center rounded-full bg-black text-white hover:bg-gray-800 shadow-lg transition-all duration-200 transform hover:scale-105"
+          title="Go back"
+        >
+          <ArrowLeft size={20} />
+        </button>
+        
+        <div className="flex justify-center pt-6 mb-6">
+          <div className="bg-gray-100 rounded-full p-1 inline-flex shadow-md">
+            <button
+              onClick={() => setActiveTab("submit")}
+              className={`rounded-full px-6 py-2 font-medium text-sm transition-all duration-200 ${
+                activeTab === "submit"
+                  ? "bg-black text-white shadow-sm"
+                  : "bg-transparent text-gray-700 hover:bg-gray-200"
+              }`}
+            >
+              <div className="flex items-center gap-2">
+                <FileCode size={16} />
+                <span>Solve Challenge</span>
+              </div>
+            </button>
+            <button
+              onClick={() => setActiveTab("create")}
+              className={`rounded-full px-6 py-2 font-medium text-sm transition-all duration-200 ${
+                activeTab === "create"
+                  ? "bg-black text-white shadow-sm"
+                  : "bg-transparent text-gray-700 hover:bg-gray-200"
+              }`}
+            >
+              <div className="flex items-center gap-2">
+                <Plus size={16} />
+                <span>Create Challenge</span>
+              </div>
+            </button>
+          </div>
+        </div>
 
-			<div className="flex-1 w-full mx-auto">
-				<header className="bg-gray-900 text-white p-4 shadow-md">
-					<div className="container mx-auto flex items-center justify-between">
-						<div className="flex items-center gap-2">
-							<Code size={24} />
-							<h1 className="text-xl font-bold">CodeChallenge</h1>
-						</div>
-						<nav>
-							<ul className="flex gap-4">
-								<li
-									className={`cursor-pointer border-b-2 ${
-										activeTab === "create"
-											? "border-white"
-											: "border-transparent"
-									} pb-1`}
-									onClick={() => setActiveTab("create")}
-								>
-									Create Challenge
-								</li>
-								<li
-									className={`cursor-pointer border-b-2 ${
-										activeTab === "submit"
-											? "border-white"
-											: "border-transparent"
-									} pb-1`}
-									onClick={() => setActiveTab("submit")}
-								>
-									Solve Challenge
-								</li>
-							</ul>
-						</nav>
-					</div>
-				</header>
+        {notification.show && (
+          <div className="fixed z-50 top-16 right-4 max-w-sm">
+            <div
+              className={`p-4 rounded-lg shadow-lg border-l-4 transform transition-all duration-300 animate-slide-in ${
+                notification.type === "success"
+                  ? "bg-white border-black"
+                  : "bg-white border-gray-400"
+              }`}
+            >
+              <div className="flex items-center">
+                {notification.type === "success" ? (
+                  <Check size={20} className="mr-3 text-black" />
+                ) : (
+                  <X size={20} className="mr-3 text-gray-600" />
+                )}
+                <p className="font-medium">{notification.message}</p>
+              </div>
+            </div>
+          </div>
+        )}
 
-				{/* Main Content */}
-				<main className="container mx-auto p-4 mt-8">
-					{/* Notification */}
-					{notification.show && (
-						<div
-							className={`p-4 mb-4 rounded ${
-								notification.type === "success"
-									? "bg-gray-200 text-gray-900 border-l-4 border-gray-900"
-									: "bg-gray-200 text-gray-900 border-l-4 border-gray-500"
-							}`}
-						>
-							<div className="flex items-center">
-								{notification.type === "success" ? (
-									<Check size={20} className="mr-2" />
-								) : (
-									<X size={20} className="mr-2" />
-								)}
-								<p>{notification.message}</p>
-							</div>
-						</div>
-					)}
+        <div className="container mx-auto px-6 pb-10">
+          {activeTab === "create" && (
+            <div className="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-xl border border-gray-200">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="bg-black p-3 rounded-lg">
+                  <Plus size={20} className="text-white" />
+                </div>
+                <h2 className="text-2xl font-bold">Create a New Challenge</h2>
+              </div>
+              
+              <form onSubmit={handleCreateChallenge}>
+                <div className="mb-6">
+                  <label
+                    htmlFor="topic"
+                    className="block mb-2 font-medium text-gray-700"
+                  >
+                    Challenge Topic
+                  </label>
+                  <input
+                    type="text"
+                    id="topic"
+                    className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black transition-all"
+                    placeholder="Enter a challenging coding problem"
+                    value={challengeTopic}
+                    onChange={(e) => setChallengeTopic(e.target.value)}
+                  />
+                  <p className="mt-2 text-sm text-gray-500">
+                    Provide a clear and specific topic for your coding challenge
+                  </p>
+                </div>
+                <button
+                  type="submit"
+                  className="w-full bg-black text-white py-3 px-6 rounded-lg hover:bg-gray-800 transition-colors flex items-center justify-center gap-2 font-medium"
+                  disabled={isLoading}
+                >
+                  {isLoading ? (
+                    <>
+                      <RefreshCw size={18} className="animate-spin" />
+                      <span>Creating...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Plus size={18} />
+                      <span>Create Challenge</span>
+                    </>
+                  )}
+                </button>
+              </form>
+            </div>
+          )}
 
-					{/* Create Challenge Form */}
-					{activeTab === "create" && (
-						<div className="bg-gray-100 p-6 rounded-lg shadow-md">
-							<h2 className="text-2xl font-bold mb-6">
-								Create a New Challenge
-							</h2>
-							<form onSubmit={handleCreateChallenge}>
-								<div className="mb-4">
-									<label
-										htmlFor="topic"
-										className="block mb-2 font-medium"
-									>
-										Challenge Topic
-									</label>
-									<input
-										type="text"
-										id="topic"
-										className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-gray-500"
-										placeholder="Enter challenge topic"
-										value={challengeTopic}
-										onChange={(e) =>
-											setChallengeTopic(e.target.value)
-										}
-									/>
-								</div>
-								<button
-									type="submit"
-									className="bg-gray-900 text-white py-2 px-6 rounded hover:bg-gray-700 transition-colors flex items-center"
-									disabled={isLoading}
-								>
-									{isLoading
-										? "Creating..."
-										: "Create Challenge"}
-								</button>
-							</form>
-						</div>
-					)}
+          {activeTab === "submit" && (
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div className="lg:col-span-1">
+                <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-200 h-full">
+                  <div className="flex justify-between items-center mb-6">
+                    <div className="flex items-center gap-3">
+                      <BookOpen size={20} className="text-black" />
+                      <h2 className="text-xl font-bold">Challenges</h2>
+                    </div>
+                    <button
+                      onClick={fetchChallenges}
+                      className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+                      disabled={isLoadingChallenges}
+                      title="Refresh challenges"
+                    >
+                      <RefreshCw
+                        size={18}
+                        className={isLoadingChallenges ? "animate-spin" : ""}
+                      />
+                    </button>
+                  </div>
 
-					{/* Submit Solution Form */}
-					{activeTab === "submit" && (
-						<div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-							{/* Challenge Selection */}
-							<div className="lg:col-span-1 bg-gray-100 p-6 rounded-lg shadow-md">
-								<div className="flex justify-between items-center mb-6">
-									<h2 className="text-2xl font-bold">
-										Select Challenge
-									</h2>
-									<button
-										onClick={fetchChallenges}
-										className="p-2 rounded hover:bg-gray-200 transition-colors"
-										disabled={isLoadingChallenges}
-										title="Refresh challenges"
-									>
-										<RefreshCw
-											size={20}
-											className={
-												isLoadingChallenges
-													? "animate-spin"
-													: ""
-											}
-										/>
-									</button>
-								</div>
+                  {isLoadingChallenges ? (
+                    <div className="flex justify-center py-12">
+                      <RefreshCw
+                        size={24}
+                        className="animate-spin text-gray-500"
+                      />
+                    </div>
+                  ) : challenges.length === 0 ? (
+                    <div className="text-center py-12 px-4">
+                      <div className="mb-4 bg-gray-100 h-16 w-16 rounded-full flex items-center justify-center mx-auto">
+                        <BookOpen size={24} strokeWidth={1.5} className="text-gray-500" />
+                      </div>
+                      <p className="font-medium text-gray-700">No challenges available</p>
+                      <p className="text-sm mt-2 text-gray-500">
+                        Create a new challenge or refresh the list
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="space-y-3 max-h-[calc(100vh-250px)] overflow-y-auto pr-1 custom-scrollbar">
+                      {challenges?.map((challenge) => (
+                        <div
+                          key={challenge._id}
+                          className={`p-4 border rounded-lg cursor-pointer transition-all duration-200 hover:scale-[1.01] ${
+                            selectedChallenge &&
+                            selectedChallenge._id === challenge._id
+                              ? "border-black bg-gray-50 shadow-md"
+                              : "border-gray-200 hover:border-gray-300 hover:shadow-sm"
+                          }`}
+                          onClick={() => setSelectedChallenge(challenge)}
+                        >
+                          <h3 className="font-semibold text-lg">{challenge.title}</h3>
+                          <p className="text-sm text-gray-600 mt-1">
+                            {challenge.description}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
 
-								{isLoadingChallenges ? (
-									<div className="flex justify-center py-8">
-										<RefreshCw
-											size={24}
-											className="animate-spin text-gray-500"
-										/>
-									</div>
-								) : challenges.length === 0 ? (
-									<div className="text-center py-8 text-gray-500">
-										<p>No challenges available</p>
-										<p className="text-sm mt-2">
-											Create a new challenge or refresh
-											the list
-										</p>
-									</div>
-								) : (
-									<div className="space-y-4">
-										{challenges?.map((challenge) => (
-											<div
-												key={challenge._id}
-												className={`p-4 border rounded-lg cursor-pointer transition-colors ${
-													selectedChallenge &&
-													selectedChallenge._id ===
-														challenge._id
-														? "border-gray-900 bg-gray-200"
-														: "border-gray-300 hover:bg-gray-200"
-												}`}
-												onClick={() =>
-													setSelectedChallenge(
-														challenge
-													)
-												}
-											>
-												<h3 className="font-semibold text-lg">
-													{challenge.title}
-												</h3>
-												<p className="text-sm text-gray-600 mt-1">
-													{challenge.description}
-												</p>
-											</div>
-										))}
-									</div>
-								)}
-							</div>
+              <div className="lg:col-span-2">
+                <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-200 h-full">
+                  <div className="flex justify-between items-center mb-6">
+                    <div className="flex items-center gap-3">
+                      <Code size={20} className="text-black" />
+                      <h2 className="text-xl font-bold">Solution</h2>
+                    </div>
+                    <div className="relative">
+                      <div className="flex items-center gap-2 text-sm border border-gray-300 rounded-lg p-2 bg-white shadow-sm">
+                        <span className="font-medium">Language:</span>
+                        <select
+                          className="appearance-none bg-transparent focus:outline-none text-gray-800"
+                          value={language}
+                          onChange={(e) => setLanguage(e.target.value)}
+                        >
+                          <option value="javascript">JavaScript</option>
+                          <option value="python" disabled>
+                            Python (Coming Soon)
+                          </option>
+                          <option value="java" disabled>
+                            Java (Coming Soon)
+                          </option>
+                        </select>
+                        <ChevronDown size={16} className="text-gray-500" />
+                      </div>
+                    </div>
+                  </div>
 
-							{/* Code Editor */}
-							<div className="lg:col-span-2 bg-gray-100 p-6 rounded-lg shadow-md">
-								<div className="flex justify-between items-center mb-6">
-									<h2 className="text-2xl font-bold">
-										Solution
-									</h2>
-									<div className="relative">
-										<div className="flex items-center gap-2 text-sm border border-gray-300 rounded p-2 bg-white">
-											<span>Language:</span>
-											<select
-												className="appearance-none bg-transparent focus:outline-none"
-												value={language}
-												onChange={(e) =>
-													setLanguage(e.target.value)
-												}
-											>
-												<option value="javascript">
-													JavaScript
-												</option>
-												<option value="python" disabled>
-													Python (Coming Soon)
-												</option>
-												<option value="java" disabled>
-													Java (Coming Soon)
-												</option>
-											</select>
-											<ChevronDown size={16} />
-										</div>
-									</div>
-								</div>
+                  {selectedChallenge ? (
+                    <>
+                      <div className="bg-black text-white p-5 rounded-t-lg">
+                        <div className="flex items-center gap-2 mb-2">
+                          <BookOpen size={18} />
+                          <h3 className="font-bold text-lg">{selectedChallenge.title}</h3>
+                        </div>
+                        <p className="text-gray-300">
+                          {selectedChallenge.description}
+                        </p>
+                      </div>
+                      <div className="border border-gray-300 rounded-b-lg overflow-hidden">
+                        {/* CodeMirror Editor Component */}
+                        <CodeMirror
+                          value={code}
+                          height="300px"
+                          extensions={[getLanguageExtension()]}
+                          onChange={(value) => setCode(value)}
+                          theme={oneDark}
+                          basicSetup={{
+                            lineNumbers: true,
+                            highlightActiveLineGutter: true,
+                            highlightSpecialChars: true,
+                            foldGutter: true,
+                            dropCursor: true,
+                            allowMultipleSelections: true,
+                            indentOnInput: true,
+                            syntaxHighlighting: true,
+                            bracketMatching: true,
+                            closeBrackets: true,
+                            autocompletion: true,
+                            rectangularSelection: true,
+                            crosshairCursor: true,
+                            highlightActiveLine: true,
+                            highlightSelectionMatches: true,
+                            closeBracketsKeymap: true,
+                            searchKeymap: true,
+                            foldKeymap: true,
+                            completionKeymap: true,
+                            lintKeymap: true,
+                          }}
+                        />
+                      </div>
+                      <div className="mt-5">
+                        <button
+                          onClick={handleSubmitCode}
+                          disabled={isLoading}
+                          className="bg-black text-white py-3 px-6 rounded-lg hover:bg-gray-800 transition-all duration-200 flex items-center gap-2 font-medium disabled:opacity-70"
+                        >
+                          {isLoading ? (
+                            <>
+                              <RefreshCw size={18} className="animate-spin" />
+                              <span>Running...</span>
+                            </>
+                          ) : (
+                            <>
+                              <Play size={18} />
+                              <span>Run Code</span>
+                            </>
+                          )}
+                        </button>
+                      </div>
 
-								{selectedChallenge ? (
-									<>
-										<div className="bg-gray-900 text-white p-4 rounded-t-lg">
-											<div className="flex items-center gap-2">
-												<BookOpen size={16} />
-												<h3 className="font-semibold">
-													{selectedChallenge.title}
-												</h3>
-											</div>
-											<p className="text-sm mt-2 text-gray-300">
-												{selectedChallenge.description}
-											</p>
-										</div>
-										<div className="border border-gray-300 rounded-b-lg overflow-hidden">
-											{/* CodeMirror Editor Component */}
-											<CodeMirror
-												value={code}
-												height="250px"
-												extensions={[
-													getLanguageExtension(),
-												]}
-												onChange={(value) =>
-													setCode(value)
-												}
-												theme={oneDark}
-												basicSetup={{
-													lineNumbers: true,
-													highlightActiveLineGutter: true,
-													highlightSpecialChars: true,
-													foldGutter: true,
-													dropCursor: true,
-													allowMultipleSelections: true,
-													indentOnInput: true,
-													syntaxHighlighting: true,
-													bracketMatching: true,
-													closeBrackets: true,
-													autocompletion: true,
-													rectangularSelection: true,
-													crosshairCursor: true,
-													highlightActiveLine: true,
-													highlightSelectionMatches: true,
-													closeBracketsKeymap: true,
-													searchKeymap: true,
-													foldKeymap: true,
-													completionKeymap: true,
-													lintKeymap: true,
-												}}
-											/>
-										</div>
-										<div className="mt-4">
-											<button
-												onClick={handleSubmitCode}
-												disabled={isLoading}
-												className="bg-gray-900 text-white py-2 px-6 rounded hover:bg-gray-700 transition-colors flex items-center gap-2"
-											>
-												<Play size={16} />
-												{isLoading
-													? "Running..."
-													: "Run Code"}
-											</button>
-										</div>
+                      {result && (
+                        <div className="mt-6 border border-gray-300 rounded-lg overflow-hidden shadow-sm">
+                          <div className="bg-gray-100 p-4 font-semibold border-b flex items-center gap-2">
+                            {result.review === "Accepted" ? 
+                              <Check size={18} className="text-black" /> : 
+                              <X size={18} className="text-gray-700" />
+                            }
+                            <span>Results</span>
+                          </div>
+                          <div className="p-5 bg-white">
+                            <div className="mb-5">
+                              <h4 className="font-medium mb-2 flex items-center gap-2">
+                                <span className="inline-block w-2 h-2 bg-black rounded-full"></span>
+                                Output:
+                              </h4>
+                              <pre className="bg-gray-50 p-4 rounded-lg border border-gray-200 text-sm font-mono overflow-x-auto">
+                                {result.result.stdout || "No output"}
+                              </pre>
+                            </div>
 
-										{/* Results Panel */}
-										{result && (
-											<div className="mt-6 border border-gray-300 rounded-lg overflow-hidden">
-												<div className="bg-gray-200 p-3 font-semibold">
-													Results
-												</div>
-												<div className="p-4">
-													<div className="mb-4">
-														<h4 className="font-medium mb-2">
-															Output:
-														</h4>
-														<pre className="bg-white p-3 rounded border border-gray-300 text-sm font-mono overflow-x-auto">
-															{result.result
-																.stdout ||
-																"No output"}
-														</pre>
-													</div>
+                            <div className="mb-5">
+                              <h4 className="font-medium mb-2 flex items-center gap-2">
+                                <span className="inline-block w-2 h-2 bg-black rounded-full"></span>
+                                Expected Output:
+                              </h4>
+                              <pre className="bg-gray-50 p-4 rounded-lg border border-gray-200 text-sm font-mono overflow-x-auto">
+                                {result.expectedOutput || "N/A"}
+                              </pre>
+                            </div>
 
-													<div className="mb-4">
-														<h4 className="font-medium mb-2">
-															Expected Output:
-														</h4>
-														<pre className="bg-white p-3 rounded border border-gray-300 text-sm font-mono overflow-x-auto">
-															{result.expectedOutput ||
-																"N/A"}
-														</pre>
-													</div>
-
-													<div>
-														<h4 className="font-medium mb-2">
-															Status:
-														</h4>
-														<div
-															className={`inline-flex items-center px-3 py-1 rounded ${
-																result.review ===
-																"Accepted"
-																	? "bg-gray-900 text-white"
-																	: "bg-gray-300 text-gray-700"
-															}`}
-														>
-															{result.review ===
-															"Accepted" ? (
-																<>
-																	<Check
-																		size={
-																			16
-																		}
-																		className="mr-1"
-																	/>
-																	Accepted
-																</>
-															) : (
-																<>
-																	<X
-																		size={
-																			16
-																		}
-																		className="mr-1"
-																	/>
-																	Try Again
-																</>
-															)}
-														</div>
-													</div>
-												</div>
-											</div>
-										)}
-									</>
-								) : (
-									<div className="flex flex-col items-center justify-center h-64 text-gray-500 bg-white border border-gray-300 rounded-lg">
-										<BookOpen size={48} strokeWidth={1} />
-										<p className="mt-4">
-											Select a challenge to start coding
-										</p>
-									</div>
-								)}
-							</div>
-						</div>
-					)}
-				</main>
-			</div>
-		</div>
-	);
+                            <div>
+                              <h4 className="font-medium mb-3 flex items-center gap-2">
+                                <span className="inline-block w-2 h-2 bg-black rounded-full"></span>
+                                Status:
+                              </h4>
+                              <div
+                                className={`inline-flex items-center px-4 py-2 rounded-lg ${
+                                  result.review === "Accepted"
+                                    ? "bg-black text-white"
+                                    : "bg-gray-200 text-gray-800"
+                                }`}
+                              >
+                                {result.review === "Accepted" ? (
+                                  <>
+                                    <Check size={18} className="mr-2" />
+                                    Accepted
+                                  </>
+                                ) : (
+                                  <>
+                                    <X size={18} className="mr-2" />
+                                    Try Again
+                                  </>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <div className="flex flex-col items-center justify-center py-16 px-4 text-gray-500 bg-gray-50 border border-gray-200 rounded-lg">
+                      <div className="p-4 bg-white rounded-full shadow-sm mb-4">
+                        <BookOpen size={36} strokeWidth={1.5} className="text-black" />
+                      </div>
+                      <p className="mt-2 font-medium text-gray-700">Select a challenge to start coding</p>
+                      <p className="text-sm mt-1 text-gray-500">Choose from the list on the left</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default CodingChallengePlatform;
