@@ -37,9 +37,7 @@ async function getCommunities(req, res) {
 
 		const user = await User.findById(userId);
 
-		const communities = await Community.find({
-			dominentCluster: user.clusterId
-		})
+		const communities = await Community.find()
 			.sort({ createdAt: -1 })
 			.skip(skip)
 			.limit(limit)
