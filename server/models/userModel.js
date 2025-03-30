@@ -174,6 +174,10 @@ const userSchema = new Schema({
 		type: Date,
 		default: Date.now,
 	},
+	isGuideComplete: {
+		type: Boolean,
+		default: false,
+	},
 });
 
 userSchema.statics.createUser = async function (name, email, password) {

@@ -146,7 +146,7 @@ const GameModeSelection = ({ onSelectMode, onBack }) => {
 							</div>
 						</div>
 						<div className="bg-gray-50 border border-gray-200 rounded-lg p-4 flex-1">
-							<div className="text-3xl font-bold">{user.xp}</div>
+							<div className="text-3xl font-bold">{user.xps}</div>
 							<div className="text-sm text-gray-600">
 								Total XP
 							</div>
