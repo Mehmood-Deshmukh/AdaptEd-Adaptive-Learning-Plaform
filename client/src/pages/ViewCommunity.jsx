@@ -22,6 +22,7 @@ const CommunityPage = ({ description }) => {
   const [error, setError] = useState(null);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [showFull, setShowFull] = useState(false);
+ const [startTime, setStartTime] = useState(null);
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   const formatDate = (dateString) => {
@@ -40,6 +41,7 @@ const CommunityPage = ({ description }) => {
   }
   const fetchCommunityData = async () => {
     setLoading(true);
+	setStartTime(Date.now());
     try {
       console.log("Fetching community data for ID:", id);
       const response = await fetch(`${backendUrl}/api/community/${id}`, {
