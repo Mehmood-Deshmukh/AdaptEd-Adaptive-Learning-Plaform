@@ -192,16 +192,14 @@ const CodingChallengePlatform = () => {
       <Sidebar user={user} />
       
       <div className="flex-1 w-full max-w-full overflow-auto relative">
-        {/* Back Button - Fixed position */}
         <button
           onClick={handleBackButtonClick}
-          className="fixed z-50 top-4 left-4 h-10 w-10 flex items-center justify-center rounded-full bg-black text-white hover:bg-gray-800 shadow-lg transition-all duration-200 transform hover:scale-105"
+          className="absolute z-50 top-4 left-4 h-10 w-10 flex items-center justify-center rounded-full bg-black text-white hover:bg-gray-800 shadow-lg transition-all duration-200 transform hover:scale-105"
           title="Go back"
         >
           <ArrowLeft size={20} />
         </button>
         
-        {/* Tab Selector */}
         <div className="flex justify-center pt-6 mb-6">
           <div className="bg-gray-100 rounded-full p-1 inline-flex shadow-md">
             <button
@@ -233,7 +231,6 @@ const CodingChallengePlatform = () => {
           </div>
         </div>
 
-        {/* Notification */}
         {notification.show && (
           <div className="fixed z-50 top-16 right-4 max-w-sm">
             <div
@@ -255,9 +252,7 @@ const CodingChallengePlatform = () => {
           </div>
         )}
 
-        {/* Main Content Container with padding */}
         <div className="container mx-auto px-6 pb-10">
-          {/* Create Challenge Form */}
           {activeTab === "create" && (
             <div className="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-xl border border-gray-200">
               <div className="flex items-center gap-3 mb-8">
@@ -308,10 +303,8 @@ const CodingChallengePlatform = () => {
             </div>
           )}
 
-          {/* Submit Solution Form */}
           {activeTab === "submit" && (
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              {/* Challenge Selection */}
               <div className="lg:col-span-1">
                 <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-200 h-full">
                   <div className="flex justify-between items-center mb-6">
@@ -373,7 +366,6 @@ const CodingChallengePlatform = () => {
                 </div>
               </div>
 
-              {/* Code Editor */}
               <div className="lg:col-span-2">
                 <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-200 h-full">
                   <div className="flex justify-between items-center mb-6">
@@ -465,7 +457,6 @@ const CodingChallengePlatform = () => {
                         </button>
                       </div>
 
-                      {/* Results Panel */}
                       {result && (
                         <div className="mt-6 border border-gray-300 rounded-lg overflow-hidden shadow-sm">
                           <div className="bg-gray-100 p-4 font-semibold border-b flex items-center gap-2">
@@ -545,39 +536,3 @@ const CodingChallengePlatform = () => {
 };
 
 export default CodingChallengePlatform;
-
-/* Add this to your CSS for custom scrollbar */
-/*
-.custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 10px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-@keyframes slide-in {
-  0% {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-.animate-slide-in {
-  animation: slide-in 0.3s forwards;
-}
-*/
