@@ -21,7 +21,9 @@ const Forum = () => {
 
 	// Pagination
 	const [page, setPage] = useState(1);
+
 	const [hasMore, setHasMore] = useState(true);
+
 
 	const handlePostVote = async (postId, type) => {
 		if (!user) return;
@@ -57,7 +59,6 @@ const Forum = () => {
 		});
 
 		setPosts(updatedPosts);
-
 		try {
 			const endpoint = type === "upvote" ? "upvote" : "downvote";
 			await fetch(
@@ -105,11 +106,14 @@ const Forum = () => {
 	};
 
 	const fetchCommunities = async () => {
+		console.log(localStorage.getItem("token"));
+
 		try {
 			const response = await fetch(
 				`${import.meta.env.VITE_BACKEND_URL}/api/community/?page=1&limit=5`,
 				{
 					headers: {
+						"Content-Type": "application/json",
 						Authorization: `Bearer ${localStorage.getItem("token")}`,
 					},
 				}

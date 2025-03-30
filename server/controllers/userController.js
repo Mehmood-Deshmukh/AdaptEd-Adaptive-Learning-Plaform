@@ -468,6 +468,34 @@ const userController = {
 				data: null,
 			});
 		}
+	},
+	updateIsGuideComplete: async (req, res) => {
+		try {
+			const user = await userModel.findById(req.userId);
+			if (!user) {
+				return res.status(404).json({
+					success: false,
+					message: "User not found",
+					data: null,
+				});
+			}
+
+			user.isGuideComplete = true;
+			await user.save();
+
+			res.status(200).json({
+				success: true,
+				message: "Guide completion status updated successfully",
+				data: user,
+			});
+		} catch (e) {
+			console.log(e.message);
+			res.status(500).json({
+				success: false,
+				message: e.message,
+				data: null,
+			});
+		}
 	}
 };
 

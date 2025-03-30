@@ -14,5 +14,6 @@ router.post('/leave-community', authenticateUser, userController.leaveCommunity)
 router.get('/get-recommendations',  authenticateUser, userController.getRecommendations);
 router.post('/follow', authenticateUser, userController.followUser);
 router.post('/unfollow', authenticateUser, userController.unfollowUser);
+router.get('/update-guide-status', authenticateUser, userController.updateIsGuideComplete);
 
 module.exports = router;

@@ -88,6 +88,7 @@ DRIVER CODE GUIDELINES:
 - DO NOT include the function definition itself (user will write this part)
 - DO NOT include any imports that aren't explicitly needed
 - Include ONLY code needed to test the function
+- DON NOT INCLUDE FUNCTION DECLARATION AND DEFINITION 
 
 EXAMPLE JSON STRUCTURE:
 {
